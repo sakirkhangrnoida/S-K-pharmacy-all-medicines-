@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S K Pharmacy All - Fast Easy Shop</title>
 
-<!-- GOOGLE ANALYTICS - तेरी ID डाल दी -->
+<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHBYCVM02"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -14,14 +14,13 @@ gtag('js', new Date());
 gtag('config', 'G-JHBYCVM02');
 </script>
 
-<!-- GOOGLE TAG MANAGER - तेरी ID डाल दी -->
+<!-- GOOGLE TAG MANAGER -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KJ8Q2BD6');</script>
 
-<!-- GOOGLE ADSENSE - तेरी ID डाल दी -->
+<!-- GOOGLE ADSENSE -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3497742039075093" crossorigin="anonymous"></script>
 
 <meta name="google-site-verification" content="4-U4D9tYkYrvP15UMHdKRAlNMZ_VDnd8edfCvagnSo" />
-<meta name="description" content="S K Pharmacy - Dr. साकिर खान | दवाई घर बैठे">
 
 <style>
 * {margin:0; padding:0; box-sizing:border-box}
@@ -61,7 +60,6 @@ button.green {background:#2e7d32}
 </head>
 <body>
 
-<!-- GOOGLE TAG MANAGER NOSCRIPT -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJ8Q2BD6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header class="header">
@@ -76,14 +74,14 @@ button.green {background:#2e7d32}
   <input type="text" id="search" placeholder="Search 1000+ Medicines, Categories..." onkeyup="searchProd()">
 </div>
 
-<marquee class="ticker">🔔 Call 9258751739, 7983006957 | COD + Online Payment | SMS OTP | Live Tracking | Free Delivery ₹499+ | All Fresh Sell | Gifts | Gift Cards | Gift Ideas | Subscribe Prime | Account List</marquee>
+<marquee class="ticker">🔔 Call 9258751739, 7983006957 | COD + Online Payment | SMS OTP Test:1234 | Live Tracking | Free Delivery ₹499+ | All Fresh Sell | Gifts | Gift Cards | Gift Ideas | Subscribe Prime | Account List</marquee>
 
 <div class="category-bar">
-  <button class="cat-btn active" onclick="filterCat('all')">All</button>
-  <button class="cat-btn" onclick="filterCat('Tablets')">Tablets</button>
-  <button class="cat-btn" onclick="filterCat('Syrup')">Syrup</button>
-  <button class="cat-btn" onclick="filterCat('Capsules')">Capsules</button>
-  <button class="cat-btn" onclick="filterCat('Deals')">Deals</button>
+  <button class="cat-btn active" onclick="filterCat('all', this)">All</button>
+  <button class="cat-btn" onclick="filterCat('Tablets', this)">Tablets</button>
+  <button class="cat-btn" onclick="filterCat('Syrup', this)">Syrup</button>
+  <button class="cat-btn" onclick="filterCat('Capsules', this)">Capsules</button>
+  <button class="cat-btn" onclick="filterCat('Deals', this)">Deals</button>
 </div>
 
 <div class="ads-box">
@@ -103,7 +101,7 @@ button.green {background:#2e7d32}
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
-// ===== CONFIG - तेरी Firebase ID डाल दी =====
+// ===== CONFIG =====
 const firebaseConfig = {
   apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
   authDomain: "grnoida-store.firebaseapp.com",
@@ -120,9 +118,7 @@ const SHOP = {
   phone2: "7983006957",
   address: "Greater Noida Dankaur Silapur UP 203201",
   pin: "203201",
-  map: "https://www.google.com/maps?q=Dankaur+Silapur+Greater+Noida+203201",
-  razorpayKey: "rzp_test_REPLACE_YOUR_KEY", // Razorpay से ले
-  fast2smsKey: "REPLACE_YOUR_SMS_KEY" // Fast2SMS से ले
+  razorpayKey: "rzp_test_REPLACE_YOUR_KEY"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -130,7 +126,6 @@ const db = firebase.database();
 const auth = firebase.auth();
 let allProducts = {}, cart = [], currentProduct = null, currentCat = 'all';
 
-// ===== PRODUCTS LOAD =====
 db.ref('products').on('value', snap => {
   allProducts = snap.val() || {};
   renderProducts(allProducts);
@@ -139,7 +134,7 @@ db.ref('products').on('value', snap => {
 function renderProducts(data){
   let html = '';
   if(Object.keys(data).length == 0){
-    html = '<div style="grid-column:1/-1; text-align:center; padding:60px"><h3>Firebase → products में Data डालो</h3></div>';
+    html = '<div style="grid-column:1/-1; text-align:center; padding:60px"><h3>Firebase → products में Data डालो</h3><p>name, price, mrp, img, cat, desc</p></div>';
   } else {
     for(let id in data){
       let p = data[id];
@@ -160,15 +155,14 @@ function renderProducts(data){
   document.getElementById('products').innerHTML = html;
 }
 
-// ===== CATEGORY FILTER =====
-function filterCat(cat){
+// ===== FIXED: All Button + Active Class =====
+function filterCat(cat, btn){
   currentCat = cat;
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  if(btn) btn.classList.add('active');
   renderProducts(allProducts);
 }
 
-// ===== AMAZON STYLE PRODUCT DETAIL =====
 window.openProduct = function(id){
   currentProduct = allProducts[id];
   let likes = currentProduct.likes || 0;
@@ -251,14 +245,13 @@ function renderComments(comments){
   return html || '<p style="color:#999; text-align:center">कोई Review नहीं</p>';
 }
 
-// ===== BUY + OTP + ORDER =====
 window.buyNow = function(id, payMode){
   let p = allProducts[id];
   let mobile = prompt('Mobile Number डालो OTP के लिए:');
   if(!mobile || mobile.length!= 10) return toast('10 digit Mobile डालो');
 
-  toast('OTP: 1234 Test Mode');
-  let otp = prompt('OTP डालो:');
+  toast('OTP Test Mode: 1234');
+  let otp = prompt('OTP डालो: 1234');
   if(otp!= '1234') return toast('गलत OTP');
 
   if(payMode == 'COD'){
@@ -286,29 +279,24 @@ function payOnline(id, p, mobile){
 
 function saveOrder(id, p, mobile, payment, payId=''){
   const orderId = 'ORD' + Date.now();
-  const qty = 1;
-  const price = p.price;
-  const total = price * qty;
-
   db.ref('orders/' + orderId).set({
     orderId: orderId,
     product: p.name,
     cat: p.cat,
-    price: price,
-    qty: qty,
+    price: p.price,
+    qty: 1,
     mobile: mobile,
     address: SHOP.address + ' Pin: ' + SHOP.pin,
     payment: payment,
     payId: payId,
     status: "Order Placed",
-    total: total,
+    total: p.price,
     time: Date.now()
   });
   toast('✓ Order Placed! ID: ' + orderId);
   closePopup('productPopup');
 }
 
-// ===== 3-DOT MENU - 12+ Pages + Live Orders + My Account =====
 window.showMenu = function(){
   let pages = ['about','contact','privacy','refund','terms','help','support','condition','offers','blogs','login','admin','liveorders','myaccount','category','deals'];
   let names = ['ℹ️ About Us','📞 Contact','🔒 Privacy Policy','↩️ Refund Policy','📄 Terms','❓ Help Center','🎧 Customer Service','📋 Condition','🎁 Offers','📝 Blogs','👤 Login/Logout','⚒️ Admin Panel','📦 Live Orders','👤 My Account','🏪 Shop by Category','🔥 Deals'];
@@ -325,19 +313,19 @@ window.showPage = function(page){
   let content = {
     about: `<h2>ℹ️ About ${SHOP.name}</h2><p>Licensed Pharmacy. 10+ साल भरोसा।</p><p>Address: ${SHOP.address}</p>`,
     contact: `<h2>📞 Contact</h2><p>Call: ${SHOP.phone1}, ${SHOP.phone2}</p><p>Address: ${SHOP.address}</p><iframe class="map-box" src="https://www.google.com/maps?q=${SHOP.pin}&output=embed"></iframe>`,
-    privacy: `<h2>🔒 Privacy Policy</h2><p>तुम्हारा Data 100% Secure है।</p>`,
-    refund: `<h2>↩️ Refund Policy</h2><p>7 दिन Return। Medicine की Seal खुली तो Return नहीं।</p>`,
+    privacy: `<h2>🔒 Privacy Policy</h2><p>Data 100% Secure है।</p>`,
+    refund: `<h2>↩️ Refund Policy</h2><p>7 दिन Return। Seal खुली तो नहीं।</p>`,
     terms: `<h2>📄 Terms & Condition</h2><p>Doctor की सलाह से लें।</p>`,
     help: `<h2>❓ Help Center</h2><p>Call: ${SHOP.phone1}</p>`,
     support: `<h2>🎧 Customer Service</h2><p>WhatsApp: ${SHOP.phone1}</p>`,
-    condition: `<h2>📋 Terms & Condition</h2><p>All products genuine. No fake items.</p>`,
+    condition: `<h2>📋 Condition</h2><p>All products genuine. No fake items.</p>`,
     offers: `<h2>🎁 Bank Offers</h2><p>HDFC 10% Off</p>`,
     blogs: `<h2>📝 Health Blogs</h2><p>Fever, BP, Diabetes Tips</p>`,
     login: `<h2>👤 Account</h2><div id="authBox"></div>`,
     admin: `<h2>⚒️ Admin Panel</h2><p><a href="https://console.firebase.google.com/project/grnoida-store/database" target="_blank">Firebase Console</a></p>`,
     liveorders: `<h2>📦 Live Orders</h2><div id="liveOrderList">Loading...</div>`,
     myaccount: `<h2>👤 My Account</h2><div id="myAccountBox">Login करके Orders देखो</div>`,
-    category: `<h2>🏪 Shop by Category</h2><button class="primary" onclick="filterCat('Tablets')">Tablets</button><button class="primary" onclick="filterCat('Syrup')">Syrup</button>`,
+    category: `<h2>🏪 Shop by Category</h2><button class="primary" onclick="filterCat('Tablets', this)">Tablets</button><button class="primary" onclick="filterCat('Syrup', this)">Syrup</button>`,
     deals: `<h2>🔥 Today's Deals</h2><p>50% तक छूट</p>`
   };
 
@@ -372,7 +360,7 @@ function showAuthBox(){
 function showMyAccount(){
   let user = auth.currentUser;
   if(user){
-    document.getElementById('myAccountBox').innerHTML = `<h3>My Orders</h3><p>Login User: ${user.email}</p>`;
+    document.getElementById('myAccountBox').innerHTML = `<h3>My Orders</h3><p>User: ${user.email}</p>`;
   } else {
     document.getElementById('myAccountBox').innerHTML = 'पहले Login करो';
   }
@@ -390,7 +378,6 @@ function logout(){
   auth.signOut().then(() => {toast('Logout हो गया'); showAuthBox()});
 }
 
-// ===== CART + SEARCH =====
 function addToCart(id){
   cart.push(id);
   document.getElementById('cartCount').innerText = cart.length;
@@ -407,10 +394,11 @@ function searchProd(){
   renderProducts(filtered);
 }
 
-// ===== UTILS =====
 function closePopup(id){ document.getElementById(id).style.display = 'none'; }
+
+// ===== FIXED: Object नहीं दिखेगा =====
 window.toast = function(msg){
-  let text = typeof msg === 'object'? JSON.stringify(msg) : msg;
+  let text = typeof msg === 'object'? JSON.stringify(msg) : String(msg);
   let t = document.getElementById('toast');
   t.innerText = text;
   t.style.display = 'block';
