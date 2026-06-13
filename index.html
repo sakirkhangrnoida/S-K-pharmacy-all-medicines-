@@ -4,127 +4,360 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S K Pharmacy - दवाई घर बैठे</title>
-
-<!-- GA4: G-JH8YCVBMD2 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JH8YCVBMD2"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JH8YCVBMD2');</script>
-
-<!-- GTM: GTM-KJ8Q2B6G -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KJ8Q2B6G');</script>
-
-<!-- Adsense: ca-pub-3497742039075939 -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3497742039075939" crossorigin="anonymous"></script>
-
-<!-- Razorpay -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-<!-- TICKER + DESIGN सब 1 जगह -->
 <style>
-* {box-sizing: border-box; margin: 0; padding: 0;}
-body {font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7f6; color: #333;}
-
-/* Header */
-.header {background: linear-gradient(135deg, #1976d2, #1565c0); color: white; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
-.header h2 {margin: 0; font-size: 18px; font-weight: 600;}
-.header small {font-size: 11px; opacity: 0.9;}
-.header-right span {margin-left: 18px; cursor: pointer; font-size: 22px; transition: 0.2s;}
-.header-right span:hover {transform: scale(1.1);}
-
-/* News Ticker - चलती लाइन */
-.ticker {
-  background: #ff9800;
-  color: black;
-  padding: 8px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 13px;
-  position: sticky;
-  top: 52px;
-  z-index: 98;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.ticker marquee {
-  margin: 0;
-}
-
-/* Search Bar */
-.search-bar {display: flex; padding: 10px; gap: 8px; background: white; position: sticky; top: 82px; z-index: 97; box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
-.search-bar input {flex: 1; padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;}
-.search-bar button {padding: 10px 15px; background: #1976d2; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;}
-
-/* Products Grid */
-.grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 12px;}
-@media(min-width: 768px) {.grid {grid-template-columns: repeat(4, 1fr);}}
-.product-card {background: white; padding: 12px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: 0.3s;}
-.product-card:hover {transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15);}
-.product-card img {width: 100%; height: 160px; object-fit: contain; cursor: pointer; border-radius: 5px;}
-.product-card h4 {margin: 8px 0 5px; font-size: 14px; cursor: pointer; height: 36px; overflow: hidden;}
-.product-card p {margin: 5px 0; font-size: 15px; font-weight: bold; color: #1976d2;}
-.product-card p s {color: #999; font-size: 12px; font-weight: normal; margin-left: 5px;}
-
-/* Buttons */
-.btn-group {display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap;}
-.btn-group button {flex: 1 1 45%; padding: 8px 5px; border: none; border-radius: 5px; cursor: pointer; font-size: 11px; font-weight: 600; transition: 0.2s;}
-.btn-group button:hover {opacity: 0.9; transform: scale(0.98);}
-.pay-btn {background: #2874f0; color: white;}
-.cod-btn {background: #26a541; color: white;}
-.like-btn {background: #e91e63; color: white;}
-.share-btn {background: #25d366; color: white;}
-
-/* Popup */
-.popup {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center; padding: 10px;}
-.popup > div {background: white; padding: 20px; border-radius: 12px; max-width: 700px; width: 100%; max-height: 90vh; overflow: auto; position: relative;}
-.close {position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #999;}
-.close:hover {color: #000;}
-
-/* Menu */
-.menu-popup {position: absolute; right: 10px; top: 55px; background: white; border: 1px solid #ddd; border-radius: 8px; min-width: 220px; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 101;}
-.menu-popup a {display: block; padding: 12px 15px; border-bottom: 1px solid #f0f0f0; cursor: pointer; text-decoration: none; color: #333; font-size: 14px;}
-.menu-popup a:hover {background: #f5f5f5;}
-.menu-popup a:last-child {border-bottom: none;}
-
-/* Toast */
-.toast {position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 12px 25px; border-radius: 25px; display: none; z-index: 10000; font-size: 14px;}
-
-/* Form */
-input, textarea, select {width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;}
-input:focus, textarea:focus {border-color: #1976d2; outline: none;}
-.primary {width: 100%; padding: 12px; background: #fb641b; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 15px; font-weight: 600; margin-top: 10px;}
-.primary:hover {background: #e55a00;}
-
-/* Auth Tabs */
-.auth-tabs {display: flex; border-bottom: 2px solid #1976d2; margin-bottom: 15px;}
-.auth-tabs button {flex: 1; padding: 12px; border: none; background: #f0f0f0; cursor: pointer; font-size: 15px; font-weight: 600;}
-.auth-tabs button.active {background: #1976d2; color: white;}
-
-/* Orders & Tracking */
-.order {background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px #ccc; border-left: 4px solid #1976d2;}
-.track-step {display: flex; align-items: center; margin: 15px 0; font-size: 14px;}
-.track-step.dot {width: 22px; height: 22px; border-radius: 50%; background: #ddd; margin-right: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;}
-.track-step.active.dot {background: #26a541;}
-.track-line {width: 2px; height: 30px; background: #ddd; margin-left: 10px;}
+* {margin:0; padding:0; box-sizing:border-box}
+body {font-family: Arial; background:#f5f5f5; padding-bottom:60px}
+header {background:#0d47a1; color:white; padding:10px; position:sticky; top:0; z-index:99}
+.header-top {display:flex; justify-content:space-between; align-items:center}
+.header-top button {background:white; color:#0d47a1; border:none; padding:8px 12px; border-radius:5px; margin-left:5px; cursor:pointer; font-weight:bold}
+.logo {font-size:20px; font-weight:bold}
+.search-box input {width:100%; padding:10px; border-radius:5px; border:1px solid #ddd; margin-top:8px; font-size:16px}
+.ticker {background:#ff6f00; color:white; padding:8px; font-weight:bold}
+.banner {height:160px; background:#ddd; margin:10px; border-radius:8px; overflow:hidden; position:relative}
+.banner img {width:100%; height:100%; object-fit:cover; position:absolute}
+#products {display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; padding:10px}
+.card {background:white; border-radius:8px; padding:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); position:relative; cursor:pointer}
+.card img {width:100%; height:140px; object-fit:cover; border-radius:5px}
+.card h3 {font-size:14px; margin:5px 0; height:38px; overflow:hidden}
+.price {color:#d32f2f; font-weight:bold; font-size:16px}
+.mrp {text-decoration:line-through; color:#999; font-size:12px; margin-left:5px}
+button.primary {background:#0d47a1; color:white; border:none; padding:10px; border-radius:5px; width:100%; margin-top:5px; cursor:pointer; font-size:15px}
+button.secondary {background:#ff9800; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; margin:3px; font-size:14px}
+button.green {background:#2e7d32}
+.popup {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:none; justify-content:center; align-items:center; z-index:999}
+.popup > div {background:white; padding:20px; border-radius:10px; max-width:650px; width:95%; max-height:95vh; overflow-y:auto; position:relative}
+.close {position:absolute; top:10px; right:15px; font-size:32px; cursor:pointer; color:#999}
+#toast {position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#333; color:white; padding:12px 24px; border-radius:8px; display:none; z-index:9999}
+.detail-img {width:100%; height:280px; object-fit:cover; border-radius:8px}
+.actions {display:flex; gap:10px; margin:15px 0}
+.actions button {flex:1}
+.comment-box {border-top:2px solid #eee; padding-top:15px; margin-top:15px}
+.comment-box input {width:75%; padding:10px; border:1px solid #ddd; border-radius:5px}
+.menu-list button {display:block; width:100%; text-align:left; padding:14px; border:none; background:white; border-bottom:1px solid #eee; cursor:pointer; font-size:16px}
+.input {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px}
+@media(max-width:600px){#products{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
-<!-- TICKER - News लाइन यहाँ -->
-<div class="ticker">
-  <marquee behavior="scroll" direction="left" scrollamount="5">
-    🔔 Call 9258751739, 7983006957 | COD + Online Payment | SMS OTP | Live Order Tracking | Free Delivery ₹499+ | 100% Genuine Medicines | 24x7 Service
-  </marquee>
-</div>
+<header>
+  <div class="header-top">
+    <div class="logo">S K Pharmacy</div>
+    <div>
+      <button onclick="showCart()">🛒 <span id="cartCount">0</span></button>
+      <button onclick="showMenu()">⋮</button>
+    </div>
+  </div>
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search 1000+ Medicines..." onkeyup="searchProd()">
+  </div>
+</header>
 
-<!-- Website यहाँ बनेगा -->
-<div id="app"></div>
+<marquee class="ticker">🔔 Call 9258751739, 7983006957 | COD + Online Payment | SMS OTP | Live Tracking | Free Delivery ₹499+ | 24x7</marquee>
 
-<!-- Popup खाली - JS भरेगा -->
-<div id="authPopup" class="popup"></div>
-<div id="productPopup" class="popup"></div>
-<div id="checkoutPopup" class="popup"></div>
-<div id="pagePopup" class="popup"></div>
-<div id="toast" class="toast"></div>
+<div class="banner" id="bannerSlider"></div>
 
-<!-- सारा Logic इस File में -->
-<script type="module" src="app.js"></script>
+<div id="products">Loading...</div>
+
+<div class="popup" id="productPopup"></div>
+<div class="popup" id="settingsPopup"></div>
+<div id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+// ===== CONFIG - तेरी असली Firebase ID =====
+const firebaseConfig = {
+  apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
+  authDomain: "grnoida-store.firebaseapp.com",
+  databaseURL: "https://grnoida-store-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "grnoida-store",
+  storageBucket: "grnoida-store.firebasestorage.app",
+  messagingSenderId: "665639961400",
+  appId: "1:665639961400:web:cb704b0209b910fc6a77cd"
+};
+
+const SHOP = {
+  name: "S K Pharmacy",
+  phone1: "9258751739",
+  phone2: "7983006957",
+  address: "Greater Noida Dankaur Silapur UP 203201",
+  razorpayKey: "rzp_test_REPLACE_YOUR_KEY",
+  fast2smsKey: "REPLACE_YOUR_SMS_KEY"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const auth = firebase.auth();
+let allProducts = {}, cart = [], currentProduct = null;
+
+// ===== PRODUCTS LOAD =====
+db.ref('products').on('value', snap => {
+  allProducts = snap.val() || {};
+  renderProducts(allProducts);
+});
+
+function renderProducts(data){
+  let html = '';
+  if(Object.keys(data).length == 0){
+    html = '<div style="grid-column:1/-1; text-align:center; padding:60px"><h3>Firebase → products में Data डालो</h3></div>';
+  } else {
+    for(let id in data){
+      let p = data[id];
+      let discount = p.mrp && p.price? Math.round(((p.mrp - p.price) / p.mrp) * 100) : 0;
+      html += `
+        <div class="card" onclick="openProduct('${id}')">
+          ${discount > 0? `<span style="position:absolute; background:#d32f2f; color:white; padding:3px 6px; font-size:11px; border-radius:3px; top:5px; left:5px">${discount}% OFF</span>` : ''}
+          <img src="${p.img || 'https://via.placeholder.com/200'}" onerror="this.src='https://via.placeholder.com/200'">
+          <h3>${p.name}</h3>
+          <p class="price">₹${p.price} <span class="mrp">₹${p.mrp || ''}</span></p>
+          <button class="primary" onclick="event.stopPropagation(); addToCart('${id}')">Add to Cart</button>
+        </div>
+      `;
+    }
+  }
+  document.getElementById('products').innerHTML = html;
+}
+
+// ===== PRODUCT DETAIL =====
+window.openProduct = function(id){
+  currentProduct = allProducts[id];
+  let likes = currentProduct.likes || 0;
+  let comments = currentProduct.comments || {};
+
+  let html = `
+    <div>
+      <span class="close" onclick="closePopup('productPopup')">×</span>
+      <img class="detail-img" src="${currentProduct.img}">
+      <h2 style="margin:10px 0">${currentProduct.name}</h2>
+      <p class="price" style="font-size:26px">₹${currentProduct.price} <span class="mrp">₹${currentProduct.mrp}</span></p>
+      <p style="color:#666; margin:10px 0">${currentProduct.desc || '100% Genuine Medicine'}</p>
+
+      <div style="background:#e8f5e9; padding:10px; border-radius:5px; margin:10px 0">
+        <p>✓ Cash on Delivery Available</p>
+        <p>✓ Free Delivery ₹499+</p>
+        <p>✓ 7 Day Return</p>
+      </div>
+
+      <div class="actions">
+        <button class="secondary" onclick="likeProduct('${id}')">👍 Like ${likes}</button>
+        <button class="secondary" onclick="shareProduct('${id}')">📤 Share</button>
+        <button class="secondary" onclick="showPage('tracking')">🚚 Track</button>
+      </div>
+
+      <div style="display:flex; gap:10px; margin:15px 0">
+        <button class="primary" onclick="buyNow('${id}', 'COD')">Cash on Delivery</button>
+        <button class="primary green" onclick="buyNow('${id}', 'Online')">Pay Online</button>
+      </div>
+
+      <div class="comment-box">
+        <h4>💬 Customer Reviews</h4>
+        <div id="commentsList" style="max-height:150px; overflow-y:auto">${renderComments(comments)}</div>
+        <div style="display:flex; gap:5px; margin-top:10px">
+          <input id="commentInput" placeholder="Review लिखो..." class="input">
+          <button class="secondary" onclick="addComment('${id}')">Post</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('productPopup').innerHTML = html;
+  document.getElementById('productPopup').style.display = 'flex';
+}
+
+function likeProduct(id){
+  db.ref('products/'+id+'/likes').transaction(n => (n||0)+1);
+  toast('Liked!');
+}
+
+function shareProduct(id){
+  let url = location.origin + location.pathname + '?p=' + id;
+  if(navigator.share){
+    navigator.share({title: currentProduct.name, url: url});
+  } else {
+    navigator.clipboard.writeText(url);
+    toast('Link Copy हो गया');
+  }
+}
+
+function addComment(id){
+  let txt = document.getElementById('commentInput').value.trim();
+  if(!txt) return toast('Comment लिखो');
+  let key = Date.now();
+  db.ref('products/'+id+'/comments/'+key).set({text: txt, time: key});
+  document.getElementById('commentInput').value = '';
+}
+
+function renderComments(comments){
+  let html = '';
+  for(let k in comments){
+    html += `<p style="background:#f5f5f5; padding:8px; border-radius:5px; margin:5px 0; font-size:14px">${comments[k].text}</p>`;
+  }
+  return html || '<p style="color:#999; text-align:center">कोई Review नहीं</p>';
+}
+
+// ===== BUY + ORDER =====
+window.buyNow = function(id, payMode){
+  let p = allProducts[id];
+  let mobile = prompt('Mobile Number डालो OTP के लिए:');
+  if(!mobile || mobile.length!= 10) return toast('10 digit Mobile डालो');
+
+  toast('OTP: 1234 Test Mode');
+  let otp = prompt('OTP डालो:');
+  if(otp!= '1234') return toast('गलत OTP');
+
+  if(payMode == 'COD'){
+    saveOrder(id, p, mobile, 'COD');
+  } else {
+    payOnline(id, p, mobile);
+  }
+}
+
+function payOnline(id, p, mobile){
+  var options = {
+    key: SHOP.razorpayKey,
+    amount: p.price * 100,
+    currency: "INR",
+    name: SHOP.name,
+    description: p.name,
+    prefill: { contact: mobile },
+    handler: function(response){
+      saveOrder(id, p, mobile, 'Online', response.razorpay_payment_id);
+    }
+  };
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+
+function saveOrder(id, p, mobile, payment, payId=''){
+  const orderId = 'ORD' + Date.now();
+  const qty = 1;
+  const price = p.price;
+  const total = price * qty;
+
+  db.ref('orders/' + orderId).set({
+    orderId: orderId,
+    product: p.name,
+    price: price,
+    qty: qty,
+    mobile: mobile,
+    address: SHOP.address,
+    payment: payment,
+    payId: payId,
+    status: "Order Placed",
+    total: total,
+    time: Date.now()
+  });
+  toast('✓ Order Placed! ID: ' + orderId);
+  closePopup('productPopup');
+}
+
+// ===== 3-DOT MENU =====
+window.showMenu = function(){
+  let pages = ['about','contact','privacy','refund','orders','tracking','help','terms','offers','blogs','login','admin'];
+  let names = ['ℹ️ About Us','📞 Contact','🔒 Privacy','↩️ Refund','📦 My Orders','🚚 Track Order','❓ Help','📄 Terms','🎁 Offers','📝 Blogs','👤 Login','⚒️ Admin'];
+
+  let html = `<div><span class="close" onclick="closePopup('settingsPopup')">×</span><h2>Settings & More</h2><div class="menu-list">`;
+  pages.forEach((p,i) => html += `<button onclick="showPage('${p}')">${names[i]}</button>`);
+  html += `</div></div>`;
+
+  document.getElementById('settingsPopup').innerHTML = html;
+  document.getElementById('settingsPopup').style.display = 'flex';
+}
+
+window.showPage = function(page){
+  let content = {
+    about: `<h2>ℹ️ About ${SHOP.name}</h2><p>Licensed Pharmacy. 10+ साल भरोसा।</p>`,
+    contact: `<h2>📞 Contact</h2><p>Call: ${SHOP.phone1}</p><p>Address: ${SHOP.address}</p>`,
+    privacy: `<h2>🔒 Privacy Policy</h2><p>Data Secure है।</p>`,
+    refund: `<h2>↩️ Refund Policy</h2><p>7 दिन Return। Seal खुली तो नहीं।</p>`,
+    orders: `<h2>📦 My Orders</h2><div id="orderList">Loading...</div>`,
+    tracking: `<h2>🚚 Track Order</h2><input id="trackId" placeholder="Order ID" class="input"><button class="primary" onclick="trackOrder()">Track</button><div id="trackResult"></div>`,
+    help: `<h2>❓ Help</h2><p>Call: ${SHOP.phone1}</p>`,
+    terms: `<h2>📄 Terms</h2><p>Doctor की सलाह से लें।</p>`,
+    offers: `<h2>🎁 Bank Offers</h2><p>HDFC 10% Off</p>`,
+    blogs: `<h2>📝 Health Blogs</h2><p>Fever, BP, Diabetes Tips</p>`,
+    login: `<h2>👤 Login</h2><input id="email" placeholder="Email" class="input"><input id="pass" type="password" placeholder="Password" class="input"><button class="primary" onclick="login()">Login</button><button class="secondary" onclick="signup()">Signup</button>`,
+    admin: `<h2>⚒️ Admin</h2><p><a href="https://console.firebase.google.com/project/grnoida-store/database" target="_blank">Firebase Console</a></p>`
+  };
+
+  document.getElementById('settingsPopup').innerHTML = `<div><span class="close" onclick="closePopup('settingsPopup')">×</span>${content}</div>`;
+  document.getElementById('settingsPopup').style.display = 'flex';
+  if(page == 'orders') loadOrders();
+}
+
+function loadOrders(){
+  db.ref('orders').limitToLast(20).on('value', snap => {
+    let html = '';
+    snap.forEach(child => {
+      let o = child.val();
+      html += `<div style="border:1px solid #ddd; padding:12px; margin:8px 0; border-radius:8px"><b>${o.orderId}</b><br>${o.product}<br>₹${o.price}<br>Status: <span style="color:green">${o.status}</span></div>`;
+    });
+    document.getElementById('orderList').innerHTML = html || 'कोई Order नहीं';
+  });
+}
+
+function trackOrder(){
+  let id = document.getElementById('trackId').value.trim();
+  if(!id) return toast('Order ID डालो');
+  db.ref('orders/'+id).once('value', snap => {
+    let o = snap.val();
+    document.getElementById('trackResult').innerHTML = o?
+      `<div style="background:#e8f5e9; padding:15px; border-radius:8px"><p><b>Status:</b> ${o.status}</p></div>` :
+      `<p style="color:red">Order नहीं मिला</p>`;
+  });
+}
+
+function signup(){
+  let e = document.getElementById('email').value, p = document.getElementById('pass').value;
+  auth.createUserWithEmailAndPassword(e,p).then(() => toast('Signup हो गया')).catch(err => toast(err.message));
+}
+function login(){
+  let e = document.getElementById('email').value, p = document.getElementById('pass').value;
+  auth.signInWithEmailAndPassword(e,p).then(() => toast('Login हो गया')).catch(err => toast(err.message));
+}
+
+// ===== CART + SEARCH + BANNER =====
+function addToCart(id){
+  cart.push(id);
+  document.getElementById('cartCount').innerText = cart.length;
+  toast('Cart में Add');
+}
+
+function searchProd(){
+  let q = document.getElementById('search').value.toLowerCase();
+  let filtered = {};
+  for(let id in allProducts){
+    if(allProducts[id].name.toLowerCase().includes(q)) filtered[id] = allProducts[id];
+  }
+  renderProducts(filtered);
+}
+
+let banners = [
+  'https://via.placeholder.com/650x160.png?text=Free+Delivery+₹499+',
+  'https://via.placeholder.com/650x160.png?text=HDFC+10%25+Off',
+  'https://via.placeholder.com/650x160.png?text=Genuine+Medicines'
+];
+let bIndex = 0;
+setInterval(() => {
+  document.getElementById('bannerSlider').innerHTML = `<img src="${banners[bIndex]}">`;
+  bIndex = (bIndex + 1) % banners.length;
+}, 4000);
+
+// ===== UTILS =====
+function closePopup(id){ document.getElementById(id).style.display = 'none'; }
+window.toast = function(msg){
+  let text = typeof msg === 'object'? JSON.stringify(msg) : msg;
+  let t = document.getElementById('toast');
+  t.innerText = text;
+  t.style.display = 'block';
+  setTimeout(()=>t.style.display='none', 3000);
+}
+
+let urlParams = new URLSearchParams(window.location.search);
+if(urlParams.get('p')) setTimeout(() => openProduct(urlParams.get('p')), 1000);
+</script>
 </body>
 </html>
