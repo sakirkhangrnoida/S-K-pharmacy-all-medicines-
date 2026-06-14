@@ -45,6 +45,11 @@ button.green {background:#2e7d32}
 .input {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px}
 .map-box {width:100%; height:200px; border-radius:8px; margin:10px 0}
 .ads-box {margin:15px 10px; text-align:center}
+.read-more {color:#1976d2; cursor:pointer; font-weight:bold; margin-top:10px; display:inline-block}
+.page-content {line-height:1.8; text-align:justify}
+.page-content h3 {margin:15px 0 8px; color:#1976d2}
+.page-content ul {margin-left:20px; margin:10px 0}
+.page-content p {margin:8px 0}
 @media(max-width:600px){#products{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -66,7 +71,7 @@ button.green {background:#2e7d32}
 
 <marquee class="ticker">🔔 Call 9258751739, 7983006957 | COD + Online Payment | SMS OTP Test:1234 | Live Tracking | Free Delivery ₹499+</marquee>
 
-<div class="category-bar" id="catBar">
+<div class="category-bar">
   <button class="cat-btn active" onclick="filterCat('all', this)">All</button>
   <button class="cat-btn" onclick="filterCat('Tablets', this)">Tablets</button>
   <button class="cat-btn" onclick="filterCat('Syrup', this)">Syrup</button>
@@ -145,7 +150,6 @@ function renderProducts(){
   document.getElementById('products').innerHTML = html;
 }
 
-// ===== 100% FIXED FILTER =====
 function filterCat(cat, btn){
   currentCat = cat;
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
@@ -239,7 +243,7 @@ window.buyNow = function(id, payMode){
   if(!mobile || mobile.length!= 10) return toast('10 digit Mobile डालो');
 
   let otp = prompt('OTP डालो: 1234');
-  if(otp === null) return; // Cancel किया तो कुछ मत करो
+  if(otp === null) return;
   if(otp!= '1234') return toast('गलत OTP');
 
   if(payMode == 'COD'){
@@ -297,27 +301,209 @@ window.showMenu = function(){
   document.getElementById('settingsPopup').style.display = 'flex';
 }
 
+// ===== 10 PAGE CONTENT WITH READ MORE =====
 window.showPage = function(page){
   let content = {
-    about: `<h2>ℹ️ About ${SHOP.name}</h2><p>Licensed Pharmacy. Address: ${SHOP.address}</p>`,
-    contact: `<h2>📞 Contact</h2><p>Call: ${SHOP.phone1}, ${SHOP.phone2}</p><iframe class="map-box" src="https://www.google.com/maps?q=${SHOP.pin}&output=embed"></iframe>`,
-    privacy: `<h2>🔒 Privacy Policy</h2><p>Data Secure है।</p>`,
-    refund: `<h2>↩️ Refund Policy</h2><p>7 दिन Return।</p>`,
-    terms: `<h2>📄 Terms</h2><p>Doctor की सलाह से लें।</p>`,
-    help: `<h2>❓ Help</h2><p>Call: ${SHOP.phone1}</p>`,
-    support: `<h2>🎧 Customer Service</h2><p>WhatsApp: ${SHOP.phone1}</p>`,
-    condition: `<h2>📋 Condition</h2><p>All products genuine.</p>`,
-    offers: `<h2>🎁 Offers</h2><p>HDFC 10% Off</p>`,
-    blogs: `<h2>📝 Blogs</h2><p>Health Tips</p>`,
-    login: `<h2>👤 Account</h2><div id="authBox"></div>`,
-    admin: `<h2>⚒️ Admin</h2><p><a href="https://console.firebase.google.com/project/grnoida-store/database" target="_blank">Firebase Console</a></p>`,
-    liveorders: `<h2>📦 Live Orders</h2><div id="liveOrderList">Loading...</div>`,
-    myaccount: `<h2>👤 My Account</h2><div id="myAccountBox">Login करो</div>`,
-    category: `<h2>🏪 Category</h2><button class="primary" onclick="filterCat('Tablets', this)">Tablets</button>`,
-    deals: `<h2>🔥 Deals</h2><p>50% Off</p>`
+    about: `
+      <h2>ℹ️ About S K Pharmacy</h2>
+      <div class="page-content" id="about-short">
+        <p>S K Pharmacy एक Licensed Pharmacy है जो Greater Noida, UP में 10+ साल से लोगों की सेवा कर रही है।</p>
+        <p>हमारा Address: ${SHOP.address}</p>
+        <p>हम 100% Genuine Medicines देते हैं।</p>
+        <span class="read-more" onclick="expandContent('about')">Read More ▼</span>
+      </div>
+      <div class="page-content" id="about-full" style="display:none">
+        <h3>हमारी कहानी</h3>
+        <p>2014 में शुरू हुआ S K Pharmacy आज 5000+ ग्राहकों का भरोसा जीत चुका है। हमारा मकसद है हर घर तक सस्ती और असली दवाई पहुँचाना।</p>
+
+        <h3>हमारी खासियतें</h3>
+        <ul>
+          <li>✓ 100% असली दवाई - कोई नकली सामान नहीं</li>
+          <li>✓ Licensed Pharmacist 24x7 उपलब्ध</li>
+          <li>✓ Fast Delivery - 2 घंटे में दवाई आपके घर</li>
+          <li>✓ COD + Online Payment दोनों सुविधा</li>
+          <li>✓ 7 दिन Return Policy</li>
+          <li>✓ डॉक्टर की सलाह मुफ्त</li>
+          <li>✓ Bulk Order पर 15% तक Discount</li>
+          <li>✓ Monthly Subscription Box</li>
+          <li>✓ Emergency Medicine 30 मिनट में</li>
+          <li>✓ पुराने ग्राहकों के लिए Special Offers</li>
+        </ul>
+
+        <h3>हमारा विजन</h3>
+        <p>हर भारतीय को सस्ती और अच्छी Healthcare सुविधा देना। हम चाहते हैं कि कोई भी पैसों की वजह से इलाज न रुके।</p>
+
+        <h3>Contact Details</h3>
+        <p>📞 Call: ${SHOP.phone1}, ${SHOP.phone2}</p>
+        <p>📍 Address: ${SHOP.address}</p>
+        <p>🕒 Timing: सुबह 8 बजे से रात 10 बजे तक</p>
+        <span class="read-more" onclick="collapseContent('about')">Show Less ▲</span>
+      </div>
+    `,
+    contact: `
+      <h2>📞 Contact Us</h2>
+      <div class="page-content" id="contact-short">
+        <p>Call: ${SHOP.phone1}, ${SHOP.phone2}</p>
+        <p>Address: ${SHOP.address}</p>
+        <span class="read-more" onclick="expandContent('contact')">Read More ▼</span>
+      </div>
+      <div class="page-content" id="contact-full" style="display:none">
+        <h3>हमसे जुड़ें</h3>
+        <p>कोई भी सवाल हो, सीधा Call करें। हम 24x7 आपके लिए हैं।</p>
+
+        <h3>Contact Details</h3>
+        <p>📞 Customer Care: ${SHOP.phone1}</p>
+        <p>📞 WhatsApp: ${SHOP.phone2}</p>
+        <p>📧 Email: skpharmacy@gmail.com</p>
+        <p>📍 Address: ${SHOP.address}</p>
+        <p>📌 Pin Code: ${SHOP.pin}</p>
+
+        <h3>Timing</h3>
+        <p>सोमवार - शनिवार: सुबह 8 से रात 10</p>
+        <p>रविवार: सुबह 9 से शाम 6</p>
+        <p>Emergency: 24x7 Call करें</p>
+
+        <h3>Location Map</h3>
+        <iframe class="map-box" src="https://www.google.com/maps?q=${SHOP.pin}&output=embed"></iframe>
+
+        <h3>Delivery Area</h3>
+        <p>Greater Noida, Dankaur, Jewar, Sikandrabad, Bulandshahr - Free Delivery</p>
+        <p>दूसरे शहर: Courier Charges लगेंगे</p>
+        <span class="read-more" onclick="collapseContent('contact')">Show Less ▲</span>
+      </div>
+    `,
+    privacy: `
+      <h2>🔒 Privacy Policy</h2>
+      <div class="page-content" id="privacy-short">
+        <p>आपका Data 100% Secure है। हम किसी को Share नहीं करते।</p>
+        <span class="read-more" onclick="expandContent('privacy')">Read More ▼</span>
+      </div>
+      <div class="page-content" id="privacy-full" style="display:none">
+        <h3>Data Security</h3>
+        <p>S K Pharmacy आपके Personal Data की Security को लेकर बहुत Serious है।</p>
+
+        <h3>क्या Data Collect करते हैं</h3>
+        <ul>
+          <li>1. Name, Mobile Number, Address</li>
+          <li>2. Order History</li>
+          <li>3. Payment Details - हम Save नहीं करते</li>
+          <li>4. Device Info - App को बेहतर बनाने के लिए</li>
+        </ul>
+
+        <h3>Data का Use कैसे करते हैं</h3>
+        <p>सिर्फ Order Deliver करने और आपको बेहतर Service देने के लिए।</p>
+
+        <h3>Data Share करते हैं क्या?</h3>
+        <p>बिल्कुल नहीं। आपका Data किसी 3rd Party को नहीं दिया जाता।</p>
+
+        <h3>Cookies</h3>
+        <p>हम Website को बेहतर बनाने के लिए Cookies use करते हैं।</p>
+
+        <h3>आपके Rights</h3>
+        <p>आप कभी भी अपना Data Delete करवा सकते हैं। Call करें: ${SHOP.phone1}</p>
+
+        <h3>Contact for Privacy Issues</h3>
+        <p>Email: privacy@skpharmacy.com</p>
+        <span class="read-more" onclick="collapseContent('privacy')">Show Less ▲</span>
+      </div>
+    `,
+    refund: `
+      <h2>↩️ Refund & Return Policy</h2>
+      <div class="page-content" id="refund-short">
+        <p>7 दिन Return Policy। Seal खुली तो Return नहीं होगा।</p>
+        <span class="read-more" onclick="expandContent('refund')">Read More ▼</span>
+      </div>
+      <div class="page-content" id="refund-full" style="display:none">
+        <h3>Return Policy</h3>
+        <p>डिलीवरी के 7 दिन के अंदर Return कर सकते हैं।</p>
+
+        <h3>Conditions for Return</h3>
+        <ul>
+          <li>1. दवाई की Seal नहीं खुली होनी चाहिए</li>
+          <li>2. Bill/Invoice साथ में होना चाहिए</li>
+          <li>3. Expired दवाई Return नहीं होगी</li>
+          <li>4. Wrong Order आया हो तो 100% Refund</li>
+          <li>5. Damaged Product तुरंत Exchange</li>
+        </ul>
+
+        <h3>Refund Process</h3>
+        <p>1. Call करें: ${SHOP.phone1}</p>
+        <p>2. Product Pickup होगा</p>
+        <p>3. 3-5 दिन में Refund आपके Account में</p>
+
+        <h3>कब Refund नहीं होगा</h3>
+        <p>Seal खुली हुई दवाई, Expired दवाई, या Customer की गलती से Damage हुआ Product।</p>
+
+        <h3>Exchange Policy</h3>
+        <p>गलत दवाई आई हो तो तुरंत Exchange। Extra पैसे नहीं लगेंगे।</p>
+        <span class="read-more" onclick="collapseContent('refund')">Show Less ▲</span>
+      </div>
+    `,
+    terms: `
+      <h2>📄 Terms & Conditions</h2>
+      <div class="page-content" id="terms-short">
+        <p>Doctor की सलाह से दवाई लें। बिना Prescription कुछ दवाई नहीं मिलेगी।</p>
+        <span class="read-more" onclick="expandContent('terms')">Read More ▼</span>
+      </div>
+      <div class="page-content" id="terms-full" style="display:none">
+        <h3>Important Terms</h3>
+        <ul>
+          <li>1. डॉक्टर की सलाह से ही दवाई लें</li>
+          <li>2. Schedule H दवाई के लिए Prescription जरूरी</li>
+          <li>3. हम Medical Advice नहीं देते</li>
+          <li>4. Side Effects की जिम्मेदारी हमारी नहीं</li>
+          <li>5. Price बदल सकते हैं बिना सूचना के</li>
+          <li>6. Stock खत्म होने पर Order Cancel हो सकता है</li>
+          <li>7. Fake Prescription पर Legal Action</li>
+          <li>8. 18 साल से कम को कुछ दवाई नहीं</li>
+          <li>9. Pregnancy में दवाई Doctor से पूछ कर लें</li>
+          <li>10. COD में फेक Order पर Ban</li>
+        </ul>
+        <h3>Disclaimer</h3>
+        <p>S K Pharmacy सिर्फ दवाई बेचती है। इलाज की जिम्मेदारी Doctor की है।</p>
+        <h3>Legal</h3>
+        <p>किसी भी विवाद के लिए Greater Noida Court का अधिकार क्षेत्र होगा।</p>
+        <span class="read-more" onclick="collapseContent('terms')">Show Less ▲</span>
+      </div>
+    `,
+    help: `
+      <h2>❓ Help Center</h2>
+      <div class="page-content" id="help-short">
+        <p>कोई Problem है? Call करें: ${SHOP.phone1}</p>
+        <span class="read-more" onclick="expandContent('help')">Read More ▼</span>
+      </div>
+      <div class="page-content" id="help-full" style="display:none">
+        <h3>सबसे पूछे जाने वाले सवाल</h3>
+        <h3>Q1. Order कैसे करें?</h3>
+        <p>Product Select करें → Add to Cart → Buy Now → Mobile डालें → OTP → COD/Online Pay</p>
+        <h3>Q2. Delivery कितने दिन में?</h3>
+        <p>Greater Noida में 2 घंटे। दूसरे शहर 2-3 दिन।</p>
+        <h3>Q3. Prescription जरूरी है?</h3>
+        <p>Schedule H दवाई के लिए हाँ। बाकी के लिए नहीं।</p>
+        <h3>Q4. Payment कैसे करें?</h3>
+        <p>COD या Online - UPI, Card, NetBanking सब चलता है।</p>
+        <h3>Q5. Return कैसे करें?</h3>
+        <p>7 दिन में Call करें। Pickup हो जाएगा।</p>
+        <h3>Contact Support</h3>
+        <p>📞 Call: ${SHOP.phone1}</p>
+        <p>💬 WhatsApp: ${SHOP.phone2}</p>
+        <p>🕒 24x7 Available</p>
+        <span class="read-more" onclick="collapseContent('help')">Show Less ▲</span>
+      </div>
+    `,
+    support: `<h2>🎧 Customer Service</h2><p>WhatsApp: ${SHOP.phone1}<br>24x7 Support Available<br>Email: support@skpharmacy.com<br>Live Chat: Website पर Chat Icon दबाएं<br>Complaint: 2 घंटे में Reply Guarantee<br>Feedback: आपकी राय हमारे लिए जरूरी है</p>`,
+    condition: `<h2>📋 Condition</h2><p>1. All products 100% genuine<br>2. No fake items<br>3. Licensed pharmacy<br>4. Temperature controlled storage<br>5. Expiry date check<br>6. Proper packaging<br>7. GST Bill available<br>8. Quality tested</p>`,
+    offers: `<h2>🎁 Bank Offers & Deals</h2><p>1. HDFC Card: 10% Off Max ₹500<br>2. ICICI Card: 15% Off Max ₹750<br>3. SBI Card: 5% Cashback<br>4. UPI: ₹50 Instant Discount<br>5. New User: First Order 20% Off<br>6. Bulk Order: 15% Extra Discount<br>7. Weekend Sale: Every Sat-Sun<br>8. Festive Offers: Seasonal Discount</p>`,
+    blogs: `<h2>📝 Health Blogs & Tips</h2><p><h3>1. बुखार में क्या करें?</h3>पानी ज्यादा पिएं, Rest करें, Doctor से सलाह लें।<br><br><h3>2. BP Control Tips</h3>नमक कम खाएं, Exercise करें, तनाव कम लें।<br><br><h3>3. Diabetes Care</h3>शुगर Check कराएं, मीठा कम खाएं, Walk करें।<br><br><h3>4. Immunity बढ़ाएं</h3>Vitamin C, Zinc लें, अच्छी नींद लें।<br><br><h3>5. Weight Loss Tips</h3>सुबह Walk, कम Carbs, ज्यादा Protein।<br><br>हर हफ्ते नए Blog पढ़ने के लिए Visit करें।</p>`,
+    login: `<h2>👤 Account Login/Signup</h2><div id="authBox"></div>`,
+    admin: `<h2>⚒️ Admin Panel</h2><p><a href="https://console.firebase.google.com/project/grnoida-store/database" target="_blank" style="color:#1976d2">Firebase Console खोलें</a><br><br>यहाँ से Products Add/Edit/Delete कर सकते हैं।<br>Orders देख सकते हैं।<br>Customer Data Manage कर सकते हैं।</p>`,
+    liveorders: `<h2>📦 Live Orders Tracking</h2><div id="liveOrderList">Loading...</div>`,
+    myaccount: `<h2>👤 My Account</h2><div id="myAccountBox">Login करके अपने Orders देखें<br>Profile Edit करें<br>Address Save करें<br>Order History देखें</div>`,
+    category: `<h2>🏪 Shop by Category</h2><button class="primary" onclick="filterCat('Tablets', this)">Tablets</button><button class="primary" onclick="filterCat('Syrup', this)">Syrup</button><button class="primary" onclick="filterCat('Capsules', this)">Capsules</button><button class="primary" onclick="filterCat('Deals', this)">Deals</button>`,
+    deals: `<h2>🔥 Today's Hot Deals</h2><p>1. Paracetamol - 50% Off<br>2. Vitamin C - Buy 1 Get 1<br>3. BP Machine - 30% Off<br>4. Glucometer - 25% Off<br>5. Sanitizer Pack - ₹99 Only<br>6. Mask Pack - 10 for ₹49<br>7. Handwash - 40% Off<br>8. First Aid Kit - 35% Off<br><br>Offer आज रात 12 बजे तक!</p>`
   };
 
-  document.getElementById('settingsPopup').innerHTML = `<div><span class="close" onclick="closePopup('settingsPopup')">×</span>${content[page] || 'Page नहीं मिला'}</div>`;
+  document.getElementById('settingsPopup').innerHTML = `<div><span class="close" onclick="closePopup('settingsPopup')">×</span>${content || 'Page नहीं मिला'}</div>`;
   document.getElementById('settingsPopup').style.display = 'flex';
 
   if(page == 'liveorders') loadLiveOrders();
@@ -325,12 +511,22 @@ window.showPage = function(page){
   if(page == 'myaccount') showMyAccount();
 }
 
+// ===== Read More Functions =====
+function expandContent(id){
+  document.getElementById(id+'-short').style.display = 'none';
+  document.getElementById(id+'-full').style.display = 'block';
+}
+function collapseContent(id){
+  document.getElementById(id+'-full').style.display = 'none';
+  document.getElementById(id+'-short').style.display = 'block';
+}
+
 function loadLiveOrders(){
   db.ref('orders').limitToLast(50).on('value', snap => {
     let html = '';
     snap.forEach(child => {
       let o = child.val();
-      html += `<div style="border:1px solid #ddd; padding:12px; margin:8px 0"><b>${o.orderId}</b> - ${o.status}<br>${o.product} | ₹${o.price}</div>`;
+      html += `<div style="border:1px solid #ddd; padding:12px; margin:8px 0"><b>${o.orderId}</b> - ${o.status}<br>${o.product || 'Product'} | ₹${o.price || 0}</div>`;
     });
     document.getElementById('liveOrderList').innerHTML = html || 'कोई Order नहीं';
   });
@@ -348,7 +544,7 @@ function showAuthBox(){
 function showMyAccount(){
   let user = auth.currentUser;
   if(user){
-    document.getElementById('myAccountBox').innerHTML = `<h3>My Orders</h3><p>${user.email}</p>`;
+    document.getElementById('myAccountBox').innerHTML = `<h3>My Orders</h3><p>User: ${user.email}</p><p>Order History यहाँ दिखेगी</p>`;
   } else {
     document.getElementById('myAccountBox').innerHTML = 'पहले Login करो';
   }
@@ -356,12 +552,16 @@ function showMyAccount(){
 
 function signup(){
   let e = document.getElementById('email').value, p = document.getElementById('pass').value;
+  if(!e ||!p) return toast('Email और Password डालो');
   auth.createUserWithEmailAndPassword(e,p).then(() => {toast('Signup हो गया'); showAuthBox()}).catch(err => toast(err.message));
 }
+
 function login(){
   let e = document.getElementById('email').value, p = document.getElementById('pass').value;
+  if(!e ||!p) return toast('Email और Password डालो');
   auth.signInWithEmailAndPassword(e,p).then(() => {toast('Login हो गया'); showAuthBox()}).catch(err => toast(err.message));
 }
+
 function logout(){
   auth.signOut().then(() => {toast('Logout हो गया'); showAuthBox()});
 }
@@ -369,7 +569,28 @@ function logout(){
 function addToCart(id){
   cart.push(id);
   document.getElementById('cartCount').innerText = cart.length;
-  toast('Cart में Add');
+  toast('Cart में Add हो गया');
+}
+
+function showCart(){
+  let html = '<div><span class="close" onclick="closePopup(\'settingsPopup\')">×</span><h2>🛒 Your Cart</h2>';
+  if(cart.length == 0){
+    html += '<p style="text-align:center; padding:30px">Cart खाली है</p>';
+  } else {
+    let total = 0;
+    cart.forEach(id => {
+      let p = allProducts[id];
+      if(p){
+        total += p.price;
+        html += `<div style="border-bottom:1px solid #ddd; padding:10px">${p.name} - ₹${p.price}</div>`;
+      }
+    });
+    html += `<h3 style="margin-top:15px">Total: ₹${total}</h3>`;
+    html += '<button class="primary" onclick="toast(\'Checkout Page जल्दी आएगा\')">Checkout</button>';
+  }
+  html += '</div>';
+  document.getElementById('settingsPopup').innerHTML = html;
+  document.getElementById('settingsPopup').style.display = 'flex';
 }
 
 function searchProd(){
@@ -385,15 +606,17 @@ function searchProd(){
   allProducts = temp;
 }
 
-function closePopup(id){ document.getElementById(id).style.display = 'none'; }
+function closePopup(id){
+  document.getElementById(id).style.display = 'none';
+}
 
 // ===== 100% FIXED TOAST =====
 window.toast = function(msg){
   let text = '';
   if(typeof msg === 'string') text = msg;
   else if(typeof msg === 'number') text = String(msg);
-  else if(msg === null) text = '';
-  else text = JSON.stringify(msg);
+  else if(msg === null || msg === undefined) text = '';
+  else text = 'Error';
 
   if(!text) return;
   let t = document.getElementById('toast');
