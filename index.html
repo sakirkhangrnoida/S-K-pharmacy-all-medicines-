@@ -610,36 +610,31 @@ function closePopup(id){
   document.getElementById(id).style.display = 'none';
 }
 
-// ===== 100% BUG FREE TOAST =====
+// ===== BULLETPROOF TOAST - अब Object कभी नहीं आएगा =====
 window.toast = function(msg){
-  let text = '';
-  
-  if(typeof msg === 'string'){
-    text = msg;
-  } 
-  else if(typeof msg === 'number' || typeof msg === 'boolean'){
-    text = String(msg);
+  try {
+    let text = '';
+    
+    if(msg == null) return;
+    if(typeof msg === 'string') text = msg;
+    else if(typeof msg === 'number' || typeof msg === 'boolean') text = msg + '';
+    else if(typeof msg === 'object') {
+      text = msg.message || msg.error || msg.code || JSON.stringify(msg);
+    }
+    else text = String(msg);
+    
+    // Safety check
+    if(!text || text === '[object Object]' || text === 'undefined') return;
+    
+    let t = document.getElementById('toast');
+    if(t) {
+      t.innerText = text;
+      t.style.display = 'block';
+      setTimeout(()=>{ if(t) t.style.display='none' }, 3000);
+    }
+  } catch(e) {
+    console.log(e); // Toast में Error भी नहीं दिखेगा
   }
-  else if(msg === null || msg === undefined){
-    text = '';
-  }
-  else if(typeof msg === 'object'){
-    // Object आया तो उसका message निकालो
-    if(msg.message) text = msg.message;
-    else if(msg.error) text = msg.error;
-    else text = JSON.stringify(msg);
-  }
-  else {
-    text = String(msg);
-  }
-
-  if(!text || text === '[object Object]') return;
-  
-  let t = document.getElementById('toast');
-  t.innerText = text;
-  t.style.display = 'block';
-  setTimeout(()=>t.style.display='none', 3000);
-
 }
 
 let urlParams = new URLSearchParams(window.location.search);
