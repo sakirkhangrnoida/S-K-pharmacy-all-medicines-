@@ -347,5 +347,55 @@ const db = firebase.firestore();
 </script>
 
 <script src="app.js"></script>
+<!-- Firebase SDK - Final -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+<script>
+// Firebase Init - Final Config
+const firebaseConfig = {
+  apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
+  authDomain: "grnoida-store.firebaseapp.com",
+  databaseURL: "https://grnoida-store-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "grnoida-store",
+  storageBucket: "grnoida-store.firebasestorage.app",
+  messagingSenderId: "665639961400",
+  appId: "1:665639961400:web:cb704b0209b910fc6a77cd"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// Order Save - Final Function
+function placeOrder(product, price, qty){
+  if(!product || !price || !qty){
+    console.error("Product, Price, Qty चाहिए");
+    return;
+  }
+  
+  let orderId = 'SKP' + Date.now();
+  let now = new Date().toISOString();
+
+  db.ref('orders/' + orderId).set({
+    id: orderId,
+    name: 'Customer', // बाद में Form से
+    phone: '0000',
+    address: 'Address',
+    product: product,
+    qty: qty,
+    price: price,
+    total: price * qty,
+    status: 'placed',
+    times: { placed: now }
+  }).then(() => {
+    console.log("Order Saved: " + orderId);
+    window.location.href = 'track.html?order=' + orderId;
+  }).catch((err) => {
+    console.error("Order Error: ", err);
+    alert("Order Fail: " + err.message);
+  });
+}
+</script>
+</body>
+</html>
 </body>
     </html>
