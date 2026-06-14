@@ -114,8 +114,35 @@ const SHOP = {
   pin: "203201",
   razorpayKey: "rzp_test_REPLACE_YOUR_KEY"
 };
+// ===== BULLETPROOF TOAST - अब Object कभी नहीं आएगा =====
+window.toast = function(msg){
+  try {
+    let text = '';
+    
+    if(msg == null) return;
+    if(typeof msg === 'string') text = msg;
+    else if(typeof msg === 'number' || typeof msg === 'boolean') text = msg + '';
+    else if(typeof msg === 'object') {
+      text = msg.message || msg.error || msg.code || JSON.stringify(msg);
+    }
+    else text = String(msg);
+    
+    // Safety check
+    if(!text || text === '[object Object]' || text === 'undefined') return;
+    
+    let t = document.getElementById('toast');
+    if(t) {
+      t.innerText = text;
+      t.style.display = 'block';
+      setTimeout(()=>{ if(t) t.style.display='none' }, 3000);
+    }
+  } catch(e) {
+    console.log(e); // Toast में Error भी नहीं दिखेगा
+  }
+}
+// ===== BULLETPROOF TOAST END =====
 
-firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const auth = firebase.auth();
 let allProducts = {}, cart = [], currentProduct = null, currentCat = 'all';
@@ -586,7 +613,7 @@ function showCart(){
       }
     });
     html += `<h3 style="margin-top:15px">Total: ₹${total}</h3>`;
-    html += '<button class="primary" onclick="toast(\'Checkout Page जल्दी आएगा\')">Checkout</button>';
+     html += '<button class="primary" onclick="toast(\'Checkout Page नहीं आएगा.\')">Checkout</button>';
   }
   html += '</div>';
   document.getElementById('settingsPopup').innerHTML = html;
