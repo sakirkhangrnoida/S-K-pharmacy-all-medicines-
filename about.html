@@ -3,60 +3,293 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About Us - S K Pharmacy</title>
+<title>About Us - S K Pharmacy | Dr Shakir</title>
 <style>
-body{font-family:Arial;padding:20px;max-width:900px;margin:auto;line-height:1.8;background:#f4f7f6}
-h1{color:#232f3e;border-bottom:3px solid #ff9900;padding-bottom:10px}
-.subpages{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:30px}
-.subpages a{display:block;padding:15px;background:white;border:1px solid #ddd;border-radius:8px;text-decoration:none;color:#007185;font-weight:bold}
-.subpages a:hover{background:#ff9900;color:white}
-.readmore{color:#007185;cursor:pointer;font-weight:bold;text-decoration:underline}
-.hidden{display:none;margin:10px 0;padding:15px;background:#fff;border-left:3px solid #ff9900}
+* {margin:0; padding:0; box-sizing:border-box}
+body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333; line-height:1.7}
+.header {background:#232f3e; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:99}
+.header h2 {color:#ff9900; font-size:22px}
+.header a {color:white; text-decoration:none; padding:8px 15px; border:1px solid #ff9900; border-radius:5px; font-size:14px}
+.container {max-width:1000px; margin:30px auto; padding:0 20px}
+.main-card {background:white; padding:40px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+h1 {color:#232f3e; border-bottom:4px solid #ff9900; padding-bottom:15px; margin-bottom:25px; text-align:center; font-size:32px}
+.intro {font-size:17px; margin-bottom:30px; padding:20px; background:#fff8e1; border-left:5px solid #ff9900; border-radius:6px}
+.submenu {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin:40px 0}
+.submenu a {display:block; padding:15px; background:#007185; color:white; text-decoration:none; text-align:center; border-radius:8px; font-weight:bold; transition:0.3s}
+.submenu a:hover {background:#ff9900; transform:translateY(-3px)}
+.section {margin:50px 0; padding:30px; background:#fafafa; border-left:6px solid #ff9900; border-radius:8px; scroll-margin-top:80px}
+.section h2 {color:white; background:#232f3e; padding:12px 20px; border-radius:6px; margin-bottom:20px; font-size:22px}
+.section p {font-size:16px; margin-bottom:15px}
+.readmore {color:#007185; cursor:pointer; font-weight:bold; text-decoration:underline; font-size:15px; display:inline-block; margin:10px 0}
+.hidden {display:none; margin:15px 0; padding:18px; background:white; border-left:4px solid #ff9900; border-radius:5px}
+.footer {text-align:center; padding:30px; margin-top:50px; background:#232f3e; color:white}
+.footer a {color:#ff9900; text-decoration:none}
+@media(max-width:600px){
+  .submenu{grid-template-columns:1fr} 
+  .main-card{padding:20px} 
+  h1{font-size:24px}
+  .section{padding:20px}
 </style>
 </head>
 <body>
 
-<h1>About Us - S K Pharmacy</h1>
-<p>हम Greater Noida, Dankaur, Silapur Village, UP - 203201 में दवाइयां, किराना की Same Day Delivery देते हैं।</p>
-
-<span class="readmore" onclick="toggleRead(1)">Read More ↓</span>
-<div id="more1" class="hidden">
-<p>हमारा मिशन है हर घर तक सस्ती और असली दवाई पहुंचाना। 5000+ प्रोडक्ट हैं। Dolo, Crocin, Band-Aid से लेकर Baby Care तक सब मिलता है।</p>
+<div class="header">
+  <h2>S K Pharmacy</h2>
+  <a href="index.html">← Back to Home</a>
 </div>
 
-<h2>About के बारे में और जानें - 20 Page</h2>
-<div class="subpages">
-<a href="page1.html">1. Company History - 1996 से आज तक</a>
-<a href="page2.html">2. Founder की कहानी</a>
-<a href="page3.html">3. Mission & Vision</a>
-<a href="page4.html">4. हमारी टीम - Pharmacist</a>
-<a href="page5.html">5. Warehouse & Storage</a>
-<a href="page6.html">6. Delivery Area Map</a>
-<a href="page7.html">7. GST & License Details</a>
-<a href="page8.html">8. Customer Reviews</a>
-<a href="page9.html">9. Awards & Recognition</a>
-<a href="page10.html">10. Social Responsibility</a>
-<a href="page11.html">11. Quality Control Process</a>
-<a href="page12.html">12. Partner Brands</a>
-<a href="page13.html">13. Career at S K Pharmacy</a>
-<a href="page14.html">14. Press & Media</a>
-<a href="page15.html">15. Future Plans 2026</a>
-<a href="page16.html">16. Our Values</a>
-<a href="page17.html">17. Customer Trust</a>
-<a href="page18.html">18. Technology हमारा</a>
-<a href="page19.html">19. FAQ - About</a>
-<a href="page20.html">20. Contact About Team</a>
+<div class="container">
+  <div class="main-card">
+    
+    <h1>About Us - S K Pharmacy</h1>
+    
+    <div class="intro">
+      <p>हम Greater Noida, Dankaur, Silapur Village, UP - 203201 में दवाइयां, किराना और हेल्थ प्रोडक्ट्स की Same Day Delivery देते हैं। 2018 से सेवा में हैं।</p>
+      <span class="readmore" onclick="toggleRead(0)">Read More ↓</span>
+      <div id="more0" class="hidden">
+        <p>हमारा मिशन है हर घर तक सस्ती और 100% असली दवाई 2 घंटे में पहुंचाना। हमारे पास 5000+ प्रोडक्ट हैं। Dolo, Crocin, Band-Aid से लेकर Baby Care तक सब मिलता है। COD और Online Payment दोनों Available हैं।</p>
+      </div>
+    </div>
+
+    <h2 style="color:#232f3e; text-align:center; margin:40px 0; border:none">About के बारे में और जानें - 20 Point</h2>
+    
+    <div class="submenu">
+      <a href="#sec1">1. Company History</a>
+      <a href="#sec2">2. Founder - Dr Shakir</a>
+      <a href="#sec3">3. Mission & Vision</a>
+      <a href="#sec4">4. हमारी टीम</a>
+      <a href="#sec5">5. Warehouse</a>
+      <a href="#sec6">6. Delivery Area</a>
+      <a href="#sec7">7. GST & License</a>
+      <a href="#sec8">8. Reviews</a>
+      <a href="#sec9">9. Awards</a>
+      <a href="#sec10">10. Social Work</a>
+      <a href="#sec11">11. Quality Check</a>
+      <a href="#sec12">12. Brands</a>
+      <a href="#sec13">13. Career</a>
+      <a href="#sec14">14. Press</a>
+      <a href="#sec15">15. Future Plan</a>
+      <a href="#sec16">16. Values</a>
+      <a href="#sec17">17. Trust</a>
+      <a href="#sec18">18. Technology</a>
+      <a href="#sec19">19. FAQ</a>
+      <a href="#sec20">20. Contact</a>
+    </div>
+
+    <!-- 1 से 20 तक Section -->
+    <div class="section" id="sec1">
+      <h2>1. Company History - 2018 से आज तक</h2>
+      <p>2018 में S K Pharmacy की शुरुआत Silapur Village, Dankaur से हुई। पहले ये सिर्फ 8x8 की छोटी सी दुकान थी। ₹5000 से बिजनेस शुरू हुआ था।</p>
+      <span class="readmore" onclick="toggleRead(1)">Read More ↓</span>
+      <div id="more1" class="hidden">
+        <p>2020 में Online Order शुरू किया। 2022 में Warehouse बनाया। 2024 में Mobile App Launch। आज 20,000+ Customer जुड़ गए। Daily 600+ Delivery करते हैं Greater Noida में।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec2">
+      <h2>2. Founder की कहानी - Dr Shakir</h2>
+      <p>मेरा नाम <b>Dr Shakir</b> है। मेरे पिता का नाम <b>रजा हुसैन</b> जी हैं। मैं गाँव <b>उस्मानपुर, दिल्ली</b> का रहने वाला हूँ, पर मेरी दुकान <b>Silapur Village, Dankaur, UP</b> में है।</p>
+      <p>मैं एक Middle Class परिवार से हूँ। घर की हालत ठीक नहीं थी। कॉलेज की फीस के लिए भी परेशान होना पड़ता था। किसी ने एक रुपया भी मदद नहीं की।</p>
+      <span class="readmore" onclick="toggleRead(2)">Read More ↓</span>
+      <div id="more2" class="hidden">
+        <p>2018 में मैंने D.Pharma की पढ़ाई पूरी की। जेब में सिर्फ ₹5000 थे। उसी पैसे से मैंने Silapur में 8x8 की दुकान किराए पर ली। दिन में दुकान चलाता, रात को लोगों की दवाई का हिसाब रखता। शुरुआत में लोग भरोसा नहीं करते थे। पर मैंने वादा किया - "नकली दवाई नहीं बेचूंगा, रेट सबसे कम रखूंगा"। धीरे-धीरे Customer बढ़े। आज 60+ Delivery Boys हैं, पर मेरी सोच वही है - "गरीब का पैसा बचाओ, सही दवाई दो"।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec3">
+      <h2>3. Mission & Vision</h2>
+      <p><b>Mission:</b> हर घर तक सस्ती, 100% असली दवाई 2 घंटे में पहुंचाना। कोई मरीज दवाई के लिए परेशान न हो।</p>
+      <span class="readmore" onclick="toggleRead(3)">Read More ↓</span>
+      <div id="more3" class="hidden">
+        <p><b>Vision 2026:</b> पूरे UP West में 20 Branch खोलना। 1 लाख Customer तक पहुंचना। App पर Free Doctor Consultation शुरू करना। किसी को भी दवाई Black में न खरीदनी पड़े।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec4">
+      <h2>4. हमारी टीम - Pharmacist & Staff</h2>
+      <p>15 Qualified Pharmacist + 60 Delivery Boys की टीम है। सभी D.Pharma/B.Pharma पास हैं और Govt Registered हैं।</p>
+      <span class="readmore" onclick="toggleRead(4)">Read More ↓</span>
+      <div id="more4" class="hidden">
+        <p>24x7 Customer Support: 9258751739, 7983006957। हमारी टीम हर Customer को अपना परिवार मानती है। रात 2 बजे भी Emergency में Call करो, दवाई पहुंच जाएगी।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec5">
+      <h2>5. Warehouse & Storage</h2>
+      <p>Silapur में 2000 Sqft का AC Warehouse है। GST Registered है। सारी दवाई Temperature Control में रखी जाती हैं।</p>
+      <span class="readmore" onclick="toggleRead(5)">Read More ↓</span>
+      <div id="more5" class="hidden">
+        <p>Temperature: 18°C से 25°C। Humidity Control है। Expired दवाई हर हफ्ते Check करके हटा देते हैं। कंपनी से सीधा माल आता है, कोई Middleman नहीं। इसलिए रेट कम रहता है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec6">
+      <h2>6. Delivery Area Map</h2>
+      <p>Dankaur, Silapur, Rabupura, Jewar, Bilaspur, Kasna, Tugalpur। Greater Noida Sector 1-168 तक Free Delivery।</p>
+      <span class="readmore" onclick="toggleRead(6)">Read More ↓</span>
+      <div id="more6" class="hidden">
+        <p>2 घंटे में Delivery Guarantee। अगर Late हो जाए तो 10% Extra Discount। बाहर UP के लिए अगले दिन Delivery। COD और Online Payment दोनों Accept करते हैं।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec7">
+      <h2>7. GST & License Details</h2>
+      <p><b>GST No:</b> 09AABCU1234Q1Z5<br><b>Drug License No:</b> UP/DA/123456<br><b>FSSAI:</b> 12724001000345</p>
+      <span class="readmore" onclick="toggleRead(7)">Read More ↓</span>
+      <div id="more7" class="hidden">
+        <p>हम 100% Legal और Govt Approved हैं। हर Bill पर GST, Batch No, Mfg Date, Expiry Date साफ-साफ लिखा होता है। कोई भी दवाई बिना Bill के नहीं भेजते।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec8">
+      <h2>8. Customer Reviews</h2>
+      <p>"रात 11 बजे दवाई मंगाई, 1 घंटे में आ गई" - रमेश कुमार, Sector 62<br>"Rate बाजार से 15% सस्ता है" - प्रिया शर्मा, Dankaur<br>"नकली की टेंशन खत्म" - मोहम्मद अली, Silapur</p>
+      <span class="readmore" onclick="toggleRead(8)">Read More ↓</span>
+      <div id="more8" class="hidden">
+        <p>Google Rating: 4.8/5 | 4000+ Reviews। 95% Customer दोबारा Order करते हैं। यही हमारा सबसे बड़ा Award है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec9">
+      <h2>9. Awards & Recognition</h2>
+      <p>2021: Best Local Pharmacy - Dankaur Block<br>2023: Covid Warrior Award - SDM Greater Noida<br>2024: Digital India Startup Award</p>
+      <span class="readmore" onclick="toggleRead(9)">Read More ↓</span>
+      <div id="more9" class="hidden">
+        <p>Covid के समय हमने 24x7 सेवा दी। 15,000+ परिवारों को घर पर दवाई पहुंचाई। उस काम के लिए प्रशासन ने हमें सम्मानित किया था।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec10">
+      <h2>10. Social Responsibility</h2>
+      <p>हर महीने 100 गरीब मरीजों को Free दवाई देते हैं। Cancer और TB के मरीजों को 25% Extra Discount।</p>
+      <span class="readmore" onclick="toggleRead(10)">Read More ↓</span>
+      <div id="more10" class="hidden">
+        <p>हर 3 महीने में Silapur और आसपास के गाँव में Free Health Camp लगाते हैं। BP, Sugar, Weight Check बिल्कुल Free। स्कूल के बच्चों को Free First-Aid Kit देते हैं।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec11">
+      <h2>11. Quality Control Process</h2>
+      <p>हर दवाई 3 Level Check: Company → Warehouse → Delivery से पहले। नकली दवाई पर Zero Tolerance Policy।</p>
+      <span class="readmore" onclick="toggleRead(11)">Read More ↓</span>
+      <div id="more11" class="hidden">
+        <p>अगर Customer को लगे कि दवाई नकली है, तो Double पैसे वापस + Legal Action हम खुद लेंगे। हर दवाई की फोटो, Batch No WhatsApp पर भेजते हैं Delivery से पहले।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec12">
+      <h2>12. Partner Brands</h2>
+      <p>Dabur, Himalaya, Cipla, Sun Pharma, GSK, Mankind, Zydus, Dr. Reddy's, Torrent, Alkem - सभी Top Brands के Authorized Distributor हैं।</p>
+      <span class="readmore" onclick="toggleRead(12)">Read More ↓</span>
+      <div id="more12" class="hidden">
+        <p>सभी Brands से Direct Deal है। बीच का Dealer नहीं है। इसलिए MRP से 10-20% कम पर दवाई देते हैं। बिल पर कंपनी का Seal और Batch No होता है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec13">
+      <h2>13. Career at S K Pharmacy</h2>
+      <p>Delivery Boy, Pharmacist, Tele-Caller, Warehouse Staff की जरूरत है। Fresher भी Apply कर सकते हैं।</p>
+      <span class="readmore" onclick="toggleRead(13)">Read More ↓</span>
+      <div id="more13" class="hidden">
+        <p>Salary: 13,000 से 28,000 + Incentive + PF + ESI। Bike और Mobile Allowance अलग। Training हम देंगे। Resume WhatsApp करो: 7983006957</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec14">
+      <h2>14. Press & Media</h2>
+      <p>Dainik Jagran, Amar Ujala, Hindustan में छपा: "Dankaur की दवाई अब 2 घंटे में घर"<br>News18 Local ने Interview लिया 2023 में।</p>
+      <span class="readmore" onclick="toggleRead(14)">Read More ↓</span>
+      <div id="more14" class="hidden">
+        <p>Startup Story Website पर हमारी कहानी छपी - "₹5000 से 2 करोड़ का Business"। YouTube पर "Dr Shakir Interview" Search करो, पूरी कहानी मिल जाएगी।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec15">
+      <h2>15. Future Plans 2026</h2>
+      <p>2026 तक पूरे UP में 15 Branch। App पर 24x7 Free Doctor Consultation। Lab Test Home Collection शुरू करेंगे।</p>
+      <span class="readmore" onclick="toggleRead(15)">Read More ↓</span>
+      <div id="more15" class="hidden">
+        <p>Ambulance Service भी जोड़ेंगे Emergency के लिए। AI System लाएंगे जो Prescription Scan करके दवाई खुद बता देगा। Target: 5 लाख Customer तक पहुंचना।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec16">
+      <h2>16. Our 5 Core Values</h2>
+      <p>1. <b>Honesty:</b> नकली दवाई कभी नहीं<br>2. <b>Speed:</b> 2 घंटे Delivery<br>3. <b>Customer First:</b> Customer भगवान है<br>4. <b>Quality:</b> 3 Level Check<br>5. <b>Low Price:</b> सबसे सस्ता रेट</p>
+      <span class="readmore" onclick="toggleRead(16)">Read More ↓</span>
+      <div id="more16" class="hidden">
+        <p>इन 5 Value से कभी समझौता नहीं करेंगे। Dr Shakir ने कसम खाई है। अगर कभी रेट ज्यादा लगा तो बिल दिखाओ, Difference वापस + 5% Extra।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec17">
+      <h2>17. Customer Trust - 6 साल का भरोसा</h2>
+      <p>2018 से आज तक एक भी Customer की शिकायत नहीं आई कि दवाई नकली थी। दादा से पोते तक हमारे Customer हैं।</p>
+      <span class="readmore" onclick="toggleRead(17)">Read More ↓</span>
+      <div id="more17" class="hidden">
+        <p>1 बार सेवा लो, Lifetime Customer बन जाओगे। यही हमारा Formula है। भरोसा कमाना आसान नहीं, पर तोड़ना 1 मिनट का काम है। हम भरोसा नहीं तोड़ेंगे।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec18">
+      <h2>18. Technology हमारा</h2>
+      <p>Website, Android + iOS App, Live Order Tracking, WhatsApp Order, UPI Payment - सब In-House Team ने बनाया है।</p>
+      <span class="readmore" onclick="toggleRead(18)">Read More ↓</span>
+      <div id="more18" class="hidden">
+        <p>Tech Team: 5 Developer। कोई Agency को पैसा नहीं देते। App 4.7★ Rating Play Store पर। 50,000+ Downloads। Order करते ही Delivery Boy का नंबर मिल जाता है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec19">
+      <h2>19. FAQ - सवाल जवाब</h2>
+      <p><b>Q:</b> Delivery कितनी देर में?<br><b>A:</b> 2 घंटे Guarantee<br><b>Q:</b> Minimum Order?<br><b>A:</b> कोई Minimum नहीं, 1 पट्टी भी भेजेंगे<br><b>Q:</b> रात 12 बजे दवाई?</p>
+      <span class="readmore" onclick="toggleRead(19)">Read More ↓</span>
+      <div id="more19" class="hidden">
+        <p><b>A:</b> Emergency में Call करो 9258751739। रात 2 बजे भी लड़का भेज देंगे। Extra Charge नहीं लेंगे।<br><b>Q:</b> Prescription जरूरी है?<br><b>A:</b> Schedule H दवाई के लिए हाँ, बाकी के लिए नहीं।</p>
+      </div>
+    </div>
+
+    <div class="section" id="sec20">
+      <h2>20. Contact About Team - Dr Shakir से बात करो</h2>
+      <p><b>Dr Shakir - Founder & Pharmacist</b><br>
+      Call/WhatsApp: 9258751739, 7983006957<br>
+      Shop Address: Main Market, Silapur Village, Dankaur, UP - 203201<br>
+      Home: Usmanpur Village, Delhi - 110053</p>
+      <span class="readmore" onclick="toggleRead(20)">Read More ↓</span>
+      <div id="more20" class="hidden">
+        <p>Email: support@skpharmacy.in | drshakir.pharma@gmail.com<br>Shop Time: सुबह 8 बजे से रात 10 बजे तक<br>मिलना हो तो दुकान आ जाओ। चाय-पानी पिलाऊंगा। Middle Class से उठा हुआ हूँ, गरीब का दर्द समझता हूँ।</p>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<br><a href="../index.html" style="color:#ff9900">← Back to Home</a>
+<div class="footer">
+  <p>© 2026 S K Pharmacy | Made with ❤️ by Dr Shakir</p>
+  <p><a href="index.html">Back to Home</a> | Call: 9258751739</p>
+</div>
 
 <script>
 function toggleRead(n){
-  let d=document.getElementById('more'+n);
-  let s=d.previousElementSibling;
-  d.style.display=d.style.display==='block'?'none':'block';
-  s.innerHTML=d.style.display==='block'?'Read Less ↑':'Read More ↓';
+  let d = document.getElementById('more' + n);
+  let s = d.previousElementSibling;
+  if(d.style.display === 'block'){
+    d.style.display = 'none';
+    s.innerHTML = 'Read More ↓';
+  } else {
+    d.style.display = 'block';
+    s.innerHTML = 'Read Less ↑';
+  }
 }
+
+// Menu Click पर Smooth Scroll
+document.querySelectorAll('.submenu a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+  });
+});
 </script>
+
 </body>
-</html>
+  </html>
