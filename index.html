@@ -586,17 +586,17 @@ function signup(){
 function login(){
   let e = document.getElementById('email').value, p = document.getElementById('pass').value;
   if(!e ||!p) return toast('Email और Password डालो');
-  auth.signInWithEmailAndPassword(e,p).then(() => {toast('Login हो गया'); showAuthBox()}).catch(err => toast(err.message));
+  
+  auth.signInWithEmailAndPassword(e,p).then(() => {toast('Login हो गया'); showAuthBox()}).catch(err => toast(err));
 }
-
-function logout(){
+  function logout(){
   auth.signOut().then(() => {toast('Logout हो गया'); showAuthBox()});
 }
 
 function addToCart(id){
   cart.push(id);
   document.getElementById('cartCount').innerText = cart.length;
-  toast('Cart में Add हो गया');
+  auth.signInWithEmailAndPassword(e,p).then(() => {toast('Login हो गया'); showAuthBox()}).catch(err => toast(err));
 }
 
 function showCart(){
