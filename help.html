@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Help & Support - S K Pharmacy</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box}
+body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333; line-height:1.7}
+.header {background:#232f3e; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:99}
+.header h2 {color:#ff9900; font-size:22px}
+.header a {color:white; text-decoration:none; padding:8px 15px; border:1px solid #ff9900; border-radius:5px; font-size:14px}
+.container {max-width:1000px; margin:30px auto; padding:0 20px}
+.main-card {background:white; padding:40px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+h1 {color:#232f3e; border-bottom:4px solid #ff9900; padding-bottom:15px; margin-bottom:25px; text-align:center; font-size:32px}
+.search-box {text-align:center; margin:30px 0}
+.search-box input {width:70%; padding:15px; font-size:16px; border:2px solid #ff9900; border-radius:8px}
+.submenu {display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin:40px 0}
+.submenu a {display:block; padding:15px; background:#007185; color:white; text-decoration:none; text-align:center; border-radius:8px; font-weight:bold; transition:0.3s}
+.submenu a:hover {background:#ff9900; transform:translateY(-3px)}
+.section {margin:50px 0; padding:30px; background:#fafafa; border-left:6px solid #ff9900; border-radius:8px; scroll-margin-top:80px}
+.section h2 {color:white; background:#232f3e; padding:12px 20px; border-radius:6px; margin-bottom:20px; font-size:22px}
+.section p,.section li {font-size:16px; margin-bottom:12px}
+.section ul {margin-left:25px}
+.faq-q {background:white; padding:18px; margin:12px 0; border-radius:8px; border-left:4px solid #ff9900; cursor:pointer; font-weight:bold}
+.faq-a {display:none; padding:15px 18px; background:#fff3e0; margin-top:5px; border-radius:5px}
+.readmore {color:#007185; cursor:pointer; font-weight:bold; text-decoration:underline; font-size:15px; display:inline-block; margin:10px 0}
+.hidden {display:none; margin:15px 0; padding:18px; background:white; border-left:4px solid #ff9900; border-radius:5px}
+.note {background:#e3f2fd; border-left:5px solid #2196f3; padding:15px; margin:20px 0; border-radius:5px}
+.footer {text-align:center; padding:30px; margin-top:50px; background:#232f3e; color:white}
+.footer a {color:#ff9900; text-decoration:none; margin:0 10px}
+@media(max-width:600px){.submenu{grid-template-columns:1fr}.search-box input{width:95%}.main-card{padding:20px} h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>S K Pharmacy</h2>
+  <a href="index.html">← Back to Home</a>
+</div>
+
+<div class="container">
+  <div class="main-card">
+
+    <h1>Help & Support - मदद चाहिए?</h1>
+    <p style="text-align:center; font-size:17px">Dr Shakir की टीम 24 घंटे मदद के लिए तैयार। नीचे Search करो या Section चुनो।</p>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" onkeyup="searchFAQ()" placeholder="🔍 यहाँ लिखो: Order, Refund, Delivery...">
+    </div>
+
+    <div class="note">
+      <b>Quick Help:</b> तुरंत बात करनी है? WhatsApp 9258751739 पर "HELP" लिखो। 2 मिनट में Reply।
+    </div>
+
+    <div class="submenu">
+      <a href="#h1">1. Order कैसे करें</a>
+      <a href="#h2">2. Payment Issue</a>
+      <a href="#h3">3. Prescription Upload</a>
+      <a href="#h4">4. Delivery Status</a>
+      <a href="#h5">5. Cancel Order</a>
+      <a href="#h6">6. Refund Status</a>
+      <a href="#h7">7. Account Login</a>
+      <a href="#h8">8. OTP नहीं आया</a>
+      <a href="#h9">9. Address बदलें</a>
+      <a href="#h10">10. Coupon लगाएं</a>
+      <a href="#h11">11. Out of Stock</a>
+      <a href="#h12">12. Wrong Medicine</a>
+      <a href="#h13">13. Bill चाहिए</a>
+      <a href="#h14">14. App Download</a>
+      <a href="#h15">15. COD नियम</a>
+      <a href="#h16">16. 2 घंटे Delivery</a>
+      <a href="#h17">17. Doctor सलाह</a>
+      <a href="#h18">18. Side Effect</a>
+      <a href="#h19">19. Data Delete</a>
+      <a href="#h20">20. Live Chat</a>
+    </div>
+
+    <div class="section" id="h1">
+      <h2>1. Order कैसे करें - Step by Step</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Website से Order कैसे करें?</div>
+      <div class="faq-a">दवाई Search करो → Quantity चुनो → Cart में डालो → Address डालो → Payment करो → Order Confirm SMS आ जाएगा।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. WhatsApp से Order होगा?</div>
+      <div class="faq-a">हाँ! 9258751739 पर Prescription + Address भेजो। हम Bill बना देंगे।</div>
+
+      <span class="readmore" onclick="toggleRead('h1')">Read More ↓</span>
+      <div id="moreh1" class="hidden">
+        <p>Video Tutorial: YouTube पर "S K Pharmacy Order" Search करो। Old लोगों के लिए हम Phone पर भी Order ले लेते हैं 7983006957 पर।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h2">
+      <h2>2. Payment Issue - पैसा कट गया</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. पैसे कट गए पर Order Fail?</div>
+      <div class="faq-a">3-5 दिन में Auto Refund आ जाएगा Bank में। Transaction ID भेजो तो Fast Track करेंगे।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. कौन सा Payment Safe है?</div>
+      <div class="faq-a">UPI सबसे Fast। COD भी कर सकते हैं। Card भी 256-bit Secure है Razorpay से।</div>
+
+      <span class="readmore" onclick="toggleRead('h2')">Read More ↓</span>
+      <div id="moreh2" class="hidden">
+        <p>Payment Fail का Screenshot WhatsApp करो। हम 24 घंटे में Status बता देंगे। Bank से पैसा नहीं कटा तो 2 घंटे में Retry कर सकते हैं।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h3">
+      <h2>3. Prescription Upload कैसे करें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Photo Clear नहीं आ रही?</div>
+      <div class="faq-a">दिन की रोशनी में फोटो लो। 4 कोने दिखने चाहिए। Doctor का नाम, Seal साफ हो।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. बिना Prescription Order होगा?</div>
+      <div class="faq-a">Schedule H दवाई नहीं। Normal दवाई जैसे Paracetamol हो जाएगा।</div>
+
+      <span class="readmore" onclick="toggleRead('h3')">Read More ↓</span>
+      <div id="moreh3" class="hidden">
+        <p>पुराना Prescription भी चलेगा 6 महीने तक का। PDF, JPG सब Upload हो जाएगा। Pharmacist Verify करके Call कर देगा अगर दिक्कत होगी।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h4">
+      <h2>4. Delivery Status Check करें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. मेरा Order कहाँ है?</div>
+      <div class="faq-a">Order ID डालो "Track Order" में। Live Location दिख जाएगा Delivery Boy की।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. 2 घंटे में नहीं आया?</div>
+      <div class="faq-a">7983006957 पर Call करो। 2 घंटे Delay पर 10% Extra Discount देंगे।</div>
+
+      <span class="readmore" onclick="toggleRead('h4')">Read More ↓</span>
+      <div id="moreh4" class="hidden">
+        <p>Greater Noida: 2 घंटे Guarantee। Outstation: 24-48 घंटे। मौसम खराब है तो SMS कर देंगे Delay का।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h5">
+      <h2>5. Order Cancel कैसे करें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Cancel का बटन नहीं दिख रहा?</div>
+      <div class="faq-a">Delivery Boy निकल गया तो Cancel नहीं होगा। उससे पहले "My Orders" में Cancel कर दो।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. COD Cancel पर Charge?</div>
+      <div class="faq-a">हाँ ₹30 कटेगा। Delivery Boy का पेट्रोल बर्बाद होता है।</div>
+
+      <span class="readmore" onclick="toggleRead('h5')">Read More ↓</span>
+      <div id="moreh5" class="hidden">
+        <p>Cancel करने के लिए Call भी कर सकते हैं 9258751739 पर। 2 घंटे के अंदर Cancel = Full Refund।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h6">
+      <h2>6. Refund Status कैसे देखें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Refund कब आएगा?</div>
+      <div class="faq-a">UPI: 24 घंटे। Card: 3-5 दिन। Wallet: तुरंत। Approval SMS आ जाएगा।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. Refund नहीं आया 5 दिन बाद भी?</div>
+      <div class="faq-a">Bank Statement Check करो। ARN No मांगो हमसे। Bank को दो।</div>
+
+      <span class="readmore" onclick="toggleRead('h6')">Read More ↓</span>
+      <div id="moreh6" class="hidden">
+        <p>Refund@skpharmacy.in पर Mail करो Order ID के साथ। हम Bank से बात कर लेंगे। Double Refund हमारी गलती पर।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h7">
+      <h2>7. Account Login Problem</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Password भूल गया?</div>
+      <div class="faq-a">"Forgot Password" क्लिक करो। OTP आएगा Mobile पर। नया Password बना लो।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. Account Block हो गया?</div>
+      <div class="faq-a">3 बार गलत Password या Fake Order पर Block। 9258751739 पर Call करो Unblock के लिए।</div>
+
+      <span class="readmore" onclick="toggleRead('h7')">Read More ↓</span>
+      <div id="moreh7" class="hidden">
+        <p>Login करने के लिए सिर्फ Mobile No काफी है। Password जरूरी नहीं। OTP से Login कर लो Fast है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h8">
+      <h2>8. OTP नहीं आ रहा</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. OTP Delay हो रहा है?</div>
+      <div class="faq-a">Network Issue होगा। 30 सेकंड रुक कर "Resend OTP" करो। DND लगा है तो बंद करो।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. गलत No पर OTP जा रहा?</div>
+      <div class="faq-a">Login Page पर No बदल सकते हैं। या Call करो Customer Care।</div>
+
+      <span class="readmore" onclick="toggleRead('h8')">Read More ↓</span>
+      <div id="moreh8" class="hidden">
+        <p>Jio/Airtel का Server Slow है कभी-कभी। 2 मिनट रुक जाओ। फिर भी ना आए तो Call से OTP ले लो 7983006957 पर।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h9">
+      <h2>9. Address कैसे बदलें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Order के बाद Address बदल सकता?</div>
+      <div class="faq-a">Dispatch से पहले 9258751739 पर Call करो। बदल देंगे। Dispatch हो गया तो नहीं।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. नया Address Save कैसे करें?</div>
+      <div class="faq-a">Profile → My Address → Add New Address। 3 Address Save कर सकते हैं।</div>
+
+      <span class="readmore" onclick="toggleRead('h9')">Read More ↓</span>
+      <div id="moreh9" class="hidden">
+        <p>Pin Code गलत होगा तो Delivery नहीं होगी। सही Pin Code डालो। Landmark जरूर लिखो। "Blue Gate वाले घर" ऐसा।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h10">
+      <h2>10. Coupon Code कैसे लगाएं</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Coupon काम नहीं कर रहा?</div>
+      <div class="faq-a">Expire हो गया होगा। Minimum Order Check करो। एक Order एक Coupon।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. Coupon कहाँ मिलेगा?</div>
+      <div class="faq-a">WhatsApp Status, SMS, Email में भेजते हैं। "COUPON" लिखकर 9258751739 पर भेजो।</div>
+
+      <span class="readmore" onclick="toggleRead('h10')">Read More ↓</span>
+      <div id="moreh10" class="hidden">
+        <p>First Order पर WELCOME50 लगाओ 50% तक Discount। Festival पर BIGSALE। Coupon Stack नहीं होगा।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h11">
+      <h2>11. Out of Stock दवाई</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. दवाई Stock में नहीं है?</div>
+      <div class="faq-a">Alternative दवाई Pharmacist Suggest करेगा। या पैसे वापस 24 घंटे में।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. कब आएगी दवाई वापस?</div>
+      <div class="faq-a">"Notify Me" बटन दबाओ। Stock आते ही SMS आ जाएगा।</div>
+
+      <span class="readmore" onclick="toggleRead('h11')">Read More ↓</span>
+      <div id="moreh11" class="hidden">
+        <p>Company से माल मंगवाते हैं 2 दिन में। Emergency है तो दूसरे Shop का नंबर दे देंगे। Patient की जान जरूरी है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h12">
+      <h2>12. गलत दवाई आ गई</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. दूसरी दवाई भेज दी आपने?</div>
+      <div class="faq-a">Photo भेजो 24 घंटे में। 100% Refund + ₹100 Penalty हम देंगे। Replacement भी फ्री।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. कौन जिम्मेदार है?</div>
+      <div class="faq-a">Packing वाले की गलती। Dr Shakir माफी मांगेगा। Double पैसे वापस।</div>
+
+      <span class="readmore" onclick="toggleRead('h12')">Read More ↓</span>
+      <div id="moreh12" class="hidden">
+        <p>गलत दवाई Use मत करना। वापस भेज दो। Courier हम भेजेंगे। गलती की सजा मिलेगी Staff को।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h13">
+      <h2>13. Bill / Invoice कैसे लें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. GST Bill चाहिए?</div>
+      <div class="faq-a">Order के समय GST No डाल दो। Bill PDF Email हो जाएगा।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. पुराना Bill दोबारा?</div>
+      <div class="faq-a">My Orders → Download Invoice। या WhatsApp करो Order ID।</div>
+
+      <span class="readmore" onclick="toggleRead('h13')">Read More ↓</span>
+      <div id="moreh13" class="hidden">
+        <p>Company के लिए Bill चाहिए तो Dr Shakir Sign करके देगा। Hard Copy भी मिल जाएगी दुकान से।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h14">
+      <h2>14. App Download कैसे करें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. App कहाँ है Play Store पर?</div>
+      <div class="faq-a">अभी Website ही है। 2 महीने में App आ जाएगा। Notification On कर लो।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. Website Mobile में कैसी चलेगी?</div>
+      <div class="faq-a">App जैसी ही है। Home Screen पर Add कर लो। App जैसा Icon बन जाएगा।</div>
+
+      <span class="readmore" onclick="toggleRead('h14')">Read More ↓</span>
+      <div id="moreh14" class="hidden">
+        <p>Chrome → 3 Dot → Add to Home Screen। अब App जैसा चलेगा बिना Download के। Fast है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h15">
+      <h2>15. COD - Cash on Delivery नियम</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. COD पर Extra Charge?</div>
+      <div class="faq-a">नहीं, Free है। ₹500 से ऊपर Order पर COD मना है दवाई के लिए।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. Exact Cash चाहिए?</div>
+      <div class="faq-a">हाँ भाई। Delivery Boy के पास छुट्टा नहीं होता। UPI भी लेगा।</div>
+
+      <span class="readmore" onclick="toggleRead('h15')">Read More ↓</span>
+      <div id="moreh15" class="hidden">
+        <p>3 बार COD Cancel करने पर Account Block। Delivery Boy का समय बर्बाद मत करो। Online Payment करो तो Discount भी मिलेगा।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h16">
+      <h2>16. 2 घंटे Delivery Guarantee</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. सच में 2 घंटे में आएगी?</div>
+      <div class="faq-a">हाँ! Greater Noida में Guarantee। नहीं आई तो 10% Extra Discount।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. रात 12 बजे Order होगा?</div>
+      <div class="faq-a">Emergency No 7983006957 पर Call करो। ₹50 Extra लगेगा। Life Saving दवाई तुरंत।</div>
+
+      <span class="readmore" onclick="toggleRead('h16')">Read More ↓</span>
+      <div id="moreh16" class="hidden">
+        <p>अपना Delivery Boy है। Zomato वाले नहीं हैं। इसलिए Fast है। GPS Tracking भी मिलेगा।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h17">
+      <h2>17. Doctor की सलाह चाहिए</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Online Doctor से बात होगी?</div>
+      <div class="faq-a">हाँ! ₹99 में Video Call Doctor से। Prescription भी बन जाएगा।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. Pharmacist सलाह देगा?</div>
+      <div class="faq-a">हाँ, फ्री में। Dose, खाने का समय बता देगा। Diagnose नहीं करेगा।</div>
+
+      <span class="readmore" onclick="toggleRead('h17')">Read More ↓</span>
+      <div id="moreh17" class="hidden">
+        <p>Serious बीमारी है तो Doctor के पास जाओ। हम सिर्फ दवाई बेचते हैं। Self Medication खतरनाक है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h18">
+      <h2>18. Side Effect हो गया</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. दवाई से Reaction हो गया?</div>
+      <div class="faq-a">तुरंत Doctor को दिखाओ। 108 Ambulance बुलाओ। फिर हमें बताओ।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. Compensation मिलेगा?</div>
+      <div class="faq-a">Company की गलती है तो Company देगी। हम Report करेंगे Drug Control को।</div>
+
+      <span class="readmore" onclick="toggleRead('h18')">Read More ↓</span>
+      <div id="moreh18" class="hidden">
+        <p>Allergy है तो पहले Doctor से पूछो। Strip पर Side Effect लिखा होता है। पढ़ कर दवाई लो।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h19">
+      <h2>19. Data Delete कैसे करें</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Account Delete करना है?</div>
+      <div class="faq-a">Profile → Delete Account। 30 दिन में सब Data Delete हो जाएगा।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. सिर्फ History Delete होगी?</div>
+      <div class="faq-a">हाँ, My Orders से Delete कर सकते हैं। Prescription भी Delete हो जाएगा।</div>
+
+      <span class="readmore" onclick="toggleRead('h19')">Read More ↓</span>
+      <div id="moreh19" class="hidden">
+        <p>Privacy के लिए Mail करो: privacy@skpharmacy.in। 7 दिन में सब Delete कर देंगे। Law के हिसाब से 2 साल Bill रखना जरूरी है।</p>
+      </div>
+    </div>
+
+    <div class="section" id="h20">
+      <h2>20. Live Chat Support</h2>
+      <div class="faq-q" onclick="toggleFAQ(this)">Q1. Chat कहाँ है Website पर?</div>
+      <div class="faq-a">नीचे Right में Chat Icon आएगा 2 महीने में। अभी WhatsApp ही Chat है।</div>
+
+      <div class="faq-q" onclick="toggleFAQ(this)">Q2. कितनी देर में Reply?</div>
+      <div class="faq-a">WhatsApp पर 2 मिनट। Call पर तुरंत। रात 11 बजे तक।</div>
+
+      <span class="readmore" onclick="toggleRead('h20')">Read More ↓</span>
+      <div id="moreh20" class="hidden">
+        <p>Bot नहीं है भाई। Dr Shakir या उसका बंदा Reply करेगा। Middle Class की भाषा में समझाएगा। No English Jhumar।</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 S K Pharmacy | All Rights Reserved | Made by Dr Shakir</p>
+  <p><a href="contact.html">Contact Us</a> | <a href="refund.html">Refund Policy</a></p>
+</div>
+
+<script>
+function toggleFAQ(element){
+  let answer = element.nextElementSibling;
+  if(answer.style.display === 'block'){
+    answer.style.display = 'none';
+  } else {
+    answer.style.display = 'block';
+  }
+}
+function toggleRead(id){
+  let d = document.getElementById('more' + id);
+  let s = d.previousElementSibling;
+  if(d.style.display === 'block'){
+    d.style.display = 'none';
+    s.innerHTML = 'Read More ↓';
+  } else {
+    d.style.display = 'block';
+    s.innerHTML = 'Read Less ↑';
+  }
+}
+function searchFAQ(){
+  let input = document.getElementById('searchInput').value.toLowerCase();
+  let sections = document.getElementsByClassName('section');
+  for(let i=0; i<sections.length; i++){
+    let text = sections[i].textContent.toLowerCase();
+    if(text.includes(input)){
+      sections[i].style.display = 'block';
+    } else {
+      sections[i].style.display = input === ''? 'block' : 'none';
+    }
+  }
+}
+document.querySelectorAll('.submenu a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+  });
+});
+</script>
+</body>
+        </html>
