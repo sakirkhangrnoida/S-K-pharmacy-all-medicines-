@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Us - S K Pharmacy</title>
+<style>
+body{font-family:Arial;padding:20px;max-width:900px;margin:auto;line-height:1.8;background:#f4f7f6}
+h1{color:#232f3e;border-bottom:3px solid #ff9900;padding-bottom:10px}
+.subpages{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:30px}
+.subpages a{display:block;padding:15px;background:white;border:1px solid #ddd;border-radius:8px;text-decoration:none;color:#007185;font-weight:bold}
+.subpages a:hover{background:#ff9900;color:white}
+.readmore{color:#007185;cursor:pointer;font-weight:bold;text-decoration:underline}
+.hidden{display:none;margin:10px 0;padding:15px;background:#fff;border-left:3px solid #ff9900}
+</style>
+</head>
+<body>
+
+<h1>About Us - S K Pharmacy</h1>
+<p>हम Greater Noida, Dankaur, Silapur Village, UP - 203201 में दवाइयां, किराना की Same Day Delivery देते हैं।</p>
+
+<span class="readmore" onclick="toggleRead(1)">Read More ↓</span>
+<div id="more1" class="hidden">
+<p>हमारा मिशन है हर घर तक सस्ती और असली दवाई पहुंचाना। 5000+ प्रोडक्ट हैं। Dolo, Crocin, Band-Aid से लेकर Baby Care तक सब मिलता है।</p>
+</div>
+
+<h2>About के बारे में और जानें - 20 Page</h2>
+<div class="subpages">
+<a href="page1.html">1. Company History - 1996 से आज तक</a>
+<a href="page2.html">2. Founder की कहानी</a>
+<a href="page3.html">3. Mission & Vision</a>
+<a href="page4.html">4. हमारी टीम - Pharmacist</a>
+<a href="page5.html">5. Warehouse & Storage</a>
+<a href="page6.html">6. Delivery Area Map</a>
+<a href="page7.html">7. GST & License Details</a>
+<a href="page8.html">8. Customer Reviews</a>
+<a href="page9.html">9. Awards & Recognition</a>
+<a href="page10.html">10. Social Responsibility</a>
+<a href="page11.html">11. Quality Control Process</a>
+<a href="page12.html">12. Partner Brands</a>
+<a href="page13.html">13. Career at S K Pharmacy</a>
+<a href="page14.html">14. Press & Media</a>
+<a href="page15.html">15. Future Plans 2026</a>
+<a href="page16.html">16. Our Values</a>
+<a href="page17.html">17. Customer Trust</a>
+<a href="page18.html">18. Technology हमारा</a>
+<a href="page19.html">19. FAQ - About</a>
+<a href="page20.html">20. Contact About Team</a>
+</div>
+
+<br><a href="../index.html" style="color:#ff9900">← Back to Home</a>
+
+<script>
+function toggleRead(n){
+  let d=document.getElementById('more'+n);
+  let s=d.previousElementSibling;
+  d.style.display=d.style.display==='block'?'none':'block';
+  s.innerHTML=d.style.display==='block'?'Read Less ↑':'Read More ↓';
+}
+</script>
+</body>
+</html>
