@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Orders - S K Pharmacy</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box}
+body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333}
+.header {background:#232f3e; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0}
+.header h2 {color:#ff9900}
+.header a {color:white; text-decoration:none; padding:8px 15px; border:1px solid #ff9900; border-radius:5px}
+.container {max-width:800px; margin:20px auto; padding:0 15px}
+h1 {text-align:center; margin:20px 0; color:#232f3e}
+.order-card {background:white; padding:15px; margin:15px 0; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); border-left:5px solid #4caf50}
+.order-top {display:flex; justify-content:space-between; margin-bottom:10px}
+.order-id {font-weight:bold; color:#232f3e}
+.status {padding:5px 10px; border-radius:15px; font-size:13px; font-weight:bold}
+.status.delivered {background:#e8f5e9; color:#2e7d32}
+.status.shipped {background:#fff3e0; color:#e65100}
+.status.packed {background:#e3f2fd; color:#1565c0}
+.order-item {display:flex; gap:15px; margin:10px 0}
+.order-item img {width:60px; height:60px; border-radius:8px; object-fit:cover}
+.order-info {flex:1}
+.order-info h4 {font-size:15px; margin-bottom:5px}
+.order-info p {font-size:13px; color:#666}
+.track-btn {width:100%; padding:12px; background:#ff9900; color:white; border:none; border-radius:8px; font-weight:bold; font-size:15px; margin-top:10px; cursor:pointer}
+.track-btn:hover {background:#e68900}
+.empty {text-align:center; padding:50px; color:#999}
+@media(max-width:600px){.container{padding:0 10px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>S K Pharmacy</h2>
+  <a href="index.html">← Back</a>
+</div>
+
+<div class="container">
+  <h1>My Orders</h1>
+
+  <!-- Demo Order 1 -->
+  <div class="order-card">
+    <div class="order-top">
+      <span class="order-id">Order #SKP784523</span>
+      <span class="status shipped">Shipped</span>
+    </div>
+    <div class="order-item">
+      <img src="https://via.placeholder.com/60" alt="Medicine">
+      <div class="order-info">
+        <h4>Paracetamol 500mg Strip 15</h4>
+        <p>Qty: 2 | ₹45</p>
+        <p style="color:#4caf50; font-size:12px">Estimated: Today 6 PM</p>
+      </div>
+    </div>
+    <button class="track-btn" onclick="window.location.href='track.html?order=SKP784523'">Track Order Live</button>
+  </div>
+
+  <!-- Demo Order 2 -->
+  <div class="order-card">
+    <div class="order-top">
+      <span class="order-id">Order #SKP784100</span>
+      <span class="status delivered">Delivered</span>
+    </div>
+    <div class="order-item">
+      <img src="https://via.placeholder.com/60" alt="Medicine">
+      <div class="order-info">
+        <h4>Digene Gel 200ml</h4>
+        <p>Qty: 1 | ₹98</p>
+        <p style="color:#666; font-size:12px">Delivered on 12 Apr 2026</p>
+      </div>
+    </div>
+    <button class="track-btn" style="background:#4caf50" onclick="window.location.href='track.html?order=SKP784100'">View Details</button>
+  </div>
+
+</div>
+
+</body>
+</html>
