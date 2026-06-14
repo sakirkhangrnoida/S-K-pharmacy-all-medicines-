@@ -12,32 +12,20 @@ body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333}
 .header a {color:white; text-decoration:none}
 .container {max-width:700px; margin:20px auto; padding:0 15px}
 .card {background:white; padding:20px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.1); margin:15px 0}
+.no-order {text-align:center; padding:60px 20px}
+.no-order h2 {color:#999; margin-bottom:15px}
 .order-confirmed {text-align:center; padding:20px; background:#e8f5e9; border-radius:10px; margin-bottom:20px}
 .order-confirmed h2 {color:#2e7d32; margin-bottom:5px}
-.delivery-info p {margin:8px 0; font-size:15px}
-.delivery-info b {color:#232f3e}
-
-/* Step Progress Bar - Meesho Style */
 .steps {display:flex; justify-content:space-between; margin:40px 0; position:relative}
 .steps::before {content:''; position:absolute; top:20px; left:0; right:0; height:3px; background:#ddd; z-index:1}
 .step {text-align:center; position:relative; z-index:2; flex:1}
 .step-circle {width:40px; height:40px; border-radius:50%; background:#ddd; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; font-weight:bold; color:white}
-.step.active.step-circle {background:#4caf50}
-.step.completed.step-circle {background:#4caf50}
+.step.active .step-circle {background:#ff9900}
+.step.completed .step-circle {background:#4caf50}
 .step p {font-size:12px; color:#666}
-.step.active p {color:#4caf50; font-weight:bold}
-
-/* Product Box */
-.product-box {display:flex; gap:15px; padding:15px; border:1px solid #eee; border-radius:8px}
-.product-box img {width:80px; height:80px; border-radius:8px}
-.product-info h4 {font-size:16px; margin-bottom:5px}
-.product-info p {font-size:14px; color:#666; margin:3px 0}
-
-.tracking-detail {background:#fff3e0; padding:15px; border-radius:8px; margin:10px 0}
-.tracking-detail b {color:#e65100}
-
+.step.active p {color:#ff9900; font-weight:bold}
 .btn {width:100%; padding:14px; background:#ff9900; color:white; border:none; border-radius:8px; font-weight:bold; font-size:16px; margin-top:15px; cursor:pointer}
-.btn:hover {background:#e68900}
+.hidden {display:none}
 </style>
 </head>
 <body>
@@ -49,92 +37,102 @@ body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333}
 
 <div class="container">
 
-  <div class="order-confirmed">
-    <h2>✓ Order Confirmed</h2>
-    <p>Order ID: <b id="orderId">SKP784523</b></p>
+  <!-- 1. अगर कोई Order नहीं है तो ये दिखेगा -->
+  <div id="noOrderBox" class="card no-order hidden">
+    <h2>📦 कोई Order नहीं मिला</h2>
+    <p>आपने अभी तक कोई Order नहीं किया है।</p>
+    <button class="btn" onclick="window.location.href='index.html'">Shopping करो</button>
   </div>
 
-  <div class="card">
-    <h3 style="margin-bottom:15px">Delivery Address</h3>
-    <div class="delivery-info">
-      <p><b>sakir khan</b> • 9258751739</p>
-      <p>24, Usmanpur, Gautam Buddha Nagar<br>
-      Yamuna Expressway Industrial Area<br>
-      UP - 203201</p>
+  <!-- 2. Order है तो ये दिखेगा -->
+  <div id="orderBox" class="hidden">
+    <div class="order-confirmed">
+      <h2>✓ Order Confirmed</h2>
+      <p>Order ID: <b id="orderId"></b></p>
     </div>
-  </div>
 
-  <!-- Step Progress Bar -->
-  <div class="card">
-    <div class="steps" id="steps">
-      <div class="step completed">
-        <div class="step-circle">✓</div>
-        <p>Order Placed<br><small>14 Apr, 10:30 AM</small></p>
-      </div>
-      <div class="step completed">
-        <div class="step-circle">✓</div>
-        <p>Packed<br><small>14 Apr, 11:00 AM</small></p>
-      </div>
-      <div class="step active">
-        <div class="step-circle">3</div>
-        <p>Shipped<br><small>14 Apr, 1:00 PM</small></p>
-      </div>
-      <div class="step">
-        <div class="step-circle">4</div>
-        <p>Out for Delivery<br><small>Today 5 PM</small></p>
-      </div>
-      <div class="step">
-        <div class="step-circle">5</div>
-        <p>Delivered<br><small>Today 6 PM</small></p>
-      </div>
+    <div class="card">
+      <h3 style="margin-bottom:15px">Delivery Address</h3>
+      <p><b id="custName"></b> • <span id="custPhone"></span></p>
+      <p id="custAddress"></p>
     </div>
-  </div>
 
-  <div class="card">
-    <h3 style="margin-bottom:15px">Product Details</h3>
-    <div class="product-box">
-      <img src="https://via.placeholder.com/80" alt="Medicine">
-      <div class="product-info">
-        <h4>Paracetamol 500mg Strip 15</h4>
-        <p>Qty: 2</p>
-        <p>Price: ₹45</p>
-        <p style="color:#4caf50">Sold by: S K Pharmacy</p>
+    <div class="card">
+      <div class="steps" id="steps">
+        <div class="step" data-step="1">
+          <div class="step-circle">1</div>
+          <p>Order Placed<br><small id="time1"></small></p>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-circle">2</div>
+          <p>Packed<br><small id="time2"></small></p>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-circle">3</div>
+          <p>Shipped<br><small id="time3"></small></p>
+        </div>
+        <div class="step" data-step="4">
+          <div class="step-circle">4</div>
+          <p>Out for Delivery<br><small id="time4"></small></p>
+        </div>
+        <div class="step" data-step="5">
+          <div class="step-circle">5</div>
+          <p>Delivered<br><small id="time5"></small></p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h3 style="margin-bottom:15px">Tracking Details</h3>
-    <div class="tracking-detail">
-      <p><b>Current Status:</b> Shipped from Dankaur Warehouse</p>
-      <p><b>Delivery Boy:</b> Raju - 9876543210</p>
-      <p><b>Estimated Delivery:</b> Today, 6:00 PM</p>
+    <div class="card">
+      <h3 style="margin-bottom:15px">Product Details</h3>
+      <p><b id="prodName"></b></p>
+      <p>Qty: <span id="prodQty"></span> | Price: ₹<span id="prodPrice"></span></p>
     </div>
-    <p style="font-size:13px; color:#666; margin-top:10px">Note: Ye Demo Tracking है। असली Live Tracking के लिए Backend + Courier API चाहिए।</p>
-  </div>
 
-  <button class="btn" onclick="window.location.href='tel:9258751739'">Call Support</button>
+    <button class="btn" onclick="window.location.href='tel:9258751739'">Call Support</button>
+  </div>
 
 </div>
 
 <script>
-// URL से Order ID लेगा और Auto Update करेगा
-const urlParams = new URLSearchParams(window.location.search);
-const orderId = urlParams.get('order');
-if(orderId){
-  document.getElementById('orderId').innerText = orderId;
-}
+// LocalStorage से Order उठाएगा
+let order = JSON.parse(localStorage.getItem('skp_last_order'));
 
-// Demo के लिए Step Auto Change करेगा हर 5 सेकंड में
-let currentStep = 3;
-setInterval(() => {
-  if(currentStep < 5){
-    document.querySelectorAll('.step')[currentStep-1].classList.remove('active');
-    document.querySelectorAll('.step')[currentStep-1].classList.add('completed');
-    document.querySelectorAll('.step')[currentStep].classList.add('active');
-    currentStep++;
+if(!order){
+  // Order नहीं है तो "No Order" दिखा दे
+  document.getElementById('noOrderBox').classList.remove('hidden');
+} else {
+  // Order है तो Details भर दे
+  document.getElementById('orderBox').classList.remove('hidden');
+  document.getElementById('orderId').innerText = order.id;
+  document.getElementById('custName').innerText = order.name;
+  document.getElementById('custPhone').innerText = order.phone;
+  document.getElementById('custAddress').innerText = order.address;
+  document.getElementById('prodName').innerText = order.product;
+  document.getElementById('prodQty').innerText = order.qty;
+  document.getElementById('prodPrice').innerText = order.price;
+
+  // Order की उम्र से Step तय करेगा
+  let orderTime = new Date(order.time);
+  let now = new Date();
+  let diffMinutes = (now - orderTime) / 1000 / 60;
+
+  let currentStep = 1;
+  if(diffMinutes > 10) currentStep = 2; // 10 min बाद Packed
+  if(diffMinutes > 60) currentStep = 3; // 1 घंटे बाद Shipped  
+  if(diffMinutes > 120) currentStep = 4; // 2 घंटे बाद Out
+  if(diffMinutes > 180) currentStep = 5; // 3 घंटे बाद Delivered
+
+  // Step Color करेगा
+  for(let i=1; i<=5; i++){
+    let step = document.querySelector(`.step[data-step="${i}"]`);
+    if(i < currentStep) step.classList.add('completed');
+    if(i == currentStep) step.classList.add('active');
+    if(i <= currentStep){
+      let t = new Date(orderTime.getTime() + (i*30*60000)); // 30 min का गैप
+      document.getElementById('time'+i).innerText = t.toLocaleTimeString('hi-IN', {hour:'2-digit', minute:'2-digit'});
+    }
   }
-}, 5000);
+}
 </script>
 
 </body>
