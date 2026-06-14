@@ -610,19 +610,36 @@ function closePopup(id){
   document.getElementById(id).style.display = 'none';
 }
 
-// ===== 100% FIXED TOAST =====
+// ===== 100% BUG FREE TOAST =====
 window.toast = function(msg){
   let text = '';
-  if(typeof msg === 'string') text = msg;
-  else if(typeof msg === 'number') text = String(msg);
-  else if(msg === null || msg === undefined) text = '';
-  else text = 'Error';
+  
+  if(typeof msg === 'string'){
+    text = msg;
+  } 
+  else if(typeof msg === 'number' || typeof msg === 'boolean'){
+    text = String(msg);
+  }
+  else if(msg === null || msg === undefined){
+    text = '';
+  }
+  else if(typeof msg === 'object'){
+    // Object आया तो उसका message निकालो
+    if(msg.message) text = msg.message;
+    else if(msg.error) text = msg.error;
+    else text = JSON.stringify(msg);
+  }
+  else {
+    text = String(msg);
+  }
 
-  if(!text) return;
+  if(!text || text === '[object Object]') return;
+  
   let t = document.getElementById('toast');
   t.innerText = text;
   t.style.display = 'block';
   setTimeout(()=>t.style.display='none', 3000);
+
 }
 
 let urlParams = new URLSearchParams(window.location.search);
