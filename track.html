@@ -3,27 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Track Order - S K Pharmacy</title>
+<title>Track Order Live - S K Pharmacy</title>
 <style>
 * {margin:0; padding:0; box-sizing:border-box}
 body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333}
-.header {background:#232f3e; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center}
+.header {background:#232f3e; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0}
 .header h2 {color:#ff9900}
 .header a {color:white; text-decoration:none}
 .container {max-width:700px; margin:20px auto; padding:0 15px}
 .card {background:white; padding:20px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.1); margin:15px 0}
-.no-order {text-align:center; padding:60px 20px}
-.no-order h2 {color:#999; margin-bottom:15px}
+.loading {text-align:center; padding:60px; font-size:18px; color:#666}
 .order-confirmed {text-align:center; padding:20px; background:#e8f5e9; border-radius:10px; margin-bottom:20px}
 .order-confirmed h2 {color:#2e7d32; margin-bottom:5px}
 .steps {display:flex; justify-content:space-between; margin:40px 0; position:relative}
 .steps::before {content:''; position:absolute; top:20px; left:0; right:0; height:3px; background:#ddd; z-index:1}
 .step {text-align:center; position:relative; z-index:2; flex:1}
 .step-circle {width:40px; height:40px; border-radius:50%; background:#ddd; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; font-weight:bold; color:white}
-.step.active .step-circle {background:#ff9900}
-.step.completed .step-circle {background:#4caf50}
+.step.completed.step-circle {background:#4caf50}
+.step.active.step-circle {background:#ff9900}
 .step p {font-size:12px; color:#666}
 .step.active p {color:#ff9900; font-weight:bold}
+.no-order {text-align:center; padding:60px 20px}
 .btn {width:100%; padding:14px; background:#ff9900; color:white; border:none; border-radius:8px; font-weight:bold; font-size:16px; margin-top:15px; cursor:pointer}
 .hidden {display:none}
 </style>
@@ -36,15 +36,14 @@ body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333}
 </div>
 
 <div class="container">
+  <div id="loading" class="loading">Order ढूंढ रहे हैं...</div>
 
-  <!-- 1. अगर कोई Order नहीं है तो ये दिखेगा -->
   <div id="noOrderBox" class="card no-order hidden">
-    <h2>📦 कोई Order नहीं मिला</h2>
-    <p>आपने अभी तक कोई Order नहीं किया है।</p>
+    <h2>📦 Order नहीं मिला</h2>
+    <p>गलत Order ID या Order Delete हो गया</p>
     <button class="btn" onclick="window.location.href='index.html'">Shopping करो</button>
   </div>
 
-  <!-- 2. Order है तो ये दिखेगा -->
   <div id="orderBox" class="hidden">
     <div class="order-confirmed">
       <h2>✓ Order Confirmed</h2>
@@ -59,25 +58,25 @@ body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333}
 
     <div class="card">
       <div class="steps" id="steps">
-        <div class="step" data-step="1">
+        <div class="step" data-step="placed">
           <div class="step-circle">1</div>
-          <p>Order Placed<br><small id="time1"></small></p>
+          <p>Order Placed<br><small id="timePlaced"></small></p>
         </div>
-        <div class="step" data-step="2">
+        <div class="step" data-step="packed">
           <div class="step-circle">2</div>
-          <p>Packed<br><small id="time2"></small></p>
+          <p>Packed<br><small id="timePacked"></small></p>
         </div>
-        <div class="step" data-step="3">
+        <div class="step" data-step="shipped">
           <div class="step-circle">3</div>
-          <p>Shipped<br><small id="time3"></small></p>
+          <p>Shipped<br><small id="timeShipped"></small></p>
         </div>
-        <div class="step" data-step="4">
+        <div class="step" data-step="out">
           <div class="step-circle">4</div>
-          <p>Out for Delivery<br><small id="time4"></small></p>
+          <p>Out for Delivery<br><small id="timeOut"></small></p>
         </div>
-        <div class="step" data-step="5">
+        <div class="step" data-step="delivered">
           <div class="step-circle">5</div>
-          <p>Delivered<br><small id="time5"></small></p>
+          <p>Delivered<br><small id="timeDelivered"></small></p>
         </div>
       </div>
     </div>
@@ -90,50 +89,71 @@ body {font-family: Arial, sans-serif; background:#f4f7f6; color:#333}
 
     <button class="btn" onclick="window.location.href='tel:9258751739'">Call Support</button>
   </div>
-
 </div>
 
-<script>
-// LocalStorage से Order उठाएगा
-let order = JSON.parse(localStorage.getItem('skp_last_order'));
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
-if(!order){
-  // Order नहीं है तो "No Order" दिखा दे
+<script>
+// तेरा Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
+  authDomain: "grnoida-store.firebaseapp.com",
+  databaseURL: "https://grnoida-store-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "grnoida-store",
+  storageBucket: "grnoida-store.firebasestorage.app",
+  messagingSenderId: "665639961400",
+  appId: "1:665639961400:web:cb704b0209b910fc6a77cd"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// URL से Order ID लेगा
+const urlParams = new URLSearchParams(window.location.search);
+const orderId = urlParams.get('order');
+
+if(!orderId){
+  document.getElementById('loading').classList.add('hidden');
   document.getElementById('noOrderBox').classList.remove('hidden');
 } else {
-  // Order है तो Details भर दे
-  document.getElementById('orderBox').classList.remove('hidden');
-  document.getElementById('orderId').innerText = order.id;
-  document.getElementById('custName').innerText = order.name;
-  document.getElementById('custPhone').innerText = order.phone;
-  document.getElementById('custAddress').innerText = order.address;
-  document.getElementById('prodName').innerText = order.product;
-  document.getElementById('prodQty').innerText = order.qty;
-  document.getElementById('prodPrice').innerText = order.price;
-
-  // Order की उम्र से Step तय करेगा
-  let orderTime = new Date(order.time);
-  let now = new Date();
-  let diffMinutes = (now - orderTime) / 1000 / 60;
-
-  let currentStep = 1;
-  if(diffMinutes > 10) currentStep = 2; // 10 min बाद Packed
-  if(diffMinutes > 60) currentStep = 3; // 1 घंटे बाद Shipped  
-  if(diffMinutes > 120) currentStep = 4; // 2 घंटे बाद Out
-  if(diffMinutes > 180) currentStep = 5; // 3 घंटे बाद Delivered
-
-  // Step Color करेगा
-  for(let i=1; i<=5; i++){
-    let step = document.querySelector(`.step[data-step="${i}"]`);
-    if(i < currentStep) step.classList.add('completed');
-    if(i == currentStep) step.classList.add('active');
-    if(i <= currentStep){
-      let t = new Date(orderTime.getTime() + (i*30*60000)); // 30 min का गैप
-      document.getElementById('time'+i).innerText = t.toLocaleTimeString('hi-IN', {hour:'2-digit', minute:'2-digit'});
+  // Live Listener - तू Firebase में Status बदलेगा तो यहाँ Auto Update
+  db.ref('orders/' + orderId).on('value', (snapshot) => {
+    if(!snapshot.exists()){
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('noOrderBox').classList.remove('hidden');
+      return;
     }
-  }
+
+    let data = snapshot.val();
+    document.getElementById('loading').classList.add('hidden');
+    document.getElementById('orderBox').classList.remove('hidden');
+
+    document.getElementById('orderId').innerText = orderId;
+    document.getElementById('custName').innerText = data.name;
+    document.getElementById('custPhone').innerText = data.phone;
+    document.getElementById('custAddress').innerText = data.address;
+    document.getElementById('prodName').innerText = data.product;
+    document.getElementById('prodQty').innerText = data.qty;
+    document.getElementById('prodPrice').innerText = data.price;
+
+    // Status के हिसाब से Step Green करेगा
+    let statusOrder = ['placed','packed','shipped','out','delivered'];
+    let currentIndex = statusOrder.indexOf(data.status);
+
+    statusOrder.forEach((st, i) => {
+      let step = document.querySelector(`.step[data-step="${st}"]`);
+      if(i < currentIndex) step.classList.add('completed');
+      if(i == currentIndex) step.classList.add('active');
+      if(data.times && data.times[st]){
+        let t = new Date(data.times[st]);
+        document.getElementById('time' + st.charAt(0).toUpperCase() + st.slice(1)).innerText =
+          t.toLocaleTimeString('hi-IN', {hour:'2-digit', minute:'2-digit'});
+      }
+    });
+  });
 }
 </script>
-
 </body>
 </html>
