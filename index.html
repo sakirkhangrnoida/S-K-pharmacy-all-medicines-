@@ -3,669 +3,348 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy All - Fast Easy Shop</title>
+<title>S K Pharmacy AII - Fast Easy Shop | AI Assistant | Prime Deals</title>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JHBYCVM02"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-JHBYCVM02');</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JHBYCVBM02"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-JHBYCVBM02');</script>
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-KJ8Q2BD6');</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K8JQ2B6');</script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3497742039075093" crossorigin="anonymous"></script>
+<!-- Stripe + Adsense -->
+<script src="https://js.stripe.com/v3/"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3497742039075939" crossorigin="anonymous"></script>
+
+<!-- Google Console -->
+<meta name="google-site-verification" content="4-AUDY9KyYpR15UhDKRA1NLMZ_VDn8DedfcVagnSo" />
+<meta name="description" content="S K Pharmacy - दवाई, किराना, पूरी डिलीवरी सिलापुर, दनकौर और ग्रेटर नोएडा की दवाइयां और प्रोडक्ट्स उपलब्ध हैं।">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-* {margin:0; padding:0; box-sizing:border-box}
-body {font-family: Arial; background:#f4f7f6; padding-bottom:100px}
-.header {background:#1976d2; color:white; padding:15px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100}
-.logo {font-size:22px; font-weight:bold}
-.header button {background:white; color:#1976d2; border:none; padding:8px 12px; border-radius:5px; margin-left:5px; cursor:pointer; font-weight:bold}
-.search-box input {width:100%; padding:12px; border-radius:5px; border:1px solid #ddd; margin:10px; font-size:16px}
-.ticker {background:#ff9800; color:black; padding:10px; font-weight:bold; font-size:15px; text-align:center}
-.category-bar {display:flex; overflow-x:auto; background:white; padding:10px; gap:10px; position:sticky; top:60px; z-index:98}
-.cat-btn {padding:8px 15px; background:#e3f2fd; border:none; border-radius:20px; white-space:nowrap; cursor:pointer; font-size:14px}
-.cat-btn.active {background:#1976d2; color:white}
-#products {display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; padding:10px}
-.card {background:white; border-radius:8px; padding:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); position:relative; cursor:pointer}
-.card img {width:100%; height:140px; object-fit:cover; border-radius:5px}
-.card h3 {font-size:14px; margin:5px 0; height:38px; overflow:hidden}
-.price {color:#d32f2f; font-weight:bold; font-size:16px}
-.mrp {text-decoration:line-through; color:#999; font-size:12px; margin-left:5px}
-button.primary {background:#1976d2; color:white; border:none; padding:10px; border-radius:5px; width:100%; margin-top:5px; cursor:pointer; font-size:15px}
-button.secondary {background:#ff9800; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; margin:3px; font-size:14px}
-button.green {background:#2e7d32}
-.popup {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:none; justify-content:center; align-items:center; z-index:999}
-.popup > div {background:white; padding:20px; border-radius:10px; max-width:700px; width:95%; max-height:95vh; overflow-y:auto; position:relative}
-.close {position:absolute; top:10px; right:15px; font-size:32px; cursor:pointer; color:#999}
-#toast {position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#333; color:white; padding:12px 24px; border-radius:8px; display:none; z-index:9999}
-.detail-img {width:100%; height:300px; object-fit:cover; border-radius:8px}
-.actions {display:flex; gap:10px; margin:15px 0; flex-wrap:wrap}
-.actions button {flex:1; min-width:100px}
-.comment-box {border-top:2px solid #eee; padding-top:15px; margin-top:15px}
-.comment-box input {width:70%; padding:10px; border:1px solid #ddd; border-radius:5px}
-.menu-list button {display:block; width:100%; text-align:left; padding:14px; border:none; background:white; border-bottom:1px solid #eee; cursor:pointer; font-size:16px}
-.input {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px}
-.map-box {width:100%; height:200px; border-radius:8px; margin:10px 0}
-.ads-box {margin:15px 10px; text-align:center}
-.read-more {color:#1976d2; cursor:pointer; font-weight:bold; margin-top:10px; display:inline-block}
-.page-content {line-height:1.8; text-align:justify}
-.page-content h3 {margin:15px 0 8px; color:#1976d2}
-.page-content ul {margin-left:20px; margin:10px 0}
-.page-content p {margin:8px 0}
-@media(max-width:600px){#products{grid-template-columns:repeat(2,1fr)}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f4f7f6;padding-bottom:100px;color:#333}
+
+/* Header Amazon Style */
+.header{background:#131921;color:white;padding:8px 10px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:1000}
+.logo{font-weight:bold;white-space:nowrap;font-size:18px;cursor:pointer}
+.logo span{color:#ff9900}
+.deliver-to{font-size:11px;line-height:12px;min-width:90px;cursor:pointer}
+.deliver-to div:first-child{color:#ccc}
+.deliver-to div:last-child{font-weight:bold;font-size:13px}
+.search-bar{flex:1;display:flex;height:40px;min-width:150px;background:white;border-radius:4px;overflow:hidden}
+.search-bar select{background:#e6e6e6;border:none;border-radius:4px 0 0 4px;padding:0 8px;font-size:12px}
+.search-bar input{flex:1;border:none;padding:0 10px;font-size:14px;outline:none}
+.search-bar button{background:#febd69;border:none;border-radius:0 4px 4px 0;padding:0 15px;cursor:pointer;font-weight:bold;font-size:14px}
+#voiceBtn{background:white;border:none;padding:0 12px;cursor:pointer;border-left:1px solid #ddd;font-size:18px}
+.lang{font-size:12px;font-weight:bold;cursor:pointer;min-width:40px;text-align:center}
+.cart-icon{position:relative;text-decoration:none;color:white;display:block;cursor:pointer}
+.cart-count{position:absolute;top:-8px;right:-8px;background:#ff9900;color:#232f3e;border-radius:50%;padding:2px 6px;font-size:11px;font-weight:bold}
+
+/* Nav Bar */
+.nav-bar{background:#232f3e;padding:8px 10px;display:flex;gap:15px;font-size:13px;overflow-x:auto;white-space:nowrap}
+.nav-bar span{color:white;cursor:pointer;font-weight:500;padding:5px 8px}
+.nav-bar span:hover{background:#3a4553;border-radius:4px}
+
+/* News Ticker Marquee */
+.ticker{background:#ff9900;color:black;padding:10px;font-weight:bold;font-size:15px;text-align:center}
+marquee{font-weight:600}
+
+/* Medicine Banner */
+.medicine-banner{position:relative;width:100%;height:180px;overflow:hidden}
+.medicine-banner img{width:100%;height:100%;object-fit:cover}
+.medicine-banner div{position:absolute;top:50%;left:15px;transform:translateY(-50%);color:white}
+.medicine-banner h2{text-shadow:2px 2px 4px #000;font-size:22px;margin:0}
+.medicine-banner p{text-shadow:1px 1px 3px #000;font-size:14px;margin:5px 0}
+
+/* Product Grid */
+#productGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:15px}
+
+/* Product Card - हर प्रोडेक्ट में सब अपने आप */
+.product{background:#fff;padding:12px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:relative;cursor:pointer}
+.product:hover{box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+.product img{width:100%;height:150px;object-fit:contain;margin-bottom:8px}
+.product h3{font-size:14px;margin:5px 0;height:35px;overflow:hidden;line-height:18px}
+.product.price{margin:5px 0;font-size:16px;font-weight:bold;color:#b12704}
+.product.mrp{color:#888;font-size:12px;text-decoration:line-through}
+.product.off{background:#cc0c39;color:#fff;padding:2px 6px;border-radius:3px;font-size:12px;margin-left:5px}
+
+/* Product के अंदर 3 Dot */
+.prod-menu{position:absolute;top:8px;right:8px;cursor:pointer;font-size:18px;background:white;padding:2px 6px;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2);z-index:5}
+.prod-dropdown{display:none;position:absolute;right:8px;top:30px;background:white;box-shadow:0 2px 8px rgba(0,0,0,0.3);border-radius:6px;z-index:10;min-width:120px}
+.prod-dropdown.show{display:block}
+.prod-dropdown a{display:block;padding:8px 12px;font-size:13px;color:#333;text-decoration:none;border-bottom:1px solid #eee}
+.prod-dropdown a:hover{background:#f5f5f5}
+
+/* Product Actions */
+.prod-actions{display:flex;gap:5px;margin-top:8px}
+.prod-actions button{flex:1;padding:6px;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600}
+.btn-cart{background:#ffd814}
+.btn-buy{background:#ffa41c;color:white}
+
+/* Like Comment Share */
+.prod-social{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid #eee;font-size:12px}
+.prod-social span{cursor:pointer;padding:4px 6px;border-radius:4px}
+.prod-social span:hover{background:#f0f0f0}
+.liked{color:red;font-weight:bold}
+
+/* Sidebar */
+#sidebar{position:fixed;right:-400px;top:0;width:380px;height:100%;background:white;box-shadow:-2px 0 10px rgba(0,0,0,0.3);transition:0.3s;z-index:2000;overflow-y:auto}
+#sidebar.active{right:0}
+#overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1999}
+
+/* Toast - No Alert */
+#toast{display:none;position:fixed;top:70px;right:20px;background:#232f3e;color:white;padding:14px 20px;border-radius:8px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:250px;font-size:14px}
+
+/* 3 Dot Menu */
+#threeDotMenu{display:none;position:absolute;right:10px;top:50px;background:white;color:#333;min-width:250px;box-shadow:0 4px 12px rgba(0,0,0,0.3);border-radius:8px;z-index:2000;max-height:80vh;overflow-y:auto}
+#threeDotMenu a{display:block;padding:12px 20px;text-decoration:none;color:#333;border-bottom:1px solid #eee;font-size:14px}
+#threeDotMenu a:hover{background:#f3f3f3}
+#threeDotMenu.section{font-weight:bold;background:#232f3e;color:white;padding:10px 20px;position:sticky;top:0}
+
+/* Auth Box */
+#authBox{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:8px;z-index:3000;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:90%;max-width:400px}
+#authBox input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:4px;font-size:14px}
+#authBox button{width:100%;padding:12px;background:#232f3e;color:white;border:none;border-radius:4px;margin-top:10px;cursor:pointer;font-weight:bold}
+
+/* Settings Popup */
+#settingsPopup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:8px;z-index:3000;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:90%;max-width:500px;max-height:80vh;overflow-y:auto}
+
+/* Footer */
+.footer{background:#232f3e;color:white;margin-top:30px}
+.back-top{background:#37475a;padding:15px;text-align:center;cursor:pointer;color:white}
+.footer-links{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding:30px 20px;border-bottom:1px solid #3a4553}
+.footer-links h4{margin:0 0 10px;font-size:16px}
+.footer-links a{color:#ddd;text-decoration:none;display:block;margin:8px 0;font-size:14px}
+.copyright{background:#131a22;padding:20px;text-align:center;font-size:12px;color:#ddd}
+
+/* WhatsApp Float */
+.whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;border-radius:50px;padding:12px 16px;font-size:14px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:100}
+
+/* Mobile */
+@media(max-width:768px){
+.header{flex-wrap:wrap}
+.search-bar{min-width:100%;order:3;margin-top:8px}
+#productGrid{grid-template-columns:repeat(2,1fr)}
+#sidebar{width:100%;right:-100%}
+}
 </style>
 </head>
 <body>
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJ8Q2BD6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8JQ2B6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<header class="header">
-  <div class="logo">S K Pharmacy</div>
-  <div>
-    <button onclick="showCart()">🛒 <span id="cartCount">0</span></button>
-    <button onclick="showMenu()">⋮</button>
+<!-- Header -->
+<div class="header">
+  <div class="logo" onclick="location.reload()">S K <span>Pharmacy</span></div>
+
+  <div class="deliver-to">
+    <div>Deliver to</div>
+    <div>📍 दनकौर 203201</div>
   </div>
-</header>
 
-<div class="search-box">
-  <input type="text" id="search" placeholder="Search 1000+ Medicines..." onkeyup="searchProd()">
+  <div class="search-bar">
+    <select id="searchCategory">
+      <option value="All">All</option>
+      <option value="Medicines">Medicines</option>
+      <option value="Skin Care">Skin Care</option>
+      <option value="Baby Care">Baby Care</option>
+    </select>
+
+    <input type="text" id="searchInput" placeholder="बोल कर या टाइप करके खोजें...">
+
+    <!-- Voice Search Button -->
+    <button id="voiceBtn" onclick="startVoiceSearch()">🎤</button>
+
+    <button onclick="searchProducts()">Search</button>
+  </div>
+
+  <div class="lang">🇮🇳 EN</div>
+
+  <div class="cart-icon" onclick="showCart()">
+    <i class="fas fa-shopping-cart" style="font-size:24px"></i>
+    <span class="cart-count" id="cartCount">0</span>
+    <div style="font-size:11px;font-weight:bold">Cart</div>
+  </div>
+
+  <div onclick="toggleMenu()" style="cursor:pointer;font-size:24px;padding:0 5px">⋮</div>
 </div>
 
-<marquee class="ticker">🔔 Call 9258751739, 7983006957 | COD + Online Payment | SMS OTP Test:1234 | Live Tracking | Free Delivery ₹499+</marquee>
-
-<div class="category-bar">
-  <button class="cat-btn active" onclick="filterCat('all', this)">All</button>
-  <button class="cat-btn" onclick="filterCat('Tablets', this)">Tablets</button>
-  <button class="cat-btn" onclick="filterCat('Syrup', this)">Syrup</button>
-  <button class="cat-btn" onclick="filterCat('Capsules', this)">Capsules</button>
-  <button class="cat-btn" onclick="filterCat('Deals', this)">Deals</button>
+<!-- Nav Bar -->
+<div class="nav-bar">
+  <span onclick="openSidebar()"><i class="fas fa-bars"></i> All</span>
+  <span onclick="filterCategory('Medicines')">Medicines</span>
+  <span onclick="filterCategory('Skin Care')">Skin Care</span>
+  <span onclick="filterCategory('Baby Care')">Baby Care</span>
+  <span onclick="showModal('prime')">Health</span>
+  <span onclick="showModal('contact')">Customer Service</span>
+  <span onclick="showModal('pharmacy')">Pharmacy</span>
+  <span onclick="showModal('sell')">Sell</span>
 </div>
 
-<div class="ads-box">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3497742039075093" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+<!-- News Ticker -->
+<div class="ticker">
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    FREE Delivery in सिलापुर गांव, दनकौर, ग्रेटर नोएडा, उत्तर प्रदेश - 203201 | Call: 9258751739, 7983006957 | Same Day Delivery | All Fresh Sell | Gift Cards & Gift Ideas | Subscribe Prime
+  </marquee>
 </div>
 
-<div id="products">Loading...</div>
+<!-- Medicine Banner -->
+<div class="medicine-banner">
+  <img src="https://images.unsplash.com/photo-1584308666744-2d4c5747f2e7?w=800" alt="Medicine Banner">
+  <div>
+    <h2>Healthcare Deals</h2>
+    <p>Up to 30% Off on Medicines</p>
+  </div>
+</div>
 
-<div class="popup" id="productPopup"></div>
-<div class="popup" id="settingsPopup"></div>
+<!-- Adsense -->
+<div style="text-align:center;margin:20px 0">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3497742039075939" data-ad-slot="XXXXX" data-ad-format="auto"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- Product Grid -->
+<h2 id="categoryTitle" style="padding:10px;font-size:18px">All Products</h2>
+<div id="productGrid">Loading Products...</div>
+
+<!-- Overlay -->
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<!-- Sidebar Product Detail -->
+<div id="sidebar">
+  <div style="padding:10px;background:#232f3e;color:white;display:flex;justify-content:space-between">
+    <h3 id="sidebarTitle">Product Details</h3>
+    <span onclick="closeSidebar()" style="cursor:pointer;font-size:20px">×</span>
+  </div>
+  <div id="sidebarContent" style="padding:15px"></div>
+</div>
+
+<!-- 3 Dot Menu Dropdown -->
+<div id="threeDotMenu">
+  <div class="section">Account</div>
+  <a href="#" onclick="showAuthBox()">Login / Signup</a>
+  <a href="#" onclick="showMyAccount()">My Account</a>
+  <a href="#" onclick="showOrders()">Live Order Track</a>
+  <a href="#" onclick="showPrime()">Prime Subscribe</a>
+
+  <div class="section">Shop By Category</div>
+  <a href="#" onclick="filterCategory('All')">All</a>
+  <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
+  <a href="#" onclick="filterCategory('Skin Care')">Skin Care</a>
+  <a href="#" onclick="filterCategory('Gifts')">Gift Cards</a>
+  <a href="#" onclick="filterCategory('Deals')">Today's Deals</a>
+
+  <div class="section">Settings - 10 Page</div>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact - Greater Noida, Dankaur, Silapur</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="refund.html">Refund Policy</a>
+  <a href="terms.html">Terms & Conditions</a>
+  <a href="help.html">Help & Support</a>
+  <a href="customer.html">Customer Service</a>
+  <a href="sports.html">Sports</a>
+  <a href="condition.html">Conditions</a>
+  <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<!-- Auth Box -->
+<div id="authBox">
+  <h2>Login / Signup</h2>
+  <input id="email" placeholder="Email">
+  <input id="pass" type="password" placeholder="Password">
+  <input id="otp" placeholder="OTP - Phone Login" style="display:none">
+  <button onclick="login()">Login</button>
+  <button onclick="signup()" style="background:#ff9900;color:#232f3e">Signup</button>
+  <button onclick="phoneLogin()">OTP से Login</button>
+  <button onclick="closePopup('authBox')" style="background:#999">Close</button>
+</div>
+
+<!-- Settings Popup for Cart/Orders -->
+<div id="settingsPopup"></div>
+
+<!-- Toast -->
 <div id="toast"></div>
 
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919258751739?text=Hi%20S%20K%20Pharmacy%20I%20want%20to%20order%20medicines" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i> WhatsApp Order
+</a>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top</div>
+
+  <div class="footer-links">
+    <div>
+      <h4>Get to Know Us</h4>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="#">Careers</a>
+    </div>
+    <div>
+      <h4>Connect with Us</h4>
+      <a href="https://www.facebook.com/share/18kQxf7c7/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/sakirkhangrnoida/" target="_blank">Instagram</a>
+      <a href="https://wa.me/917983006957" target="_blank">WhatsApp</a>
+    </div>
+    <div>
+      <h4>Make Money with Us</h4>
+      <a href="#">Sell on S K Pharmacy</a>
+      <a href="#">Become an Affiliate</a>
+      <a href="#">Advertise Your Products</a>
+    </div>
+    <div>
+      <h4>Let Us Help You</h4>
+      <a href="account.html">Your Account</a>
+      <a href="privacy.html">Privacy Notice</a>
+      <a href="terms.html">Terms & Conditions</a>
+      <a href="help.html">Help</a>
+    </div>
+  </div>
+
+  <div style="padding:30px 20px;text-align:center;border-bottom:1px solid #3a4553">
+    <img src="img/logo.jpg" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px" alt="S K Pharmacy">
+    <div style="display:flex;justify-content:center;gap:10px">
+      <select style="background:#232f3e;color:white;border:1px solid #848688;padding:8px 12px;border-radius:4px">
+        <option>English</option>
+        <option>हिन्दी</option>
+      </select>
+      <button style="background:#232f3e;color:white;border:1px solid #848688;padding:8px 12px;border-radius:4px">🇮🇳 India</button>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <div style="margin-bottom:10px">
+      <a href="terms.html" style="color:#ddd;margin:0 10px">Conditions of Use & Sale</a>
+      <a href="privacy.html" style="color:#ddd;margin:0 10px">Privacy Notice</a>
+      <a href="#" style="color:#ddd;margin:0 10px">Interest-Based Ads</a>
+    </div>
+    <div>© 1996-2026, S K Pharmacy.com, Inc. or its affiliates</div>
+    <p style="margin-top:10px">Greater Noida, Dankaur, Silapur Village, UP - 203201 | Maps: <a href="https://maps.google.com/?q=Silapur+Village+Dankaur+Greater+Noida+203201" target="_blank" style="color:#ff9900">View Location</a></p>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
-  authDomain: "grnoida-store.firebaseapp.com",
-  databaseURL: "https://grnoida-store-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "grnoida-store",
-  storageBucket: "grnoida-store.firebasestorage.app",
-  messagingSenderId: "665639961400",
-  appId: "1:665639961400:web:cb704b0209b910fc6a77cd"
+  apiKey: "तेरा-API-KEY",
+  authDomain: "तेरा-PROJECT.firebaseapp.com",
+  projectId: "तेरा-PROJECT-ID",
+  storageBucket: "तेरा-BUCKET",
+  messagingSenderId: "XXX",
+  appId: "XXX"
 };
-
-const SHOP = {
-  name: "S K Pharmacy",
-  phone1: "9258751739",
-  phone2: "7983006957",
-  address: "Greater Noida Dankaur Silapur UP 203201",
-  pin: "203201",
-  razorpayKey: "rzp_test_REPLACE_YOUR_KEY"
-};
-// ===== BULLETPROOF TOAST - अब Object कभी नहीं आएगा =====
-window.toast = function(msg){
-  try {
-    let text = '';
-    
-    if(msg == null) return;
-    if(typeof msg === 'string') text = msg;
-    else if(typeof msg === 'number' || typeof msg === 'boolean') text = msg + '';
-    else if(typeof msg === 'object') {
-      text = msg.message || msg.error || msg.code || JSON.stringify(msg);
-    }
-    else text = String(msg);
-    
-    // Safety check
-    if(!text || text === '[object Object]' || text === 'undefined') return;
-    
-    let t = document.getElementById('toast');
-    if(t) {
-      t.innerText = text;
-      t.style.display = 'block';
-      setTimeout(()=>{ if(t) t.style.display='none' }, 3000);
-    }
-  } catch(e) {
-    console.log(e); // Toast में Error भी नहीं दिखेगा
-  }
-}
-// ===== BULLETPROOF TOAST END =====
-
-  firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-let allProducts = {}, cart = [], currentProduct = null, currentCat = 'all';
-
-db.ref('products').on('value', snap => {
-  allProducts = snap.val() || {};
-  renderProducts();
-});
-
-function renderProducts(){
-  let html = '';
-  let data = allProducts;
-  if(Object.keys(data).length == 0){
-    html = '<div style="grid-column:1/-1; text-align:center; padding:60px"><h3>Firebase → products में Data डालो</h3></div>';
-  } else {
-    for(let id in data){
-      let p = data[id];
-      if(currentCat!= 'all' && p.cat!= currentCat) continue;
-      let discount = p.mrp && p.price? Math.round(((p.mrp - p.price) / p.mrp) * 100) : 0;
-      html += `
-        <div class="card" onclick="openProduct('${id}')">
-          ${discount > 0? `<span style="position:absolute; background:#d32f2f; color:white; padding:3px 6px; font-size:11px; border-radius:3px; top:5px; left:5px">${discount}% OFF</span>` : ''}
-          <img src="${p.img || 'https://via.placeholder.com/200'}" onerror="this.src='https://via.placeholder.com/200'">
-          <h3>${p.name}</h3>
-          <p style="color:#666; font-size:12px">${p.cat || 'Medicine'}</p>
-          <p class="price">₹${p.price} <span class="mrp">₹${p.mrp || ''}</span></p>
-          <button class="primary" onclick="event.stopPropagation(); addToCart('${id}')">Add to Cart</button>
-        </div>
-      `;
-    }
-  }
-  document.getElementById('products').innerHTML = html;
-}
-
-function filterCat(cat, btn){
-  currentCat = cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  renderProducts();
-}
-
-window.openProduct = function(id){
-  currentProduct = allProducts[id];
-  let likes = currentProduct.likes || 0;
-  let comments = currentProduct.comments || {};
-
-  let html = `
-    <div>
-      <span class="close" onclick="closePopup('productPopup')">×</span>
-      <img class="detail-img" src="${currentProduct.img}">
-      <h2 style="margin:10px 0">${currentProduct.name}</h2>
-      <p style="color:#666">${currentProduct.cat || 'Medicine'}</p>
-      <p class="price" style="font-size:28px; margin:10px 0">₹${currentProduct.price} <span class="mrp">₹${currentProduct.mrp}</span></p>
-      <p style="color:#2e7d32; font-weight:bold">✓ In Stock | ✓ Fast Delivery</p>
-
-      <div style="background:#e8f5e9; padding:12px; border-radius:8px; margin:15px 0">
-        <p>✓ Cash on Delivery</p>
-        <p>✓ Free Delivery ₹499+</p>
-      </div>
-
-      <p style="margin:15px 0">${currentProduct.desc || 'Doctor की सलाह से लें।'}</p>
-
-      <div style="margin:15px 0">
-        <iframe class="map-box" src="https://www.google.com/maps?q=${SHOP.pin}&output=embed"></iframe>
-      </div>
-
-      <div class="actions">
-        <button class="secondary" onclick="likeProduct('${id}')">👍 Like ${likes}</button>
-        <button class="secondary" onclick="shareProduct('${id}')">📤 Share</button>
-      </div>
-
-      <div style="display:flex; gap:10px; margin:15px 0">
-        <button class="primary" onclick="buyNow('${id}', 'COD')">Cash on Delivery</button>
-        <button class="primary green" onclick="buyNow('${id}', 'Online')">Pay Online</button>
-      </div>
-
-      <div class="comment-box">
-        <h4>💬 Reviews</h4>
-        <div id="commentsList" style="max-height:150px; overflow-y:auto">${renderComments(comments)}</div>
-        <div style="display:flex; gap:5px; margin-top:10px">
-          <input id="commentInput" placeholder="Review लिखो..." class="input">
-          <button class="secondary" onclick="addComment('${id}')">Post</button>
-        </div>
-      </div>
-    </div>
-  `;
-  document.getElementById('productPopup').innerHTML = html;
-  document.getElementById('productPopup').style.display = 'flex';
-}
-
-function likeProduct(id){
-  db.ref('products/'+id+'/likes').transaction(n => (n||0)+1);
-  toast('Liked!');
-}
-
-function shareProduct(id){
-  let url = location.origin + location.pathname + '?p=' + id;
-  if(navigator.share){
-    navigator.share({title: currentProduct.name, url: url});
-  } else {
-    navigator.clipboard.writeText(url);
-    toast('Link Copy हो गया');
-  }
-}
-
-function addComment(id){
-  let txt = document.getElementById('commentInput').value.trim();
-  if(!txt) return toast('Comment लिखो');
-  let key = Date.now();
-  db.ref('products/'+id+'/comments/'+key).set({text: txt, user: 'User', time: key});
-  document.getElementById('commentInput').value = '';
-}
-
-function renderComments(comments){
-  let html = '';
-  for(let k in comments){
-    html += `<p style="background:#f5f5f5; padding:8px; border-radius:5px; margin:5px 0; font-size:14px"><b>${comments[k].user}:</b> ${comments[k].text}</p>`;
-  }
-  return html || '<p style="color:#999; text-align:center">कोई Review नहीं</p>';
-}
-
-window.buyNow = function(id, payMode){
-  let p = allProducts[id];
-  let mobile = prompt('Mobile Number डालो OTP के लिए:');
-  if(!mobile || mobile.length!= 10) return toast('10 digit Mobile डालो');
-
-  let otp = prompt('OTP डालो: 1234');
-  if(otp === null) return;
-  if(otp!= '1234') return toast('गलत OTP');
-
-  if(payMode == 'COD'){
-    saveOrder(id, p, mobile, 'COD');
-  } else {
-    payOnline(id, p, mobile);
-  }
-}
-
-function payOnline(id, p, mobile){
-  var options = {
-    key: SHOP.razorpayKey,
-    amount: p.price * 100,
-    currency: "INR",
-    name: SHOP.name,
-    description: p.name,
-    prefill: { contact: mobile },
-    handler: function(response){
-      saveOrder(id, p, mobile, 'Online', response.razorpay_payment_id);
-    }
-  };
-  var rzp = new Razorpay(options);
-  rzp.open();
-}
-
-function saveOrder(id, p, mobile, payment, payId=''){
-  const orderId = 'ORD' + Date.now();
-  db.ref('orders/' + orderId).set({
-    orderId: orderId,
-    product: p.name,
-    cat: p.cat,
-    price: p.price,
-    qty: 1,
-    mobile: mobile,
-    address: SHOP.address + ' Pin: ' + SHOP.pin,
-    payment: payment,
-    payId: payId,
-    status: "Order Placed",
-    total: p.price,
-    time: Date.now()
-  });
-  toast('✓ Order Placed! ID: ' + orderId);
-  closePopup('productPopup');
-}
-
-window.showMenu = function(){
-  let pages = ['about','contact','privacy','refund','terms','help','support','condition','offers','blogs','login','admin','liveorders','myaccount','category','deals'];
-  let names = ['ℹ️ About Us','📞 Contact','🔒 Privacy Policy','↩️ Refund Policy','📄 Terms','❓ Help Center','🎧 Customer Service','📋 Condition','🎁 Offers','📝 Blogs','👤 Login/Logout','⚒️ Admin Panel','📦 Live Orders','👤 My Account','🏪 Shop by Category','🔥 Deals'];
-
-  let html = `<div><span class="close" onclick="closePopup('settingsPopup')">×</span><h2>Settings & More</h2><div class="menu-list">`;
-  pages.forEach((p,i) => html += `<button onclick="showPage('${p}')">${names[i]}</button>`);
-  html += `</div></div>`;
-
-  document.getElementById('settingsPopup').innerHTML = html;
-  document.getElementById('settingsPopup').style.display = 'flex';
-}
-
-// ===== 10 PAGE CONTENT WITH READ MORE =====
-window.showPage = function(page){
-  let content = {
-    about: `
-      <h2>ℹ️ About S K Pharmacy</h2>
-      <div class="page-content" id="about-short">
-        <p>S K Pharmacy एक Licensed Pharmacy है जो Greater Noida, UP में 10+ साल से लोगों की सेवा कर रही है।</p>
-        <p>हमारा Address: ${SHOP.address}</p>
-        <p>हम 100% Genuine Medicines देते हैं।</p>
-        <span class="read-more" onclick="expandContent('about')">Read More ▼</span>
-      </div>
-      <div class="page-content" id="about-full" style="display:none">
-        <h3>हमारी कहानी</h3>
-        <p>2014 में शुरू हुआ S K Pharmacy आज 5000+ ग्राहकों का भरोसा जीत चुका है। हमारा मकसद है हर घर तक सस्ती और असली दवाई पहुँचाना।</p>
-
-        <h3>हमारी खासियतें</h3>
-        <ul>
-          <li>✓ 100% असली दवाई - कोई नकली सामान नहीं</li>
-          <li>✓ Licensed Pharmacist 24x7 उपलब्ध</li>
-          <li>✓ Fast Delivery - 2 घंटे में दवाई आपके घर</li>
-          <li>✓ COD + Online Payment दोनों सुविधा</li>
-          <li>✓ 7 दिन Return Policy</li>
-          <li>✓ डॉक्टर की सलाह मुफ्त</li>
-          <li>✓ Bulk Order पर 15% तक Discount</li>
-          <li>✓ Monthly Subscription Box</li>
-          <li>✓ Emergency Medicine 30 मिनट में</li>
-          <li>✓ पुराने ग्राहकों के लिए Special Offers</li>
-        </ul>
-
-        <h3>हमारा विजन</h3>
-        <p>हर भारतीय को सस्ती और अच्छी Healthcare सुविधा देना। हम चाहते हैं कि कोई भी पैसों की वजह से इलाज न रुके।</p>
-
-        <h3>Contact Details</h3>
-        <p>📞 Call: ${SHOP.phone1}, ${SHOP.phone2}</p>
-        <p>📍 Address: ${SHOP.address}</p>
-        <p>🕒 Timing: सुबह 8 बजे से रात 10 बजे तक</p>
-        <span class="read-more" onclick="collapseContent('about')">Show Less ▲</span>
-      </div>
-    `,
-    contact: `
-      <h2>📞 Contact Us</h2>
-      <div class="page-content" id="contact-short">
-        <p>Call: ${SHOP.phone1}, ${SHOP.phone2}</p>
-        <p>Address: ${SHOP.address}</p>
-        <span class="read-more" onclick="expandContent('contact')">Read More ▼</span>
-      </div>
-      <div class="page-content" id="contact-full" style="display:none">
-        <h3>हमसे जुड़ें</h3>
-        <p>कोई भी सवाल हो, सीधा Call करें। हम 24x7 आपके लिए हैं।</p>
-
-        <h3>Contact Details</h3>
-        <p>📞 Customer Care: ${SHOP.phone1}</p>
-        <p>📞 WhatsApp: ${SHOP.phone2}</p>
-        <p>📧 Email: skpharmacy@gmail.com</p>
-        <p>📍 Address: ${SHOP.address}</p>
-        <p>📌 Pin Code: ${SHOP.pin}</p>
-
-        <h3>Timing</h3>
-        <p>सोमवार - शनिवार: सुबह 8 से रात 10</p>
-        <p>रविवार: सुबह 9 से शाम 6</p>
-        <p>Emergency: 24x7 Call करें</p>
-
-        <h3>Location Map</h3>
-        <iframe class="map-box" src="https://www.google.com/maps?q=${SHOP.pin}&output=embed"></iframe>
-
-        <h3>Delivery Area</h3>
-        <p>Greater Noida, Dankaur, Jewar, Sikandrabad, Bulandshahr - Free Delivery</p>
-        <p>दूसरे शहर: Courier Charges लगेंगे</p>
-        <span class="read-more" onclick="collapseContent('contact')">Show Less ▲</span>
-      </div>
-    `,
-    privacy: `
-      <h2>🔒 Privacy Policy</h2>
-      <div class="page-content" id="privacy-short">
-        <p>आपका Data 100% Secure है। हम किसी को Share नहीं करते।</p>
-        <span class="read-more" onclick="expandContent('privacy')">Read More ▼</span>
-      </div>
-      <div class="page-content" id="privacy-full" style="display:none">
-        <h3>Data Security</h3>
-        <p>S K Pharmacy आपके Personal Data की Security को लेकर बहुत Serious है।</p>
-
-        <h3>क्या Data Collect करते हैं</h3>
-        <ul>
-          <li>1. Name, Mobile Number, Address</li>
-          <li>2. Order History</li>
-          <li>3. Payment Details - हम Save नहीं करते</li>
-          <li>4. Device Info - App को बेहतर बनाने के लिए</li>
-        </ul>
-
-        <h3>Data का Use कैसे करते हैं</h3>
-        <p>सिर्फ Order Deliver करने और आपको बेहतर Service देने के लिए।</p>
-
-        <h3>Data Share करते हैं क्या?</h3>
-        <p>बिल्कुल नहीं। आपका Data किसी 3rd Party को नहीं दिया जाता।</p>
-
-        <h3>Cookies</h3>
-        <p>हम Website को बेहतर बनाने के लिए Cookies use करते हैं।</p>
-
-        <h3>आपके Rights</h3>
-        <p>आप कभी भी अपना Data Delete करवा सकते हैं। Call करें: ${SHOP.phone1}</p>
-
-        <h3>Contact for Privacy Issues</h3>
-        <p>Email: privacy@skpharmacy.com</p>
-        <span class="read-more" onclick="collapseContent('privacy')">Show Less ▲</span>
-      </div>
-    `,
-    refund: `
-      <h2>↩️ Refund & Return Policy</h2>
-      <div class="page-content" id="refund-short">
-        <p>7 दिन Return Policy। Seal खुली तो Return नहीं होगा।</p>
-        <span class="read-more" onclick="expandContent('refund')">Read More ▼</span>
-      </div>
-      <div class="page-content" id="refund-full" style="display:none">
-        <h3>Return Policy</h3>
-        <p>डिलीवरी के 7 दिन के अंदर Return कर सकते हैं।</p>
-
-        <h3>Conditions for Return</h3>
-        <ul>
-          <li>1. दवाई की Seal नहीं खुली होनी चाहिए</li>
-          <li>2. Bill/Invoice साथ में होना चाहिए</li>
-          <li>3. Expired दवाई Return नहीं होगी</li>
-          <li>4. Wrong Order आया हो तो 100% Refund</li>
-          <li>5. Damaged Product तुरंत Exchange</li>
-        </ul>
-
-        <h3>Refund Process</h3>
-        <p>1. Call करें: ${SHOP.phone1}</p>
-        <p>2. Product Pickup होगा</p>
-        <p>3. 3-5 दिन में Refund आपके Account में</p>
-
-        <h3>कब Refund नहीं होगा</h3>
-        <p>Seal खुली हुई दवाई, Expired दवाई, या Customer की गलती से Damage हुआ Product।</p>
-
-        <h3>Exchange Policy</h3>
-        <p>गलत दवाई आई हो तो तुरंत Exchange। Extra पैसे नहीं लगेंगे।</p>
-        <span class="read-more" onclick="collapseContent('refund')">Show Less ▲</span>
-      </div>
-    `,
-    terms: `
-      <h2>📄 Terms & Conditions</h2>
-      <div class="page-content" id="terms-short">
-        <p>Doctor की सलाह से दवाई लें। बिना Prescription कुछ दवाई नहीं मिलेगी।</p>
-        <span class="read-more" onclick="expandContent('terms')">Read More ▼</span>
-      </div>
-      <div class="page-content" id="terms-full" style="display:none">
-        <h3>Important Terms</h3>
-        <ul>
-          <li>1. डॉक्टर की सलाह से ही दवाई लें</li>
-          <li>2. Schedule H दवाई के लिए Prescription जरूरी</li>
-          <li>3. हम Medical Advice नहीं देते</li>
-          <li>4. Side Effects की जिम्मेदारी हमारी नहीं</li>
-          <li>5. Price बदल सकते हैं बिना सूचना के</li>
-          <li>6. Stock खत्म होने पर Order Cancel हो सकता है</li>
-          <li>7. Fake Prescription पर Legal Action</li>
-          <li>8. 18 साल से कम को कुछ दवाई नहीं</li>
-          <li>9. Pregnancy में दवाई Doctor से पूछ कर लें</li>
-          <li>10. COD में फेक Order पर Ban</li>
-        </ul>
-        <h3>Disclaimer</h3>
-        <p>S K Pharmacy सिर्फ दवाई बेचती है। इलाज की जिम्मेदारी Doctor की है।</p>
-        <h3>Legal</h3>
-        <p>किसी भी विवाद के लिए Greater Noida Court का अधिकार क्षेत्र होगा।</p>
-        <span class="read-more" onclick="collapseContent('terms')">Show Less ▲</span>
-      </div>
-    `,
-    help: `
-      <h2>❓ Help Center</h2>
-      <div class="page-content" id="help-short">
-        <p>कोई Problem है? Call करें: ${SHOP.phone1}</p>
-        <span class="read-more" onclick="expandContent('help')">Read More ▼</span>
-      </div>
-      <div class="page-content" id="help-full" style="display:none">
-        <h3>सबसे पूछे जाने वाले सवाल</h3>
-        <h3>Q1. Order कैसे करें?</h3>
-        <p>Product Select करें → Add to Cart → Buy Now → Mobile डालें → OTP → COD/Online Pay</p>
-        <h3>Q2. Delivery कितने दिन में?</h3>
-        <p>Greater Noida में 2 घंटे। दूसरे शहर 2-3 दिन।</p>
-        <h3>Q3. Prescription जरूरी है?</h3>
-        <p>Schedule H दवाई के लिए हाँ। बाकी के लिए नहीं।</p>
-        <h3>Q4. Payment कैसे करें?</h3>
-        <p>COD या Online - UPI, Card, NetBanking सब चलता है।</p>
-        <h3>Q5. Return कैसे करें?</h3>
-        <p>7 दिन में Call करें। Pickup हो जाएगा।</p>
-        <h3>Contact Support</h3>
-        <p>📞 Call: ${SHOP.phone1}</p>
-        <p>💬 WhatsApp: ${SHOP.phone2}</p>
-        <p>🕒 24x7 Available</p>
-        <span class="read-more" onclick="collapseContent('help')">Show Less ▲</span>
-      </div>
-    `,
-    support: `<h2>🎧 Customer Service</h2><p>WhatsApp: ${SHOP.phone1}<br>24x7 Support Available<br>Email: support@skpharmacy.com<br>Live Chat: Website पर Chat Icon दबाएं<br>Complaint: 2 घंटे में Reply Guarantee<br>Feedback: आपकी राय हमारे लिए जरूरी है</p>`,
-    condition: `<h2>📋 Condition</h2><p>1. All products 100% genuine<br>2. No fake items<br>3. Licensed pharmacy<br>4. Temperature controlled storage<br>5. Expiry date check<br>6. Proper packaging<br>7. GST Bill available<br>8. Quality tested</p>`,
-    offers: `<h2>🎁 Bank Offers & Deals</h2><p>1. HDFC Card: 10% Off Max ₹500<br>2. ICICI Card: 15% Off Max ₹750<br>3. SBI Card: 5% Cashback<br>4. UPI: ₹50 Instant Discount<br>5. New User: First Order 20% Off<br>6. Bulk Order: 15% Extra Discount<br>7. Weekend Sale: Every Sat-Sun<br>8. Festive Offers: Seasonal Discount</p>`,
-    blogs: `<h2>📝 Health Blogs & Tips</h2><p><h3>1. बुखार में क्या करें?</h3>पानी ज्यादा पिएं, Rest करें, Doctor से सलाह लें।<br><br><h3>2. BP Control Tips</h3>नमक कम खाएं, Exercise करें, तनाव कम लें।<br><br><h3>3. Diabetes Care</h3>शुगर Check कराएं, मीठा कम खाएं, Walk करें।<br><br><h3>4. Immunity बढ़ाएं</h3>Vitamin C, Zinc लें, अच्छी नींद लें।<br><br><h3>5. Weight Loss Tips</h3>सुबह Walk, कम Carbs, ज्यादा Protein।<br><br>हर हफ्ते नए Blog पढ़ने के लिए Visit करें।</p>`,
-    login: `<h2>👤 Account Login/Signup</h2><div id="authBox"></div>`,
-    admin: `<h2>⚒️ Admin Panel</h2><p><a href="https://console.firebase.google.com/project/grnoida-store/database" target="_blank" style="color:#1976d2">Firebase Console खोलें</a><br><br>यहाँ से Products Add/Edit/Delete कर सकते हैं।<br>Orders देख सकते हैं।<br>Customer Data Manage कर सकते हैं।</p>`,
-    liveorders: `<h2>📦 Live Orders Tracking</h2><div id="liveOrderList">Loading...</div>`,
-    myaccount: `<h2>👤 My Account</h2><div id="myAccountBox">Login करके अपने Orders देखें<br>Profile Edit करें<br>Address Save करें<br>Order History देखें</div>`,
-    category: `<h2>🏪 Shop by Category</h2><button class="primary" onclick="filterCat('Tablets', this)">Tablets</button><button class="primary" onclick="filterCat('Syrup', this)">Syrup</button><button class="primary" onclick="filterCat('Capsules', this)">Capsules</button><button class="primary" onclick="filterCat('Deals', this)">Deals</button>`,
-    deals: `<h2>🔥 Today's Hot Deals</h2><p>1. Paracetamol - 50% Off<br>2. Vitamin C - Buy 1 Get 1<br>3. BP Machine - 30% Off<br>4. Glucometer - 25% Off<br>5. Sanitizer Pack - ₹99 Only<br>6. Mask Pack - 10 for ₹49<br>7. Handwash - 40% Off<br>8. First Aid Kit - 35% Off<br><br>Offer आज रात 12 बजे तक!</p>`
-  };
-
-  document.getElementById('settingsPopup').innerHTML = `<div><span class="close" onclick="closePopup('settingsPopup')">×</span>${content || 'Page नहीं मिला'}</div>`;
-  document.getElementById('settingsPopup').style.display = 'flex';
-
-  if(page == 'liveorders') loadLiveOrders();
-  if(page == 'login') showAuthBox();
-  if(page == 'myaccount') showMyAccount();
-}
-
-// ===== Read More Functions =====
-function expandContent(id){
-  document.getElementById(id+'-short').style.display = 'none';
-  document.getElementById(id+'-full').style.display = 'block';
-}
-function collapseContent(id){
-  document.getElementById(id+'-full').style.display = 'none';
-  document.getElementById(id+'-short').style.display = 'block';
-}
-
-function loadLiveOrders(){
-  db.ref('orders').limitToLast(50).on('value', snap => {
-    let html = '';
-    snap.forEach(child => {
-      let o = child.val();
-      html += `<div style="border:1px solid #ddd; padding:12px; margin:8px 0"><b>${o.orderId}</b> - ${o.status}<br>${o.product || 'Product'} | ₹${o.price || 0}</div>`;
-    });
-    document.getElementById('liveOrderList').innerHTML = html || 'कोई Order नहीं';
-  });
-}
-
-function showAuthBox(){
-  let user = auth.currentUser;
-  if(user){
-    document.getElementById('authBox').innerHTML = `<p>Welcome ${user.email}</p><button class="primary" onclick="logout()">Logout</button>`;
-  } else {
-    document.getElementById('authBox').innerHTML = `<input id="email" placeholder="Email" class="input"><input id="pass" type="password" placeholder="Password" class="input"><button class="primary" onclick="login()">Login</button><button class="secondary" onclick="signup()">Signup</button>`;
-  }
-}
-
-function showMyAccount(){
-  let user = auth.currentUser;
-  if(user){
-    document.getElementById('myAccountBox').innerHTML = `<h3>My Orders</h3><p>User: ${user.email}</p><p>Order History यहाँ दिखेगी</p>`;
-  } else {
-    document.getElementById('myAccountBox').innerHTML = 'पहले Login करो';
-  }
-}
-
-function signup(){
-  let e = document.getElementById('email').value, p = document.getElementById('pass').value;
-  if(!e ||!p) return toast('Email और Password डालो');
-  auth.createUserWithEmailAndPassword(e,p).then(() => {toast('Signup हो गया'); showAuthBox()}).catch(err => toast(err.message));
-}
-
-function login(){
-  let e = document.getElementById('email').value, p = document.getElementById('pass').value;
-  if(!e ||!p) return toast('Email और Password डालो');
-  
-  auth.signInWithEmailAndPassword(e,p).then(() => {toast('Login हो गया'); showAuthBox()}).catch(err => toast(err));
-}
-  function logout(){
-  auth.signOut().then(() => {toast('Logout हो गया'); showAuthBox()});
-}
-
-function addToCart(id){
-  cart.push(id);
-  document.getElementById('cartCount').innerText = cart.length;
-  auth.signInWithEmailAndPassword(e,p).then(() => {toast('Login हो गया'); showAuthBox()}).catch(err => toast(err));
-}
-
-function showCart(){
-  let html = '<div><span class="close" onclick="closePopup(\'settingsPopup\')">×</span><h2>🛒 Your Cart</h2>';
-  if(cart.length == 0){
-    html += '<p style="text-align:center; padding:30px">Cart खाली है</p>';
-  } else {
-    let total = 0;
-    cart.forEach(id => {
-      let p = allProducts[id];
-      if(p){
-        total += p.price;
-        html += `<div style="border-bottom:1px solid #ddd; padding:10px">${p.name} - ₹${p.price}</div>`;
-      }
-    });
-    html += `<h3 style="margin-top:15px">Total: ₹${total}</h3>`;
-     html += '<button class="primary" onclick="toast(\'Checkout Page नहीं आएगा.\')">Checkout</button>';
-  }
-  html += '</div>';
-  document.getElementById('settingsPopup').innerHTML = html;
-  document.getElementById('settingsPopup').style.display = 'flex';
-}
-
-function searchProd(){
-  let q = document.getElementById('search').value.toLowerCase();
-  let filtered = {};
-  for(let id in allProducts){
-    if(allProducts[id].name.toLowerCase().includes(q) || (allProducts[id].cat && allProducts[id].cat.toLowerCase().includes(q)))
-      filtered[id] = allProducts[id];
-  }
-  let temp = allProducts;
-  allProducts = filtered;
-  renderProducts();
-  allProducts = temp;
-}
-
-function closePopup(id){
-  document.getElementById(id).style.display = 'none';
-}
-
-// ===== BULLETPROOF TOAST - अब Object कभी नहीं आएगा =====
-window.toast = function(msg){
-  try {
-    let text = '';
-    
-    if(msg == null) return;
-    if(typeof msg === 'string') text = msg;
-    else if(typeof msg === 'number' || typeof msg === 'boolean') text = msg + '';
-    else if(typeof msg === 'object') {
-      text = msg.message || msg.error || msg.code || JSON.stringify(msg);
-    }
-    else text = String(msg);
-    
-    // Safety check
-    if(!text || text === '[object Object]' || text === 'undefined') return;
-    
-    let t = document.getElementById('toast');
-    if(t) {
-      t.innerText = text;
-      t.style.display = 'block';
-      setTimeout(()=>{ if(t) t.style.display='none' }, 3000);
-    }
-  } catch(e) {
-    console.log(e); // Toast में Error भी नहीं दिखेगा
-  }
-}
-
-let urlParams = new URLSearchParams(window.location.search);
-if(urlParams.get('p')) setTimeout(() => openProduct(urlParams.get('p')), 1000);
+const db = firebase.firestore();
 </script>
+
+<script src="app.js"></script>
 </body>
-</html>
+    </html>
