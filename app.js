@@ -2,7 +2,7 @@
 let cart = [];
 let allProducts = [];
 let currentUser = null;
-let sheetId = "1ABCxyz123"; // तेरी Google Sheet ID यहां डाल दे
+let sheetId = "1AiN-z9Oa8aPRQZ43vFWWJ8Zc4g7sg-wUXeoNFs3_qxU"; // तेरी Google Sheet ID यहां डाल दे
 
 // Page Load होते ही
 window.onload = function() {
