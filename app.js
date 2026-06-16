@@ -2,7 +2,7 @@
 let cart = [];
 let allProducts = [];
 let currentUser = null;
-let sheetId = "1AiN-z9Oa8aPRQZ43vFWWJ8Zc4g7sg-wUXeoNFs3_qxU"; // तेरी Google Sheet ID यहां डाल दे
+let csvUrl = "https://sheet.zohopublic.in/sheet/published/garve6417220ecef8419a99c94e39cbea9046?download=csv&sheetname=Sheet1";
 
 // Page Load होते ही
 window.onload = function() {
