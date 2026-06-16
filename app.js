@@ -78,7 +78,7 @@ function toggleRead(n){
 // Google Sheet से Product Load
 async function loadProducts(){
   try {
-    let res = await fetch(csvUrl);
+    let res = await fetch("https://corsproxy.io/?" + csvUrl);
 let text = await res.text();
 let rows = text.split('\n').slice(1);
 allProducts = rows.map(r => {let c=r.split(','); return {id:c[0], name:c[1], price:c[2], mrp:c[3], image:c[4], desc:c[5]}});
