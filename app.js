@@ -2,7 +2,7 @@
 let cart = [];
 let allProducts = [];
 let currentUser = null;
-let csvUrl = "https://sheet.zohopublic.in/sheet/published/garve6417220ecef8419a99c94e39cbea9046?download=csv&sheetname=Sheet1";
+let csvUrl = "https://
 
 // Page Load होते ही
 window.onload = function() {
