@@ -1,27 +1,4 @@
-const allProducts = [
-  
 
-function loadProducts(){
-  let products = [...allProducts];
-  showProducts(products);
-}
-
-function showProducts(products){
-  let grid = document.getElementById('productsGrid');
-  if(!grid) return;
-  if(products.length == 0){
-    grid.innerHTML = '<p style="padding:20px">No Products Found</p>';
-    return;
-  }
-  grid.innerHTML = products.map(p => `
-    <div class="product-card" onclick="addToCart(${p.id})" style="border:1px solid #ddd;padding:10px;margin:10px;display:inline-block;width:150px">
-      <img src="${p.image}" style="width:100%;height:100px;object-fit:cover">
-      <h3 style="font-size:14px;margin:5px 0">${p.name}</h3>
-      <p style="margin:5px 0">₹${p.price} <s>₹${p.mrp}</s></p>
-      <small>${p.desc}</small>
-    </div>
-  `).join('');
-}
 // Global Variables
 let cart = [];
 let currentUser = null;
