@@ -1,6 +1,5 @@
 const allProducts = [
-  {id:1, name:"Polybion LC", price:189, mrp:210, image:"https://via.placeholder.com/150", desc:"Multivitamin + Lycopene Tablet - 30 Tablets"}
-];
+  
 
 function loadProducts(){
   let products = [...allProducts];
@@ -269,18 +268,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function addToCart(id){
-  let p = allProducts.find(x => x.id == id);
-  if(!p) return;
-  let item = cart.find(x => x.id == id);
-  if(item) item.qty++;
-  else cart.push({...p, qty:1});
-  updateCartCount();
-  toast(p.name + " Cart में Add हो गया");
-}
-
-function updateCartCount(){
-  let count = cart.reduce((a,b) => a + b.qty, 0);
-  let el = document.getElementById('cartCount');
-  if(el) el.innerText = count;
-}
