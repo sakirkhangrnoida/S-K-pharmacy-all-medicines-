@@ -2,8 +2,27 @@ const allProducts = [
   {id:1, name:"Polybion LC", price:189, mrp:210, image:"https://via.placeholder.com/150", desc:"Multivitamin + Lycopene Tablet - 30 Tablets"}
 ];
 
-let products = [...allProducts];
-showProducts(products);
+function loadProducts(){
+  let products = [...allProducts];
+  showProducts(products);
+}
+
+function showProducts(products){
+  let grid = document.getElementById('productsGrid');
+  if(!grid) return;
+  if(products.length == 0){
+    grid.innerHTML = '<p style="padding:20px">No Products Found</p>';
+    return;
+  }
+  grid.innerHTML = products.map(p => `
+    <div class="product-card" onclick="addToCart(${p.id})" style="border:1px solid #ddd;padding:10px;margin:10px;display:inline-block;width:150px">
+      <img src="${p.image}" style="width:100%;height:100px;object-fit:cover">
+      <h3 style="font-size:14px;margin:5px 0">${p.name}</h3>
+      <p style="margin:5px 0">₹${p.price} <s>₹${p.mrp}</s></p>
+      <small>${p.desc}</small>
+    </div>
+  `).join('');
+}
 // Global Variables
 let cart = [];
 let currentUser = null;
@@ -250,3 +269,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function addToCart(id){
+  let p = allProducts.find(x => x.id == id);
+  if(!p) return;
+  let item = cart.find(x => x.id == id);
+  if(item) item.qty++;
+  else cart.push({...p, qty:1});
+  updateCartCount();
+  toast(p.name + " Cart में Add हो गया");
+}
+
+function updateCartCount(){
+  let count = cart.reduce((a,b) => a + b.qty, 0);
+  let el = document.getElementById('cartCount');
+  if(el) el.innerText = count;
+}
