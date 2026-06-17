@@ -75,19 +75,6 @@ function toggleRead(n){
   }
 }
 
-// Google Sheet से Product Load
-async function loadProducts(){
-  try {
-    let res = await fetch("https://corsproxy.io/?" + csvUrl);
-let text = await res.text();
-let rows = text.split('\n').slice(1);
-allProducts = rows.map(r => {let c=r.split(','); return {id:c[0], name:c[1], price:c[2], mrp:c[3], image:c[4], desc:c[5]}});
-    showProducts(allProducts);
-  } catch(e){
-    document.getElementById('productGrid').innerHTML = '<p style="text-align:center;padding:50px">Products Load नहीं हुए. Sheet ID चेक करो</p>';
-    toast('Sheet Public नहीं है');
-  }
-}
 
 // Products Show
 function showProducts(products){
