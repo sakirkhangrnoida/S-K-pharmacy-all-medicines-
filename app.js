@@ -1,6 +1,11 @@
+const allProducts = [
+  {id:1, name:"Polybion LC", price:189, mrp:210, image:"https://via.placeholder.com/150", desc:"Multivitamin + Lycopene Tablet - 30 Tablets"}
+];
+
+let products = [...allProducts];
+showProducts(products);
 // Global Variables
 let cart = [];
-let allProducts = [];
 let currentUser = null;
 let csvUrl = "https://
 
@@ -244,3 +249,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
