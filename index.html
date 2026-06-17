@@ -221,7 +221,7 @@ marquee{font-weight:600}
 </div>
 
 <!-- 3 Dot Menu Dropdown -->
-<div id="threeDotMenu">
+<div id="threeDotMenu" style="display:none; position:absolute; right:10px; top:50px; background:white; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:1000">
   <div class="section">Account</div>
   <a href="#" onclick="showAuthBox()">Login / Signup</a>
   <a href="#" onclick="showMyAccount()">My Account</a>
@@ -392,34 +392,6 @@ function placeOrder(product, price, qty){
     console.error("Order Error: ", err);
     alert("Order Fail: " + err.message);
   });
-}
-function loadProducts(){
-  Papa.parse(csvUrl, {
-    download: true,
-    header: true,
-    complete: function(results){
-      showProducts(results.data);
-    }
-  });
-}
-
-function showProducts(products){
-  let grid = document.getElementById('productGrid');
-  if(!grid) return;
-  grid.innerHTML = products.map(p => `
-    <div class="product-card" onclick="addToCart(${p.id})">
-      <img src="${p.image}">
-      <h3>${p.name}</h3>
-      <p>₹${p.price} <s>₹${p.mrp}</s></p>
-    </div>
-  `).join('');
-}
-
-function updateCartCount(){
-  let count = cart.reduce((a,b) => a + b.qty, 0);
-  let el = document.getElementById('cartCount');
-  if(el) el.innerText = count;
-  }
 </script>
 </body>
 </html>
