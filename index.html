@@ -207,7 +207,7 @@ marquee{font-weight:600}
 
 <!-- Product Grid -->
 <h2 id="categoryTitle" style="padding:10px;font-size:18px">All Products</h2>
-<div id="productsGrid">Loading Products...</div>
+<div id="productGrid">Loading Products...</div>
 <!-- Overlay -->
 <div id="overlay" onclick="closeSidebar()"></div>
 
@@ -393,8 +393,33 @@ function placeOrder(product, price, qty){
     alert("Order Fail: " + err.message);
   });
 }
+function loadProducts(){
+  Papa.parse(csvUrl, {
+    download: true,
+    header: true,
+    complete: function(results){
+      showProducts(results.data);
+    }
+  });
+}
+
+function showProducts(products){
+  let grid = document.getElementById('productGrid');
+  if(!grid) return;
+  grid.innerHTML = products.map(p => `
+    <div class="product-card" onclick="addToCart(${p.id})">
+      <img src="${p.image}">
+      <h3>${p.name}</h3>
+      <p>₹${p.price} <s>₹${p.mrp}</s></p>
+    </div>
+  `).join('');
+}
+
+function updateCartCount(){
+  let count = cart.reduce((a,b) => a + b.qty, 0);
+  let el = document.getElementById('cartCount');
+  if(el) el.innerText = count;
+  }
 </script>
 </body>
 </html>
-</body>
-    </html>
