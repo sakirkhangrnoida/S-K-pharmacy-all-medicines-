@@ -245,3 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function toggleMenu(){
+  let menu = document.getElementById('toggleMenu');
+  if(!menu) return;
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
