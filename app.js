@@ -83,12 +83,9 @@ function toggleMenu(){
     console.log('❌ threeDotMenu नहीं मिला');
     return;
   }
-  
-  if(menu.style.display === 'block'){
-    menu.style.display = 'none';
-  } else {
-    menu.style.display = 'block';
-  }
+  console.log('✅ Menu मिला');
+  menu.classList.toggle('menu-hidden');
+  menu.classList.toggle('menu-show');
 }
 
 // AUTO Filter - All + Category नया जोड़ा
