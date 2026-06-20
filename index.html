@@ -16,7 +16,6 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3497742039075939" crossorigin="anonymous"></script>
 
-<!-- Google Console -->
 <meta name="google-site-verification" content="4-AUDY9KyYpR15UhDKRA1NLMZ_VDn8DedfcVagnSo" />
 <meta name="description" content="S K Pharmacy - दवाई, किराना, पूरी डिलीवरी सिलापुर, दनकौर और ग्रेटर नोएडा की दवाइयां और प्रोडक्ट्स उपलब्ध हैं।">
 
@@ -42,6 +41,9 @@ body{background:#f4f7f6;padding-bottom:100px;color:#333}
 .cart-icon{position:relative;text-decoration:none;color:white;display:block;cursor:pointer}
 .cart-count{position:absolute;top:-8px;right:-8px;background:#ff9900;color:#232f3e;border-radius:50%;padding:2px 6px;font-size:11px;font-weight:bold}
 
+/* 3 Dot Wrapper */
+.menu-wrapper{position:relative}
+
 /* Nav Bar */
 .nav-bar{background:#232f3e;padding:8px 10px;display:flex;gap:15px;font-size:13px;overflow-x:auto;white-space:nowrap}
 .nav-bar span{color:white;cursor:pointer;font-weight:500;padding:5px 8px}
@@ -61,14 +63,14 @@ marquee{font-weight:600}
 /* Product Grid */
 #productGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:15px}
 
-/* Product Card - हर प्रोडेक्ट में सब अपने आप */
+/* Product Card */
 .product{background:#fff;padding:12px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:relative;cursor:pointer}
 .product:hover{box-shadow:0 4px 12px rgba(0,0,0,0.15)}
 .product img{width:100%;height:150px;object-fit:contain;margin-bottom:8px}
 .product h3{font-size:14px;margin:5px 0;height:35px;overflow:hidden;line-height:18px}
-.product.price{margin:5px 0;font-size:16px;font-weight:bold;color:#b12704}
-.product.mrp{color:#888;font-size:12px;text-decoration:line-through}
-.product.off{background:#cc0c39;color:#fff;padding:2px 6px;border-radius:3px;font-size:12px;margin-left:5px}
+.price{margin:5px 0;font-size:16px;font-weight:bold;color:#b12704}
+.mrp{color:#888;font-size:12px;text-decoration:line-through}
+.off{background:#cc0c39;color:#fff;padding:2px 6px;border-radius:3px;font-size:12px;margin-left:5px}
 
 /* Product के अंदर 3 Dot */
 .prod-menu{position:absolute;top:8px;right:8px;cursor:pointer;font-size:18px;background:white;padding:2px 6px;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2);z-index:5}
@@ -98,7 +100,7 @@ marquee{font-weight:600}
 #toast{display:none;position:fixed;top:70px;right:20px;background:#232f3e;color:white;padding:14px 20px;border-radius:8px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:250px;font-size:14px}
 
 /* 3 Dot Menu */
-#threeDotMenu{display:none;position:absolute;right:10px;top:50px;background:white;color:#333;min-width:250px;box-shadow:0 4px 12px rgba(0,0,0,0.3);border-radius:8px;z-index:2000;max-height:80vh;overflow-y:auto}
+#threeDotMenu{display:none;position:absolute;right:0;top:40px;background:white;color:#333;min-width:250px;box-shadow:0 4px 12px rgba(0,0,0,0.3);border-radius:8px;z-index:2000;max-height:80vh;overflow-y:auto}
 #threeDotMenu a{display:block;padding:12px 20px;text-decoration:none;color:#333;border-bottom:1px solid #eee;font-size:14px}
 #threeDotMenu a:hover{background:#f3f3f3}
 #threeDotMenu.section{font-weight:bold;background:#232f3e;color:white;padding:10px 20px;position:sticky;top:0}
@@ -154,7 +156,6 @@ marquee{font-weight:600}
 
     <input type="text" id="searchInput" placeholder="बोल कर या टाइप करके खोजें...">
 
-    <!-- Voice Search Button -->
     <button id="voiceBtn" onclick="startVoiceSearch()">🎤</button>
 
     <button onclick="searchProducts()">Search</button>
@@ -168,15 +169,46 @@ marquee{font-weight:600}
     <div style="font-size:11px;font-weight:bold">Cart</div>
   </div>
 
-  <div onclick="toggleMenu()" style="cursor:pointer;font-size:24px;padding:0 5px">⋮</div>
+  <!-- 3 Dot Button + Menu एक साथ -->
+  <div class="menu-wrapper">
+    <div onclick="toggleMenu()" style="cursor:pointer;font-size:24px;padding:0 5px">⋮</div>
+    <div id="threeDotMenu">
+      <div class="section">Account</div>
+      <a href="#" onclick="showAuthBox()">Login / Signup</a>
+      <a href="#" onclick="showMyAccount()">My Account</a>
+      <a href="orders.html">My Orders</a>
+      <a href="track.html">Track Order Live</a>
+      <a href="#" onclick="showPrime()">Prime Subscribe</a>
+
+      <div class="section">Shop By Category</div>
+      <a href="#" onclick="filterCategory('All')">All</a>
+      <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
+      <a href="#" onclick="filterCategory('Skin Care')">Skin Care</a>
+      <a href="#" onclick="filterCategory('Baby Care')">Baby Care</a>
+      <a href="#" onclick="filterCategory('Health Care')">Health Care</a>
+
+      <div class="section">Settings - 10 Page</div>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact - Greater Noida, Dankaur, Silapur</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
+      <a href="help.html">Help & Support</a>
+      <a href="customer.html">Customer Service</a>
+      <a href="sports.html">Sports</a>
+      <a href="condition.html">Conditions</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
 </div>
 
 <!-- Nav Bar -->
 <div class="nav-bar">
-  <span onclick="openSidebar()"><i class="fas fa-bars"></i> All</span>
+  <span onclick="filterCategory('All')"><i class="fas fa-bars"></i> All</span>
   <span onclick="filterCategory('Medicines')">Medicines</span>
   <span onclick="filterCategory('Skin Care')">Skin Care</span>
   <span onclick="filterCategory('Baby Care')">Baby Care</span>
+  <span onclick="filterCategory('Health Care')">Health Care</span>
   <span onclick="showModal('prime')">Health</span>
   <span onclick="showModal('contact')">Customer Service</span>
   <span onclick="showModal('pharmacy')">Pharmacy</span>
@@ -208,6 +240,7 @@ marquee{font-weight:600}
 <!-- Product Grid -->
 <h2 id="categoryTitle" style="padding:10px;font-size:18px">All Products</h2>
 <div id="productGrid">Loading Products...</div>
+
 <!-- Overlay -->
 <div id="overlay" onclick="closeSidebar()"></div>
 
@@ -218,35 +251,6 @@ marquee{font-weight:600}
     <span onclick="closeSidebar()" style="cursor:pointer;font-size:20px">×</span>
   </div>
   <div id="sidebarContent" style="padding:15px"></div>
-</div>
-
-<!-- 3 Dot Menu Dropdown -->
-<div id="threeDotMenu" style="display:none; position:absolute; right:10px; top:50px; background:white; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:1000">
-  <div class="section">Account</div>
-  <a href="#" onclick="showAuthBox()">Login / Signup</a>
-  <a href="#" onclick="showMyAccount()">My Account</a>
-<a href="orders.html">My Orders</a>
-<a href="track.html">Track Order Live</a>
-  <a href="#" onclick="showPrime()">Prime Subscribe</a>
-
-  <div class="section">Shop By Category</div>
-  <a href="#" onclick="filterCategory('All')">All</a>
-  <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
-  <a href="#" onclick="filterCategory('Skin Care')">Skin Care</a>
-  <a href="#" onclick="filterCategory('Gifts')">Gift Cards</a>
-  <a href="#" onclick="filterCategory('Deals')">Today's Deals</a>
-
-  <div class="section">Settings - 10 Page</div>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact - Greater Noida, Dankaur, Silapur</a>
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="refund.html">Refund Policy</a>
-  <a href="terms.html">Terms & Conditions</a>
-  <a href="help.html">Help & Support</a>
-  <a href="customer.html">Customer Service</a>
-  <a href="sports.html">Sports</a>
-  <a href="condition.html">Conditions</a>
-  <a href="#" onclick="logout()">Logout</a>
 </div>
 
 <!-- Auth Box -->
@@ -305,7 +309,7 @@ marquee{font-weight:600}
   </div>
 
   <div style="padding:30px 20px;text-align:center;border-bottom:1px solid #3a4553">
-    <img src="img/logo.jpg" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px" alt="S K Pharmacy">
+    <img src="joy.jpg" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px" alt="S K Pharmacy">
     <div style="display:flex;justify-content:center;gap:10px">
       <select style="background:#232f3e;color:white;border:1px solid #848688;padding:8px 12px;border-radius:4px">
         <option>English</option>
@@ -326,32 +330,13 @@ marquee{font-weight:600}
   </div>
 </div>
 
-<!-- Firebase SDK -->
+<!-- Firebase SDK - सिर्फ 1 बार -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-
-<script>
-const firebaseConfig = {
-  apiKey: "तेरा-API-KEY",
-  authDomain: "तेरा-PROJECT.firebaseapp.com",
-  projectId: "तेरा-PROJECT-ID",
-  storageBucket: "तेरा-BUCKET",
-  messagingSenderId: "XXX",
-  appId: "XXX"
-};
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-</script>
-
-<script src="app.js"></script>
-<!-- Firebase SDK - Final -->
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
 <script>
-// Firebase Init - Final Config
+// Firebase Init - सिर्फ 1 बार
 const firebaseConfig = {
   apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
   authDomain: "grnoida-store.firebaseapp.com",
@@ -362,36 +347,10 @@ const firebaseConfig = {
   appId: "1:665639961400:web:cb704b0209b910fc6a77cd"
 };
 firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 const db = firebase.database();
-
-// Order Save - Final Function
-function placeOrder(product, price, qty){
-  if(!product || !price || !qty){
-    console.error("Product, Price, Qty चाहिए");
-    return;
-  }
-  
-  let orderId = 'SKP' + Date.now();
-  let now = new Date().toISOString();
-
-  db.ref('orders/' + orderId).set({
-    id: orderId,
-    name: 'Customer', // बाद में Form से
-    phone: '0000',
-    address: 'Address',
-    product: product,
-    qty: qty,
-    price: price,
-    total: price * qty,
-    status: 'placed',
-    times: { placed: now }
-  }).then(() => {
-    console.log("Order Saved: " + orderId);
-    window.location.href = 'track.html?order=' + orderId;
-  }).catch((err) => {
-    console.error("Order Error: ", err);
-    alert("Order Fail: " + err.message);
-  });
 </script>
+
+<script src="app.js"></script>
 </body>
 </html>
