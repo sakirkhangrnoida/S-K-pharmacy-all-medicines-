@@ -59,7 +59,7 @@ window.onload = function() {
 
 // AUTO Category - तेरा पूरा वाला वही
 function autoCategory(name, desc=""){
-  let text = (name + " + desc).toLowerCase(); // FIX: + desc था, " + desc कर दिया
+  let text = (name + " " + desc).toLowerCase();
   if(text.includes('tablet') || text.includes('syrup') || text.includes('capsule') || text.includes('paracetamol') || text.includes('dolo') || text.includes('crocin') || text.includes('medicine')) return "Medicines";
   if(text.includes('facewash') || text.includes('cream') || text.includes('gel') || text.includes('lotion') || text.includes('soap') || text.includes('shampoo') || text.includes('skin')) return "Skin Care";
   if(text.includes('baby') || text.includes('diaper') || text.includes('powder') || text.includes('oil') || text.includes('wipes')) return "Baby Care";
@@ -176,12 +176,31 @@ function showProducts(products){
       </div>
     </div>
   `}).join('');
+  
+  // अब product dropdown को properly setup करो
+  setupProductMenus();
 }
 
-// Product 3 Dot Menu
+// Product 3 Dot Menu - FIXED अब display style से काम करेगा
 function toggleProdMenu(id){
   let menu = document.getElementById('prodMenu' + id);
-  if(menu) menu.style.display = menu.style.display === 'block'? 'none' : 'block';
+  if(!menu) return;
+  
+  // पहले सब menu बंद करो
+  document.querySelectorAll('.prod-dropdown').forEach(m => {
+    if(m.id !== 'prodMenu' + id) m.style.display = 'none';
+  });
+  
+  // अब selected menu को toggle करो
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Product Menus को Setup करो
+function setupProductMenus(){
+  // सब Product Menus default से hidden रखो
+  document.querySelectorAll('.prod-dropdown').forEach(menu => {
+    menu.style.display = 'none';
+  });
 }
 
 // Search + Voice Search
@@ -304,10 +323,19 @@ function logout(){
   toast('Logout हो गया');
 }
 
+// Missing Functions को add किया
+function showMyAccount(){
+  toast('My Account Page खुलेगा');
+}
+
+function showPrime(){
+  toast('Prime Subscription अभी available नहीं है');
+}
+
 // Orders
 function showOrders(){
-  let html = '<h2>Live Order Track</h2><div style="display:flex;justify-content:space-between;margin:30px 0"><span>📦 Ordered</span><span>🚚 Shipped</span><span>✅ Delivered</span></div><p>Status: Processing</p>';
-  document.getElementById('settingsPopup').innerHTML = html + '<button onclick="closePopup(\'settingsPopup\')" style="width:100%;padding:12px;background:#999;color:white;border:none;border-radius:8px;margin-top:15px">Close</button>';
+  let html = '<h2>Live Order Track</h2><div style="display:flex;justify-content:space-between;margin:30px 0"><span>📦 Ordered</span><span>🚚 Shipped</span><span>✅ Delivered</span></div><p>Status: Order Processing</p>';
+  document.getElementById('settingsPopup').innerHTML = html + '<button onclick="closePopup(\'settingsPopup\')" style="width:100%;padding:12px;background:#999;color:white;border:none;border-radius:8px;margin-top:10px">Close</button>';
   document.getElementById('settingsPopup').style.display = 'block';
 }
 
@@ -321,11 +349,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// बाहर Click = Menu बंद
+// बाहर Click = सब Menu बंद करो
 window.onclick = function(e){
-  if(!e.target.closest('[onclick*="toggleMenu"]') &&!e.target.closest('.prod-menu')){
+  // Top Menu बंद करो
+  if(!e.target.closest('[onclick*="toggleMenu"]')){
     let menu = document.getElementById('threeDotMenu');
     if(menu) menu.style.display = 'none';
+  }
+  
+  // Product Menus बंद करो (बाहर click किया)
+  if(!e.target.closest('.prod-menu') && !e.target.closest('.prod-dropdown')){
+    document.querySelectorAll('.prod-dropdown').forEach(m => m.style.display = 'none');
   }
 }
 
