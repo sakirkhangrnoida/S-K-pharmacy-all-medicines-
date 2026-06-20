@@ -1,3 +1,36 @@
+console.log('✅ app.js लोड हो गया! अब Function Check कर रहा हूं...');
+
+// Function Checker - हर Function बना है या नहीं
+window.onload = function() {
+  console.log('=== FUNCTION CHECK REPORT ===');
+
+  let functions = ['toggleMenu', 'showCart', 'showAuthBox', 'loadProducts', 'showProducts', 'addToCart', 'searchProducts', 'toast'];
+
+  functions.forEach(fn => {
+    if(typeof window[fn] === 'function'){
+      console.log('✅', fn, '= OK');
+    } else {
+      console.error('❌', fn, '= MISSING! app.js में ये function नहीं मिला');
+      console.log('FIX: app.js में डाल दे -> function', fn, '(){ }');
+    }
+  });
+
+  // HTML Element Checker
+  console.log('=== HTML ELEMENT CHECK REPORT ===');
+  let elements = ['threeDotMenu', 'toast', 'cartCount', 'productGrid', 'searchInput'];
+
+  elements.forEach(id => {
+    if(document.getElementById(id)){
+      console.log('✅ #', id, '= मिला');
+    } else {
+      console.error('❌ #', id, '= नहीं मिला! index.html में ये ID वाला div बना');
+      console.log('FIX: <div id="', id, '"></div>');
+    }
+  });
+
+  console.log('=== CHECK खत्म ===');
+  console.log('अब ⋮ पे क्लिक कर और Console देख। चोर खुद बता देगा कहां है।');
+};
 // Global Variables
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentUser = null;
