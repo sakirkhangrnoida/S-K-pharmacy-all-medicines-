@@ -65,6 +65,24 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
 @media (max-width: 600px) { 
   .menu-show { right:-100px !important; min-width:260px !important; } 
 }
+  /* Product Card + Popup CSS */
+.product { border:1px solid #ddd; padding:10px; border-radius:8px; background:#fff; text-align:center; }
+.product img { width:100%; height:160px; object-fit:contain; cursor:pointer; }
+.product h4 { font-size:14px; margin:8px 0; height:40px; overflow:hidden; }
+.product .price { font-size:18px; font-weight:700; color:#b12704; margin:5px 0; }
+.btns button { margin:3px; padding:6px 10px; border:none; border-radius:4px; cursor:pointer; font-size:12px; }
+.btn-cart { background:#ffd814; } .btn-buy { background:#ffa41c; color:#fff; } .btn-share, .btn-like { background:#eee; }
+.comment-box input { width:100%; padding:5px; margin-top:8px; border:1px solid #ccc; border-radius:4px; font-size:12px; }
+
+.product-popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:10000; justify-content:center; align-items:center; }
+.popup-box { background:#fff; width:90%; max-width:800px; border-radius:8px; display:flex; gap:20px; padding:20px; position:relative; }
+.close-btn { position:absolute; top:10px; right:15px; font-size:30px; cursor:pointer; color:#999; }
+.popup-left img { width:300px; height:300px; object-fit:contain; }
+.popup-right h2 { font-size:22px; margin-bottom:10px; }
+.popup-price { font-size:28px; color:#b12704; font-weight:700; margin:15px 0; }
+.popup-desc { font-size:14px; color:#555; line-height:22px; margin-bottom:20px; }
+
+@media(max-width:600px){ .popup-box{ flex-direction:column; } .popup-left img{ width:100%; height:250px; } }
 </style>
 </head>
 <body>
@@ -133,40 +151,26 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
 
 <div class="container">
   <div class="products" id="productList">
-    <!-- Product 1 -->
-    <div class="product" data-category="Medicines" data-name="Paracetamol 500mg" data-price="15" data-id="p1">
-      <img src="https://via.placeholder.com/200x160" alt="Paracetamol" onclick="openAmazonStyle(this)">
-      <h4>Paracetamol 500mg Tablet 15 Strips</h4>
-      <div class="price">₹15</div>
-      <div class="btns">
-        <button class="btn-cart" onclick="addToCart(this)">Add to Cart</button>
-        <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
-        <button class="btn-share" onclick="shareProduct(this)"><i class="fa fa-share"></i></button>
-        <button class="btn-like" onclick="likeProduct(this)"><i class="fa fa-heart"></i> <span class="likeCount">0</span></button>
-      </div>
-      <div class="comment-box">
-        <input type="text" placeholder="Comment लिखो..." onkeypress="if(event.key==='Enter') addComment(this)">
-        <div class="comment-list" id="comments-p1"></div>
+    </div>
+
+<!-- Product Detail Popup - Amazon Style -->
+<div class="product-popup" id="productPopup">
+  <div class="popup-box">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <div class="popup-left">
+      <img id="popupImg" src="" alt="">
+    </div>
+    <div class="popup-right">
+      <h2 id="popupName"></h2>
+      <div class="popup-price" id="popupPrice"></div>
+      <div class="popup-desc">MRP: ₹200 <span style="color:green;">85% off</span><br>
+      Delivery: Kal tak, Greater Noida 203201<br>
+      COD Available | 7 Days Return</div>
+      <div class="popup-btns">
+        <button class="btn-cart" id="popupCart">Add to Cart</button>
+        <button class="btn-buy" id="popupBuy">Buy Now</button>
       </div>
     </div>
-    
-    <!-- Product 2 -->
-    <div class="product" data-category="Wellness" data-name="Vitamin C 500mg" data-price="120" data-id="p2">
-      <img src="https://via.placeholder.com/200x160" alt="Vitamin C" onclick="openAmazonStyle(this)">
-      <h4>Vitamin C 500mg Immunity Booster</h4>
-      <div class="price">₹120</div>
-      <div class="btns">
-        <button class="btn-cart" onclick="addToCart(this)">Add to Cart</button>
-        <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
-        <button class="btn-share" onclick="shareProduct(this)"><i class="fa fa-share"></i></button>
-        <button class="btn-like" onclick="likeProduct(this)"><i class="fa fa-heart"></i> <span class="likeCount">0</span></button>
-      </div>
-      <div class="comment-box">
-        <input type="text" placeholder="Comment लिखो..." onkeypress="if(event.key==='Enter') addComment(this)">
-        <div class="comment-list" id="comments-p2"></div>
-      </div>
-    </div>
-  </div>
 
   <!-- Map Greater Noida Dankaur Silapur 203201 -->
   <div class="map-box">
