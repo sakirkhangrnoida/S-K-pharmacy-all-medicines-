@@ -79,8 +79,16 @@ function toast(msg){
 // 3 Dot Menu Toggle - FIXED: सिर्फ 1 बार रहेगा अब
 function toggleMenu(){
   let menu = document.getElementById('threeDotMenu');
-  if(!menu) return;
-  menu.style.display = menu.style.display === 'block'? 'none' : 'block';
+  if(!menu) {
+    console.log('❌ threeDotMenu नहीं मिला');
+    return;
+  }
+  
+  if(menu.style.display === 'block'){
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'block';
+  }
 }
 
 // AUTO Filter - All + Category नया जोड़ा
