@@ -2,19 +2,21 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentUser = null;
 let allProducts = [];
-let csvUrl = "https://
+let csvUrl = ""; // FIX 1: "https:// बंद कर दिया
 
 // Page Load होते ही
 window.onload = function() {
   loadProducts();
   setupLinks();
-  auth.onAuthStateChanged(user => {
-    currentUser = user;
-    updateCartCount();
-  });
+  if(typeof auth!== 'undefined'){ // FIX: Firebase check
+    auth.onAuthStateChanged(user => {
+      currentUser = user;
+      updateCartCount();
+    });
+  }
 };
 
-// AUTO Category - तू सिर्फ name डालेगा
+// AUTO Category
 function autoCategory(name, desc=""){
   let text = (name + " + desc).toLowerCase();
   if(text.includes('tablet') || text.includes('syrup') || text.includes('capsule') || text.includes('paracetamol') || text.includes('dolo') || text.includes('crocin') || text.includes('medicine')) return "Medicines";
@@ -24,7 +26,7 @@ function autoCategory(name, desc=""){
   return "General";
 }
 
-// Toast - Alert की जगह
+// Toast
 function toast(msg){
   let t = document.getElementById('toast');
   if(!t) return;
@@ -33,14 +35,14 @@ function toast(msg){
   setTimeout(() => t.style.display = 'none', 3000);
 }
 
-// 3 Dot Menu Toggle - FIXED: सिर्फ 1 बार रहेगा अब
+// 3 Dot Menu Toggle
 function toggleMenu(){
   let menu = document.getElementById('threeDotMenu');
   if(!menu) return;
   menu.style.display = menu.style.display === 'block'? 'none' : 'block';
 }
 
-// AUTO Filter - All + Category नया जोड़ा
+// AUTO Filter
 function filterCategory(cat){
   let title = document.getElementById('categoryTitle');
   if(title) title.innerText = cat === 'All'? 'All Products' : cat;
@@ -54,9 +56,8 @@ function filterCategory(cat){
   toggleMenu();
 }
 
-// सब Link एक ही JS से Open - 20 Page का काम
+// Links Setup
 function setupLinks(){
-  // 3 Dot Menu के सारे Link
   document.querySelectorAll('#threeDotMenu a').forEach(link => {
     link.addEventListener('click', function(e){
       let href = this.getAttribute('href');
@@ -68,7 +69,6 @@ function setupLinks(){
     });
   });
 
-  // Footer के सारे Link
   document.querySelectorAll('.footer-links a').forEach(link => {
     link.addEventListener('click', function(e){
       let href = this.getAttribute('href');
@@ -80,14 +80,13 @@ function setupLinks(){
   });
 }
 
-// Page Open Function - एक ही Link सबके लिए
+// Page Open
 function openPage(page){
-  // GitHub Pages पे सीधा redirect
   window.location.href = page;
   toast(page.replace('.html','') + ' Page खुल रहा है...');
 }
 
-// Read More Toggle - 20 Page में काम आएगा
+// Read More Toggle
 function toggleRead(n){
   let d = document.getElementById('more'+n);
   let s = d.previousElementSibling;
@@ -100,7 +99,7 @@ function toggleRead(n){
   }
 }
 
-// Products Show - Auto Category लगा दिया
+// Products Show
 function showProducts(products){
   let grid = document.getElementById('productGrid');
   if(!grid) return;
@@ -121,7 +120,7 @@ function showProducts(products){
         <a href="#" onclick="event.stopPropagation(); wishlist('${p.id}')">❤️ Wishlist</a>
       </div>
 
-      <img src="${p.image || 'https://via.placeholder.com/150'}" alt="${p.name}">
+      <img src="${p.image || 'joy.jpg'}" alt="${p.name}">
       <h3>${p.name}</h3>
       <div class="price">₹${p.price} <span class="mrp">₹${p.mrp || p.price}</span> <span class="off">${off}% Off</span></div>
 
@@ -144,7 +143,7 @@ function toggleProdMenu(id){
   if(menu) menu.style.display = menu.style.display === 'block'? 'none' : 'block';
 }
 
-// Search + Voice Search
+// Search
 function searchProducts(){
   let query = document.getElementById('searchInput').value.toLowerCase();
   let filtered = allProducts.filter(p => p.name.toLowerCase().includes(query));
@@ -172,7 +171,7 @@ function startVoiceSearch(){
   toast('बोलो... 🎤');
 }
 
-// Cart System - तेरा पुराना वही
+// Cart System
 function addToCart(id){
   let p = allProducts.find(x => x.id == id);
   if(!p) return;
@@ -203,6 +202,7 @@ function showCart(){
   }
   document.getElementById('settingsPopup').innerHTML = html + '<button onclick="closePopup(\'settingsPopup\')" style="width:100%;padding:12px;background:#999;color:white;border:none;border-radius:8px;margin-top:10px">Close</button>';
   document.getElementById('settingsPopup').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
 }
 
 function checkout(){
@@ -242,6 +242,7 @@ function closePopup(id){
 function signup(){
   let e = document.getElementById('email').value;
   let p = document.getElementById('pass').value;
+  if(typeof auth === 'undefined'){ toast('Firebase नहीं लगा'); return; }
   auth.createUserWithEmailAndPassword(e,p).then(() => {
     toast('Account बन गया'); closePopup('authBox');
   }).catch(err => toast(err.message));
@@ -250,13 +251,14 @@ function signup(){
 function login(){
   let e = document.getElementById('email').value;
   let p = document.getElementById('pass').value;
+  if(typeof auth === 'undefined'){ toast('Firebase नहीं लगा'); return; }
   auth.signInWithEmailAndPassword(e,p).then(() => {
     toast('Login हो गया'); closePopup('authBox');
   }).catch(err => toast(err.message));
 }
 
 function logout(){
-  auth.signOut();
+  if(typeof auth!== 'undefined') auth.signOut();
   toast('Logout हो गया');
 }
 
@@ -265,6 +267,7 @@ function showOrders(){
   let html = '<h2>Live Order Track</h2><div style="display:flex;justify-content:space-between;margin:30px 0"><span>📦 Ordered</span><span>🚚 Shipped</span><span>✅ Delivered</span></div><p>Status: Processing</p>';
   document.getElementById('settingsPopup').innerHTML = html + '<button onclick="closePopup(\'settingsPopup\')" style="width:100%;padding:12px;background:#999;color:white;border:none;border-radius:8px;margin-top:15px">Close</button>';
   document.getElementById('settingsPopup').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
 }
 
 // Enter से Search
@@ -279,20 +282,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // बाहर Click = Menu बंद
 window.onclick = function(e){
-  if(!e.target.closest('[onclick*="toggleMenu"]') &&!e.target.closest('.prod-menu')){
+  if(!e.target.closest('[onclick*="toggleMenu"]') &&!e.target.closest('.prod-menu') &&!e.target.closest('#threeDotMenu')){
     let menu = document.getElementById('threeDotMenu');
     if(menu) menu.style.display = 'none';
   }
 }
 
-// CSV Load - तेरा पुराना कोड
+// FIX 2: CSV Load में Test Data डाल दिया
 function loadProducts(){
-  // तेरा CSV वाला कोड यहां रहेगा
+  allProducts = [
+    {id:1, name:"Paracetamol 500mg Tablet", price:10, mrp:20, image:"joy.jpg", desc:"Fever pain", likes:12},
+    {id:2, name:"Himalaya Neem Facewash", price:150, mrp:200, image:"joy.jpg", desc:"Skin care", likes:8},
+    {id:3, name:"Johnson Baby Powder", price:120, mrp:150, image:"joy.jpg", desc:"Baby care", likes:15},
+    {id:4, name:"Vitamin D3 Capsule", price:250, mrp:300, image:"joy.jpg", desc:"Health supplement", likes:5}
+  ];
+  showProducts(allProducts);
+  toast("4 Test Products Load हो गए");
 }
-// बाहर कहीं Click = 3 Dot Menu बंद
-window.onclick = function(e){
-  if(!e.target.closest('[onclick*="toggleMenu"]') && !e.target.closest('#threeDotMenu')){
-    let menu = document.getElementById('threeDotMenu');
-    if(menu) menu.style.display = 'none';
-  }
+
+// FIX 3: गायब Function Add कर दिए
+function openProductPage(id){
+  toast('Product ' + id + ' - Detail Page बाद में');
+}
+
+function wishlist(id){
+  let p = allProducts.find(x => x.id == id);
+  toast(p.name + ' Wishlist में Add हो गया ❤️');
+  toggleProdMenu(id);
 }
