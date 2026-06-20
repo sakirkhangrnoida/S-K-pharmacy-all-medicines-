@@ -1,3 +1,7 @@
+alert('JS चालू है');
+document.getElementById('productGrid').innerHTML = '<h2>Test Product - Paracetamol ₹10</h2>';
+document.getElementById('toast').innerText = 'Toast काम कर रहा';
+document.getElementById('toast').style.display = 'block';
 // Global Variables
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentUser = null;
