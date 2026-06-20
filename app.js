@@ -1,3 +1,116 @@
+// 1. Product की List - यहां से Auto बनेंगे सब
+const products = [
+  {id: "p1", name: "Paracetamol 500mg Tablet 15 Strips", price: 15, mrp: 200, img: "https://via.placeholder.com/200x160/ff4444/fff?text=Paracetamol", cat: "Medicines"},
+  {id: "p2", name: "Vitamin C 500mg Immunity Booster", price: 120, mrp: 250, img: "https://via.placeholder.com/200x160/44ff44/fff?text=Vitamin+C", cat: "Wellness"},
+  {id: "p3", name: "Dettol Handwash 200ml", price: 99, mrp: 120, img: "https://via.placeholder.com/200x160/4444ff/fff?text=Dettol", cat: "Personal Care"},
+  {id: "p4", name: "Johnson Baby Powder", price: 180, mrp: 220, img: "https://via.placeholder.com/200x160/ffaa44/fff?text=Johnson", cat: "Baby Care"}
+];
+
+// 2. Page Load होते ही Auto Product बन जाएंगे
+window.onload = function(){
+  loadProducts();
+}
+
+function loadProducts(){
+  const list = document.getElementById('productList');
+  if(!list) return;
+  list.innerHTML = '';
+  
+  products.forEach(p => {
+    list.innerHTML += `
+    <div class="product" data-category="${p.cat}" data-name="${p.name}" data-price="${p.price}" data-id="${p.id}">
+      <img src="${p.img}" alt="${p.name}" onclick="openAmazonStyle(this)">
+      <h4>${p.name}</h4>
+      <div class="price">₹${p.price}</div>
+      <div class="btns">
+        <button class="btn-cart" onclick="addToCart(this)">Add to Cart</button>
+        <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
+        <button class="btn-share" onclick="shareProduct(this)"><i class="fa fa-share"></i></button>
+        <button class="btn-like" onclick="likeProduct(this)"><i class="fa fa-heart"></i> <span class="likeCount">0</span></button>
+      </div>
+      <div class="comment-box">
+        <input type="text" placeholder="Comment लिखो..." onkeypress="if(event.key==='Enter') addComment(this)">
+        <div class="comment-list" id="comments-${p.id}"></div>
+      </div>
+    </div>`;
+  });
+}
+
+// 3. सारे Button का काम
+function addToCart(btn){
+  let count = document.getElementById('cartCount');
+  count.innerText = parseInt(count.innerText) + 1;
+  alert('Cart में Add हो गया!');
+}
+
+function buyNow(btn){
+  alert('Buy Now - Payment Page पर ले जा रहा हूं');
+}
+
+function shareProduct(btn){
+  const product = btn.closest('.product');
+  const name = product.dataset.name;
+  if(navigator.share){
+    navigator.share({title: name, text: 'Check this: '+name, url: window.location.href});
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert('Link Copy हो गया');
+  }
+}
+
+function likeProduct(btn){
+  let count = btn.querySelector('.likeCount');
+  count.innerText = parseInt(count.innerText) + 1;
+}
+
+function addComment(input){
+  if(input.value.trim() == '') return;
+  const id = input.closest('.product').dataset.id;
+  document.getElementById('comments-'+id).innerHTML += '<div style="font-size:12px;margin-top:5px;border-top:1px solid #eee;padding-top:3px;">'+input.value+'</div>';
+  input.value = '';
+}
+
+function searchProducts(){
+  let txt = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.product').forEach(p => {
+    if(p.dataset.name.toLowerCase().includes(txt)) p.style.display = 'block';
+    else p.style.display = 'none';
+  });
+}
+
+function filterCategory(cat){
+  document.querySelectorAll('.product').forEach(p => {
+    if(cat == 'All' || p.dataset.category == cat) p.style.display = 'block';
+    else p.style.display = 'none';
+  });
+  toggleMenu();
+}
+
+// 4. Amazon Style Popup
+function openAmazonStyle(img){
+  const product = img.closest('.product');
+  const name = product.dataset.name;
+  const price = product.dataset.price;
+  const imgSrc = img.src;
+  
+  document.getElementById('popupImg').src = imgSrc;
+  document.getElementById('popupName').innerText = name;
+  document.getElementById('popupPrice').innerText = '₹' + price;
+  
+  document.getElementById('popupCart').onclick = () => addToCart(product.querySelector('.btn-cart'));
+  document.getElementById('popupBuy').onclick = () => buyNow(product.querySelector('.btn-buy'));
+  
+  document.getElementById('productPopup').style.display = 'flex';
+}
+
+function closePopup(){
+  document.getElementById('productPopup').style.display = 'none';
+}
+
+// 5. 3 Dot Menu - Mobile Fix
+function toggleMenu(){
+  document.getElementById('threeDotMenu').classList.toggle('menu-show');
+}
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
