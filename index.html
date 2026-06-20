@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy - Greater Noida</title>
+<title>S K Pharmacy - Greater Noida 203201</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- तेरे पुराने Google Adsense, Console, Manager ID यहां लगी रहेंगी -->
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
 body { background:#f1f3f6; }
@@ -20,34 +21,46 @@ header { background:#2874f0; color:#fff; padding:12px 20px; position:sticky; top
 .menu-btn { cursor:pointer; font-size:24px; padding:5px 8px; border-radius:4px; }
 .menu-btn:hover { background:rgba(255,255,255,0.1); }
 .menu-hidden { display:none !important; }
-.menu-show { display:block !important; position:absolute; right:0; top:45px; background:#fff; min-width:250px; max-height:80vh; overflow-y:auto; border-radius:4px; box-shadow:0 4px 16px rgba(0,0,0,0.2); padding:8px 0; z-index:1001; }
+.menu-show { display:block !important; position:absolute; right:0; top:45px; background:#fff; min-width:280px; max-height:85vh; overflow-y:auto; border-radius:4px; box-shadow:0 4px 16px rgba(0,0,0,0.2); padding:8px 0; z-index:1001; }
 .menu-show .section { padding:10px 16px; font-size:12px; font-weight:600; color:#878787; text-transform:uppercase; border-bottom:1px solid #f0f0f0; margin-top:4px; }
 .menu-show a { display:block; padding:12px 16px; color:#212121; text-decoration:none; font-size:14px; transition:0.2s; }
 .menu-show a:hover { background:#f5f5f5; color:#2874f0; }
 
 /* News Ticker */
 .news-ticker { background:#ff9f00; color:#fff; padding:8px 0; overflow:hidden; white-space:nowrap; font-size:14px; font-weight:600; }
-.news-ticker span { display:inline-block; padding-left:100%; animation:scroll 20s linear infinite; }
+.news-ticker span { display:inline-block; padding-left:100%; animation:scroll 25s linear infinite; }
 @keyframes scroll { 0% { transform:translate(0,0); } 100% { transform:translate(-100%,0); } }
 
 .container { max-width:1200px; margin:20px auto; padding:0 15px; }
 .products { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:15px; }
-.product { background:#fff; padding:15px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1); transition:0.2s; }
-.product:hover { box-shadow:0 3px 16px rgba(0,0,0,0.15); }
+.product { background:#fff; padding:15px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1); }
 .product img { width:100%; height:160px; object-fit:contain; margin-bottom:10px; cursor:pointer; }
 .product h4 { font-size:14px; color:#212121; height:40px; overflow:hidden; line-height:20px; margin-bottom:8px; }
 .product .price { font-size:16px; font-weight:600; color:#212121; margin-bottom:8px; }
-.product .btns { display:flex; gap:8px; }
-.product button { flex:1; padding:8px; border:none; border-radius:2px; color:#fff; font-weight:600; cursor:pointer; font-size:13px; }
+.product .btns { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.product button { flex:1; min-width:80px; padding:8px; border:none; border-radius:2px; color:#fff; font-weight:600; cursor:pointer; font-size:12px; }
 .btn-cart { background:#ff9f00; }
 .btn-buy { background:#fb641b; }
+.btn-share { background:#25D366; }
+.btn-like { background:#ff6161; }
+
+/* Comment Box */
+.comment-box { border-top:1px solid #eee; padding-top:10px; margin-top:10px; }
+.comment-box input { width:100%; padding:8px; border:1px solid #ddd; border-radius:2px; font-size:12px; }
+.comment-list { font-size:12px; margin-top:8px; max-height:60px; overflow-y:auto; }
+.comment-list div { padding:3px 0; color:#555; }
 
 /* Map */
 .map-box { background:#fff; padding:15px; margin-top:20px; border-radius:4px; }
 .map-box iframe { width:100%; height:250px; border:0; border-radius:4px; }
 
 footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; text-align:center; font-size:13px; }
-footer p { margin:5px 0; }
+
+/* Login Popup */
+.login-popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center; }
+.login-box { background:#fff; padding:25px; border-radius:8px; width:90%; max-width:350px; }
+.login-box input { width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; margin-bottom:10px; }
+.login-box button { width:100%; padding:12px; background:#2874f0; color:#fff; border:none; border-radius:4px; font-weight:600; }
 </style>
 </head>
 <body>
@@ -57,90 +70,103 @@ footer p { margin:5px 0; }
     <div class="logo">S K Pharmacy</div>
     
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search medicines, wellness...">
+      <input type="text" id="searchInput" placeholder="Search medicines, wellness, personal care...">
       <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
     </div>
     
     <div class="header-right">
-      <div onclick="showLogin()"><i class="fa fa-user"></i><br>Login</div>
+      <div onclick="showLoginPopup()"><i class="fa fa-user"></i><br><span id="loginText">Login</span></div>
       <div style="position:relative;" onclick="showCart()">
         <i class="fa fa-shopping-cart" style="font-size:20px;"></i>
         <span class="cart-count" id="cartCount">0</span>
         <br>Cart
       </div>
       
-      <!-- 3 Dot Menu Button -->
+      <!-- 3 Dot Menu -->
       <div class="menu-wrapper">
         <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+        <div class="menu-hidden" id="threeDotMenu">
+          
+          <div class="section">Account</div>
+          <a href="orders.html"><i class="fa fa-box"></i> My Account</a>
+          <a href="track.html"><i class="fa fa-truck"></i> Track Order Live</a>
+          <a href="#"><i class="fa fa-crown"></i> Subscribe Prime</a>
+          <a href="#" onclick="showOrdersPanel()"><i class="fa fa-list"></i> Live Order Dekho - Admin Panel</a>
+
+          <div class="section">Shop By Category</div>
+          <a href="#" onclick="filterCategory('All')">All Products</a>
+          <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
+          <a href="#" onclick="filterCategory('Wellness')">Wellness</a>
+          <a href="#" onclick="filterCategory('Personal Care')">Personal Care</a>
+          <a href="#" onclick="filterCategory('Baby Care')">Baby Care</a>
+
+          <div class="section">Deals & Offers</div>
+          <a href="#" onclick="filterCategory('Deals')">Today Deals</a>
+          <a href="#" onclick="filterCategory('Gifts')">Gift Cards</a>
+          <a href="#">Gift Ideas</a>
+
+          <div class="section">Settings - Customer Service 10 Page</div>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact - 9258751739</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund.html">Refund Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="help.html">Help Center</a>
+          <a href="#">Sports Condition</a>
+          <a href="#">Support</a>
+          <a href="#">Shipping Info</a>
+          <a href="#">FAQ</a>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- News Ticker Line -->
+<!-- News Ticker Line - तेरी मांग वाली -->
 <div class="news-ticker">
-  <span>All Fresh Sell | Gift Cards | Gift Ideas | Subscribe Prime | Account List | COD Available | Free Delivery Greater Noida</span>
-</div>
-
-<!-- 3 Dot Menu -->
-<div class="menu-hidden" id="threeDotMenu">
-  <div class="section">Account</div>
-  <a href="#" onclick="showMyAccount()"><i class="fa fa-user-circle"></i> My Account</a>
-  <a href="#" onclick="showOrders()"><i class="fa fa-box"></i> My Orders</a>
-  <a href="#" onclick="trackOrder()"><i class="fa fa-truck"></i> Track Order Live</a>
-  <a href="#" onclick="showPrime()"><i class="fa fa-crown"></i> Subscribe Prime</a>
-
-  <div class="section">Shop By Category</div>
-  <a href="#" onclick="filterCategory('All')">All Products</a>
-  <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
-  <a href="#" onclick="filterCategory('Wellness')">Wellness</a>
-  <a href="#" onclick="filterCategory('Personal Care')">Personal Care</a>
-  <a href="#" onclick="filterCategory('Baby Care')">Baby Care</a>
-  
-  <div class="section">Deals & Offers</div>
-  <a href="#" onclick="filterCategory('Deals')">Today Deals</a>
-  <a href="#" onclick="filterCategory('Gifts')">Gift Cards</a>
-
-  <div class="section">Customer Service - 10 Page</div>
-  <a href="about.html">About Us</a>
-  <a href="contact.html">Contact - 9258751739, 7983006957</a>
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="refund.html">Refund Policy</a>
-  <a href="terms.html">Terms & Conditions</a>
-  <a href="help.html">Help Center</a>
-  <a href="support.html">Support</a>
-  <a href="shipping.html">Shipping Info</a>
-  <a href="faq.html">FAQ</a>
-  <a href="returns.html">Return Policy</a>
+  <span>All Fresh Sell | Gift Cards | Gift Ideas | Subscribe Prime | Account List | COD Available | Free Delivery Greater Noida Dankaur Silapur 203201 | Mobile: 9258751739, 7983006957</span>
 </div>
 
 <div class="container">
   <div class="products" id="productList">
-    <!-- तेरे सारे Product यहां Paste कर दे। data-category डालना -->
-    <div class="product" data-category="Medicines" data-name="Paracetamol 500mg" data-price="15">
-      <img src="https://via.placeholder.com/200x160" alt="Paracetamol" onclick="openProduct(this)">
-      <h4>Paracetamol 500mg Tablet</h4>
+    <!-- Product 1 -->
+    <div class="product" data-category="Medicines" data-name="Paracetamol 500mg" data-price="15" data-id="p1">
+      <img src="https://via.placeholder.com/200x160" alt="Paracetamol" onclick="openAmazonStyle(this)">
+      <h4>Paracetamol 500mg Tablet 15 Strips</h4>
       <div class="price">₹15</div>
       <div class="btns">
         <button class="btn-cart" onclick="addToCart(this)">Add to Cart</button>
         <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
+        <button class="btn-share" onclick="shareProduct(this)"><i class="fa fa-share"></i></button>
+        <button class="btn-like" onclick="likeProduct(this)"><i class="fa fa-heart"></i> <span class="likeCount">0</span></button>
+      </div>
+      <div class="comment-box">
+        <input type="text" placeholder="Comment लिखो..." onkeypress="if(event.key==='Enter') addComment(this)">
+        <div class="comment-list" id="comments-p1"></div>
       </div>
     </div>
     
-    <div class="product" data-category="Wellness" data-name="Vitamin C 500mg" data-price="120">
-      <img src="https://via.placeholder.com/200x160" alt="Vitamin C" onclick="openProduct(this)">
-      <h4>Vitamin C 500mg</h4>
+    <!-- Product 2 -->
+    <div class="product" data-category="Wellness" data-name="Vitamin C 500mg" data-price="120" data-id="p2">
+      <img src="https://via.placeholder.com/200x160" alt="Vitamin C" onclick="openAmazonStyle(this)">
+      <h4>Vitamin C 500mg Immunity Booster</h4>
       <div class="price">₹120</div>
       <div class="btns">
         <button class="btn-cart" onclick="addToCart(this)">Add to Cart</button>
         <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
+        <button class="btn-share" onclick="shareProduct(this)"><i class="fa fa-share"></i></button>
+        <button class="btn-like" onclick="likeProduct(this)"><i class="fa fa-heart"></i> <span class="likeCount">0</span></button>
+      </div>
+      <div class="comment-box">
+        <input type="text" placeholder="Comment लिखो..." onkeypress="if(event.key==='Enter') addComment(this)">
+        <div class="comment-list" id="comments-p2"></div>
       </div>
     </div>
   </div>
 
-  <!-- Map Greater Noida Dankaur Silapur -->
+  <!-- Map Greater Noida Dankaur Silapur 203201 -->
   <div class="map-box">
-    <h3 style="margin-bottom:10px;">Our Location - Silapur, Dankaur, Greater Noida 203201</h3>
+    <h3 style="margin-bottom:10px;">Our Location - Silapur, Dankaur, Greater Noida 203201, UP</h3>
     <iframe src="https://www.google.com/maps?q=Silapur,Dankaur,Greater+Noida+203201&output=embed"></iframe>
     <p style="margin-top:10px; font-size:13px;">Contact: 9258751739, 7983006957</p>
   </div>
@@ -151,6 +177,32 @@ footer p { margin:5px 0; }
   <p>Address: Silapur, Dankaur, Greater Noida, UP 203201</p>
   <p>Mobile: 9258751739, 7983006957</p>
 </footer>
+
+<!-- OTP Login Popup -->
+<div class="login-popup" id="loginPopup">
+  <div class="login-box">
+    <h3 style="margin-bottom:15px;">Login with OTP</h3>
+    <div id="phoneDiv">
+      <input type="tel" id="phoneNumber" placeholder="+91 9258751739">
+      <div id="recaptcha-container"></div>
+      <button onclick="sendOTP()">Send OTP</button>
+    </div>
+    <div id="otpDiv" style="display:none;">
+      <input type="text" id="otpCode" placeholder="Enter 6 digit OTP">
+      <button onclick="verifyOTP()" style="background:#fb641b;">Verify OTP</button>
+    </div>
+    <button onclick="closeLoginPopup()" style="margin-top:10px; background:none; border:none; color:#2874f0;">Close</button>
+  </div>
+</div>
+
+<!-- Admin Orders Panel -->
+<div class="login-popup" id="adminPanel" style="z-index:3000;">
+  <div class="login-box" style="max-width:600px; max-height:80vh; overflow-y:auto;">
+    <h3 style="margin-bottom:15px;">Live Orders - Admin Panel</h3>
+    <div id="ordersList">Loading...</div>
+    <button onclick="closeAdminPanel()" style="margin-top:10px; background:#ff6161;">Close</button>
+  </div>
+</div>
 
 <script type="module" src="app.js"></script>
 </body>
