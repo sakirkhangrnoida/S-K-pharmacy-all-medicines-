@@ -1,7 +1,7 @@
-
 // Global Variables
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentUser = null;
+let allProducts = [];
 let csvUrl = "https://
 
 // Page Load होते ही
@@ -14,6 +14,16 @@ window.onload = function() {
   });
 };
 
+// AUTO Category - तू सिर्फ name डालेगा
+function autoCategory(name, desc=""){
+  let text = (name + " + desc).toLowerCase();
+  if(text.includes('tablet') || text.includes('syrup') || text.includes('capsule') || text.includes('paracetamol') || text.includes('dolo') || text.includes('crocin') || text.includes('medicine')) return "Medicines";
+  if(text.includes('facewash') || text.includes('cream') || text.includes('gel') || text.includes('lotion') || text.includes('soap') || text.includes('shampoo') || text.includes('skin')) return "Skin Care";
+  if(text.includes('baby') || text.includes('diaper') || text.includes('powder') || text.includes('oil') || text.includes('wipes')) return "Baby Care";
+  if(text.includes('health') || text.includes('vitamin') || text.includes('protein') || text.includes('supplement')) return "Health Care";
+  return "General";
+}
+
 // Toast - Alert की जगह
 function toast(msg){
   let t = document.getElementById('toast');
@@ -23,10 +33,25 @@ function toast(msg){
   setTimeout(() => t.style.display = 'none', 3000);
 }
 
-// 3 Dot Menu Toggle - FIXED
+// 3 Dot Menu Toggle - FIXED: सिर्फ 1 बार रहेगा अब
 function toggleMenu(){
   let menu = document.getElementById('threeDotMenu');
+  if(!menu) return;
   menu.style.display = menu.style.display === 'block'? 'none' : 'block';
+}
+
+// AUTO Filter - All + Category नया जोड़ा
+function filterCategory(cat){
+  let title = document.getElementById('categoryTitle');
+  if(title) title.innerText = cat === 'All'? 'All Products' : cat;
+
+  let filtered = cat === 'All'? allProducts : allProducts.filter(p => {
+    let autoCat = p.category || autoCategory(p.name, p.desc);
+    return autoCat === cat;
+  });
+
+  showProducts(filtered);
+  toggleMenu();
 }
 
 // सब Link एक ही JS से Open - 20 Page का काम
@@ -75,17 +100,21 @@ function toggleRead(n){
   }
 }
 
-
-// Products Show
+// Products Show - Auto Category लगा दिया
 function showProducts(products){
   let grid = document.getElementById('productGrid');
+  if(!grid) return;
   if(products.length == 0){
     grid.innerHTML = '<p style="text-align:center;padding:50px">कोई Product नहीं मिला</p>';
     return;
   }
 
-  grid.innerHTML = products.map(p => `
-    <div class="product" onclick="openProductPage('${p.id}')">
+  grid.innerHTML = products.map(p => {
+    let cat = p.category || autoCategory(p.name, p.desc);
+    let off = p.mrp? Math.round((p.mrp - p.price) / p.mrp * 100) : 0;
+
+    return `
+    <div class="product" data-category="${cat}" onclick="openProductPage('${p.id}')">
       <div class="prod-menu" onclick="event.stopPropagation(); toggleProdMenu('${p.id}')">⋮</div>
       <div class="prod-dropdown" id="prodMenu${p.id}">
         <a href="#" onclick="event.stopPropagation(); shareProd('${p.id}')">📤 Share</a>
@@ -94,7 +123,7 @@ function showProducts(products){
 
       <img src="${p.image || 'https://via.placeholder.com/150'}" alt="${p.name}">
       <h3>${p.name}</h3>
-      <div class="product.price">₹${p.price} <span class="product.mrp">₹${p.mrp || p.price}</span> <span class="product.off">${p.off || '10%'} Off</span></div>
+      <div class="price">₹${p.price} <span class="mrp">₹${p.mrp || p.price}</span> <span class="off">${off}% Off</span></div>
 
       <div class="prod-actions" onclick="event.stopPropagation()">
         <button class="btn-cart" onclick="addToCart('${p.id}')">Add to Cart</button>
@@ -106,13 +135,13 @@ function showProducts(products){
         <span onclick="shareProd('${p.id}')">📤 Share</span>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 
 // Product 3 Dot Menu
 function toggleProdMenu(id){
   let menu = document.getElementById('prodMenu' + id);
-  menu.style.display = menu.style.display === 'block'? 'none' : 'block';
+  if(menu) menu.style.display = menu.style.display === 'block'? 'none' : 'block';
 }
 
 // Search + Voice Search
@@ -143,17 +172,20 @@ function startVoiceSearch(){
   toast('बोलो... 🎤');
 }
 
-// Cart System
+// Cart System - तेरा पुराना वही
 function addToCart(id){
   let p = allProducts.find(x => x.id == id);
+  if(!p) return;
   let exist = cart.find(x => x.id == id);
   if(exist) exist.qty++; else cart.push({...p, qty:1});
+  localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
   toast(p.name + ' Cart में जुड़ गया');
 }
 
 function updateCartCount(){
-  document.getElementById('cartCount').innerText = cart.reduce((a,b) => a + b.qty, 0);
+  let el = document.getElementById('cartCount');
+  if(el) el.innerText = cart.reduce((a,b) => a + b.qty, 0);
 }
 
 function showCart(){
@@ -176,7 +208,7 @@ function showCart(){
 function checkout(){
   if(!currentUser){ toast('पहले Login करो'); showAuthBox(); return; }
   toast('Order Place हो गया! COD');
-  cart = []; updateCartCount(); closePopup('settingsPopup');
+  cart = []; localStorage.removeItem('cart'); updateCartCount(); closePopup('settingsPopup');
 }
 
 function buyNow(id){ addToCart(id); showCart(); }
@@ -245,8 +277,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function toggleMenu(){
-  let menu = document.getElementById('toggleMenu');
-  if(!menu) return;
-  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+// बाहर Click = Menu बंद
+window.onclick = function(e){
+  if(!e.target.closest('[onclick*="toggleMenu"]') &&!e.target.closest('.prod-menu')){
+    let menu = document.getElementById('threeDotMenu');
+    if(menu) menu.style.display = 'none';
+  }
+}
+
+// CSV Load - तेरा पुराना कोड
+function loadProducts(){
+  // तेरा CSV वाला कोड यहां रहेगा
 }
