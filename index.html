@@ -352,5 +352,38 @@ const db = firebase.database();
 </script>
 
 <script src="app.js"></script>
+<!-- DEBUG SYSTEM - चोर पकड़ो -->
+<script>
+// सारी Click पकड़ेगा
+document.addEventListener('click', function(e){
+  console.log('=== CLICK पकड़ा गया ===');
+  console.log('Element:', e.target);
+  console.log('ID:', e.target.id || 'कोई ID नहीं');
+  console.log('Class:', e.target.className || 'कोई Class नहीं');
+  console.log('onclick:', e.target.getAttribute('onclick') || 'कोई onclick नहीं');
+
+  // अगर 3 Dot पे क्लिक किया
+  if(e.target.closest('[onclick*="toggleMenu"]')){
+    console.log('✅ 3 Dot Menu Button दबा');
+    console.log('Check कर: #threeDotMenu ID वाला div है क्या HTML में?');
+  }
+
+  // अगर Product पे क्लिक किया
+  if(e.target.closest('.product')){
+    console.log('✅ Product Box दबा');
+  }
+
+  // अगर कुछ भी onclick है पर function नहीं मिला
+  let onclickVal = e.target.getAttribute('onclick');
+  if(onclickVal &&!window[onclickVal.split(')[0]]){
+    console.error('❌ ERROR मिला! Function नहीं है:', onclickVal.split(')[0]);
+    console.log('FIX: app.js में ये function बना:', 'function ' + onclickVal.split(')[0] + '(){ }');
+  }
+});
+
+// JS लोड हुआ या नहीं बता देगा
+console.log('✅ index.html लोड हो गया');
+console.log('✅ अब app.js का इंतजार...');
+                                                                    </script>
 </body>
 </html>
