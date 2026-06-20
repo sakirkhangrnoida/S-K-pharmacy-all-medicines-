@@ -1,391 +1,157 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy AII - Fast Easy Shop | AI Assistant | Prime Deals</title>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JHBYCVBM02"></script>
-<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-JHBYCVBM02');</script>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K8JQ2B6');</script>
-
-<!-- Stripe + Adsense -->
-<script src="https://js.stripe.com/v3/"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3497742039075939" crossorigin="anonymous"></script>
-
-<meta name="google-site-verification" content="4-AUDY9KyYpR15UhDKRA1NLMZ_VDn8DedfcVagnSo" />
-<meta name="description" content="S K Pharmacy - दवाई, किराना, पूरी डिलीवरी सिलापुर, दनकौर और ग्रेटर नोएडा की दवाइयां और प्रोडक्ट्स उपलब्ध हैं।">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+<title>S K Pharmacy - Greater Noida</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f4f7f6;padding-bottom:100px;color:#333}
+* { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+body { background:#f1f3f6; }
+header { background:#2874f0; color:#fff; padding:12px 20px; position:sticky; top:0; z-index:1000; }
+.header-top { display:flex; align-items:center; justify-content:space-between; gap:15px; max-width:1200px; margin:auto; flex-wrap:wrap; }
+.logo { font-size:22px; font-weight:700; }
+.search-box { flex:1; display:flex; max-width:500px; min-width:200px; }
+.search-box input { flex:1; padding:10px; border:none; border-radius:2px 0 0 2px; outline:none; }
+.search-box button { padding:10px 20px; background:#ff9f00; border:none; border-radius:0 2px 2px 0; color:#fff; font-weight:600; cursor:pointer; }
+.header-right { display:flex; align-items:center; gap:20px; font-size:14px; }
+.cart-count { position:absolute; top:-5px; right:-5px; background:#ff6161; color:#fff; border-radius:50%; width:18px; height:18px; font-size:11px; display:flex; align-items:center; justify-content:center; font-weight:700; }
+.menu-wrapper { position:relative; }
+.menu-btn { cursor:pointer; font-size:24px; padding:5px 8px; border-radius:4px; }
+.menu-btn:hover { background:rgba(255,255,255,0.1); }
+.menu-hidden { display:none !important; }
+.menu-show { display:block !important; position:absolute; right:0; top:45px; background:#fff; min-width:250px; max-height:80vh; overflow-y:auto; border-radius:4px; box-shadow:0 4px 16px rgba(0,0,0,0.2); padding:8px 0; z-index:1001; }
+.menu-show .section { padding:10px 16px; font-size:12px; font-weight:600; color:#878787; text-transform:uppercase; border-bottom:1px solid #f0f0f0; margin-top:4px; }
+.menu-show a { display:block; padding:12px 16px; color:#212121; text-decoration:none; font-size:14px; transition:0.2s; }
+.menu-show a:hover { background:#f5f5f5; color:#2874f0; }
 
-/* Header Amazon Style */
-.header{background:#131921;color:white;padding:8px 10px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:1000}
-.logo{font-weight:bold;white-space:nowrap;font-size:18px;cursor:pointer}
-.logo span{color:#ff9900}
-.deliver-to{font-size:11px;line-height:12px;min-width:90px;cursor:pointer}
-.deliver-to div:first-child{color:#ccc}
-.deliver-to div:last-child{font-weight:bold;font-size:13px}
-.search-bar{flex:1;display:flex;height:40px;min-width:150px;background:white;border-radius:4px;overflow:hidden}
-.search-bar select{background:#e6e6e6;border:none;border-radius:4px 0 0 4px;padding:0 8px;font-size:12px}
-.search-bar input{flex:1;border:none;padding:0 10px;font-size:14px;outline:none}
-.search-bar button{background:#febd69;border:none;border-radius:0 4px 4px 0;padding:0 15px;cursor:pointer;font-weight:bold;font-size:14px}
-#voiceBtn{background:white;border:none;padding:0 12px;cursor:pointer;border-left:1px solid #ddd;font-size:18px}
-.lang{font-size:12px;font-weight:bold;cursor:pointer;min-width:40px;text-align:center}
-.cart-icon{position:relative;text-decoration:none;color:white;display:block;cursor:pointer}
-.cart-count{position:absolute;top:-8px;right:-8px;background:#ff9900;color:#232f3e;border-radius:50%;padding:2px 6px;font-size:11px;font-weight:bold}
+/* News Ticker */
+.news-ticker { background:#ff9f00; color:#fff; padding:8px 0; overflow:hidden; white-space:nowrap; font-size:14px; font-weight:600; }
+.news-ticker span { display:inline-block; padding-left:100%; animation:scroll 20s linear infinite; }
+@keyframes scroll { 0% { transform:translate(0,0); } 100% { transform:translate(-100%,0); } }
 
-/* 3 Dot Wrapper */
-.menu-wrapper{position:relative}
+.container { max-width:1200px; margin:20px auto; padding:0 15px; }
+.products { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:15px; }
+.product { background:#fff; padding:15px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1); transition:0.2s; }
+.product:hover { box-shadow:0 3px 16px rgba(0,0,0,0.15); }
+.product img { width:100%; height:160px; object-fit:contain; margin-bottom:10px; cursor:pointer; }
+.product h4 { font-size:14px; color:#212121; height:40px; overflow:hidden; line-height:20px; margin-bottom:8px; }
+.product .price { font-size:16px; font-weight:600; color:#212121; margin-bottom:8px; }
+.product .btns { display:flex; gap:8px; }
+.product button { flex:1; padding:8px; border:none; border-radius:2px; color:#fff; font-weight:600; cursor:pointer; font-size:13px; }
+.btn-cart { background:#ff9f00; }
+.btn-buy { background:#fb641b; }
 
-/* Nav Bar */
-.nav-bar{background:#232f3e;padding:8px 10px;display:flex;gap:15px;font-size:13px;overflow-x:auto;white-space:nowrap}
-.nav-bar span{color:white;cursor:pointer;font-weight:500;padding:5px 8px}
-.nav-bar span:hover{background:#3a4553;border-radius:4px}
+/* Map */
+.map-box { background:#fff; padding:15px; margin-top:20px; border-radius:4px; }
+.map-box iframe { width:100%; height:250px; border:0; border-radius:4px; }
 
-/* News Ticker Marquee */
-.ticker{background:#ff9900;color:black;padding:10px;font-weight:bold;font-size:15px;text-align:center}
-marquee{font-weight:600}
-
-/* Medicine Banner */
-.medicine-banner{position:relative;width:100%;height:180px;overflow:hidden}
-.medicine-banner img{width:100%;height:100%;object-fit:cover}
-.medicine-banner div{position:absolute;top:50%;left:15px;transform:translateY(-50%);color:white}
-.medicine-banner h2{text-shadow:2px 2px 4px #000;font-size:22px;margin:0}
-.medicine-banner p{text-shadow:1px 1px 3px #000;font-size:14px;margin:5px 0}
-
-/* Product Grid */
-#productGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:15px}
-
-/* Product Card */
-.product{background:#fff;padding:12px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:relative;cursor:pointer}
-.product:hover{box-shadow:0 4px 12px rgba(0,0,0,0.15)}
-.product img{width:100%;height:150px;object-fit:contain;margin-bottom:8px}
-.product h3{font-size:14px;margin:5px 0;height:35px;overflow:hidden;line-height:18px}
-.price{margin:5px 0;font-size:16px;font-weight:bold;color:#b12704}
-.mrp{color:#888;font-size:12px;text-decoration:line-through}
-.off{background:#cc0c39;color:#fff;padding:2px 6px;border-radius:3px;font-size:12px;margin-left:5px}
-
-/* Product के अंदर 3 Dot */
-.prod-menu{position:absolute;top:8px;right:8px;cursor:pointer;font-size:18px;background:white;padding:2px 6px;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2);z-index:5}
-.prod-dropdown{display:none;position:absolute;right:8px;top:30px;background:white;box-shadow:0 2px 8px rgba(0,0,0,0.3);border-radius:6px;z-index:10;min-width:120px}
-.prod-dropdown.show{display:block}
-.prod-dropdown a{display:block;padding:8px 12px;font-size:13px;color:#333;text-decoration:none;border-bottom:1px solid #eee}
-.prod-dropdown a:hover{background:#f5f5f5}
-
-/* Product Actions */
-.prod-actions{display:flex;gap:5px;margin-top:8px}
-.prod-actions button{flex:1;padding:6px;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600}
-.btn-cart{background:#ffd814}
-.btn-buy{background:#ffa41c;color:white}
-
-/* Like Comment Share */
-.prod-social{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid #eee;font-size:12px}
-.prod-social span{cursor:pointer;padding:4px 6px;border-radius:4px}
-.prod-social span:hover{background:#f0f0f0}
-.liked{color:red;font-weight:bold}
-
-/* Sidebar */
-#sidebar{position:fixed;right:-400px;top:0;width:380px;height:100%;background:white;box-shadow:-2px 0 10px rgba(0,0,0,0.3);transition:0.3s;z-index:2000;overflow-y:auto}
-#sidebar.active{right:0}
-#overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1999}
-
-/* Toast - No Alert */
-#toast{display:none;position:fixed;top:70px;right:20px;background:#232f3e;color:white;padding:14px 20px;border-radius:8px;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3);min-width:250px;font-size:14px}
-
-/* 3 Dot Menu */
-#threeDotMenu{display:none;position:absolute;right:0;top:40px;background:white;color:#333;min-width:250px;box-shadow:0 4px 12px rgba(0,0,0,0.3);border-radius:8px;z-index:2000;max-height:80vh;overflow-y:auto}
-#threeDotMenu a{display:block;padding:12px 20px;text-decoration:none;color:#333;border-bottom:1px solid #eee;font-size:14px}
-#threeDotMenu a:hover{background:#f3f3f3}
-#threeDotMenu.section{font-weight:bold;background:#232f3e;color:white;padding:10px 20px;position:sticky;top:0}
-
-/* Auth Box */
-#authBox{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:8px;z-index:3000;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:90%;max-width:400px}
-#authBox input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:4px;font-size:14px}
-#authBox button{width:100%;padding:12px;background:#232f3e;color:white;border:none;border-radius:4px;margin-top:10px;cursor:pointer;font-weight:bold}
-
-/* Settings Popup */
-#settingsPopup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border-radius:8px;z-index:3000;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:90%;max-width:500px;max-height:80vh;overflow-y:auto}
-
-/* Footer */
-.footer{background:#232f3e;color:white;margin-top:30px}
-.back-top{background:#37475a;padding:15px;text-align:center;cursor:pointer;color:white}
-.footer-links{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding:30px 20px;border-bottom:1px solid #3a4553}
-.footer-links h4{margin:0 0 10px;font-size:16px}
-.footer-links a{color:#ddd;text-decoration:none;display:block;margin:8px 0;font-size:14px}
-.copyright{background:#131a22;padding:20px;text-align:center;font-size:12px;color:#ddd}
-
-/* WhatsApp Float */
-.whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;border-radius:50px;padding:12px 16px;font-size:14px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:100}
-
-/* Mobile */
-@media(max-width:768px){
-.header{flex-wrap:wrap}
-.search-bar{min-width:100%;order:3;margin-top:8px}
-#productGrid{grid-template-columns:repeat(2,1fr)}
-#sidebar{width:100%;right:-100%}
-}
-.menu-hidden { display: none !important; }
-.menu-show { display: block !important; position:absolute; right:10px; top:50px; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.2); z-index:999; min-width:200px; padding:10px; }
+footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; text-align:center; font-size:13px; }
+footer p { margin:5px 0; }
 </style>
 </head>
 <body>
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8JQ2B6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<!-- Header -->
-<div class="header">
-  <div class="logo" onclick="location.reload()">S K <span>Pharmacy</span></div>
-
-  <div class="deliver-to">
-    <div>Deliver to</div>
-    <div>📍 दनकौर 203201</div>
-  </div>
-
-  <div class="search-bar">
-    <select id="searchCategory">
-      <option value="All">All</option>
-      <option value="Medicines">Medicines</option>
-      <option value="Skin Care">Skin Care</option>
-      <option value="Baby Care">Baby Care</option>
-    </select>
-
-    <input type="text" id="searchInput" placeholder="बोल कर या टाइप करके खोजें...">
-
-    <button id="voiceBtn" onclick="startVoiceSearch()">🎤</button>
-
-    <button onclick="searchProducts()">Search</button>
-  </div>
-
-  <div class="lang">🇮🇳 EN</div>
-
-  <div class="cart-icon" onclick="showCart()">
-    <i class="fas fa-shopping-cart" style="font-size:24px"></i>
-    <span class="cart-count" id="cartCount">0</span>
-    <div style="font-size:11px;font-weight:bold">Cart</div>
-  </div>
-
-  <!-- 3 Dot Button + Menu एक साथ -->
-  <div class="menu-wrapper">
-    <div onclick="toggleMenu()" style="cursor:pointer;font-size:24px;padding:0 5px">⋮</div>
-    <div id="threeDotMenu" class="menu-hidden">
-      <div class="section">Account</div>
-      <a href="#" onclick="showAuthBox()">Login / Signup</a>
-      <a href="#" onclick="showMyAccount()">My Account</a>
-      <a href="orders.html">My Orders</a>
-      <a href="track.html">Track Order Live</a>
-      <a href="#" onclick="showPrime()">Prime Subscribe</a>
-
-      <div class="section">Shop By Category</div>
-      <a href="#" onclick="filterCategory('All')">All</a>
-      <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
-      <a href="#" onclick="filterCategory('Skin Care')">Skin Care</a>
-      <a href="#" onclick="filterCategory('Baby Care')">Baby Care</a>
-      <a href="#" onclick="filterCategory('Health Care')">Health Care</a>
-
-      <div class="section">Settings - 10 Page</div>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact - Greater Noida, Dankaur, Silapur</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="refund.html">Refund Policy</a>
-      <a href="terms.html">Terms & Conditions</a>
-      <a href="help.html">Help & Support</a>
-      <a href="customer.html">Customer Service</a>
-      <a href="sports.html">Sports</a>
-      <a href="condition.html">Conditions</a>
-      <a href="#" onclick="logout()">Logout</a>
+<header>
+  <div class="header-top">
+    <div class="logo">S K Pharmacy</div>
+    
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search medicines, wellness...">
+      <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
+    </div>
+    
+    <div class="header-right">
+      <div onclick="showLogin()"><i class="fa fa-user"></i><br>Login</div>
+      <div style="position:relative;" onclick="showCart()">
+        <i class="fa fa-shopping-cart" style="font-size:20px;"></i>
+        <span class="cart-count" id="cartCount">0</span>
+        <br>Cart
+      </div>
+      
+      <!-- 3 Dot Menu Button -->
+      <div class="menu-wrapper">
+        <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+      </div>
     </div>
   </div>
+</header>
+
+<!-- News Ticker Line -->
+<div class="news-ticker">
+  <span>All Fresh Sell | Gift Cards | Gift Ideas | Subscribe Prime | Account List | COD Available | Free Delivery Greater Noida</span>
 </div>
 
-<!-- Nav Bar -->
-<div class="nav-bar">
-  <span onclick="filterCategory('All')"><i class="fas fa-bars"></i> All</span>
-  <span onclick="filterCategory('Medicines')">Medicines</span>
-  <span onclick="filterCategory('Skin Care')">Skin Care</span>
-  <span onclick="filterCategory('Baby Care')">Baby Care</span>
-  <span onclick="filterCategory('Health Care')">Health Care</span>
-  <span onclick="showModal('prime')">Health</span>
-  <span onclick="showModal('contact')">Customer Service</span>
-  <span onclick="showModal('pharmacy')">Pharmacy</span>
-  <span onclick="showModal('sell')">Sell</span>
+<!-- 3 Dot Menu -->
+<div class="menu-hidden" id="threeDotMenu">
+  <div class="section">Account</div>
+  <a href="#" onclick="showMyAccount()"><i class="fa fa-user-circle"></i> My Account</a>
+  <a href="#" onclick="showOrders()"><i class="fa fa-box"></i> My Orders</a>
+  <a href="#" onclick="trackOrder()"><i class="fa fa-truck"></i> Track Order Live</a>
+  <a href="#" onclick="showPrime()"><i class="fa fa-crown"></i> Subscribe Prime</a>
+
+  <div class="section">Shop By Category</div>
+  <a href="#" onclick="filterCategory('All')">All Products</a>
+  <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
+  <a href="#" onclick="filterCategory('Wellness')">Wellness</a>
+  <a href="#" onclick="filterCategory('Personal Care')">Personal Care</a>
+  <a href="#" onclick="filterCategory('Baby Care')">Baby Care</a>
+  
+  <div class="section">Deals & Offers</div>
+  <a href="#" onclick="filterCategory('Deals')">Today Deals</a>
+  <a href="#" onclick="filterCategory('Gifts')">Gift Cards</a>
+
+  <div class="section">Customer Service - 10 Page</div>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact - 9258751739, 7983006957</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="refund.html">Refund Policy</a>
+  <a href="terms.html">Terms & Conditions</a>
+  <a href="help.html">Help Center</a>
+  <a href="support.html">Support</a>
+  <a href="shipping.html">Shipping Info</a>
+  <a href="faq.html">FAQ</a>
+  <a href="returns.html">Return Policy</a>
 </div>
 
-<!-- News Ticker -->
-<div class="ticker">
-  <marquee behavior="scroll" direction="left" scrollamount="6">
-    FREE Delivery in सिलापुर गांव, दनकौर, ग्रेटर नोएडा, उत्तर प्रदेश - 203201 | Call: 9258751739, 7983006957 | Same Day Delivery | All Fresh Sell | Gift Cards & Gift Ideas | Subscribe Prime
-  </marquee>
-</div>
-
-<!-- Medicine Banner -->
-<div class="medicine-banner">
-  <img src="https://images.unsplash.com/photo-1584308666744-2d4c5747f2e7?w=800" alt="Medicine Banner">
-  <div>
-    <h2>Healthcare Deals</h2>
-    <p>Up to 30% Off on Medicines</p>
-  </div>
-</div>
-
-<!-- Adsense -->
-<div style="text-align:center;margin:20px 0">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3497742039075939" data-ad-slot="XXXXX" data-ad-format="auto"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<!-- Product Grid -->
-<h2 id="categoryTitle" style="padding:10px;font-size:18px">All Products</h2>
-<div id="productGrid">Loading Products...</div>
-
-<!-- Overlay -->
-<div id="overlay" onclick="closeSidebar()"></div>
-
-<!-- Sidebar Product Detail -->
-<div id="sidebar">
-  <div style="padding:10px;background:#232f3e;color:white;display:flex;justify-content:space-between">
-    <h3 id="sidebarTitle">Product Details</h3>
-    <span onclick="closeSidebar()" style="cursor:pointer;font-size:20px">×</span>
-  </div>
-  <div id="sidebarContent" style="padding:15px"></div>
-</div>
-
-<!-- Auth Box -->
-<div id="authBox">
-  <h2>Login / Signup</h2>
-  <input id="email" placeholder="Email">
-  <input id="pass" type="password" placeholder="Password">
-  <input id="otp" placeholder="OTP - Phone Login" style="display:none">
-  <button onclick="login()">Login</button>
-  <button onclick="signup()" style="background:#ff9900;color:#232f3e">Signup</button>
-  <button onclick="phoneLogin()">OTP से Login</button>
-  <button onclick="closePopup('authBox')" style="background:#999">Close</button>
-</div>
-
-<!-- Settings Popup for Cart/Orders -->
-<div id="settingsPopup"></div>
-
-<!-- Toast -->
-<div id="toast"></div>
-
-<!-- WhatsApp Float -->
-<a href="https://wa.me/919258751739?text=Hi%20S%20K%20Pharmacy%20I%20want%20to%20order%20medicines" target="_blank" class="whatsapp-float">
-  <i class="fab fa-whatsapp"></i> WhatsApp Order
-</a>
-
-<!-- Footer -->
-<div class="footer">
-  <div class="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top</div>
-
-  <div class="footer-links">
-    <div>
-      <h4>Get to Know Us</h4>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="#">Careers</a>
+<div class="container">
+  <div class="products" id="productList">
+    <!-- तेरे सारे Product यहां Paste कर दे। data-category डालना -->
+    <div class="product" data-category="Medicines" data-name="Paracetamol 500mg" data-price="15">
+      <img src="https://via.placeholder.com/200x160" alt="Paracetamol" onclick="openProduct(this)">
+      <h4>Paracetamol 500mg Tablet</h4>
+      <div class="price">₹15</div>
+      <div class="btns">
+        <button class="btn-cart" onclick="addToCart(this)">Add to Cart</button>
+        <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
+      </div>
     </div>
-    <div>
-      <h4>Connect with Us</h4>
-      <a href="https://www.facebook.com/share/18kQxf7c7/" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/sakirkhangrnoida/" target="_blank">Instagram</a>
-      <a href="https://wa.me/917983006957" target="_blank">WhatsApp</a>
-    </div>
-    <div>
-      <h4>Make Money with Us</h4>
-      <a href="#">Sell on S K Pharmacy</a>
-      <a href="#">Become an Affiliate</a>
-      <a href="#">Advertise Your Products</a>
-    </div>
-    <div>
-      <h4>Let Us Help You</h4>
-      <a href="account.html">Your Account</a>
-      <a href="privacy.html">Privacy Notice</a>
-      <a href="terms.html">Terms & Conditions</a>
-      <a href="help.html">Help</a>
+    
+    <div class="product" data-category="Wellness" data-name="Vitamin C 500mg" data-price="120">
+      <img src="https://via.placeholder.com/200x160" alt="Vitamin C" onclick="openProduct(this)">
+      <h4>Vitamin C 500mg</h4>
+      <div class="price">₹120</div>
+      <div class="btns">
+        <button class="btn-cart" onclick="addToCart(this)">Add to Cart</button>
+        <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
+      </div>
     </div>
   </div>
 
-  <div style="padding:30px 20px;text-align:center;border-bottom:1px solid #3a4553">
-    <img src="joy.jpg" style="width:80px;height:80px;border-radius:50%;margin-bottom:15px" alt="S K Pharmacy">
-    <div style="display:flex;justify-content:center;gap:10px">
-      <select style="background:#232f3e;color:white;border:1px solid #848688;padding:8px 12px;border-radius:4px">
-        <option>English</option>
-        <option>हिन्दी</option>
-      </select>
-      <button style="background:#232f3e;color:white;border:1px solid #848688;padding:8px 12px;border-radius:4px">🇮🇳 India</button>
-    </div>
-  </div>
-
-  <div class="copyright">
-    <div style="margin-bottom:10px">
-      <a href="terms.html" style="color:#ddd;margin:0 10px">Conditions of Use & Sale</a>
-      <a href="privacy.html" style="color:#ddd;margin:0 10px">Privacy Notice</a>
-      <a href="#" style="color:#ddd;margin:0 10px">Interest-Based Ads</a>
-    </div>
-    <div>© 1996-2026, S K Pharmacy.com, Inc. or its affiliates</div>
-    <p style="margin-top:10px">Greater Noida, Dankaur, Silapur Village, UP - 203201 | Maps: <a href="https://maps.google.com/?q=Silapur+Village+Dankaur+Greater+Noida+203201" target="_blank" style="color:#ff9900">View Location</a></p>
+  <!-- Map Greater Noida Dankaur Silapur -->
+  <div class="map-box">
+    <h3 style="margin-bottom:10px;">Our Location - Silapur, Dankaur, Greater Noida 203201</h3>
+    <iframe src="https://www.google.com/maps?q=Silapur,Dankaur,Greater+Noida+203201&output=embed"></iframe>
+    <p style="margin-top:10px; font-size:13px;">Contact: 9258751739, 7983006957</p>
   </div>
 </div>
 
-<!-- Firebase SDK - सिर्फ 1 बार -->
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<footer>
+  <p>© 2026 S K Pharmacy. All Rights Reserved.</p>
+  <p>Address: Silapur, Dankaur, Greater Noida, UP 203201</p>
+  <p>Mobile: 9258751739, 7983006957</p>
+</footer>
 
-<script>
-// Firebase Init - सिर्फ 1 बार
-const firebaseConfig = {
-  apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
-  authDomain: "grnoida-store.firebaseapp.com",
-  databaseURL: "https://grnoida-store-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "grnoida-store",
-  storageBucket: "grnoida-store.firebasestorage.app",
-  messagingSenderId: "665639961400",
-  appId: "1:665639961400:web:cb704b0209b910fc6a77cd"
-};
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.database();
-</script>
-
-<script src="app.js"></script>
-<!-- DEBUG SYSTEM - चोर पकड़ो -->
-<script>
-// सारी Click पकड़ेगा
-document.addEventListener('click', function(e){
-  console.log('=== CLICK पकड़ा गया ===');
-  console.log('Element:', e.target);
-  console.log('ID:', e.target.id || 'कोई ID नहीं');
-  console.log('Class:', e.target.className || 'कोई Class नहीं');
-  console.log('onclick:', e.target.getAttribute('onclick') || 'कोई onclick नहीं');
-
-  // अगर 3 Dot पे क्लिक किया
-  if(e.target.closest('[onclick*="toggleMenu"]')){
-    console.log('✅ 3 Dot Menu Button दबा');
-    console.log('Check कर: #threeDotMenu ID वाला div है क्या HTML में?');
-  }
-
-  // अगर Product पे क्लिक किया
-  if(e.target.closest('.product')){
-    console.log('✅ Product Box दबा');
-  }
-
-  // अगर कुछ भी onclick है पर function नहीं मिला
-  let onclickVal = e.target.getAttribute('onclick');
-  if(onclickVal &&!window[onclickVal.split(')[0]]){
-    console.error('❌ ERROR मिला! Function नहीं है:', onclickVal.split(')[0]);
-    console.log('FIX: app.js में ये function बना:', 'function ' + onclickVal.split(')[0] + '(){ }');
-  }
-});
-
-// JS लोड हुआ या नहीं बता देगा
-console.log('✅ index.html लोड हो गया');
-console.log('✅ अब app.js का इंतजार...');
-                                                                    </script>
+<script type="module" src="app.js"></script>
 </body>
 </html>
