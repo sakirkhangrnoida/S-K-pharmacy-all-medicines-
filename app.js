@@ -289,3 +289,10 @@ window.onclick = function(e){
 function loadProducts(){
   // तेरा CSV वाला कोड यहां रहेगा
 }
+// बाहर कहीं Click = 3 Dot Menu बंद
+window.onclick = function(e){
+  if(!e.target.closest('[onclick*="toggleMenu"]') && !e.target.closest('#threeDotMenu')){
+    let menu = document.getElementById('threeDotMenu');
+    if(menu) menu.style.display = 'none';
+  }
+}
