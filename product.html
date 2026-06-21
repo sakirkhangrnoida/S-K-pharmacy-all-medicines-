@@ -2,28 +2,53 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<title>Dolo 650 Tablet - S K Pharmacy</title>
-<link rel="stylesheet" href="../style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S K Pharmacy - Greater Noida 203201</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-<!-- बस ये वाला Block तू भरेगा -->
-<div class="product-detail">
-  <img src="https://तेरी-फोटो.jpg">
-  <div class="product-info">
-    <h1>Dolo 650 Tablet 15's</h1>
-    <p class="mrp">MRP: <s>₹35</s> <span class="price">₹28</span></p>
-    <p class="desc">बुखार और तेज दर्द में आराम। डॉक्टर की सलाह लें।</p>
+<!-- Header, Ticker app.js Auto बनाएगा -->
+
+<div class="container">
+  <div class="products" id="productList">
     
-    <div class="btn-group">
-      <button onclick="addToCart('p2','Dolo 650 Tablet 15s',28,'https://तेरी-फोटो.jpg')">Add to Cart</button>
-      <button onclick="buyNow('p2','Dolo 650 Tablet 15s',28,'https://तेरी-फोटो.jpg')">Buy Now</button>
-      <button onclick="shareProduct('Dolo 650 Tablet 15s', window.location.href)">Share</button>
+    <!-- Product 1 Card -->
+    <div class="product">
+      <a href="product1.html">  <!-- ये Link product.html पे जाएगा -->
+        <img src="dettol.jpg" alt="Dettol Soap">
+        <h4>Dettol Soap 100g</h4>
+      </a>
+      <div class="price">₹45</div>
+      <div class="btns">
+        <button class="btn-cart" onclick="window.location='product1.html'">Add to Cart</button>
+        <button class="btn-buy" onclick="window.location='product1.html'">Buy Now</button>
+      </div>
     </div>
+
+    <!-- Product 2 Card -->
+    <div class="product">
+      <a href="product2.html">
+        <img src="savlon.jpg" alt="Savlon">
+        <h4>Savlon Antiseptic 500ml</h4>
+      </a>
+      <div class="price">₹120</div>
+      <div class="btns">
+        <button class="btn-cart" onclick="window.location='product2.html'">Add to Cart</button>
+        <button class="btn-buy" onclick="window.location='product2.html'">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- ऐसे 1000 Product जोड़ दे -->
+    
   </div>
 </div>
 
-<!-- बस ये 1 Line जोड़ दे - सब Auto हो जाएगा -->
-<script type="module" src="../app.js"></script>
+<!-- OTP + Admin Popup -->
+<div class="otp-popup hide" id="otpPopup">...</div>
+<div class="otp-popup hide" id="adminPanel">...</div>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>
