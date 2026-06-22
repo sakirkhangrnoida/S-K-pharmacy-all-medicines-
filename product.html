@@ -3,51 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy - Greater Noida 203201</title>
+<title id="pageTitle">Product - S K Pharmacy 203201</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-<!-- Header, Ticker app.js Auto बनाएगा -->
+<!-- Header + Search + News Ticker + Menu app.js Auto डालेगा। तू मत लिखना -->
 
 <div class="container">
-  <div class="products" id="productList">
+  <div class="prod-grid">
     
-    <!-- Product 1 Card -->
-    <div class="product">
-      <a href="product1.html">  <!-- ये Link product.html पे जाएगा -->
-        <img src="dettol.jpg" alt="Dettol Soap">
-        <h4>Dettol Soap 100g</h4>
-      </a>
-      <div class="price">₹45</div>
-      <div class="btns">
-        <button class="btn-cart" onclick="window.location='product1.html'">Add to Cart</button>
-        <button class="btn-buy" onclick="window.location='product1.html'">Buy Now</button>
+    <!-- बाएं Photo + Thumbs -->
+    <div class="prod-gallery">
+      <img id="pImg" src="bevon.jpg" alt="Product">
+      <div class="thumbs">
+        <img src="bevon.jpg" onclick="setImg(this.src)">
+        <img src="bevon-back.jpg" onclick="setImg(this.src)">
       </div>
     </div>
 
-    <!-- Product 2 Card -->
-    <div class="product">
-      <a href="product2.html">
-        <img src="savlon.jpg" alt="Savlon">
-        <h4>Savlon Antiseptic 500ml</h4>
-      </a>
-      <div class="price">₹120</div>
-      <div class="btns">
-        <button class="btn-cart" onclick="window.location='product2.html'">Add to Cart</button>
-        <button class="btn-buy" onclick="window.location='product2.html'">Buy Now</button>
+    <!-- बीच Details -->
+    <div class="prod-info">
+      <div class="bread">Home > Health Care > Syrup</div>
+      <h1 id="pName">Bevon Multivitamin Suspension 200ml</h1>
+      <div class="rating">4.1 ⭐ <span>892 Ratings</span> <span>500+ bought in past month</span></div>
+      
+      <div class="price-box">
+        <span class="off">-15%</span>
+        <span class="price" id="pPrice">₹85</span>
+        <span class="mrp">M.R.P: <s>₹99</s></span>
+        <div class="tax">Inclusive of all taxes</div>
+      </div>
+
+      <div class="delivery">FREE Delivery by Tomorrow, Greater Noida 203201</div>
+      <div class="stock">In Stock</div>
+
+      <div class="btn-row">
+        <button class="btn-cart" onclick="addCart()"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        <button class="btn-buy" onclick="buyNow()">Buy Now</button>
+      </div>
+
+      <div class="share-row">
+        <span>Share:</span>
+        <button onclick="shareWA()"><i class="fab fa-whatsapp"></i></button>
+        <button onclick="copyLink()"><i class="fas fa-link"></i></button>
+        <button onclick="trackOrder()"><i class="fas fa-truck"></i> Track Order</button>
+      </div>
+
+      <div class="about">
+        <h3>About this item</h3>
+        <ul id="pDesc"></ul>
       </div>
     </div>
 
-    <!-- ऐसे 1000 Product जोड़ दे -->
-    
+    <!-- दाएं Buy Box -->
+    <div class="buy-box">
+      <div class="price" id="pPrice2">₹85</div>
+      <div class="delivery">FREE Delivery Tomorrow</div>
+      <div class="stock">In Stock</div>
+      <button class="btn-cart full" onclick="addCart()">Add to Cart</button>
+      <button class="btn-buy full" onclick="buyNow()">Buy Now</button>
+      <div class="cod">Cash on Delivery Available</div>
+    </div>
+
   </div>
 </div>
+
+<!-- Toast - Alert की जगह -->
+<div id="toast" class="toast hide"></div>
 
 <!-- OTP + Admin Popup -->
 <div class="otp-popup hide" id="otpPopup">...</div>
 <div class="otp-popup hide" id="adminPanel">...</div>
+
+<!-- बस ये 4 Line बदलनी है हर Product में -->
+<script>
+const P = {
+  name: "Bevon Multivitamin Suspension 200ml",
+  price: "85",
+  img: "bevon.jpg",
+  desc: [
+    "Multivitamin + Multimineral + Antioxidant",
+    "For weakness, fatigue, poor appetite", 
+    "200ml bottle with measuring cup"
+  ]
+};
+
+// Auto Fill कर देगा
+document.getElementById('pageTitle').innerText = P.name + " - S K Pharmacy";
+document.getElementById('pName').innerText = P.name;
+document.getElementById('pPrice').innerText = "₹" + P.price;
+document.getElementById('pPrice2').innerText = "₹" + P.price;
+document.getElementById('pImg').src = P.img;
+document.getElementById('pDesc').innerHTML = P.desc.map(d=>`<li>${d}</li>`).join('');
+
+function setImg(s){ document.getElementById('pImg').src = s; }
+function addCart(){ 
+  let cart = JSON.parse(localStorage.getItem('cart')||'[]');
+  cart.push({n:P.name, p:P.price, i:P.img});
+  localStorage.setItem('cart', JSON.stringify(cart));
+  showToast(P.name + " Added to Cart ✓");
+  updateCartCount();
+}
+function buyNow(){
+  addCart();
+  window.location = "checkout.html";
+}
+function shareWA(){
+  let url = window.location.href;
+  window.open("https://wa.me/?text="+encodeURIComponent(P.name+" "+url));
+}
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href); 
+  showToast("Link Copied ✓"); 
+}
+function trackOrder(){
+  let id = prompt("Order ID डालो:");
+  if(id) window.open("order.html?id="+id, "_blank");
+}
+function showToast(msg){
+  let t = document.getElementById('toast');
+  t.innerText = msg; t.classList.remove('hide');
+  setTimeout(()=>t.classList.add('hide'), 2000);
+}
+function updateCartCount(){
+  let c = JSON.parse(localStorage.getItem('cart')||'[]').length;
+  let el = document.getElementById('cartCount');
+  if(el) el.innerText = c;
+}
+updateCartCount();
+</script>
 
 <script type="module" src="app.js"></script>
 </body>
