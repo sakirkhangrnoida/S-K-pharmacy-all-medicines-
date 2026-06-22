@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S K Pharmacy - Greater Noida 203201</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- तेरे पुराने Google Adsense, Console, Manager ID यहां लगी रहेंगी -->
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
 body { background:#f1f3f6; }
@@ -33,10 +32,10 @@ header { background:#2874f0; color:#fff; padding:12px 20px; position:sticky; top
 
 .container { max-width:1200px; margin:20px auto; padding:0 15px; }
 .products { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:15px; }
-.product { background:#fff; padding:15px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1); }
+.product { background:#fff; padding:15px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.1); border:1px solid #ddd; text-align:center; }
 .product img { width:100%; height:160px; object-fit:contain; margin-bottom:10px; cursor:pointer; }
 .product h4 { font-size:14px; color:#212121; height:40px; overflow:hidden; line-height:20px; margin-bottom:8px; }
-.product .price { font-size:16px; font-weight:600; color:#212121; margin-bottom:8px; }
+.product .price { font-size:16px; font-weight:600; color:#b12704; margin-bottom:8px; }
 .product .btns { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
 .product button { flex:1; min-width:80px; padding:8px; border:none; border-radius:2px; color:#fff; font-weight:600; cursor:pointer; font-size:12px; }
 .btn-cart { background:#ff9f00; }
@@ -61,18 +60,6 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
 .login-box { background:#fff; padding:25px; border-radius:8px; width:90%; max-width:350px; }
 .login-box input { width:100%; padding:12px; border:1px solid #ddd; border-radius:4px; margin-bottom:10px; }
 .login-box button { width:100%; padding:12px; background:#2874f0; color:#fff; border:none; border-radius:4px; font-weight:600; }
-/* Mobile Fix - 3 Dot Menu Center में खुलेगा */
-@media (max-width: 600px) { 
-  .menu-show { right:-100px !important; min-width:260px !important; } 
-}
-  /* Product Card + Popup CSS */
-.product { border:1px solid #ddd; padding:10px; border-radius:8px; background:#fff; text-align:center; }
-.product img { width:100%; height:160px; object-fit:contain; cursor:pointer; }
-.product h4 { font-size:14px; margin:8px 0; height:40px; overflow:hidden; }
-.product .price { font-size:18px; font-weight:700; color:#b12704; margin:5px 0; }
-.btns button { margin:3px; padding:6px 10px; border:none; border-radius:4px; cursor:pointer; font-size:12px; }
-.btn-cart { background:#ffd814; } .btn-buy { background:#ffa41c; color:#fff; } .btn-share, .btn-like { background:#eee; }
-.comment-box input { width:100%; padding:5px; margin-top:8px; border:1px solid #ccc; border-radius:4px; font-size:12px; }
 
 .product-popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:10000; justify-content:center; align-items:center; }
 .popup-box { background:#fff; width:90%; max-width:800px; border-radius:8px; display:flex; gap:20px; padding:20px; position:relative; }
@@ -82,7 +69,11 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
 .popup-price { font-size:28px; color:#b12704; font-weight:700; margin:15px 0; }
 .popup-desc { font-size:14px; color:#555; line-height:22px; margin-bottom:20px; }
 
-@media(max-width:600px){ .popup-box{ flex-direction:column; } .popup-left img{ width:100%; height:250px; } }
+@media (max-width: 600px) { 
+  .menu-show { right:-100px !important; min-width:260px !important; } 
+  .popup-box{ flex-direction:column; } 
+  .popup-left img{ width:100%; height:250px; } 
+}
 </style>
 </head>
 <body>
@@ -92,7 +83,7 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
     <div class="logo">S K Pharmacy</div>
     
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search medicines, wellness, personal care...">
+      <input type="text" id="searchInput" placeholder="Search medicines, wellness, personal care..." onkeyup="searchProducts()">
       <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
     </div>
     
@@ -104,15 +95,12 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
         <br>Cart
       </div>
       
-      <!-- 3 Dot Menu -->
       <div class="menu-wrapper">
         <div class="menu-btn" onclick="toggleMenu()">⋮</div>
         <div class="menu-hidden" id="threeDotMenu">
-          
           <div class="section">Account</div>
           <a href="orders.html"><i class="fa fa-box"></i> My Account</a>
           <a href="track.html"><i class="fa fa-truck"></i> Track Order Live</a>
-          <a href="#"><i class="fa fa-crown"></i> Subscribe Prime</a>
           <a href="#" onclick="showOrdersPanel()"><i class="fa fa-list"></i> Live Order Dekho - Admin Panel</a>
 
           <div class="section">Shop By Category</div>
@@ -120,64 +108,33 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
           <a href="#" onclick="filterCategory('Medicines')">Medicines</a>
           <a href="#" onclick="filterCategory('Wellness')">Wellness</a>
           <a href="#" onclick="filterCategory('Personal Care')">Personal Care</a>
-          <a href="#" onclick="filterCategory('Baby Care')">Baby Care</a>
-
-          <div class="section">Deals & Offers</div>
-          <a href="#" onclick="filterCategory('Deals')">Today Deals</a>
-          <a href="#" onclick="filterCategory('Gifts')">Gift Cards</a>
-          <a href="#">Gift Ideas</a>
-
-          <div class="section">Settings - Customer Service 10 Page</div>
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact - 9258751739</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="refund.html">Refund Policy</a>
-          <a href="terms.html">Terms & Conditions</a>
-          <a href="help.html">Help Center</a>
-          <a href="#">Sports Condition</a>
-          <a href="#">Support</a>
-          <a href="#">Shipping Info</a>
-          <a href="#">FAQ</a>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- News Ticker Line - तेरी मांग वाली -->
 <div class="news-ticker">
-  <span>All Fresh Sell | Gift Cards | Gift Ideas | Subscribe Prime | Account List | COD Available | Free Delivery Greater Noida Dankaur Silapur 203201 | Mobile: 9258751739, 7983006957</span>
+  <span>All Fresh Sell | Gift Cards | COD Available | Free Delivery Greater Noida Dankaur Silapur 203201 | Mobile: 9258751739, 7983006957</span>
 </div>
 
 <div class="container">
   <div class="products" id="productList">
-    
-  
-  <!-- Product 1 - Bevon -->
-  <div class="product">
-    <a href="product1.html">  <!-- ये लिंक product1.html पे जाएगा -->
-      <img src="bevon.jpg" alt="Bevon Suspension">
-      <h4>Bevon Multivitamin 200ml</h4>
-    </a>
-    <div class="price">₹85</div>
-    <div class="btns">
-      <button class="btn-cart" onclick="window.location='product1.html'">Add to Cart</button>
-      <button class="btn-buy" onclick="window.location='product1.html'">Buy Now</button>
-    </div>
-  </div>
+    <!-- Products यहां Auto बन जाएंगे app.js से -->
+  </div> <!-- 👈 ये Div बंद था -->
 
-  <!-- Product 2 - Olay -->
-  <div class="product">
-    <a href="product2.html">
-      <img src="olay.jpg" alt="Olay Cream">
-      <h4>Olay Night Cream 50g</h4>
-    </a>
-    <div class="price">₹310</div>
-    <div class="btns">
-      <button class="btn-cart" onclick="window.location='product2.html'">Add to Cart</button>
-      <button class="btn-buy" onclick="window.location='product2.html'">Buy Now</button>
-    </div>
+  <div class="map-box">
+    <h3 style="margin-bottom:10px;">Our Location - Silapur, Dankaur, Greater Noida 203201, UP</h3>
+    <iframe src="https://www.google.com/maps?q=Silapur,Dankaur,Greater+Noida+203201&output=embed"></iframe>
+    <p style="margin-top:10px; font-size:13px;">Contact: 9258751739, 7983006957</p>
   </div>
+</div> <!-- 👈 Container बंद -->
+
+<footer>
+  <p>© 2026 S K Pharmacy. All Rights Reserved.</p>
+  <p>Address: Silapur, Dankaur, Greater Noida, UP 203201</p>
+  <p>Mobile: 9258751739, 7983006957</p>
+</footer>
 
 <!-- Product Detail Popup - Amazon Style -->
 <div class="product-popup" id="productPopup">
@@ -197,20 +154,8 @@ footer { background:#172337; color:#fff; padding:30px 20px; margin-top:40px; tex
         <button class="btn-buy" id="popupBuy">Buy Now</button>
       </div>
     </div>
-
-  <!-- Map Greater Noida Dankaur Silapur 203201 -->
-  <div class="map-box">
-    <h3 style="margin-bottom:10px;">Our Location - Silapur, Dankaur, Greater Noida 203201, UP</h3>
-    <iframe src="https://www.google.com/maps?q=Silapur,Dankaur,Greater+Noida+203201&output=embed"></iframe>
-    <p style="margin-top:10px; font-size:13px;">Contact: 9258751739, 7983006957</p>
   </div>
-</div>
-
-<footer>
-  <p>© 2026 S K Pharmacy. All Rights Reserved.</p>
-  <p>Address: Silapur, Dankaur, Greater Noida, UP 203201</p>
-  <p>Mobile: 9258751739, 7983006957</p>
-</footer>
+</div> <!-- 👈 Popup बंद -->
 
 <!-- OTP Login Popup -->
 <div class="login-popup" id="loginPopup">
