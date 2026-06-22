@@ -1,10 +1,5 @@
-// 1. Product की List - यहां से Auto बनेंगे सब
-const products = [
-  {id: "p1", name: "Paracetamol 500mg Tablet 15 Strips", price: 15, mrp: 200, img: "https://via.placeholder.com/200x160/ff4444/fff?text=Paracetamol", cat: "Medicines"},
-  {id: "p2", name: "Vitamin C 500mg Immunity Booster", price: 120, mrp: 250, img: "https://via.placeholder.com/200x160/44ff44/fff?text=Vitamin+C", cat: "Wellness"},
-  {id: "p3", name: "Dettol Handwash 200ml", price: 99, mrp: 120, img: "https://via.placeholder.com/200x160/4444ff/fff?text=Dettol", cat: "Personal Care"},
-  {id: "p4", name: "Johnson Baby Powder", price: 180, mrp: 220, img: "https://via.placeholder.com/200x160/ffaa44/fff?text=Johnson", cat: "Baby Care"}
-];
+
+
 
 // 2. Page Load होते ही Auto Product बन जाएंगे
 window.onload = function(){
