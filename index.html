@@ -325,5 +325,13 @@ body.dark .chat-input{border-color:#444}
 
 <!-- JS File -->
 <script type="module" src="app.js"></script>
+<script>
+// Emergency: 2 सेकंड बाद Loading हटा दो, Error आए तो भी
+setTimeout(() => {
+  const loading = document.getElementById('loading');
+  if(loading) loading.style.display = 'none';
+  console.log('Loading Force Hide किया गया');
+}, 2000);
+</script>
 </body>
   </html>
