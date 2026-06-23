@@ -3,184 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy - Amazon जैसा Store</title>
+<title>S K Pharmacy - Medicines Health Care</title>
 <link rel="stylesheet" href="style.css">
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
-<!-- 1. Header Amazon जैसा -->
-<header class="amz-header">
-  <div class="header-top">
-    <div class="logo">S K Pharmacy</div>
-    <div class="location">📍 Deliver to Silapur 203201</div>
+<header id="header">
+  <div class="top-bar">
+    <div class="logo">SK PHARMACY</div>
     <div class="search-box">
-      <select><option>All</option><option>Medicines</option></select>
-      <input type="text" placeholder="Search S K Pharmacy" id="searchInput" onkeyup="searchProducts()">
-      <button onclick="searchProducts()">🔍</button>
+      <input type="text" placeholder="Search Medicines...">
+      <button>Search</button>
     </div>
     <div class="header-right">
-      <div class="lang">🇮🇳 HI</div>
-      <div class="account" onmouseover="showAccountDropdown()" onmouseout="hideAccountDropdown()">
-        Hello, Sign in<br><b>Account & Lists ▼</b>
-        <div class="account-dropdown" id="accountDropdown">
-          <button class="yellow-btn" onclick="showLoginPopup()">Sign in</button>
-          <p>New customer? Start here</p>
-          <hr>
-          <div class="acc-grid">
-            <div><b>Your Lists</b><br>Create a List<br>Find a List</div>
-            <div><b>Your Account</b><br>Account<br>Orders<br>Recommendations</div>
-          </div>
-        </div>
-      </div>
-      <div class="orders">Returns<br><b>& Orders</b></div>
-      <div class="cart" onclick="showCart()">🛒 Cart <span id="cartCount">0</span></div>
+      <span id="locationBtn">Deliver to Khan Alampura</span>
+      <span id="accountBtn">Account & Lists</span>
     </div>
   </div>
-  
-  <!-- 2. Nav Bar -->
-  <nav class="amz-nav">
-    <span onclick="toggleAllMenu()">☰ All</span>
-    <span>Today's Deals</span>
-    <span>Gift Cards</span>
-    <span>Prime Video</span>
-    <span>Sell</span>
-    <span>Registry</span>
-    <span>Customer Service</span>
-    <span style="margin-left:auto">Shop deal in Electronics</span>
+
+  <nav id="navbar">
+    <a href="#" data-page="home" class="nav-link active">Home</a>
+    <a href="#" data-page="all" class="nav-link">All</a>
+    <a href="#" data-page="customer-service" class="nav-link">Customer Service</a>
+    <a href="#" data-page="offers" class="nav-link">Offers</a>
+    <a href="#" data-page="contact" class="nav-link">Contact</a>
   </nav>
 </header>
 
-<!-- 3. All Menu Sidebar Amazon जैसा -->
-<div class="all-menu" id="allMenu">
-  <div class="menu-header">Hello, Sign in</div>
-  <div class="menu-item">Digital Content & Devices</div>
-  <div class="menu-item">Shop by Department ▼</div>
-  <div class="menu-radio">
-    <label><input type="radio" name="cat"> Electronics</label>
-    <label><input type="radio" name="cat"> Girls' Fashion</label>
-    <label><input type="radio" name="cat"> Health & Household</label>
-    <label><input type="radio" name="cat"> Home & Kitchen</label>
-    <label><input type="radio" name="cat"> Men's Fashion</label>
-  </div>
-  <div class="menu-item">Help & Settings</div>
-</div>
-<div class="overlay" id="overlay" onclick="closeAllMenu()"></div>
-
-<!-- 4. News Ticker -->
-<div id="newsTicker">
-  <marquee id="tickerText">🎉 1000 Features Live | 💊 UPI 5% Discount | 🚚 COD ₹30 Only</marquee>
-</div>
-
-<!-- 5. Main Content - Section by Section -->
-<main>
-  <!-- Customer Service Section Amazon जैसा -->
-  <section class="customer-service">
-    <h2>Welcome to S K Pharmacy Customer Service</h2>
-    <div class="cs-grid">
-      <div class="cs-card">📦 A delivery, order or return</div>
-      <div class="cs-card">🔑 Help with signing in</div>
-      <div class="cs-card">⭐ Prime</div>
-      <div class="cs-card">📱 Devices Support</div>
-      <div class="cs-card">🎵 Music, Videos, Games</div>
-      <div class="cs-card">💳 Payment, charges or gift cards</div>
-    </div>
-  </section>
-
-  <!-- Help Library Section -->
-  <section class="help-library">
-    <h3>Search our help library</h3>
-    <input type="text" placeholder="Type something like, question about a charge">
-    <h4>All help topics</h4>
-    <div class="help-layout">
-      <aside class="help-sidebar">
-        <button class="active">Take Quick Actions</button>
-        <button>Where's my stuff</button>
-        <button>Shipping and Delivery</button>
-        <button>Returns, Refunds and Product Support</button>
-      </aside>
-      <div class="help-content">
-        <div class="help-card">Track your package<br><small>Track in Your Orders</small></div>
-        <div class="help-card">Return Items You Ordered<br><small>Use Online Return Center</small></div>
-        <div class="help-card">Check status of a refund</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products Grid Amazon जैसा -->
-  <section class="products-section">
-    <div class="filter-sidebar">
-      <h4>Popular Shopping Ideas</h4>
-      <p>Chair, Headset, Keyboard & Mouse</p>
-      <h4>Deals & Discounts</h4>
-      <label><input type="checkbox"> All Discounts</label>
-      <h4>Customer Reviews</h4>
-      <label><input type="radio" name="rating"> ⭐⭐ & Up</label>
-      <h4>Brands</h4>
-      <label><input type="checkbox"> Razer</label>
-      <label><input type="checkbox"> ASUS</label>
-    </div>
-    
-    <div class="product-grid" id="productList">
-      <!-- Products Auto Load होंगे -->
-    </div>
-  </section>
+<main id="main-content">
+  <!-- Content यहाँ SPA से Load होगा -->
 </main>
 
-<!-- 6. Footer Amazon जैसा -->
-<footer class="amz-footer">
-  <div class="back-top" onclick="window.scrollTo(0,0)">Back to top</div>
-  <div class="footer-cols">
+<footer id="footer">
+  <div class="footer-grid">
     <div>
       <h4>Get to Know Us</h4>
-      <p>Careers</p><p>Blog</p><p>About S K Pharmacy</p>
+      <a href="#" data-page="about">About SK Pharmacy</a>
+      <a href="#" data-page="team">Our Team</a>
     </div>
     <div>
-      <h4>Make Money with Us</h4>
-      <p>Sell products on S K Pharmacy</p><p>Become an Affiliate</p>
+      <h4>Services</h4>
+      <a href="#" data-page="delivery">Home Delivery</a>
+      <a href="#" data-page="contact">Contact</a>
     </div>
     <div>
-      <h4>Payment Products</h4>
-      <p>Business Card</p><p>Shop with Points</p>
-    </div>
-    <div>
-      <h4>Let Us Help You</h4>
-      <p>Your Account</p><p>Your Orders</p><p>Shipping Rates</p>
+      <h4>Categories</h4>
+      <a href="#" data-page="medicines">All Medicines</a>
+      <a href="#" data-page="surgical">Surgical</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <button>🇮🇳 English</button>
-    <button>₹ INR - Indian Rupee</button>
-    <button>🇮🇳 India</button>
-    <p>© 1996-2026, S K Pharmacy.com, Inc. or its affiliates</p>
+    © 2026 S K Pharmacy. All rights reserved.
   </div>
 </footer>
 
-<!-- 7. OTP Popup -->
-<div id="otpPopup" class="popup">
-  <div class="popup-box">
-    <span class="close" onclick="closePopup()">×</span>
-    <div id="step1">
-      <h3>Sign in or create account</h3>
-      <label>Enter mobile number or email</label>
-      <input type="tel" id="mobileInput" placeholder="10 Digit Mobile">
-      <button class="yellow-btn" onclick="sendOTP()">Continue</button>
-      <p class="small">By continuing, you agree to Conditions of Use and Privacy Notice</p>
-    </div>
-    <div id="step2" style="display:none">
-      <h3>Enter OTP</h3>
-      <input type="text" id="otpInput" placeholder="6 Digit OTP">
-      <button class="yellow-btn" onclick="verifyOTP()">Verify</button>
-    </div>
-  </div>
-</div>
-
-<div id="recaptcha-container"></div>
-<div id="toast"></div>
-<div id="autoFeaturesContainer" style="display:none"></div>
+<!-- Modal Container -->
+<div id="modal-container"></div>
 
 <script src="app.js"></script>
 </body>
