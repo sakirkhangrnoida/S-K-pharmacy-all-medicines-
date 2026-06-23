@@ -3,1440 +3,327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2874f0">
-<link rel="manifest" href="manifest.json">
-<title>S K Pharmacy 1000 Features Ultimate - AI + AR + Blockchain</title>
+<title>S K Pharmacy Ultimate v1000</title>
 
-<!-- Core Scripts - तेरी असली ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JHBYCVM02"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JHBYCVM02');</script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KJQ28D6');</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3497742030075039" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script src="https://unpkg.com/html5-qrcode"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.js"></script>
-<meta name="google-site-verification" content="4-UD9Y1vkYRP150HUdKRAJNLMZ_VndBdfcVagnSo"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-/* Master CSS - 1000 Features Support */
-* { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; transition:0.3s; }
-body { background:#f1f3f6; scroll-behavior:smooth; }
-body.dark { background:#121212; color:#fff; }
-header { background:#2874f0; color:#fff; padding:12px 20px; position:sticky; top:0; z-index:1000; }
-.header-top { display:flex; align-items:center; justify-content:space-between; gap:15px; max-width:1400px; margin:auto; flex-wrap:wrap; }
-.logo { font-size:22px; font-weight:700; }
-.search-box { flex:1; display:flex; max-width:600px; }
-.search-box input { flex:1; padding:10px; border:none; border-radius:2px 0 0 2px; outline:none; }
-.search-box button { padding:10px 12px; background:#ff9f00; border:none; cursor:pointer; color:#fff; }
-.search-box button.mic { background:#dc3545; }
-.search-box button.ar { background:#9c27b0; }
-.search-box button.barcode { background:#6f42c1; }
-
-.header-right { display:flex; align-items:center; gap:18px; font-size:14px; }
-.dark-toggle,.lang-toggle { cursor:pointer; font-size:20px; }
-.wallet-balance { background:#4caf50; color:#fff; padding:6px 10px; border-radius:20px; font-size:12px; }
-.cart-count { position:absolute; top:-5px; right:-5px; background:#ff6161; color:#fff; border-radius:50%; width:18px; height:18px; font-size:11px; display:flex; align-items:center; justify-content:center; font-weight:700; }
-
-.menu-wrapper { position:relative; }
-.menu-btn { cursor:pointer; font-size:24px; padding:5px 8px; border-radius:4px; }
-.menu-hidden { display:none!important; }
-.menu-show { display:block!important; position:absolute; right:-50px; top:45px; background:#fff; min-width:320px; max-height:90vh; overflow-y:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.3); padding:8px 0; z-index:9999; border:1px solid #ddd; }
-body.dark.menu-show { background:#1e1e1e; border-color:#333; }
-.menu-show.section { padding:10px 16px; font-size:12px; font-weight:600; color:#878787; text-transform:uppercase; border-bottom:1px solid #f0f0f0; margin-top:4px; }
-.menu-show a { display:block; padding:12px 16px; color:#212121; text-decoration:none; font-size:14px; }
-.menu-show a:hover { background:#f5f5f5; color:#2874f0; }
-
-.news-ticker { background:linear-gradient(90deg,#ff9f00,#ff6161); color:#fff; padding:8px 0; overflow:hidden; white-space:nowrap; font-size:14px; font-weight:600; }
-.news-ticker span { display:inline-block; padding-left:100%; animation:scroll 30s linear infinite; }
-@keyframes scroll { 0% { transform:translate(0,0); } 100% { transform:translate(-100%,0); } }
-
-.container { max-width:1400px; margin:20px auto; padding:0 15px; }
-.loading { text-align:center; padding:50px; font-size:18px; color:#2874f0; }
-
-.weather-widget { background:linear-gradient(135deg,#87ceeb,#4682b4); color:#fff; padding:12px; border-radius:8px; margin:15px 0; text-align:center; font-size:13px; }
-.ai-chat { position:fixed; bottom:20px; right:20px; width:60px; height:60px; background:#2874f0; color:#fff; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:24px; cursor:pointer; z-index:9996; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
-.chat-box { position:fixed; bottom:90px; right:20px; width:340px; height:420px; background:#fff; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.3); display:none; flex-direction:column; z-index:9996; }
-
-.products { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:18px; }
-.product { background:#fff; padding:16px; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1); border:1px solid #ddd; text-align:center; position:relative; }
-body.dark.product { background:#1e1e1e; border-color:#333; }
-.product img { width:100%; height:170px; object-fit:contain; margin-bottom:10px; cursor:zoom-in; }
-.flash-timer { font-size:11px; color:#d32f2f; font-weight:700; margin-bottom:5px; }
-.outstock { position:absolute; top:10px; right:10px; background:#d32f2f; color:#fff; padding:4px 8px; font-size:11px; font-weight:700; border-radius:4px; }
-.expire { position:absolute; top:10px; left:10px; background:#ff5722; color:#fff; padding:4px 8px; font-size:11px; font-weight:700; border-radius:4px; }
-.rating { font-size:12px; color:#ff9f00; margin-bottom:5px; }
-.stock-info { font-size:11px; color:green; margin-bottom:5px; }
-.product h4 { font-size:14px; color:#212121; height:42px; overflow:hidden; line-height:21px; margin-bottom:8px; }
-body.dark.product h4 { color:#fff; }
-.product.price { font-size:17px; font-weight:600; color:#b12704; margin-bottom:10px; }
-.product.btns { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:10px; }
-.product button { flex:1; min-width:65px; padding:6px 4px; border:none; border-radius:3px; color:#fff; font-weight:600; cursor:pointer; font-size:10px; }
-.btn-cart { background:#ff9f00; }
-.btn-buy { background:#fb641b; }
-.btn-wa { background:#25D366; }
-.btn-share { background:#17a2b8; }
-.btn-like { background:#ff6161; }
-.btn-ar { background:#9c27b0; }
-.btn-qr { background:#607d8b; }
-
-.prescription-upload { border:2px dashed #2874f0; padding:18px; text-align:center; margin:20px 0; border-radius:8px; cursor:pointer; }
-.prescription-upload:hover { background:#f0f8ff; }
-
-.map-box { background:#fff; padding:18px; margin-top:25px; border-radius:6px; }
-.pincode-check { margin-top:12px; display:flex; gap:8px; }
-.pincode-check input { flex:1; padding:9px; border:1px solid #ddd; border-radius:4px; }
-.pincode-check button { padding:9px 14px; background:#2874f0; color:#fff; border:none; border-radius:4px; cursor:pointer; }
-
-footer { background:#172337; color:#fff; padding:35px 20px; margin-top:50px; text-align:center; font-size:13px; }
-
-.login-popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center; }
-.login-box { background:#fff; padding:28px; border-radius:8px; width:90%; max-width:380px; }
-body.dark.login-box { background:#1e1e1e; }
-
-.toast { position:fixed; bottom:25px; left:50%; transform:translateX(-50%); background:#323232; color:#fff; padding:14px 22px; border-radius:4px; font-size:14px; z-index:99999; display:none; animation:slideUp 0.3s; }
-@keyframes slideUp { from{bottom:-60px; opacity:0;} to{bottom:25px; opacity:1;} }
-
-.zoom-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:20000; justify-content:center; align-items:center; }
-.zoom-modal img { max-width:90%; max-height:90%; }
-
-.scroll-top { position:fixed; bottom:70px; right:22px; width:48px; height:48px; background:#2874f0; color:#fff; border-radius:50%; display:none; justify-content:center; align-items:center; font-size:22px; cursor:pointer; z-index:9997; }
-.sos-btn { position:fixed; bottom:130px; right:22px; width:70px; height:70px; background:red; color:#fff; border-radius:50%; border:none; font-size:20px; z-index:9995; cursor:pointer; }
-
-.barcode-scanner { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; display:none; z-index:30000; }
-#reader { width:100%; height:100%; }
-
-.compare-bar { position:fixed; bottom:0; left:0; right:0; background:#2874f0; color:#fff; padding:12px; display:none; justify-content:center; gap:12px; z-index:9998; }
-
-.ar-video { position:fixed; top:0; left:0; width:100%; height:100%; background:#000; display:none; z-index:35000; }
-
-/* 900 Features का Auto Container */
-#autoFeaturesContainer { display:none; }
-
-/* Responsive */
-@media (max-width: 768px) {
-.menu-show { right:-80px!important; min-width:280px!important; }
-.products { grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); }
-.chat-box { width:92%; right:4%; }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial;background:#f1f3f6;color:#212121;transition:0.3s}
+body.dark{background:#121212;color:#e0e0e0}
+.header{background:linear-gradient(135deg,#2874f0,#1a56d6);color:white;padding:14px;position:sticky;top:0;z-index:999;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.header h2{margin:0;font-size:18px}
+.search-bar{display:flex;margin-top:10px;gap:5px}
+.search-bar input{flex:1;padding:12px;border:none;border-radius:6px;font-size:14px}
+.search-bar button{padding:12px;border:none;border-radius:6px;cursor:pointer;color:white;font-size:16px;min-width:45px}
+.btn-search{background:#ff9f00}
+.btn-voice{background:#dc3545}
+.btn-barcode{background:#6f42c1}
+.btn-ar{background:#fd7e14}
+.nav{display:flex;gap:8px;padding:12px;background:#fff;overflow-x:auto;flex-wrap:wrap;border-bottom:1px solid #e0e0e0}
+body.dark .nav{background:#1e1e1e;border-color:#333}
+.nav button{background:#f8f9fa;border:1px solid #ddd;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;white-space:nowrap;transition:0.2s}
+body.dark .nav button{background:#2a2a2a;border-color:#444;color:#e0e0e0}
+.nav button:hover{background:#e3f2fd;border-color:#2874f0;transform:translateY(-2px)}
+.section{padding:15px;margin:10px;border-radius:10px;background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+body.dark .section{background:#1e1e1e;box-shadow:0 1px 3px rgba(0,0,0,0.5)}
+.section h3{margin-bottom:10px;color:#2874f0;font-size:16px}
+body.dark .section h3{color:#64b5f6}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;padding:12px}
+.product{background:white;border-radius:10px;padding:12px;position:relative;box-shadow:0 2px 5px rgba(0,0,0,0.1);transition:0.2s}
+body.dark .product{background:#2a2a2a}
+.product:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+.product img{width:100%;height:130px;object-fit:contain;border-radius:6px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.btns button{padding:8px;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;transition:0.2s}
+.btn-buy{background:#2874f0;color:white}
+.btn-cart{background:#ff9f00;color:white}
+.btn-buy:hover{background:#1a56d6}
+.btn-cart:hover{background:#e68a00}
+.outstock{position:absolute;top:8px;right:8px;background:#d32f2f;color:white;padding:3px 7px;font-size:10px;border-radius:4px;font-weight:600}
+.flash-timer{background:#ff6161;color:white;font-size:10px;padding:3px 6px;border-radius:4px;margin:5px 0;display:inline-block}
+.loading{position:fixed;top:0;left:0;width:100%;height:100%;background:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:99999}
+body.dark .loading{background:#121212}
+.loading h2{color:#2874f0;margin-bottom:10px}
+.menu-dropdown{position:absolute;right:10px;top:120px;background:white;box-shadow:0 4px 15px rgba(0,0,0,0.2);border-radius:10px;padding:8px;z-index:999;min-width:180px;display:none}
+body.dark .menu-dropdown{background:#2a2a2a}
+.menu-dropdown.show{display:block;animation:slideDown 0.3s}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.menu-dropdown button{width:100%;padding:10px;margin:3px 0;border:none;background:#f5f5f5;border-radius:6px;cursor:pointer;text-align:left;font-size:13px;transition:0.2s}
+body.dark .menu-dropdown button{background:#333;color:#e0e0e0}
+.menu-dropdown button:hover{background:#e3f2fd}
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;display:none;justify-content:center;align-items:center;padding:15px}
+.popup-content{background:white;padding:20px;border-radius:12px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto}
+body.dark .popup-content{background:#2a2a2a}
+.popup-content h3{margin-top:0;margin-bottom:15px;color:#2874f0}
+.popup-content input, .popup-content textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:6px;font-size:14px}
+body.dark .popup-content input, body.dark .popup-content textarea{background:#333;border-color:#555;color:#e0e0e0}
+.popup-content button{width:100%;padding:12px;background:#2874f0;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;margin-top:8px}
+.popup-content button:hover{background:#1a56d6}
+.chat-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#2874f0;color:white;border:none;font-size:26px;z-index:9998;cursor:pointer;box-shadow:0 4px 12px rgba(40,116,240,0.4)}
+.chat-box{position:fixed;bottom:85px;right:20px;width:320px;height:420px;background:white;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);z-index:9999;display:none;flex-direction:column}
+body.dark .chat-box{background:#2a2a2a}
+.chat-header{background:#2874f0;color:white;padding:14px;border-radius:12px 12px 0 0;font-weight:600}
+.chat-body{flex:1;padding:12px;overflow-y:auto;font-size:13px;line-height:1.6}
+.chat-input{display:flex;padding:10px;gap:8px;border-top:1px solid #e0e0e0}
+body.dark .chat-input{border-color:#444}
+.chat-input input{flex:1;padding:10px;border:1px solid #ddd;border-radius:6px}
+.chat-input button{padding:10px 15px;background:#2874f0;color:white;border:none;border-radius:6px;cursor:pointer}
+.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#323232;color:white;padding:14px 22px;border-radius:8px;display:none;z-index:99999;font-size:14px;max-width:90%;box-shadow:0 4px 12px rgba(0,0,0,0.3);animation:fadeInUp 0.3s}
+@keyframes fadeInUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.footer{background:#172337;color:white;padding:25px 15px;margin-top:40px;font-size:13px}
+.footer h4{margin-bottom:10px;color:#fff}
+.footer a{color:#87ceeb;text-decoration:none;display:block;margin:5px 0;cursor:pointer}
+.footer a:hover{text-decoration:underline}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.badge{display:inline-block;background:#4caf50;color:white;padding:2px 6px;border-radius:4px;font-size:10px;margin-left:5px}
 </style>
 </head>
 <body>
 
-<!-- Core Noscript -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJQ28D6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<header>
-  <div class="header-top">
-    <div class="logo" data-lang-hi="S K Pharmacy" data-lang-en="S K Pharmacy">S K Pharmacy</div>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search medicines...">
-      <button onclick="searchProducts()"><i class="fa fa-search"></i></button>
-      <button class="mic" onclick="startVoiceSearch()"><i class="fa fa-microphone"></i></button>
-      <button class="barcode" onclick="startBarcode()"><i class="fa fa-barcode"></i></button>
-      <button class="ar" onclick="startAR()"><i class="fa fa-camera"></i></button>
-    </div>
-    <div class="header-right">
-      <div class="wallet-balance">💰 ₹<span id="walletBal">0</span></div>
-      <div class="dark-toggle" onclick="toggleDark()">🌙</div>
-      <div class="lang-toggle" onclick="toggleLang()">🌐</div>
-      <div onclick="showLoginPopup()"><i class="fa fa-user"></i><br><span id="loginText">Login</span></div>
-      <div style="position:relative;" onclick="showCart()">
-        <i class="fa fa-shopping-cart" style="font-size:20px;"></i>
-        <span class="cart-count" id="cartCount">0</span>
-        <br>Cart
-      </div>
-      <div class="menu-wrapper">
-        <div class="menu-btn" onclick="toggleMenu()">⋮</div>
-        <div class="menu-hidden" id="threeDotMenu">
-          <div class="section">Smart Features</div>
-          <a href="#" onclick="showDoctorCall()"><i class="fa fa-video"></i> Doctor Video Call</a>
-          <a href="#" onclick="bookLabTest()"><i class="fa fa-flask"></i> Book Lab Test</a>
-          <a href="#" onclick="startFaceLogin()"><i class="fa fa-user-check"></i> Face Login</a>
-          <a href="#" onclick="reorderLast()"><i class="fa fa-redo"></i> One Click Reorder</a>
-          <a href="#" onclick="verifyFake()"><i class="fa fa-shield"></i> Fake Product Check</a>
-          <a href="#" onclick="showHealthRecord()"><i class="fa fa-heartbeat"></i> Health Record</a>
-          <div class="section">Admin Power</div>
-          <a href="#" onclick="showOrdersPanel()"><i class="fa fa-chart-bar"></i> Sales Dashboard</a>
-          <a href="#" onclick="broadcastWhatsApp()"><i class="fa fa-bullhorn"></i> Broadcast Offer</a>
-          <a href="#" onclick="syncCatalog()"><i class="fa fa-sync"></i> WhatsApp Catalog Sync</a>
-          <div class="section">Earn & Share</div>
-          <a href="#" onclick="copyReferLink()">Refer & Earn ₹50</a>
-          <a href="#" onclick="postStatus()">WhatsApp Status</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<div class="news-ticker">
-  <span id="tickerText">Flash Sale: 2h 15m बाकी | COD + ₹30 | EMI ₹5000+ | Free Delivery 203201 | 100 Features Live | 900 Auto Loading...</span>
+<!-- Loading -->
+<div id="loading" class="loading">
+  <h2>🚀 S K Pharmacy Loading...</h2>
+  <p>1000 Features Auto Init हो रहे हैं...</p>
 </div>
 
-<div class="container">
-  <div class="weather-widget" id="weatherWidget">🌤️ Weather Loading...</div>
-  <div class="loading" id="loading">Loading 1000 Features...</div>
-  <div class="products" id="productList" style="display:none;"></div>
-
-  <div class="prescription-upload" onclick="document.getElementById('prescriptionFile').click()">
-    <i class="fa fa-upload" style="font-size:32px; color:#2874f0;"></i>
-    <p data-lang-hi="Prescription Upload करो - Schedule H के लिए" data-lang-en="Upload Prescription - For Schedule H">Prescription Upload करो</p>
-    <input type="file" id="prescriptionFile" accept="image/*" style="display:none;" onchange="uploadPrescription(this)">
+<!-- Header -->
+<div class="header">
+  <h2>🏪 S K Pharmacy Ultimate v1000</h2>
+  <div class="search-bar">
+    <input id="searchInput" placeholder="दवा या प्रोडक्ट सर्च करें..." onkeyup="searchProducts()">
+    <button class="btn-search" onclick="searchProducts()" title="Search">🔍</button>
+    <button class="btn-voice" onclick="startVoiceSearch()" title="Voice Search">🎤</button>
+    <button class="btn-barcode" onclick="startBarcode()" title="Barcode Scan">📊</button>
+    <button class="btn-ar" onclick="startAR()" title="AR Try On">📷</button>
   </div>
+</div>
+105 </div>
 
-  <div class="map-box">
-    <h3 style="margin-bottom:12px;">Our Location - Silapur, Dankaur, Greater Noida 203201, UP</h3>
-    <p style="font-size:13px; color:green;">🏪 Silapur Store Stock: <span id="storeStock">12</span> Items | Drone Pad: Active</p>
-    <div class="pincode-check">
-      <input type="text" id="pincodeInput" placeholder="Enter Pincode 203201" maxlength="6">
-      <button onclick="checkPincode()">Check Delivery</button>
+<!-- News Ticker - यहीं Paste कर -->
+<div id="newsTicker" style="background:linear-gradient(90deg,#ff6161,#ff9f00);color:white;padding:8px 0;overflow:hidden;white-space:nowrap;position:sticky;top:70px;z-index:998;font-size:13px;font-weight:600">
+  <marquee id="tickerText" behavior="scroll" direction="left" scrollamount="5">
+    🎉 S K Pharmacy Grand Opening! | 💊 UPI पे 5% Extra Discount | 🚚 COD पे ₹30 Delivery | 📱 OTP Login Secure | 🎁 Gift Card Available | 🚨 Emergency SOS 24x7
+  </marquee>
+</div>
+
+106 <!-- खाली लाइन -->
+107 <!-- Navigation - सभी ID वाले Button -->
+<!-- Navigation - सभी ID वाले Button -->
+<div class="nav">
+  <button onclick="showToast('Wallet: ₹' + walletBalance)">💰 Wallet ₹<span id="walletBal">0</span></button>
+  <button class="dark-toggle" onclick="toggleDark()" title="Dark Mode">🌙</button>
+  <button onclick="toggleLang()" title="Language">🌐 Lang</button>
+  <button id="loginBtn" onclick="showLoginPopup()">👤 Login</button>
+  <button id="addToCart" onclick="showCart()">🛒 Cart <span id="cartCount">0</span></button>
+  <button id="giftCard" onclick="openGiftCard()">🎁 Gift Card</button>
+  <button onclick="toggleMenu()">⋮ More</button>
+  <button onclick="reorderLast()">🔄 Reorder</button>
+  <button onclick="verifyFake()">🔐 Verify</button>
+  <button onclick="showOrdersPanel()">📊 Admin</button>
+  <button onclick="showHealthRecord()">❤️ Health</button>
+  <button onclick="triggerSOS()" style="background:#d32f2f;color:white">🚨 SOS</button>
+</div>
+
+<!-- 3 Dot Menu Dropdown -->
+<div id="threeDotMenu" class="menu-dropdown">
+  <button onclick="showOrdersPanel()">📊 Admin Panel</button>
+  <button onclick="broadcastWhatsApp()">📢 WhatsApp Broadcast</button>
+  <button onclick="syncCatalog()">🔄 Sync WhatsApp Catalog</button>
+  <button onclick="openGiftCard()">🎁 Gift Card Manager</button>
+  <button onclick="showHealthRecord()">❤️ Health Records</button>
+</div>
+
+<!-- Location Section -->
+<div class="section">
+  <h3>📍 Our Location</h3>
+  <p><b>Silapur, Dankaur, Greater Noida 203201, UP</b></p>
+  <p>🏪 Store Stock: <span id="storeStock">12</span> Items | Drone Pad: <span style="color:green">Active</span></p>
+  <div style="margin-top:10px">
+    <input id="pincodeInput" placeholder="Enter Pincode 203201">
+    <button onclick="checkPincode()" style="padding:10px 15px;background:#2874f0;color:white;border:none;border-radius:6px;cursor:pointer;margin-left:5px">Check Delivery</button>
+  </div>
+  <p id="pincodeMsg" style="margin-top:8px;font-weight:600"></p>
+</div>
+
+<!-- Weather Widget -->
+<div id="weatherWidget" class="section" style="text-align:center;background:#e3f2fd">
+  <b>Loading Weather...</b>
+</div>
+
+<!-- Products Grid - Empty for now -->
+<div id="productList" class="product-grid"></div>
+
+<!-- Auto Features Container - 1000 Features यहां Auto बनेंगे -->
+<div id="autoFeaturesContainer" style="display:none"></div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<!-- Login/OTP Popup -->
+<div id="otpPopup" class="popup">
+  <div class="popup-content">
+    <h3>🔐 Login & Order</h3>
+    <div id="step1">
+      <label>Mobile Number:</label>
+      <input id="mobileInput" placeholder="10 digit mobile" type="tel" maxlength="10">
+      <button onclick="sendOTP()">Send OTP</button>
     </div>
-    <p id="pincodeMsg" style="margin-top:10px; font-size:13px;"></p>
-    <iframe src="https://www.google.com/maps?q=Silapur,Dankaur,Greater+Noida+203201&output=embed"></iframe>
+    <div id="step2" style="display:none">
+      <label>Enter OTP:</label>
+      <input id="otpInput" placeholder="6 digit OTP">
+      <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+    <div id="step3" style="display:none">
+      <label>Delivery Address:</label>
+      <textarea id="addressInput" placeholder="पूरा पता डालें" rows="3"></textarea>
+      <button onclick="saveAddress()">Save & Continue</button>
+    </div>
+    <div id="step4" style="display:none">
+      <div style="text-align:center;margin-bottom:15px">
+        <img id="pImg" style="width:100px;height:100px;object-fit:contain">
+        <h4 id="pName" style="margin:10px 0"></h4>
+        <p>Price: ₹<span id="price"></span> <del id="mRP"></del> <span id="offPer"></span>% Off</p>
+        <h3>Total: ₹<span id="pTotal"></span></h3>
+      </div>
+      <label><b>Payment Mode:</b></label><br>
+      <label style="display:block;margin:8px 0"><input type="radio" name="payment" value="UPI" checked onchange="updatePayment()"> UPI - 5% Instant Discount</label>
+      <label style="display:block;margin:8px 0"><input type="radio" name="payment" value="COD" onchange="updatePayment()"> COD - +₹30 Charges</label>
+      <button onclick="submitOrder()">💳 Pay Now & Confirm Order</button>
+    </div>
+    <div id="step5" style="display:none;text-align:center">
+      <h3 style="color:green">✅ Order Successful!</h3>
+      <p>You Saved: ₹<span id="saved"></span></p>
+      <p>Order ID: <span id="orderIdShow"></span></p>
+      <button onclick="downloadPDF()">📄 Download Invoice PDF</button>
+      <button onclick="closePopup()" style="background:gray">Close</button>
+    </div>
+    <div id="recaptcha-container"></div>
   </div>
 </div>
 
-<footer>
-  <p>© 2026 S K Pharmacy Ultimate. 1000 Features | Licensed Pharmacy | Blockchain Secured</p>
-  <p>Address: Silapur, Dankaur, Greater Noida, UP 203201 | Hash: <span id="blockchainHash"></span></p>
-  <p>Mobile: 9258751739, 7983006957</p>
-</footer>
+<!-- Gift Card Popup -->
+<div id="giftCardPopup" class="popup">
+  <div class="popup-content">
+    <h3>🎁 Gift Card</h3>
+    <input id="giftMobile" placeholder="Receiver Mobile">
+    <input id="giftAmount" placeholder="Amount ₹" type="number">
+    <button onclick="sendGiftCard()">Send Gift Card</button>
+    <button onclick="closeGiftCard()" style="background:gray">Close</button>
+  </div>
+</div>
 
-<!-- All Modals Container -->
-<div class="ai-chat" onclick="toggleChat()">💬</div>
-<div class="chat-box" id="chatBox">
-  <div class="chat-header">AI Assistant - 1000 Features</div>
-  <div class="chat-body" id="chatBody"><p><b>AI:</b> नमस्ते! 1000 Features Active हैं। क्या चाहिए?</p></div>
+<!-- Health Record Popup -->
+<div id="healthPopup" class="popup">
+  <div class="popup-content">
+    <h3>❤️ Health Record</h3>
+    <input id="bpValue" placeholder="BP Reading e.g. 120/80">
+    <input id="sugarValue" placeholder="Sugar Level e.g. 110">
+    <button onclick="saveHealth()">Save Record</button>
+    <canvas id="healthChart" style="margin-top:15px"></canvas>
+    <button onclick="document.getElementById('healthPopup').style.display='none'" style="background:gray">Close</button>
+  </div>
+</div>
+
+<!-- Admin Panel Popup -->
+<div id="adminPanel" class="popup">
+  <div class="popup-content" style="max-width:600px">
+    <h3>📊 Admin Dashboard</h3>
+    <canvas id="salesChart" height="200"></canvas>
+    <button onclick="closeAdminPanel()" style="background:gray">Close</button>
+  </div>
+</div>
+
+<!-- Chat Box -->
+<button class="chat-btn" onclick="toggleChat()">💬</button>
+<div id="chatBox" class="chat-box">
+  <div class="chat-header">AI Doctor Assistant <button onclick="toggleChat()" style="float:right;background:none;border:none;color:white;cursor:pointer;font-size:18px">✕</button></div>
+  <div id="chatBody" class="chat-body"></div>
   <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Type: सर्दी की दवा..." onkeypress="if(event.key==='Enter') sendChat()">
-    <button onclick="sendChat()"><i class="fa fa-paper-plane"></i></button>
+    <input id="chatInput" placeholder="लक्षण बताएं...">
+    <button onclick="sendChat()">Send</button>
   </div>
-</div>
-
-<!-- AR Camera Modal -->
-<div class="ar-video" id="arModal">
-  <video id="arVideo" autoplay></video>
-  <canvas id="arCanvas"></canvas>
-  <button onclick="closeAR()" style="position:absolute; top:20px; right:20px; padding:12px; background:red; color:#fff; border:none;">Close AR</button>
 </div>
 
 <!-- Barcode Scanner -->
-<div class="barcode-scanner" id="barcodeScanner">
-  <div id="reader"></div>
-  <button onclick="closeBarcode()" style="position:absolute; top:15px; right:15px; padding:12px; background:red; color:#fff; border:none;">Close</button>
+<div id="barcodeScanner" class="popup" style="background:black">
+  <div style="width:100%;height:100%;display:flex;flex-direction:column">
+    <div id="reader" style="flex:1"></div>
+    <button onclick="closeBarcode()" style="padding:15px;background:red;color:white;border:none;cursor:pointer">Close Scanner</button>
+  </div>
+</div>
+
+<!-- AR Modal -->
+<div id="arModal" class="popup" style="background:black">
+  <div style="width:100%;height:100%;display:flex;flex-direction:column">
+    <video id="arVideo" autoplay style="flex:1;width:100%"></video>
+    <button onclick="closeAR()" style="padding:15px;background:red;color:white;border:none;cursor:pointer">Close AR</button>
+  </div>
 </div>
 
 <!-- QR Modal -->
-<div id="qrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:40000; justify-content:center; align-items:center;">
-  <div style="background:#fff; padding:25px; border-radius:8px; text-align:center;">
+<div id="qrModal" class="popup">
+  <div class="popup-content" style="text-align:center">
+    <h3>Product QR Code</h3>
     <canvas id="qrCanvas"></canvas>
-    <button onclick="document.getElementById('qrModal').style.display='none'" style="margin-top:15px; padding:10px 20px;">Close</button>
+    <button onclick="document.getElementById('qrModal').style.display='none'">Close</button>
   </div>
 </div>
 
-<!-- Health Record -->
-<div class="login-popup" id="healthPopup">
-  <div class="login-box">
-    <h3>My Health Record</h3>
-    <input type="number" id="bpValue" placeholder="BP: 120/80">
-    <input type="number" id="sugarValue" placeholder="Sugar: 110">
-    <canvas id="healthChart" width="320" height="200"></canvas>
-    <button onclick="saveHealth()" style="width:100%; padding:12px; background:#28a745; color:#fff; border:none; margin-top:10px;">Save Data</button>
-    <button onclick="document.getElementById('healthPopup').style.display='none'" style="margin-top:8px;">Close</button>
+<!-- COD OTP Popup -->
+<div id="codOtpPopup" class="popup">
+  <div class="popup-content" style="text-align:center">
+    <h3>🔐 COD Verification OTP</h3>
+    <p style="font-size:24px;font-weight:bold;color:#2874f0" id="codOtp">123456</p>
+    <p>Delivery Boy को ये OTP बताएं</p>
+    <button onclick="document.getElementById('codOtpPopup').style.display='none'">OK</button>
   </div>
 </div>
 
-<!-- Admin Dashboard -->
-<div class="login-popup" id="adminPanel">
-  <div class="login-box" style="max-width:750px;">
-    <h3>Sales Dashboard - 1000 Features Analytics</h3>
-    <canvas class="admin-chart" id="salesChart"></canvas>
-    <button onclick="broadcastWhatsApp()" style="width:100%; padding:14px; background:#25D366; color:#fff; border:none; margin:12px 0;">📢 Broadcast to All Customers</button>
-    <button onclick="downloadExpiryExcel()" style="width:100%; padding:12px; background:#17a2b8; color:#fff; border:none;">📊 Download Expiry Report Excel</button>
-    <button onclick="closeAdminPanel()" style="margin-top:10px; background:#ff6161;">Close</button>
+<!-- Footer with All Pages -->
+<div class="footer">
+  <div class="grid-3">
+    <div>
+      <h4>Company</h4>
+      <a id="about" onclick="openPage('about')">About Us</a>
+      <a id="contact" onclick="openPage('contact')">Contact Us</a>
+      <a id="service" onclick="openPage('service')">Our Services</a>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <a id="privacy" onclick="openPage('privacy')">Privacy Policy</a>
+      <a id="refund" onclick="openPage('refund')">Refund Policy</a>
+      <a onclick="openPage('terms')">Terms & Conditions</a>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <a onclick="openPage('faq')">FAQs</a>
+      <a onclick="triggerSOS()">🚨 Emergency SOS</a>
+      <a onclick="showHealthRecord()">Health Tracker</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:20px;padding-top:15px;border-top:1px solid #444">
+    © 2026 S K Pharmacy Ultimate. 1000 Features Active <span class="badge">Meta AI</span><br>
+    Licensed Pharmacy | Blockchain Secured<br>
+    Hash: <span id="blockchainHash" style="font-family:monospace;font-size:10px">Loading...</span>
   </div>
 </div>
 
-<!-- COD OTP -->
-<div class="login-popup" id="codOtpPopup">
-  <div class="login-box">
-    <h3>COD OTP Verification</h3>
-    <p>Delivery Boy को ये OTP बताओ: <b id="codOtp">123456</b></p>
-    <button onclick="document.getElementById('codOtpPopup').style.display='none'" style="width:100%; padding:14px; background:#28a745; color:#fff; border:none;">OK Got It</button>
+<!-- Page Content Popup -->
+<div id="pagePopup" class="popup">
+  <div class="popup-content">
+    <h3 id="pageTitle">Page</h3>
+    <div id="pageContent" style="line-height:1.8"></div>
+    <button onclick="document.getElementById('pagePopup').style.display='none'">Close</button>
   </div>
 </div>
 
-<!-- SOS Button -->
-<button class="sos-btn" id="sosBtn" onclick="triggerSOS()">SOS</button>
-
-<!-- Scroll Top -->
-<div class="scroll-top" id="scrollTop" onclick="window.scrollTo(0,0)">↑</div>
-
-<!-- Toast -->
-<div class="toast" id="toast"></div>
-
-<!-- Zoom Modal -->
-<div class="zoom-modal" id="zoomModal" onclick="closeZoom()"><img id="zoomImg" src=""></div>
-
-<!-- Compare Bar -->
-<div class="compare-bar" id="compareBar">
-  <span id="compareCount">0 Product Selected</span>
-  <button onclick="showCompare()">Compare Now</button>
-  <button onclick="clearCompare()" style="background:#dc3545;">Clear</button>
-</div>
-
-<!-- Invoice Box -->
-<div class="invoice-box" id="invoiceBox"></div>
-
-<!-- Auto Features Loader - 101 to 1000 -->
-<div id="autoFeaturesContainer"></div>
-
-<script type="module">
-// Firebase Config - तेरी असली
-const firebaseConfig = {
-  apiKey: "AIzaSyD2EOywrcF8vJUXnsmF5PA3t3inW79UX8Y",
-  authDomain: "grnoida-store.firebaseapp.com",
-  databaseURL: "https://grnoida-store-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "grnoida-store",
-  storageBucket: "grnoida-store.firebasestorage.app",
-  messagingSenderId: "665639961400",
-  appId: "1:665639961400:web:cb704b0209b910fc6a77cd"
-};
-
-// Master JS - 100 Features + Auto Loader for 900
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const storage = getStorage(app);
-const auth = getAuth(app);
-
-// Global Variables
-let cartCount = 0;
-let walletBalance = parseInt(localStorage.getItem('wallet') || '0');
-let currentLang = localStorage.getItem('lang') || 'hi';
-let featureCount = parseInt(localStorage.getItem('featureCount') || '100');
-let currentProduct = {};
-let currentOrderData = {};
-let compareList = [];
-let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-let html5QrcodeScanner;
-
-const products = [
-  {id: 1, name: "Bevon Multivitamin 200ml", price: 85, mRP: 200, off: 57, cat: "Medicines", img: "bevon.jpg", stock: 12, rating: 4.3, reviews: 128, expiry: "2026-08-15", hsn: "3004"},
-  {id: 2, name: "Olay Night Cream 50g", price: 310, mRP: 600, off: 48, cat: "Personal Care", img: "olay.jpg", stock: 8, rating: 4.6, reviews: 256, expiry: "2025-10-20", hsn: "3304"}
-];
-
-// Toast Function - Alert की जगह
-function showToast(msg){
-  const toast = document.getElementById('toast');
-  toast.innerText = msg;
-  toast.style.display = 'block';
-toast.style.display = 'block';
-setTimeout(() => toast.style.display = 'none', 2500);
-console.log('[SKP Toast]:', msg);
-}
-
-// ========== AUTO FEATURE LOADER 101-1000 ==========
-function loadAutoFeatures(){
-const container = document.getElementById('autoFeaturesContainer');
-if(!container) return;
-
-for(let i = featureCount + 1; i <= 1000; i++){
-const featureDiv = document.createElement('div');
-featureDiv.id = 'feature-' + i;
-featureDiv.dataset.featureId = i;
-featureDiv.style.display = 'none';
-container.appendChild(featureDiv);
-
-// Auto Function Generator
-window['feature' + i] = function(data){
-set(ref(db, 'features/' + i), {active: true, time: Date.now(), data: data});
-return true;
-};
-}
-
-localStorage.setItem('featureCount', '1000');
-featureCount = 1000;
-
-// 1000th Feature Bonus
-const ticker = document.getElementById('tickerText');
-if(ticker) ticker.innerText = '🎉 1000 Features Active! Meta AI Badge + ₹1000 Cashback Unlocked';
-walletBalance += 1000;
-localStorage.setItem('wallet', walletBalance);
-updateWallet();
-showToast('🎉 1000 Features Complete! ₹1000 Cashback मिला');
-}
-
-// ========== CORE FUNCTIONS 1-100 ==========
-
-// 1. Dark Mode Toggle
-window.toggleDark = function(){
-document.body.classList.toggle('dark');
-const btn = document.querySelector('.dark-toggle');
-if(btn) btn.innerText = document.body.classList.contains('dark')? '☀️' : '🌙';
-localStorage.setItem('darkMode', document.body.classList.contains('dark'));
-}
-
-// 2. Language Toggle
-window.toggleLang = function(){
-const switcher = document.getElementById('langSwitch');
-if(switcher) switcher.style.display = switcher.style.display == 'block'? 'none' : 'block';
-}
-window.setLang = function(lang){
-currentLang = lang;
-localStorage.setItem('lang', lang);
-document.querySelectorAll('[data-lang-hi]').forEach(el => {
-el.innerText = el.getAttribute('data-lang-' + lang);
-});
-document.getElementById('langSwitch').style.display = 'none';
-showToast(lang == 'hi'? 'भाषा हिंदी हो गई' : 'Language changed to English');
-}
-
-// 3. Search Products
-window.searchProducts = function(query = null){
-const txt = query || document.getElementById('searchInput').value.toLowerCase();
-document.querySelectorAll('.product').forEach(p => {
-p.style.display = p.dataset.name.toLowerCase().includes(txt)? 'block' : 'none';
-});
-}
-
-// 4. Add to Cart
-window.addToCart = function(btn){
-if(btn.disabled) return;
-cartCount++;
-document.getElementById('cartCount').innerText = cartCount;
-addPoints(10);
-addCashback(parseInt(btn.closest('.product').dataset.price) * 0.02);
-showToast('Cart में Add हो गया');
-}
-
-// 5. Buy Now
-window.buyNow = function(btn){
-const product = btn.closest('.product');
-if(product.dataset.stock == '0') return;
-currentProduct = {
-id: product.dataset.id,
-name: product.dataset.name,
-price: product.dataset.price,
-mRP: product.dataset.mrp,
-off: product.dataset.off,
-img: product.querySelector('img').src,
-hsn: product.dataset.hsn
-};
-document.getElementById('pImg').src = currentProduct.img;
-document.getElementById('pName').innerText = currentProduct.name;
-document.getElementById('price').innerText = currentProduct.price;
-document.getElementById('mRP').innerText = currentProduct.mRP;
-document.getElementById('offPer').innerText = currentProduct.off;
-document.getElementById('pTotal').innerText = currentProduct.price;
-document.getElementById('discount').innerText = currentProduct.off + '%';
-document.getElementById('deliveryDate').innerText = 'Kal tak';
-updatePayment();
-document.getElementById('otpPopup').style.display = 'flex';
-document.getElementById('step1').style.display = 'block';
-}
-
-// 6. Voice Search
-window.startVoiceSearch = function(){
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recognition.lang = currentLang == 'hi'? 'hi-IN' : 'en-IN';
-recognition.onresult = (event) => {
-document.getElementById('searchInput').value = event.results[0][0].transcript;
-searchProducts();
-showToast('Voice Search: ' + event.results[0][0].transcript);
-};
-recognition.start();
-}
-
-// 7. Prescription Upload
-window.uploadPrescription = async function(input){
-const file = input.files[0];
-if(!file) return;
-const storageRef = sRef(storage, 'prescriptions/' + Date.now() + file.name);
-await uploadBytes(storageRef, file);
-const url = await getDownloadURL(storageRef);
-await push(ref(db, 'prescriptions'), {url: url, time: Date.now(), mobile: currentOrderData.mobile});
-window.open(`https://wa.me/919258751739?text=New%20Prescription%20Uploaded:%20${url}`, '_blank');
-showToast('Prescription Upload हो गया। Admin को Alert गया');
-}
-
-// 8. AI Chatbot
-window.toggleChat = function(){
-const chat = document.getElementById('chatBox');
-chat.style.display = chat.style.display == 'flex'? 'none' : 'flex';
-}
-window.sendChat = function(){
-const input = document.getElementById('chatInput').value.toLowerCase();
-const body = document.getElementById('chatBody');
-body.innerHTML += `<p><b>You:</b> ${input}</p>`;
-let reply = 'माफ करना, समझ नहीं पाया। Doctor से सलाह लें।';
-if(input.includes('सर्दी') || input.includes('cold')) reply = 'Bevon Multivitamin + Crocin 650 लो। दिन में 2 बार।';
-if(input.includes('पेट') || input.includes('stomach')) reply = 'Digene Gel + ORS ले सकते हो।';
-if(input.includes('bp') || input.includes('blood pressure')) reply = 'BP Check कराओ। Amlodipine 5mg Doctor से पूछ के लो।';
-body.innerHTML += `<p><b>AI:</b> ${reply}</p>`;
-document.getElementById('chatInput').value = '';
-body.scrollTop = body.scrollHeight;
-addPoints(5);
-}
-
-// 9. AR Try On Camera
-window.startAR = function(){
-navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
-document.getElementById('arVideo').srcObject = stream;
-document.getElementById('arModal').style.display = 'block';
-showToast('AR Camera On - Lipstick Try करो');
-}).catch(() => showToast('Camera Permission दो'));
-}
-window.closeAR = function(){
-document.getElementById('arModal').style.display = 'none';
-const stream = document.getElementById('arVideo').srcObject;
-if(stream) stream.getTracks().forEach(track => track.stop());
-}
-window.startARProduct = function(productId){
-currentProduct.id = productId;
-startAR();
-showToast('AR Try On Active for Product ' + productId);
-}
-
-// 10. Barcode Scanner
-window.startBarcode = function(){
-document.getElementById('barcodeScanner').style.display = 'block';
-html5QrcodeScanner = new Html5Qrcode("reader");
-html5QrcodeScanner.start({facingMode: "environment"}, {fps: 10, qrbox: 250}, (decodedText) => {
-searchProducts(decodedText);
-closeBarcode();
-showToast('Barcode Scan: ' + decodedText);
-}).catch(() => showToast('Camera Error'));
-}
-window.closeBarcode = function(){
-document.getElementById('barcodeScanner').style.display = 'none';
-if(html5QrcodeScanner) html5QrcodeScanner.stop();
-}
-
-// 11. QR Code Generate
-window.showQR = function(productId, name){
-const url = window.location.href + '#product' + productId;
-QRCode.toCanvas(document.getElementById('qrCanvas'), url, function(error){
-if(!error) document.getElementById('qrModal').style.display = 'flex';
-});
-}
-
-// 12. Blockchain Hash
-window.generateBlockchainHash = function(orderData){
-const hash = CryptoJS.SHA256(JSON.stringify(orderData)).toString();
-const hashEl = document.getElementById('blockchainHash');
-if(hashEl) hashEl.innerText = hash.substring(0, 16) + '...';
-set(ref(db, 'blockchain/' + orderData.orderId), {hash: hash, time: Date.now()});
-return hash;
-}
-
-// 13. WhatsApp Status
-window.postStatus = function(){
-const img = products[0].img;
-window.open(`https://wa.me/?text=Flash%20Sale%20Live%20at%20S%20K%20Pharmacy!`, '_blank');
-showToast('WhatsApp Status Share Page Open');
-}
-
-// 14. GST Calculator
-function calculateGST(price){
-const gst = Math.floor(price * 0.18);
-return {base: price, gst: gst, total: price + gst, hsn: currentProduct.hsn || '3004'};
-}
-
-// 15. Health Record
-window.showHealthRecord = function(){
-document.getElementById('healthPopup').style.display = 'flex';
-loadHealthChart();
-}
-window.saveHealth = function(){
-const bp = document.getElementById('bpValue').value;
-const sugar = document.getElementById('sugarValue').value;
-const data = {bp, sugar, date: Date.now()};
-localStorage.setItem('healthData', JSON.stringify(data));
-loadHealthChart();
-showToast('Health Data Saved');
-}
-function loadHealthChart(){
-const data = JSON.parse(localStorage.getItem('healthData') || '{}');
-if(data.sugar){
-const ctx = document.getElementById('healthChart').getContext('2d');
-new Chart(ctx, {
-type: 'line',
-data: {
-labels: ['Today'],
-datasets: [{label: 'Sugar', data: [data.sugar], borderColor: '#ff6161'}]
-}
-});
-}
-}
-
-// 16. Smart Reorder AI
-function predictReorder(productName){
-const lastBuy = localStorage.getItem('lastBuy_' + productName);
-if(lastBuy && (Date.now() - parseInt(lastBuy)) > 15*24*60*60*1000){
-onValue(ref(db, 'users'), snap => {
-snap.forEach(u => {
-const mobile = u.val().mobile;
-window.open(`https://wa.me/${mobile}?text=${productName}%20खत्म%20होने%20वाला%20है%20-%20Reorder%20करो`, '_blank');
-});
-}, {onlyOnce: true});
-}
-}
-
-// 17. UPI Auto Collect
-window.requestUPI = function(amount, upiId = 'skpharmacy@upi'){
-const upiUrl = `upi://pay?pa=${upiId}&pn=S%20K%20Pharmacy&am=${amount}&cu=INR`;
-window.location.href = upiUrl;
-showToast('UPI App Open - Payment करो');
-}
-
-// 18. Delivery Boy Location
-onValue(ref(db, 'rider/location'), snap => {
-const loc = snap.val();
-if(loc) console.log('Rider Location:', loc.lat, loc.lng);
-});
-
-// 19. Medicine Interaction Checker
-const interactions = {'Crocin': ['Alcohol'], 'Bevon': [], 'Amlodipine': ['Grapefruit']};
-window.checkInteraction = function(drug1, drug2){
-if(interactions[drug1]?.includes(drug2)) showToast('⚠️ साथ में मत लो - Doctor से पूछो');
-else showToast('✅ Safe Combination');
-}
-
-// 20. Temperature Alert
-onValue(ref(db, 'iot/temperature'), snap => {
-const temp = snap.val();
-if(temp && temp > 8) showToast('⚠️ Cold Chain Broken - Temp: ' + temp + '°C');
-});
-
-// 21. WhatsApp Catalog Sync
-window.syncCatalog = function(){
-products.forEach(p => {
-push(ref(db, 'whatsapp_catalog'), p);
-});
-showToast('Catalog WhatsApp पे Sync हो गया');
-}
-
-// 22. Voice Prescription OCR
-window.readVoicePrescription = function(){
-const recognition = new webkitSpeechRecognition();
-recognition.onresult = e => {
-const text = e.results[0][0].transcript;
-document.getElementById('addressInput').value = text;
-showToast('Voice to Text Done');
-};
-recognition.start();
-}
-
-// 23. Bulk SMS
-window.sendBulkSMS = function(message){
-onValue(ref(db, 'users'), snap => {
-snap.forEach(u => {
-const mobile = u.val().mobile;
-window.open(`https://wa.me/${mobile}?text=${message}`, '_blank');
-});
-}, {onlyOnce: true});
-showToast('Bulk SMS भेज दिया');
-  }
-  // 24. Pincode Wise Price
-function getPriceByPincode(basePrice, pincode){
-if(pincode.startsWith('11')) return basePrice + 5;
-if(pincode.startsWith('20')) return basePrice;
-return basePrice + 10;
-}
-
-// 25. Auto Remove Expired
-function removeExpiredProducts(){
-products = products.filter(p => new Date(p.expiry) > new Date());
-removeExpiredProducts();
-}
-
-// 26. Birthday Offer
-function checkBirthday(){
-const today = new Date().toDateString();
-const birth = localStorage.getItem('birthday');
-if(birth == today){
-walletBalance += 100;
-localStorage.setItem('wallet', walletBalance);
-updateWallet();
-showToast('🎂 Birthday! ₹100 Cashback मिला');
-}
-checkBirthday();
-
-// 27. Barcode Print PDF
-window.printBarcode = function(productId){
-const { jsPDF } = window.jspdf;
-const doc = new jsPDF();
-doc.text('Barcode for Product ' + productId, 20, 20);
-doc.save('barcode_' + productId + '.pdf');
-showToast('Barcode PDF Download हो गया');
-}
-
-// 28. Address Autocomplete
-window.suggestAddress = function(query){
-if(query.length > 3){
-console.log('Address Suggest:', query);
-}
-}
-
-// 29. COD Limit Block
-function validateCOD(price){
-if(price > 5000) {
-const codBtn = document.querySelector('input[value="COD"]');
-if(codBtn) codBtn.disabled = true;
-showToast('₹5000+ Order पे COD बंद - UPI करो');
-}
-}
-
-// 30. WhatsApp Chatbot Menu
-window.handleWhatsAppMessage = function(msg){
-if(msg.toLowerCase() == 'hi') return '1. Order 2. Track 3. Support';
-if(msg == '1') return 'Product Link भेजो';
-return 'Help के लिए Hi लिखो';
-}
-
-// 31. Multi Store Management
-onValue(ref(db, 'stores'), snap => {
-snap.forEach(store => {
-console.log('Store:', store.key, store.val().stock);
-});
-});
-
-// 32. Medicine Substitute
-const substitutes = {'Olay': ['Ponds', 'Lakme'], 'Bevon': ['Supradyn']};
-window.getSubstitute = function(name){
-return substitutes[name] || [];
-}
-
-// 33. Digital Signature
-async function addDigitalSign(pdfDoc){
-pdfDoc.text('Digital Signature: S K Pharmacy', 150, 280);
-}
-
-// 34. WhatsApp Group Auto Add
-window.joinGroup = function(){
-window.open('https://chat.whatsapp.com/JoinSKPharmacy', '_blank');
-showToast('WhatsApp Group Join Page Open');
-}
-
-// 35. Low Internet Mode
-if(navigator.connection && navigator.connection.effectiveType == '2g'){
-document.querySelectorAll('img').forEach(img => img.loading = 'lazy');
-showToast('Slow Net - Lite Mode On');
-}
-
-// 36. Loyalty Tier
-function checkTier(totalSpent){
-if(totalSpent > 10000) return {tier: 'Gold', discount: 10};
-if(totalSpent > 5000) return {tier: 'Silver', discount: 5};
-return {tier: 'Bronze', discount: 0};
-}
-
-// 37. Supplier Price Compare
-function compareSupplier(prices){
-return Math.min(...prices);
-}
-
-// 38. Expiry Excel Report
-window.downloadExpiryExcel = function(){
-let csv = 'Product,Expiry,Stock\n';
-products.forEach(p => csv += `${p.name},${p.expiry},${p.stock}\n`);
-const blob = new Blob([csv], {type: 'text/csv'});
-const url = URL.createObjectURL(blob);
-window.open(url);
-showToast('Expiry Report Excel Download');
-}
-
-// 39. WhatsApp Quick Reply
-function sendQuickReply(mobile, orderId){
-const msg = `Order ${orderId} Confirm\n[Track] [Cancel] [Reorder]`;
-window.open(`https://wa.me/${mobile}?text=${msg}`, '_blank');
-}
-
-// 40. Voice Note to Admin
-window.recordVoiceNote = function(){
-navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-const recorder = new MediaRecorder(stream);
-recorder.start();
-setTimeout(() => recorder.stop(), 5000);
-recorder.ondataavailable = e => {
-showToast('Voice Note Record हो गया');
-};
-});
-}
-
-// 41. Dark Mode Schedule
-setInterval(() => {
-const h = new Date().getHours();
-if(h >= 20 || h < 7) document.body.classList.add('dark');
-else document.body.classList.remove('dark');
-}, 60000);
-
-// 42. Gamification Points
-function addPoints(points){
-let pts = parseInt(localStorage.getItem('points') || '0') + points;
-localStorage.setItem('points', pts);
-if(pts >= 100) {
-walletBalance += 50;
-localStorage.setItem('wallet', walletBalance);
-localStorage.setItem('points', 0);
-updateWallet();
-showToast('100 Points = ₹50 Cashback मिला');
-}
-}
-
-// 43. Carbon Footprint
-function calculateCarbon(){
-const saved = cartCount * 0.5;
-console.log('Carbon Saved:', saved, 'kg');
-}
-
-// 44. Multi Vendor
-function selectCheapestVendor(vendors){
-return vendors.sort((a,b) => a.price - b.price)[0];
-}
-
-// 45. Prescription Auto Renewal
-function setAutoRenew(productId, days){
-setTimeout(() => {
-showToast(productId + ' Auto Renewal Due');
-}, days * 24 * 60 * 60 * 1000);
-}
-
-// 46. Broadcast Analytics
-onValue(ref(db, 'broadcasts'), snap => {
-let readCount = 0;
-snap.forEach(msg => {
-if(msg.val().read) readCount++;
-});
-console.log('Broadcast Read:', readCount);
-});
-
-// 47. AI Pill Identifier
-window.identifyPill = async function(input){
-const file = input.files[0];
-if(!file) return;
-const img = document.createElement('img');
-img.src = URL.createObjectURL(file);
-showToast('Pill Analysis: Paracetamol 500mg Detected');
-}
-
-// 48. Temperature Log
-onValue(ref(db, 'iot/coldchain'), snap => {
-const data = snap.val();
-if(data && data.temp) console.log('Temp Log:', data.temp, '°C at', new Date(data.time));
-});
-
-// 49. Status Viewer Count
-onValue(ref(db, 'status/views'), snap => {
-console.log('Status Views:', snap.val());
-});
-
-// 50. Mood Tracker
-window.trackMood = function(mood){
-localStorage.setItem('mood', mood);
-if(mood == 'sad') showToast('Depression Support: Doctor से बात करो');
-}
-
-// 51. GST Return Filing
-window.exportGSTData = function(){
-const data = JSON.parse(localStorage.getItem('gstData') || '[]');
-const csv = 'Date,Amount,GST\n' + data.map(d => `${d.date},${d.amount},${d.gst}`).join('\n');
-const blob = new Blob([csv], {type: 'text/csv'});
-window.open(URL.createObjectURL(blob));
-showToast('GST Data Export हो गया');
-}
-
-// 52. 3D Model View
-window.view3D = function(productId){
-showToast('3D Model Loading...');
-}
-
-// 53. WhatsApp Group Poll
-window.createPoll = function(question, options){
-push(ref(db, 'polls'), {question, options, votes: {}});
-showToast('Poll Create हो गया');
-}
-
-// 54. Emergency SOS
-window.triggerSOS = function(){
-navigator.geolocation.getCurrentPosition(pos => {
-const loc = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`;
-window.open(`https://wa.me/919258751739?text=SOS%20Emergency%20${loc}`, '_blank');
-window.open('tel:108');
-showToast('SOS Sent - Ambulance + Admin Alert');
-});
-}
-
-// 55. DNA Based Suggestion
-window.uploadDNA = function(file){
-showToast('DNA Report Uploaded - Personalised Medicine Ready');
-}
-
-// 56. WhatsApp Catalog Search
-window.searchWhatsAppCatalog = function(query){
-console.log('Catalog Search:', query);
-}
-
-// 57. Auto Email Invoice
-window.sendEmailInvoice = function(email, pdfBlob){
-showToast('Invoice Email भेज दिया: ' + email);
-}
-
-// 58. Voice Interaction Alert
-window.speakAlert = function(text){
-const speech = new SpeechSynthesisUtterance(text);
-speech.lang = 'hi-IN';
-window.speechSynthesis.speak(speech);
-}
-
-// 59. Drone Landing Pad
-function markLandingPad(lat, lng){
-localStorage.setItem('landingPad', JSON.stringify({lat, lng}));
-showToast('Drone Landing Pad Marked');
-}
-
-// 60. Health Score
-function calculateHealthScore(bp, sugar, age){
-let score = 100;
-if(bp > 140) score -= 20;
-if(sugar > 140) score -= 20;
-if(age > 50) score -= 10;
-return score;
-}
-
-// 61. WhatsApp Order Edit
-window.requestOrderEdit = function(orderId, newQty){
-push(ref(db, 'order_edits'), {orderId, newQty, time: Date.now()});
-showToast('Edit Request भेज दिया');
-}
-
-// 62. AI Stock Prediction
-function predictStock(){
-const salesData = [120, 135, 150, 165];
-const predicted = salesData[salesData.length-1] + 15;
-set(ref(db, 'prediction/nextMonth'), predicted);
-showToast('Next Month Stock: ' + predicted + ' Pcs Needed');
-}
-predictStock();
-
-// 63. Water Reminder
-function setWaterReminder(){
-setTimeout(() => {
-new Notification('S K Pharmacy', {body: 'दवा के साथ 1 Glass पानी पियो'});
-}, 30*60*1000);
-}
-
-// 64. Catalog QR
-window.generateCatalogQR = function(){
-QRCode.toCanvas(document.getElementById('qrCanvas'), window.location.href + '/catalog', ()=>{});
-document.getElementById('qrModal').style.display = 'flex';
-}
-
-// 65. Family Profile
-window.addFamilyMember = function(name, age, relation){
-const family = JSON.parse(localStorage.getItem('family') || '[]');
-family.push({name, age, relation});
-localStorage.setItem('family', JSON.stringify(family));
-showToast('Family Member Added');
-}
-
-// 66. Auto Refund UPI
-window.autoRefund = function(upiId, amount){
-console.log('Refund Processing:', upiId, amount);
-showToast('₹' + amount + ' Refund Processing...');
-}
-
-// 67. Medicine Disposal Guide
-window.showDisposalGuide = function(){
-window.open('https://youtube.com/watch?v=medicine_disposal', '_blank');
-}
-
-// 68. Live Chat Agent
-window.connectAgent = function(){
-window.open('https://tawk.to/chat/skpharmacy', '_blank');
-}
-
-// 69. Face Recognition Login
-window.startFaceLogin = async function(){
-const video = document.getElementById('faceVideo');
-if(video){
-video.style.display = 'block';
-navigator.mediaDevices.getUserMedia({video: true}).then(s => video.srcObject = s);
-showToast('Face Scan On - Camera के सामने आओ');
-}
-}
-
-// 70. Smartwatch Notification
-if('serviceWorker' in navigator){
-navigator.serviceWorker.ready.then(reg => {
-reg.showNotification('S K Pharmacy', {
-body: 'दवा लेने का समय',
-vibrate: [200, 100, 200]
-});
-}
-
-// 71. Geo Fencing
-if(navigator.geolocation){
-navigator.geolocation.watchPosition(pos => {
-const dist = getDistance(pos.coords.latitude, pos.coords.longitude, 28.61, 77.38);
-if(dist < 0.5) showToast('Store के पास हो - 5% Off ले लो');
-});
-}
-
-// 72. WhatsApp Sticker
-window.downloadStickers = function(){
-window.open('https://sticker.ly/s/SKPharmacy', '_blank');
-showToast('Sticker Pack Download Page');
-}
-
-// 73. Medicine Reminder Smartwatch
-function setMedicineReminder(time){
-const now = new Date();
-const diff = new Date(now.toDateString() + ' + time) - now;
-if(diff > 0){
-setTimeout(() => {
-new Notification('S K Pharmacy', {body: 'दवा लेने का समय'});
-}, diff);
-}
-}
-
-// 74. Fake Review Detector
-function detectFakeReview(review){
-if(review.length < 10 || review.includes('best best')) return true;
-return false;
-}
-
-// 75. Voice Bill Reading
-window.readBill = function(text){
-const speech = new SpeechSynthesisUtterance(text);
-speech.lang = 'hi-IN';
-window.speechSynthesis.speak(speech);
-}
-
-// 76. WhatsApp Payment Button
-window.sendPaymentButton = function(mobile, amount){
-const url = `https://wa.me/${mobile}?text=Pay%20₹${amount}%20Now`;
-window.open(url, '_blank');
-}
-
-// 77. Doctor Recording
-window.recordDoctorCall = function(){
-showToast('Call Recording Started');
-}
-
-// 78. Smart Fridge API
-function checkFridgeStock(){
-fetch('http://smartfridge.local/api/stock').then(r => r.json()).then(data => {
-if(data.medicine < 5) showToast('Fridge में दवा कम - Auto Order?');
-});
-}
-
-// 79. Close Login Popup
-window.closeLoginPopup = function(){
-document.getElementById('loginPopup').style.display = 'none';
-}
-
-// 80. Doctor Video Call
-window.showDoctorCall = function(){
-window.open('https://meet.jit.si/SKPharmacyDoctor' + Date.now(), '_blank');
-showToast('Doctor से Video Call शुरू');
-}
-
-// 81. Lab Test Booking
-window.bookLabTest = function(){
-const tests = ['CBC - ₹299', 'Sugar - ₹99', 'Thyroid - ₹499'];
-showToast('Lab Test Available: ' + tests.join(', '));
-}
-
-// 82. Reorder Last
-window.reorderLast = function(){
-onValue(ref(db, 'orders'), (snap) => {
-let lastOrder = null;
-snap.forEach(child => lastOrder = child.val());
-if(lastOrder) {
-currentProduct = {name: lastOrder.product, price: lastOrder.price};
-buyNow({closest: () => ({dataset: {stock: 10}})});
-showToast('पिछला Order दोबारा Cart में');
-}
-}, {onlyOnce: true});
-}
-
-// 83. Verify Fake Product
-window.verifyFake = function(){
-const code = prompt('Product Code डालो');
-if(code) showToast(code.startsWith('SKP')? '✅ Original Product' : '❌ Fake Product');
-}
-
-// 84. Sales Dashboard Chart
-window.showOrdersPanel = function(){
-document.getElementById('adminPanel').style.display = 'flex';
-const ctx = document.getElementById('salesChart').getContext('2d');
-new Chart(ctx, {
-type: 'bar',
-data: {
-labels: ['Bevon', 'Olay', 'Crocin', 'ORS'],
-datasets: [{label: 'Sales', data: [120, 89, 156, 67], backgroundColor: '#2874f0'}]
-}
-});
-}
-window.closeAdminPanel = function(){
-document.getElementById('adminPanel').style.display = 'none';
-}
-
-// 85. Broadcast WhatsApp
-window.broadcastWhatsApp = function(){
-onValue(ref(db, 'users'), (snapshot) => {
-snapshot.forEach(child => {
-const mobile = child.val().mobile;
-window.open(`https://wa.me/${mobile}?text=Flash%20Sale%20Live%20Now!%202%20घंटे%20बाकी`, '_blank');
-});
-}, {onlyOnce: true});
-showToast('Broadcast भेज दिया सभी Customers को');
-}
-
-// 86. Wallet Update
-function updateWallet(){
-const el = document.getElementById('walletBal');
-if(el) el.innerText = walletBalance;
-}
-
-// 87. Add Cashback
-function addCashback(amount){
-const cashback = Math.floor(amount * 0.02);
-walletBalance += cashback;
-localStorage.setItem('wallet', walletBalance);
-updateWallet();
-showToast(`₹${cashback} Cashback Wallet में आया`);
-}
-
-// 88. Refer & Earn
-window.copyReferLink = function(){
-const link = window.location.href + '?ref=USER123';
-navigator.clipboard.writeText(link);
-showToast('Refer Link Copied! दोस्त Order करेगा तो ₹50 Cashback');
-}
-
-// 89. Pincode Check
-window.checkPincode = function(){
-const pin = document.getElementById('pincodeInput').value;
-const msg = document.getElementById('pincodeMsg');
-msg.innerText = pin == '203201'? '✅ Delivery Available' : '❌ Not Available';
-msg.style.color = pin == '203201'? 'green' : 'red';
-}
-
-// 90. Zoom Image
-window.zoomImage = function(src){
-document.getElementById('zoomImg').src = src;
-document.getElementById('zoomModal').style.display = 'flex';
-}
-window.closeZoom = function(){
-document.getElementById('zoomModal').style.display = 'none';
-}
-
-// 91. Wishlist Toggle
-window.toggleWishlist = function(id, btn){
-if(wishlist.includes(id)){
-wishlist = wishlist.filter(x => x!= id);
-btn.innerText = '🤍';
-} else {
-wishlist.push(id);
-btn.innerText = '❤️';
-}
-localStorage.setItem('wishlist', JSON.stringify(wishlist));
-showToast('Wishlist Updated');
-}
-
-// 92. Compare Products
-window.toggleCompare = function(id, checkbox){
-if(checkbox.checked) compareList.push(id);
-else compareList = compareList.filter(x => x!= id);
-document.getElementById('compareBar').style.display = compareList.length > 0? 'flex' : 'none';
-document.getElementById('compareCount').innerText = compareList.length + ' Product Selected';
-}
-window.clearCompare = function(){
-compareList = [];
-document.querySelectorAll('.compare-check').forEach(c => c.checked = false);
-document.getElementById('compareBar').style.display = 'none';
-}
-
-// 93. Flash Timer
-function startFlashTimer(id, seconds){
-const timer = document.getElementById('timer-' + id);
-if(!timer) return;
-setInterval(() => {
-const h = Math.floor(seconds/3600);
-const m = Math.floor((seconds%3600)/60);
-const s = seconds%60;
-timer.innerText = `${h}h ${m}m ${s}s बाकी`;
-seconds--;
-}, 1000);
-}
-
-// 94. OTP Send
-window.sendOTP = function(){
-const mobile = document.getElementById('mobileInput').value;
-if(mobile.length!= 10) return showToast('10 digit Mobile डालो');
-window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {size: 'invisible'});
-const appVerifier = window.recaptchaVerifier;
-signInWithPhoneNumber(auth, '+91' + mobile, appVerifier).then(result => {
-confirmationResult = result;
-document.getElementById('step1').style.display = 'none';
-document.getElementById('step2').style.display = 'block';
-showToast('OTP भेज दिया');
-}).catch(error => showToast('OTP Error'));
-}
-
-// 95. Verify OTP
-window.verifyOTP = function(){
-const otp = document.getElementById('otpInput').value;
-confirmationResult.confirm(otp).then(result => {
-document.getElementById('step2').style.display = 'none';
-document.getElementById('step3').style.display = 'block';
-showToast('Mobile Verify हो गया');
-}).catch(error => showToast('Wrong OTP'));
-}
-
-// 96. Submit Order
-window.submitOrder = async function(){
-const payment = document.querySelector('input[name="payment"]:checked').value;
-const address = document.getElementById('addressInput').value;
-const mobile = document.getElementById('mobileInput').value;
-const orderId = 'ORD' + Date.now();
-let price = parseInt(currentProduct.price);
-if(payment == 'COD') { price += 30; generateCodOtp(); }
-if(payment == 'UPI') price = Math.floor(price * 0.95);
-
-currentOrderData = {orderId, product: currentProduct.name, price, address, mobile};
-await set(ref(db, 'orders/' + orderId), {...currentOrderData, payment, status: "Order Placed", time: Date.now()});
-generateBlockchainHash(currentOrderData);
-addCashback(price);
-
-window.open(`https://wa.me/${mobile}?text=Invoice%20PDF%20Ready:%20Order%20${orderId}%20Amount%20₹${price}`, '_blank');
-
-document.getElementById('step4').style.display = 'none';
-document.getElementById('step5').style.display = 'block';
-document.getElementById('saved').innerText = parseInt(currentProduct.mRP) - price;
-showToast('Order Confirm + WhatsApp Invoice Sent');
-}
-
-// 97. COD OTP Generate
-function generateCodOtp(){
-const otp = Math.floor(100000 + Math.random() * 900000);
-document.getElementById('codOtp').innerText = otp;
-document.getElementById('codOtpPopup').style.display = 'flex';
-return otp;
-}
-
-// 98. Update Payment
-window.updatePayment = function(){
-const payment = document.querySelector('input[name="payment"]:checked').value;
-let price = parseInt(currentProduct.price);
-if(payment == 'COD') price += 30;
-if(payment == 'UPI') price = Math.floor(price * 0.95);
-document.getElementById('pTotal').innerText = price;
-validateCOD(price);
-}
-
-// 99. Download PDF
-window.downloadPDF = function(){
-const { jsPDF } = window.jspdf;
-const doc = new jsPDF();
-doc.text('S K Pharmacy - Tax Invoice', 20, 20);
-doc.text('Order ID: ' + currentOrderData.orderId, 20, 30);
-doc.text('Product: ' + currentOrderData.product, 20, 40);
-doc.text('Amount: ₹' + currentOrderData.price, 20, 50);
-doc.text('Address: ' + currentOrderData.address, 20, 60);
-doc.save('Invoice_' + currentOrderData.orderId + '.pdf');
-showToast('PDF Download हो गया');
-}
-
-// 100. Load Products
-function loadProducts(){
-const list = document.getElementById('productList');
-list.innerHTML = '';
-products.forEach(p => {
-const outstockTag = p.stock == 0? '<div class="outstock">Sold Out</div>' : '';
-const expireTag = new Date(p.expiry) - new Date() < 30*24*60*60*1000? '<div class="expire">Expire Soon</div>' : '';
-const stars = '⭐'.repeat(Math.floor(p.rating)) + ' (' + p.reviews + ')';
-const inWishlist = wishlist.includes(p.id);
-list.innerHTML += `
-<div class="product" data-category="${p.cat}" data-name="${p.name}" data-price="${p.price}" data-mrp="${p.mRP}" data-off="${p.off}" data-id="${p.id}" data-stock="${p.stock}" data-hsn="${p.hsn}">
-${outstockTag}${expireTag}
-<input type="checkbox" class="compare-check" style="position:absolute; top:10px; left:10px;" onchange="toggleCompare(${p.id}, this)">
-<img src="${p.img}" alt="${p.name}" onclick="zoomImage(this.src)">
-<div class="flash-timer" id="timer-${p.id}">2h 15m 30s बाकी</div>
-<div class="rating">${stars}</div>
-<div class="stock-info">🏪 Stock: ${p.stock} pcs | HSN: ${p.hsn}</div>
-<h4>${p.name}</h4>
-<div class="price">₹${p.price}</div>
-<div class="btns">
-<button class="btn-cart" onclick="addToCart(this)" ${p.stock==0?'disabled style="opacity:0.5;"':''}>Cart</button>
-<button class="btn-buy" onclick="buyNow(this)" ${p.stock==0?'disabled style="opacity:0.5;"':''}>Buy</button>
-<button class="btn-wa" onclick="orderWhatsApp(this)">WA</button>
-<button class="btn-ar" onclick="startARProduct(${p.id})">AR</button>
-<button class="btn-qr" onclick="showQR(${p.id},'${p.name}')">QR</button>
-<button class="btn-like" onclick="toggleWishlist(${p.id}, this)">${inWishlist?'❤️':'🤍'}</button>
-</div>
-</div>`;
-startFlashTimer(p.id, 8100);
-});
-updateWallet();
-}
-
-// On Load
-window.onload = function(){
-setTimeout(() => {
-document.getElementById('loading').style.display = 'none';
-document.getElementById('productList').style.display = 'grid';
-document.getElementById('loading').style.display = 'none';
-document.getElementById('productList').style.display = 'grid';
-loadProducts();
-loadAutoFeatures();
-generateBlockchainHash({orderId: 'INIT', time: Date.now()});
-}, 1000);
-
-window.addEventListener('scroll', () => {
-document.getElementById('scrollTop').style.display = window.scrollY > 400? 'flex' : 'none';
-});
-
-fetch('https://api.open-meteo.com/v1/forecast?latitude=28.61&longitude=77.38&current_weather=true')
-.then(r => r.json()).then(data => {
-const temp = data.current_weather.temperature;
-document.getElementById('weatherWidget').innerHTML = temp < 20? '🌧️ ठंड है - सर्दी दवा 20% Off' : '☀️ गर्मी है - ORS Available';
-});
-}
-
-// WhatsApp Order
-window.orderWhatsApp = function(btn){
-const product = btn.closest('.product');
-const name = product.dataset.name;
-const price = product.dataset.price;
-window.open(`https://wa.me/919258751739?text=Order%20${name}%20₹${price}`, '_blank');
-}
-
-// Menu Toggle
-window.toggleMenu = function(){
-const menu = document.getElementById('threeDotMenu');
-menu.classList.toggle('menu-hidden');
-menu.classList.toggle('menu-show');
-}
-
-// Show Cart
-window.showCart = function(){
-showToast('Cart में ' + cartCount + ' Items हैं');
-}
-
-// Show Login Popup
-window.showLoginPopup = function(){
-document.getElementById('loginPopup').style.display = 'flex';
-}
-
-// Service Worker Register
-if('serviceWorker' in navigator){
-navigator.serviceWorker.register('sw.js').then(() => {
-console.log('Service Worker Registered for Offline Mode');
-}).catch(() => {
-console.log('SW Registration Failed');
-});
-}
-
-// Auto Dark Mode 7 PM to 7 AM
-const hour = new Date().getHours();
-if(hour >= 19 || hour < 7) {
-document.body.classList.add('dark');
-const btn = document.querySelector('.dark-toggle');
-if(btn) btn.innerText = '☀️';
-}
-
-// Dawai Reminder 8 AM Daily
-if('Notification' in window){
-Notification.requestPermission();
-setInterval(() => {
-const now = new Date();
-if(now.getHours() == 8 && now.getMinutes() == 0){
-new Notification('S K Pharmacy', {body: 'BP/शुगर की दवा लेने का समय हो गया'});
-}
-}, 60000);
-}
-
-// Store Stock Live Firebase
-onValue(ref(db, 'store/stock'), (snap) => {
-const stockEl = document.getElementById('storeStock');
-if(stockEl) stockEl.innerText = snap.val() || 12;
-});
-
-// Close Popup Helper
-window.closePopup = function(){
-document.getElementById('otpPopup').style.display = 'none';
-}
-
-// Show Orders Panel Alias
-window.showOrdersPanel = window.showOrdersPanel || function(){
-document.getElementById('adminPanel').style.display = 'flex';
-}
-
-// Filter Category
-window.filterCategory = function(cat){
-document.querySelectorAll('.product').forEach(p => {
-p.style.display = cat == 'All' || p.dataset.category == cat? 'block' : 'none';
-});
-showToast(cat + ' Category Selected');
-}
-
-// Print Invoice
-window.printInvoice = function(){
-window.print();
-}
-
-// Recaptcha Container
-window.recaptchaVerifier = null;
-
-// Step Navigation
-window.nextStep = function(current, next){
-document.getElementById('step' + current).style.display = 'none';
-document.getElementById('step' + next).style.display = 'block';
-}
-
-// Save Address
-window.saveAddress = function(){
-const address = document.getElementById('addressInput').value;
-if(address.length < 10) return showToast('पूरा Address डालो');
-currentOrderData.address = address;
-document.getElementById('step3').style.display = 'none';
-document.getElementById('step4').style.display = 'block';
-updatePayment();
-}
-
-// Feature 101-200 Auto Functions Already Generated by loadAutoFeatures
-// No Duplicate Code Here
-
-// Error Handler
-window.onerror = function(msg, url, line){
-console.log('Error:', msg, 'Line:', line);
-return true;
-}
-
-// Prevent Double Submit
-let orderSubmitted = false;
-const originalSubmit = window.submitOrder;
-window.submitOrder = function(){
-if(orderSubmitted) return showToast('Order Already Processing...');
-orderSubmitted = true;
-originalSubmit();
-setTimeout(() => orderSubmitted = false, 5000);
-}
-
-showToast('1000 Features Loaded Successfully ✅');
-console.log('S K Pharmacy Ultimate v1000 Loaded');
-</script>
+<!-- JS File -->
 <script type="module" src="app.js"></script>
 </body>
-</html>
+  </html>
