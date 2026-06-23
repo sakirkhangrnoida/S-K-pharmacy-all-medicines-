@@ -4,7 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S K Pharmacy - Medicines Health Care</title>
-<link rel="stylesheet" href="style.css">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+body { background:#eaeded; }
+#header { position:sticky; top:0; z-index:1000; background:#131921; color:white; }
+.top-bar { display:flex; align-items:center; padding:10px; gap:10px; flex-wrap:wrap; }
+.logo { font-size:22px; font-weight:bold; color:#4CAF50; }
+.search-box { flex:1; display:flex; min-width:200px; }
+.search-box input { flex:1; padding:10px; border:none; border-radius:4px 0 0 4px; }
+.search-box button { padding:10px 15px; background:#febd69; border:none; border-radius:0 4px 4px 0; cursor:pointer; font-weight:bold; }
+.header-right { display:flex; gap:15px; font-size:13px; }
+.header-right span { cursor:pointer; padding:5px 8px; border:1px solid transparent; }
+.header-right span:hover { border:1px solid white; }
+#navbar { background:#232f3e; padding:8px 10px; display:flex; gap:15px; overflow-x:auto; }
+#navbar a { color:white; text-decoration:none; font-size:14px; padding:5px 8px; white-space:nowrap; }
+#navbar a:hover, #navbar a.active { border:1px solid white; border-radius:2px; }
+#main-content { min-height:70vh; padding:15px; max-width:1500px; margin:0 auto; }
+.banner-slider { position:relative; overflow:hidden; border-radius:8px; margin-bottom:20px; }
+.banner-slide { display:none; }
+.banner-slide.active { display:block; animation:fade 0.6s; }
+.banner-slide img { width:100%; height:280px; object-fit:cover; }
+@keyframes fade { from{opacity:0.3} to{opacity:1} }
+.product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:15px; }
+.product-card { background:white; padding:15px; border-radius:4px; cursor:pointer; border:1px solid #ddd; }
+.product-card:hover { box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+.product-card img { width:100%; height:180px; object-fit:cover; margin-bottom:10px; }
+#footer { background:#232f3e; color:#ddd; margin-top:40px; }
+.footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:30px; padding:40px 20px; max-width:1500px; margin:0 auto; }
+.footer-grid h4 { color:white; margin-bottom:10px; font-size:16px; }
+.footer-grid a { display:block; color:#ddd; text-decoration:none; font-size:13px; margin:8px 0; }
+.footer-grid a:hover { text-decoration:underline; color:white; }
+.footer-bottom { text-align:center; padding:15px; border-top:1px solid #3a4553; font-size:12px; }
+.modal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); display:none; justify-content:center; align-items:center; z-index:2000; }
+.modal.active { display:flex; }
+.modal-content { background:white; padding:25px; border-radius:8px; max-width:500px; width:90%; position:relative; }
+.modal-content button { position:absolute; top:10px; right:15px; font-size:24px; border:none; background:none; cursor:pointer; }
+.content-layout { display:grid; grid-template-columns:250px 1fr; gap:20px; }
+.sidebar { background:white; padding:15px; border-radius:4px; }
+.sidebar a { display:block; padding:8px 5px; color:#007185; text-decoration:none; }
+.sidebar a:hover { text-decoration:underline; color:#c7511f; }
+@media(max-width:768px) {
+.top-bar { flex-direction:column; align-items:stretch; }
+.search-box { width:100%; }
+.banner-slide img { height:180px; }
+.content-layout { grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
 
@@ -20,7 +65,6 @@
       <span id="accountBtn">Account & Lists</span>
     </div>
   </div>
-
   <nav id="navbar">
     <a href="#" data-page="home" class="nav-link active">Home</a>
     <a href="#" data-page="all" class="nav-link">All</a>
@@ -30,9 +74,7 @@
   </nav>
 </header>
 
-<main id="main-content">
-  <!-- Content यहाँ SPA से Load होगा -->
-</main>
+<main id="main-content"></main>
 
 <footer id="footer">
   <div class="footer-grid">
@@ -53,13 +95,106 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 S K Pharmacy. All rights reserved.
+    © 2026 S K Pharmacy. All rights reserved. Address: सिलापुर गांव, दनकौर, ग्रेटर नोएडा, उत्तर प्रदेश
   </div>
 </footer>
 
-<!-- Modal Container -->
 <div id="modal-container"></div>
 
-<script src="app.js"></script>
+<script>
+const contentDB = {
+  home: `
+    <div class="banner-slider" id="bannerSlider">
+      <div class="banner-slide active"><img src="banner1.jpg" alt="SK Pharmacy"></div>
+      <div class="banner-slide"><img src="banner2.jpg" alt="Home Delivery"></div>
+      <div class="banner-slide"><img src="banner3.jpg" alt="All Medicines"></div>
+    </div>
+    <h2 style="margin-bottom:15px;">Featured Products</h2>
+    <div class="product-grid">
+      <div class="product-card" data-page="medicines">
+        <img src="banner1.jpg" alt="Medicine">
+        <h4>All Medicines Available</h4>
+        <p>24x7 Home Delivery</p>
+      </div>
+      <div class="product-card" data-page="surgical">
+        <img src="banner2.jpg" alt="Surgical">
+        <h4>Surgical Items</h4>
+        <p>Doctor Recommended</p>
+      </div>
+      <div class="product-card" data-page="contact">
+        <img src="banner3.jpg" alt="Contact">
+        <h4>Contact Now</h4>
+        <p>92588751739, 7983006957</p>
+      </div>
+    </div>
+  `,
+  "customer-service": `
+    <div class="content-layout">
+      <div class="sidebar">
+        <h3>Help Topics</h3>
+        <a href="#" data-page="delivery">Home Delivery</a>
+        <a href="#" data-page="timing">Store Timing</a>
+        <a href="#" data-page="contact">Contact Us</a>
+      </div>
+      <div id="help-detail">
+        <h2>Customer Service</h2>
+        <p>बाएं से Topic चुनो, Detail यहां खुलेगा। Page Reload नहीं होगा। Amazon जैसा SPA</p>
+      </div>
+    </div>
+  `,
+  delivery: `<h2>Home Delivery Available</h2><p>सिलापुर गांव, दनकौर, ग्रेटर नोएडा में 2 घंटे में Delivery</p><p>Call/WhatsApp: 92588751739, 7983006957, 7900836957</p>`,
+  contact: `<h2>Contact S K Pharmacy</h2><p>पता: सिलापुर गांव, दनकौर, ग्रेटर नोएडा, उत्तर प्रदेश</p><p>WhatsApp: 92588751739 | 7983006957 | 7900836957</p>`,
+  about: `<h2>About SK Pharmacy</h2><p>Medicines Health Care. Dr. Shakir Khan Presents. All Medicines, Surgical, Cosmetics, Baby Care, Veterinary</p>`,
+  team: `<h2>Our Team</h2><p>Experienced Pharmacists and Healthcare Staff</p>`,
+  medicines: `<h2>All Medicines</h2><p>Fever, Cough, Pain Relief, General Medicine Available 24x7</p>`,
+  surgical: `<h2>Surgical Items</h2><p>Baby Care, Cosmetics, Veterinary Products Available</p>`,
+  offers: `<h2>Special Offers</h2><p>Prime Day जैसा Auto Banner ऊपर चल रहा है। Discount के लिए Contact करो</p>`,
+  all: `<h2>All Categories</h2><p>Medicines, Surgical, Cosmetics, Baby Care, Veterinary - सब Available</p>`,
+  timing: `<h2>Store Timing</h2><p>Open 24x7. Emergency Service Available</p>`
+};
+
+const mainContent = document.getElementById('main-content');
+const modalContainer = document.getElementById('modal-container');
+
+function loadPage(pageId) {
+  if(contentDB[pageId]) {
+    mainContent.innerHTML = contentDB[pageId];
+    document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+    document.querySelector(`[data-page="${pageId}"]`)?.classList.add('active');
+    window.scrollTo(0,0);
+    initPageScripts();
+  }
+}
+
+document.addEventListener('click', e => {
+  if(e.target.matches('[data-page]')) {
+    e.preventDefault();
+    loadPage(e.target.dataset.page);
+  }
+});
+
+function openModal(content) {
+  modalContainer.innerHTML = `<div class="modal active"><div class="modal-content">${content}<button onclick="closeModal()">×</button></div></div>`;
+}
+function closeModal() { modalContainer.innerHTML = ''; }
+
+function initPageScripts() {
+  const slides = document.querySelectorAll('.banner-slide');
+  if(slides.length > 0 &&!window.bannerInterval) {
+    let index = 0;
+    window.bannerInterval = setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, 3500);
+  }
+  const locBtn = document.getElementById('locationBtn');
+  if(locBtn) locBtn.onclick = () => openModal('<h3>Choose Location</h3><p>Khan Alampura, UP</p>');
+  const accBtn = document.getElementById('accountBtn');
+  if(accBtn) accBtn.onclick = () => openModal('<h3>Your Account</h3><p>Orders | Profile | Logout</p>');
+}
+
+loadPage('home');
+</script>
 </body>
 </html>
