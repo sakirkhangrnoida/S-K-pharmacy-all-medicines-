@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy - Customer Service</title>
+<title>S K Pharmacy Customer Service</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
 body { background:#f2f3f3; }
 
-/* Fixed Header Amazon जैसा */
+/* Fixed Header */
 #header { position:sticky; top:0; z-index:1000; background:#131921; color:white; }
 .top-bar { display:flex; align-items:center; padding:8px 15px; gap:10px; }
 .logo { font-size:24px; font-weight:bold; color:#4CAF50; cursor:pointer; }
-.deliver { font-size:12px; line-height:1.2; cursor:pointer; }
+.deliver { font-size:12px; cursor:pointer; }
 .search-box { flex:1; display:flex; }
 .search-box input { flex:1; padding:10px; border:none; border-radius:4px 0 0 4px; }
 .search-box button { padding:10px 15px; background:#febd69; border:none; border-radius:0 4px 4px 0; cursor:pointer; }
@@ -22,56 +22,50 @@ body { background:#f2f3f3; }
 /* Navbar */
 #navbar { background:#232f3e; padding:8px 15px; display:flex; gap:20px; }
 #navbar a { color:white; text-decoration:none; font-size:14px; cursor:pointer; padding:5px 8px; }
-#navbar a:hover { border:1px solid white; border-radius:2px; }
+#navbar a:hover, #navbar a.active { border:1px solid white; border-radius:2px; }
 
-/* Main Layout Amazon Help जैसा */
-#main { max-width:1400px; margin:20px auto; padding:0 15px; }
-.help-container { display:flex; gap:20px; }
+/* Main SPA Layout */
+#main { max-width:1400px; margin:20px auto; padding:0 15px; min-height:70vh; }
 
-/* Left Sidebar */
-.sidebar { width:250px; background:white; padding:20px; border-radius:4px; height:fit-content; }
-.sidebar h3 { font-size:16px; margin-bottom:15px; color:#0f1111; }
-.sidebar a { display:block; padding:8px 0; color:#007185; text-decoration:none; font-size:14px; cursor:pointer; border-left:3px solid transparent; padding-left:10px; }
-.sidebar a:hover { color:#c7511f; text-decoration:underline; }
-.sidebar a.active { border-left:3px solid #ff9900; color:#c7511f; font-weight:bold; }
+/* Amazon Help Layout */
+.help-wrap { display:flex; gap:20px; }
+.sidebar { width:260px; background:white; padding:20px; border-radius:4px; height:fit-content; position:sticky; top:120px; }
+.sidebar h3 { font-size:16px; margin-bottom:15px; }
+.sidebar a { display:block; padding:10px 12px; color:#007185; text-decoration:none; font-size:14px; cursor:pointer; border-radius:4px; margin:4px 0; }
+.sidebar a:hover { background:#f7f8f8; }
+.sidebar a.active { background:#fff; border-left:4px solid #ff9900; color:#c7511f; font-weight:bold; }
 
-/* Right Content */
-.content { flex:1; background:white; padding:30px; border-radius:4px; min-height:600px; }
-.content h1 { font-size:28px; margin-bottom:20px; color:#0f1111; }
-.content h2 { font-size:20px; margin:25px 0 15px; color:#0f1111; }
-.content p { line-height:1.6; margin:10px 0; color:#0f1111; font-size:15px; }
+.content { flex:1; background:white; padding:35px; border-radius:4px; }
+.content h1 { font-size:28px; margin-bottom:20px; }
+.content h2 { font-size:20px; margin:25px 0 15px; }
+.content p { line-height:1.6; margin:12px 0; font-size:15px; }
 .content ol { margin:15px 0 15px 25px; }
-.content li { margin:8px 0; line-height:1.6; }
+.content li { margin:8px 0; }
 
-/* Help Topics Grid Amazon जैसा */
-.help-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin:20px 0; }
-.help-card { background:#f7f8f8; border:1px solid #ddd; padding:20px; border-radius:4px; cursor:pointer; text-align:center; }
-.help-card:hover { border-color:#ff9900; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-.help-card img { width:60px; height:60px; margin-bottom:10px; }
-.help-card p { font-size:14px; color:#0f1111; }
+/* Help Grid Cards */
+.help-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin:25px 0; }
+.help-card { background:#f7f8f8; border:1px solid #ddd; padding:25px; border-radius:4px; cursor:pointer; text-align:center; transition:0.2s; }
+.help-card:hover { border-color:#ff9900; transform:translateY(-2px); }
+.help-card.icon { font-size:40px; margin-bottom:10px; }
 
-/* Trending Section */
+/* Trending */
 .trending { margin-top:30px; }
-.trending-item { background:white; border:1px solid #ddd; padding:12px 15px; margin:8px 0; border-radius:4px; cursor:pointer; display:flex; justify-content:space-between; }
+.trending-item { background:white; border:1px solid #ddd; padding:14px 18px; margin:8px 0; border-radius:4px; cursor:pointer; display:flex; justify-content:space-between; }
 .trending-item:hover { border-color:#ff9900; }
 
 /* Footer */
 #footer { background:#232f3e; color:#ddd; margin-top:50px; }
-.back-top { background:#37475a; text-align:center; padding:15px; cursor:pointer; color:white; }
+.back-top { background:#37475a; text-align:center; padding:15px; cursor:pointer; }
 .footer-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:30px; padding:40px 20px; max-width:1200px; margin:0 auto; }
 .footer-col h4 { color:white; margin-bottom:12px; }
 .footer-col a { display:block; color:#ddd; text-decoration:none; font-size:13px; margin:8px 0; cursor:pointer; }
 .footer-col a:hover { text-decoration:underline; }
 .footer-bottom { border-top:1px solid #3a4553; padding:20px; text-align:center; font-size:12px; }
 
-/* Mobile */
 @media(max-width:900px) {
-.help-container { flex-direction:column; }
-.sidebar { width:100%; }
-.help-grid { grid-template-columns:repeat(2, 1fr); }
+.help-wrap { flex-direction:column; }
+.sidebar { width:100%; position:relative; top:0; }
 .footer-grid { grid-template-columns:repeat(2, 1fr); }
-.top-bar { flex-wrap:wrap; }
-.search-box { order:3; width:100%; }
 }
 </style>
 </head>
@@ -80,39 +74,40 @@ body { background:#f2f3f3; }
 <!-- Fixed Header -->
 <header id="header">
   <div class="top-bar">
-    <div class="logo" data-page="home">SK Pharmacy</div>
-    <div class="deliver">Deliver to<br><b>Khan Alampura 203201</b></div>
+    <div class="logo" onclick="loadPage('home')">SK Pharmacy</div>
+    <div class="deliver" onclick="alert('Location: Khan Alampura 203201')">Deliver to<br><b>Khan Alampura 203201</b></div>
     <div class="search-box">
-      <input type="text" placeholder="Search S K Pharmacy">
+      <input type="text" placeholder="Search Medicines, Help...">
       <button>🔍</button>
     </div>
     <div class="header-right">
       <div>EN ▼</div>
-      <div id="accountBtn">Hello, Sign in<br><b>Account & Lists ▼</b></div>
+      <div onclick="loadPage('account')">Hello, Sign in<br><b>Account & Lists ▼</b></div>
       <div>Returns<br><b>& Orders</b></div>
       <div>🛒 Cart</div>
     </div>
   </div>
   <nav id="navbar">
-    <a id="allBtn">☰ All</a>
-    <a data-page="home">Today's Deals</a>
-    <a data-page="customer-service">Customer Service</a>
-    <a data-page="medicines">Medicines</a>
-    <a data-page="surgical">Surgical</a>
+    <a onclick="loadPage('home')" class="nav-link active">Home</a>
+    <a onclick="loadPage('customer-service')" class="nav-link">Customer Service</a>
+    <a onclick="loadPage('medicines')" class="nav-link">Medicines</a>
+    <a onclick="loadPage('surgical')" class="nav-link">Surgical</a>
+    <a onclick="loadPage('baby')" class="nav-link">Baby Care</a>
   </nav>
 </header>
 
-<!-- Main Content SPA -->
+<!-- SPA Main Content - अंदर ही बदलेगा -->
 <main id="main"></main>
 
-<!-- Footer -->
+<!-- Fixed Footer -->
 <footer id="footer">
   <div class="back-top" onclick="window.scrollTo(0,0)">Back to top</div>
   <div class="footer-grid">
     <div class="footer-col">
       <h4>Get to Know Us</h4>
-      <a data-page="about">About S K Pharmacy</a>
-      <a data-page="about">Careers</a>
+      <a onclick="loadPage('about')">About S K Pharmacy</a>
+      <a onclick="loadPage('about')">Careers</a>
+      <a>Blog</a>
     </div>
     <div class="footer-col">
       <h4>Make Money with Us</h4>
@@ -121,202 +116,241 @@ body { background:#f2f3f3; }
     </div>
     <div class="footer-col">
       <h4>Payment Products</h4>
-      <a>S K Pharmacy Card</a>
+      <a>S K Card</a>
       <a>Shop with Points</a>
     </div>
     <div class="footer-col">
       <h4>Let Us Help You</h4>
-      <a data-page="customer-service">Customer Service</a>
-      <a data-page="contact">Contact Us</a>
+      <a onclick="loadPage('customer-service')">Customer Service</a>
+      <a onclick="loadPage('contact')">Contact Us</a>
+      <a>Shipping Rates</a>
     </div>
   </div>
   <div class="footer-bottom">© 1996-2026, S K Pharmacy.com, Inc. or its affiliates</div>
 </footer>
 
 <script>
-// Pages Data - Amazon Help जैसा Structure
+// SPA Pages - सब अंदर ही लोड होंगे
 const pages = {
 home: `
-<div class="help-container">
-  <div class="sidebar">
+<div class="help-wrap">
+  <div class="sidebar" id="helpSidebar">
     <h3>Help Topics</h3>
-    <a data-page="customer-service" class="active">Customer Service Home</a>
-    <a data-page="delivery">Shipping & Delivery</a>
-    <a data-page="returns">Returns & Refunds</a>
-    <a data-page="account">Managing Your Account</a>
-    <a data-page="payment">Payment & Pricing</a>
-    <a data-page="contact">Contact Us</a>
+    <a onclick="loadPage('customer-service')" class="active">Customer Service Home</a>
+    <a onclick="loadPage('delivery')">Shipping & Delivery</a>
+    <a onclick="loadPage('returns')">Returns & Refunds</a>
+    <a onclick="loadPage('account')">Managing Your Account</a>
+    <a onclick="loadPage('payment')">Payment & Pricing</a>
+    <a onclick="loadPage('contact')">Contact Us</a>
   </div>
-  <div class="content">
+  <div class="content" id="helpContent">
     <h1>Welcome to S K Pharmacy Customer Service</h1>
-    <p>We can help you take care of most things here, sign in to get started.</p>
+    <p>We can help you take care of most things here.</p>
 
     <div class="help-grid">
-      <div class="help-card" data-page="delivery">
-        <img src="banner1.jpg" onerror="this.src='https://via.placeholder.com/60/4CAF50/fff?text=📦'">
+      <div class="help-card" onclick="loadPage('delivery')">
+        <div class="icon">📦</div>
         <p>A delivery, order or return</p>
       </div>
-      <div class="help-card" data-page="account">
-        <img src="banner2.jpg" onerror="this.src='https://via.placeholder.com/60/232f3e/fff?text=🔑'">
+      <div class="help-card" onclick="loadPage('account')">
+        <div class="icon">🔑</div>
         <p>Help with signing in</p>
       </div>
-      <div class="help-card" data-page="payment">
-        <img src="banner3.jpg" onerror="this.src='https://via.placeholder.com/60/37475a/fff?text=💳'">
+      <div class="help-card" onclick="loadPage('payment')">
+        <div class="icon">💳</div>
         <p>Payment, charges or gift cards</p>
       </div>
-      <div class="help-card" data-page="returns">
-        <img src="banner4.jpg" onerror="this.src='https://via.placeholder.com/60/0f1111/fff?text=↩️'">
+      <div class="help-card" onclick="loadPage('returns')">
+        <div class="icon">↩️</div>
         <p>Returns & Refunds</p>
       </div>
     </div>
 
     <div class="trending">
       <h2>Trending</h2>
-      <div class="trending-item" data-page="delivery">Track your package <span>›</span></div>
-      <div class="trending-item" data-page="returns">Return items you ordered <span>›</span></div>
-      <div class="trending-item" data-page="payment">Check status of a refund <span>›</span></div>
-      <div class="trending-item" data-page="account">Manage your account <span>›</span></div>
+      <div class="trending-item" onclick="loadPage('delivery')">Track your package <span>›</span></div>
+      <div class="trending-item" onclick="loadPage('returns')">Return items you ordered <span>›</span></div>
+      <div class="trending-item" onclick="loadPage('payment')">Check status of a refund <span>›</span></div>
+      <div class="trending-item" onclick="loadPage('account')">Manage your account <span>›</span></div>
     </div>
 
     <div style="margin-top:30px; padding:20px; background:#f7f8f8; border-radius:4px;">
       <h3>Need more help?</h3>
-      <div class="trending-item" data-page="contact">Contact us <span>›</span></div>
+      <div class="trending-item" onclick="loadPage('contact')">Contact us <span>›</span></div>
+    </div>
+  </div>
+</div>`,
+
+customer-service: `
+<div class="help-wrap">
+  <div class="sidebar" id="helpSidebar">
+    <h3>Help Topics</h3>
+    <a onclick="loadPage('customer-service')" class="active">Customer Service Home</a>
+    <a onclick="loadPage('delivery')">Shipping & Delivery</a>
+    <a onclick="loadPage('returns')">Returns & Refunds</a>
+    <a onclick="loadPage('account')">Managing Your Account</a>
+    <a onclick="loadPage('payment')">Payment & Pricing</a>
+    <a onclick="loadPage('contact')">Contact Us</a>
+  </div>
+  <div class="content" id="helpContent">
+    <h1>Welcome to S K Pharmacy Customer Service</h1>
+    <p>Select a topic from left to get help instantly. No page reload.</p>
+    <div class="help-grid">
+      <div class="help-card" onclick="loadPage('delivery')"><div class="icon">📦</div><p>Delivery & Orders</p></div>
+      <div class="help-card" onclick="loadPage('returns')"><div class="icon">↩️</div><p>Returns & Refunds</p></div>
+      <div class="help-card" onclick="loadPage('account')"><div class="icon">🔑</div><p>Account Help</p></div>
+      <div class="help-card" onclick="loadPage('payment')"><div class="icon">💳</div><p>Payments</p></div>
     </div>
   </div>
 </div>`,
 
 delivery: `
-<div class="help-container">
-  <div class="sidebar">
+<div class="help-wrap">
+  <div class="sidebar" id="helpSidebar">
     <h3>Help Topics</h3>
-    <a data-page="customer-service">Customer Service Home</a>
-    <a data-page="delivery" class="active">Shipping & Delivery</a>
-    <a data-page="returns">Returns & Refunds</a>
-    <a data-page="account">Managing Your Account</a>
+    <a onclick="loadPage('customer-service')">Customer Service Home</a>
+    <a onclick="loadPage('delivery')" class="active">Shipping & Delivery</a>
+    <a onclick="loadPage('returns')">Returns & Refunds</a>
+    <a onclick="loadPage('account')">Managing Your Account</a>
   </div>
-  <div class="content">
+  <div class="content" id="helpContent">
     <p style="color:#007185; font-size:13px;">Shipping and Delivery › Delivery Guarantees</p>
     <h1>Delivery Guarantees</h1>
-    <p>We offer guaranteed delivery on certain delivery speeds and select products. When guaranteed delivery is available on an order, we'll state this on the checkout page, with the associated delivery date and cost.</p>
-    <p>If we provide a guaranteed delivery date and a delivery attempt isn't made by this date, we'll refund any shipping fees associated with that order.</p>
+    <p>We offer guaranteed delivery on certain delivery speeds. When guaranteed delivery is available, we'll state this on checkout with delivery date.</p>
+    <p>If delivery attempt isn't made by promised date, we'll refund shipping fees.</p>
     <h2>Recommended Help Topics</h2>
-    <ul style="margin-left:20px;">
+    <ol>
       <li>Place an Order with Guaranteed Delivery</li>
       <li>Late Deliveries</li>
       <li>Estimated Delivery Windows</li>
       <li>How Long Does S K Pharmacy Delivery Take?</li>
-    </ul>
+    </ol>
+    <p><b>Service Area:</b> सिलापुर गांव, दनकौर, ग्रेटर नोएडा</p>
+    <p><b>Contact:</b> 9258875173, 7983066957</p>
   </div>
 </div>`,
 
 returns: `
-<div class="help-container">
-  <div class="sidebar">
+<div class="help-wrap">
+  <div class="sidebar" id="helpSidebar">
     <h3>Help Topics</h3>
-    <a data-page="customer-service">Customer Service Home</a>
-    <a data-page="delivery">Shipping & Delivery</a>
-    <a data-page="returns" class="active">Returns & Refunds</a>
-    <a data-page="account">Managing Your Account</a>
+    <a onclick="loadPage('customer-service')">Customer Service Home</a>
+    <a onclick="loadPage('delivery')">Shipping & Delivery</a>
+    <a onclick="loadPage('returns')" class="active">Returns & Refunds</a>
+    <a onclick="loadPage('account')">Managing Your Account</a>
   </div>
-  <div class="content">
+  <div class="content" id="helpContent">
     <p style="color:#007185; font-size:13px;">Returns and Refunds › Returns</p>
     <h1>Return Items You Ordered</h1>
-    <p>You can return many eligible items sold by S K Pharmacy. When you return an item, you may find different return options depending on the seller, item, or reason for return.</p>
+    <p>You can return many eligible items sold by S K Pharmacy. Return options depend on item and reason.</p>
     <div style="background:#f7f8f8; padding:20px; border-radius:4px; margin:20px 0; text-align:center;">
       <p>Need to return an item shipped by S K Pharmacy?</p>
       <button style="background:#ffd814; border:none; padding:10px 30px; border-radius:8px; cursor:pointer; margin-top:10px;">Your Orders</button>
     </div>
-    <h2>You can return an eligible item in just few steps:</h2>
+    <h2>Return in few steps:</h2>
     <ol>
       <li>Go to Your Orders</li>
-      <li>Identify the item or the order that you want to return</li>
-      <li>Select the option to return the item</li>
-      <li>Choose the reason for return</li>
-      <li>Select how to process your return</li>
-      <li>Select your preferred return method</li>
-      <li>Print your return label and return authorization</li>
+      <li>Select item to return</li>
+      <li>Choose reason for return</li>
+      <li>Select refund or replacement</li>
+      <li>Package item and call pickup</li>
     </ol>
+    <p><b>Note:</b> Sealed medicines cannot be returned due to safety.</p>
   </div>
 </div>`,
 
 account: `
-<div class="help-container">
-  <div class="sidebar">
+<div class="help-wrap">
+  <div class="sidebar" id="helpSidebar">
     <h3>Help Topics</h3>
-    <a data-page="customer-service">Customer Service Home</a>
-    <a data-page="delivery">Shipping & Delivery</a>
-    <a data-page="returns">Returns & Refunds</a>
-    <a data-page="account" class="active">Managing Your Account</a>
+    <a onclick="loadPage('customer-service')">Customer Service Home</a>
+    <a onclick="loadPage('account')" class="active">Managing Your Account</a>
+    <a onclick="loadPage('payment')">Payment & Pricing</a>
   </div>
-  <div class="content">
+  <div class="content" id="helpContent">
     <h1>Help with signing in</h1>
     <p>What can we help you with?</p>
-    <select style="padding:8px; width:300px; margin:15px 0;">
+    <select style="padding:10px; width:100%; max-width:400px; margin:15px 0; border:1px solid #ddd; border-radius:4px;">
       <option>Choose a topic</option>
       <option>Forgot password</option>
       <option>Can't access account</option>
       <option>Update phone number</option>
+      <option>Change delivery address</option>
     </select>
+    <h2 style="margin-top:30px;">Quick Actions</h2>
+    <div class="trending-item">Update email address <span>›</span></div>
+    <div class="trending-item">Change password <span>›</span></div>
+    <div class="trending-item">Add new address <span>›</span></div>
   </div>
 </div>`,
 
 payment: `
-<div class="help-container">
-  <div class="sidebar">
+<div class="help-wrap">
+  <div class="sidebar" id="helpSidebar">
     <h3>Help Topics</h3>
-    <a data-page="customer-service">Customer Service Home</a>
-    <a data-page="payment" class="active">Payment & Pricing</a>
-    <a data-page="returns">Returns & Refunds</a>
+    <a onclick="loadPage('customer-service')">Customer Service Home</a>
+    <a onclick="loadPage('payment')" class="active">Payment & Pricing</a>
+    <a onclick="loadPage('returns')">Returns & Refunds</a>
   </div>
-  <div class="content">
+  <div class="content" id="helpContent">
     <h1>Payment, charges or gift cards</h1>
-    <p>Check your payment methods, view transactions, or manage gift card balance.</p>
+    <p>Manage your payment methods and view transactions.</p>
+    <h2>Accepted Payment Methods</h2>
+    <ul style="margin-left:20px;">
+      <li>Cash on Delivery</li>
+      <li>UPI - PhonePe, Google Pay, Paytm</li>
+      <li>Credit/Debit Cards</li>
+      <li>Net Banking</li>
+    </ul>
+    <h2 style="margin-top:25px;">Refund Timeline</h2>
+    <p>UPI/Card refunds: 3 to 5 business days<br>COD orders: Store credit in 7 days</p>
   </div>
 </div>`,
 
 contact: `
-<div class="help-container">
-  <div class="sidebar">
+<div class="help-wrap">
+  <div class="sidebar" id="helpSidebar">
     <h3>Help Topics</h3>
-    <a data-page="customer-service">Customer Service Home</a>
-    <a data-page="contact" class="active">Contact Us</a>
+    <a onclick="loadPage('customer-service')">Customer Service Home</a>
+    <a onclick="loadPage('contact')" class="active">Contact Us</a>
   </div>
-  <div class="content">
+  <div class="content" id="helpContent">
     <h1>Contact S K Pharmacy</h1>
-    <p>24x7 Help Available</p>
-    <p><b>Phone:</b> 9258875173, 7983066957</p>
-    <p><b>WhatsApp:</b> 9258875173</p>
-    <p><b>Address:</b> सिलापुर गांव, दनकौर, ग्रेटर नोएडा, UP - 203201</p>
-    <p><b>Email:</b> skpharmacy203201@gmail.com</p>
+    <p>24x7 Help Available for Emergency Medicines</p>
+    <div style="background:#f7f8f8; padding:25px; border-radius:4px; margin:20px 0;">
+      <h2>Contact Details</h2>
+      <p><b>Address:</b> सिलापुर गांव, दनकौर, ग्रेटर नोएडा, उत्तर प्रदेश - 203201</p>
+      <p><b>Phone:</b> 9258875173, 7983066957, 7900836957</p>
+      <p><b>WhatsApp:</b> 9258875173</p>
+      <p><b>Email:</b> skpharmacy203201@gmail.com</p>
+      <p><b>Store Timing:</b> Open 24x7</p>
+    </div>
   </div>
 </div>`,
 
-about: `<div class="content" style="max-width:800px; margin:0 auto;"><h1>About S K Pharmacy</h1><p>Dr. Shakir Khan द्वारा संचालित। 24x7 दवाओं की Home Delivery।</p></div>`
+about: `<div class="content"><h1>About S K Pharmacy</h1><p>Dr. Shakir Khan द्वारा संचालित। 24x7 दवाओं की Home Delivery। सभी प्रकार की Medicines, Surgical Items, Baby Care Products उपलब्ध।</p></div>`,
+
+medicines: `<div class="content"><h1>All Medicines</h1><p>Paracetamol, Crocin, Dolo, Azithromycin, Amoxicillin, Pantop, Rantac, Shelcal, Neurobion, Becosules और सभी दवाएं Available हैं। 24x7 Delivery।</p></div>`,
+
+surgical: `<div class="content"><h1>Surgical Items</h1><p>Masks, Gloves, Syringes, Bandages, Cotton, Thermometer, BP Machine, Nebulizer, Wheelchair, Walker सब मिलेगा।</p></div>`,
+
+baby: `<div class="content"><h1>Baby Care</h1><p>Pampers, Huggies, Cerelac, Lactogen, Johnson Baby, Himalaya Baby, Toys, Feeding Bottles</p></div>`
 };
 
-// SPA Router
+// SPA Router Function - अंदर ही बदलेगा
 function loadPage(pageName) {
   const main = document.getElementById('main');
-  main.innerHTML = pages[pageName] || pages['home'];
-  window.scrollTo(0,0);
-  attachEvents();
+  if(pages[pageName]) {
+    main.innerHTML = pages[pageName];
+    window.scrollTo(0,0);
+
+    // Navbar active class
+    document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+    event && event.target.classList.add('active');
+  }
 }
 
-function attachEvents() {
-  document.querySelectorAll('[data-page]').forEach(el => {
-    el.onclick = (e) => {
-      e.preventDefault();
-      loadPage(el.dataset.page);
-      // Active class update
-      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-      if(el.dataset.page) {
-        document.querySelector(`.sidebar a[data-page="${el.dataset.page}"]`)?.classList.add('active');
-      }
-    }
-  });
-}
-
-document.getElementById('accountBtn').onclick = () => loadPage('account');
+// Initial Load
 loadPage('home');
 </script>
 </body>
