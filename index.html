@@ -3,257 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy</title>
+<title>S K Pharmacy - Customer Service</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
-body { background:#eaeded; }
+body { background:#f2f3f3; }
+
+/* Fixed Header Amazon जैसा */
 #header { position:sticky; top:0; z-index:1000; background:#131921; color:white; }
-.top-bar { display:flex; align-items:center; padding:8px 15px; gap:10px; flex-wrap:wrap; }
+.top-bar { display:flex; align-items:center; padding:8px 15px; gap:10px; }
 .logo { font-size:24px; font-weight:bold; color:#4CAF50; cursor:pointer; }
 .deliver { font-size:12px; line-height:1.2; cursor:pointer; }
-.deliver span { display:block; }
-.search-box { flex:1; display:flex; min-width:200px; }
-.search-box select { padding:10px; border:none; border-radius:4px 0 0 4px; background:#f3f3f3; }
-.search-box input { flex:1; padding:10px; border:none; }
-.search-box button { padding:10px 12px; background:#febd69; border:none; border-radius:0 4px 4px 0; cursor:pointer; font-weight:bold; }
-.header-right { display:flex; gap:15px; font-size:12px; }
-.header-right div { cursor:pointer; line-height:1.2; }
-.header-right div span { display:block; }
-.cart { display:flex; align-items:center; gap:5px; font-size:14px; cursor:pointer; }
-#navbar { background:#232f3e; padding:8px 15px; display:flex; gap:15px; overflow-x:auto; }
-#navbar a { color:white; text-decoration:none; font-size:14px; padding:5px 8px; white-space:nowrap; cursor:pointer; }
-#navbar a:hover, #navbar a.active { border:1px solid white; border-radius:2px; }
+.search-box { flex:1; display:flex; }
+.search-box input { flex:1; padding:10px; border:none; border-radius:4px 0 0 4px; }
+.search-box button { padding:10px 15px; background:#febd69; border:none; border-radius:0 4px 4px 0; cursor:pointer; }
+.header-right { display:flex; gap:15px; font-size:13px; }
+.header-right div { cursor:pointer; }
 
-#main-content { max-width:1500px; margin:0 auto; padding:15px; min-height:70vh; }
+/* Navbar */
+#navbar { background:#232f3e; padding:8px 15px; display:flex; gap:20px; }
+#navbar a { color:white; text-decoration:none; font-size:14px; cursor:pointer; padding:5px 8px; }
+#navbar a:hover { border:1px solid white; border-radius:2px; }
 
-.banner-slider { position:relative; height:300px; margin-bottom:20px; border-radius:4px; overflow:hidden; background:#ddd; }
-.banner-slide { position:absolute; width:100%; height:100%; opacity:0; transition:opacity 0.8s; }
-.banner-slide.active { opacity:1; }
-.banner-slide img { width:100%; height:100%; object-fit:cover; }
-.arrow { position:absolute; top:50%; transform:translateY(-50%); font-size:40px; color:white; background:rgba(0,0,0,0.3); padding:10px 15px; cursor:pointer; z-index:10; }
-.arrow.left { left:0; }
-.arrow.right { right:0; }
+/* Main Layout Amazon Help जैसा */
+#main { max-width:1400px; margin:20px auto; padding:0 15px; }
+.help-container { display:flex; gap:20px; }
 
-.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-bottom:30px; }
-.card { background:white; padding:20px; }
-.card h3 { margin-bottom:15px; font-size:20px; }
-.card-grid-4 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.card-grid-4 div { text-align:center; cursor:pointer; }
-.card-grid-4 img { width:100%; height:120px; object-fit:cover; margin-bottom:5px; background:#f0f0f0; }
-.card-grid-4 p { font-size:12px; }
+/* Left Sidebar */
+.sidebar { width:250px; background:white; padding:20px; border-radius:4px; height:fit-content; }
+.sidebar h3 { font-size:16px; margin-bottom:15px; color:#0f1111; }
+.sidebar a { display:block; padding:8px 0; color:#007185; text-decoration:none; font-size:14px; cursor:pointer; border-left:3px solid transparent; padding-left:10px; }
+.sidebar a:hover { color:#c7511f; text-decoration:underline; }
+.sidebar a.active { border-left:3px solid #ff9900; color:#c7511f; font-weight:bold; }
 
-.horizontal-slider { background:white; padding:20px; margin-bottom:20px; }
-.horizontal-slider h3 { margin-bottom:15px; }
-.slider-track { display:flex; gap:15px; overflow-x:auto; padding-bottom:10px; }
-.slider-item { min-width:150px; text-align:center; cursor:pointer; }
-.slider-item img { width:150px; height:200px; object-fit:cover; margin-bottom:8px; background:#f0f0f0; }
-.slider-item p { font-size:13px; }
+/* Right Content */
+.content { flex:1; background:white; padding:30px; border-radius:4px; min-height:600px; }
+.content h1 { font-size:28px; margin-bottom:20px; color:#0f1111; }
+.content h2 { font-size:20px; margin:25px 0 15px; color:#0f1111; }
+.content p { line-height:1.6; margin:10px 0; color:#0f1111; font-size:15px; }
+.content ol { margin:15px 0 15px 25px; }
+.content li { margin:8px 0; line-height:1.6; }
 
-.help-layout { display:grid; grid-template-columns:260px 1fr; gap:20px; align-items:start; }
-.sidebar { background:white; border-radius:4px; padding:15px; border:1px solid #ddd; }
-.sidebar h3 { font-size:16px; margin-bottom:12px; }
-.sidebar a { display:block; padding:8px 5px; color:#007185; text-decoration:none; font-size:14px; border-left:3px solid transparent; cursor:pointer; }
-.sidebar a:hover { text-decoration:underline; color:#c7511f; }
-.sidebar a.active { border-left:3px solid #ff9900; font-weight:bold; color:#c7511f; }
-.content-area { background:white; border-radius:4px; padding:25px; border:1px solid #ddd; }
-.content-area h2 { font-size:24px; margin-bottom:15px; }
-.content-area p,.content-area li { line-height:1.6; margin:10px 0; font-size:15px; }
+/* Help Topics Grid Amazon जैसा */
+.help-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin:20px 0; }
+.help-card { background:#f7f8f8; border:1px solid #ddd; padding:20px; border-radius:4px; cursor:pointer; text-align:center; }
+.help-card:hover { border-color:#ff9900; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+.help-card img { width:60px; height:60px; margin-bottom:10px; }
+.help-card p { font-size:14px; color:#0f1111; }
 
-#footer { background:#232f3e; color:#ddd; margin-top:40px; }
-.back-top { background:#37475a; text-align:center; padding:15px; color:white; cursor:pointer; }
-.footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:30px; padding:40px 20px; max-width:1500px; margin:0 auto; }
-.footer-grid h4 { color:white; margin-bottom:10px; }
-.footer-grid a { display:block; color:#ddd; text-decoration:none; font-size:13px; margin:8px 0; cursor:pointer; }
-.footer-grid a:hover { text-decoration:underline; }
-.footer-bottom { text-align:center; padding:15px; border-top:1px solid #3a4553; font-size:12px; }
+/* Trending Section */
+.trending { margin-top:30px; }
+.trending-item { background:white; border:1px solid #ddd; padding:12px 15px; margin:8px 0; border-radius:4px; cursor:pointer; display:flex; justify-content:space-between; }
+.trending-item:hover { border-color:#ff9900; }
 
-/* All Dropdown */
-.dropdown-modal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; z-index:2000; justify-content:center; align-items:center; }
-.dropdown-modal.active { display:flex; }
-.dropdown-content { background:white; width:400px; max-height:80vh; border-radius:8px; overflow-y:auto; }
-.dropdown-header { padding:15px; font-size:18px; font-weight:bold; border-bottom:1px solid #ddd; }
-.dropdown-item { padding:12px 15px; display:flex; justify-content:space-between; cursor:pointer; }
-.dropdown-item:hover { background:#f3f3f3; }
-.dropdown-item input { width:18px; height:18px; }
+/* Footer */
+#footer { background:#232f3e; color:#ddd; margin-top:50px; }
+.back-top { background:#37475a; text-align:center; padding:15px; cursor:pointer; color:white; }
+.footer-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:30px; padding:40px 20px; max-width:1200px; margin:0 auto; }
+.footer-col h4 { color:white; margin-bottom:12px; }
+.footer-col a { display:block; color:#ddd; text-decoration:none; font-size:13px; margin:8px 0; cursor:pointer; }
+.footer-col a:hover { text-decoration:underline; }
+.footer-bottom { border-top:1px solid #3a4553; padding:20px; text-align:center; font-size:12px; }
 
-/* Sign In Modal */
-.signin-modal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; z-index:2001; justify-content:center; align-items:center; }
-.signin-modal.active { display:flex; }
-.signin-box { background:white; padding:25px; border-radius:8px; width:350px; position:relative; }
-.signin-box h2 { margin-bottom:15px; }
-.signin-box input { width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:4px; }
-.signin-btn { width:100%; padding:10px; background:#ffd814; border:none; border-radius:8px; cursor:pointer; font-weight:bold; }
-.close-btn { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; border:none; background:none; }
-
+/* Mobile */
 @media(max-width:900px) {
-.banner-slider { height:180px; }
-.card-grid { grid-template-columns:1fr; }
-.help-layout { grid-template-columns:1fr; }
-.sidebar { display:none; }
-.search-box select { display:none; }
+.help-container { flex-direction:column; }
+.sidebar { width:100%; }
+.help-grid { grid-template-columns:repeat(2, 1fr); }
+.footer-grid { grid-template-columns:repeat(2, 1fr); }
+.top-bar { flex-wrap:wrap; }
+.search-box { order:3; width:100%; }
 }
 </style>
 </head>
 <body>
 
+<!-- Fixed Header -->
 <header id="header">
   <div class="top-bar">
-    <div class="logo" data-page="home">SK PHARMACY</div>
-    <div class="deliver" id="locationBtn"><span>Deliver to</span><span><b>Silapur 203201</b></span></div>
+    <div class="logo" data-page="home">SK Pharmacy</div>
+    <div class="deliver">Deliver to<br><b>Khan Alampura 203201</b></div>
     <div class="search-box">
-      <select><option>All</option><option>Medicines</option><option>Surgical</option></select>
       <input type="text" placeholder="Search S K Pharmacy">
       <button>🔍</button>
     </div>
     <div class="header-right">
-      <div>HI <span>▼</span></div>
-      <div id="accountBtn">Hello, Sign in <span><b>Account & Lists ▼</b></span></div>
-      <div>Returns <span><b>& Orders</b></span></div>
-      <div class="cart">🛒 <span>Cart 0</span></div>
+      <div>EN ▼</div>
+      <div id="accountBtn">Hello, Sign in<br><b>Account & Lists ▼</b></div>
+      <div>Returns<br><b>& Orders</b></div>
+      <div>🛒 Cart</div>
     </div>
   </div>
   <nav id="navbar">
     <a id="allBtn">☰ All</a>
     <a data-page="home">Today's Deals</a>
-    <a data-page="offers">Gift Cards</a>
-    <a data-page="offers">Prime Video</a>
-    <a data-page="offers">Sell</a>
     <a data-page="customer-service">Customer Service</a>
+    <a data-page="medicines">Medicines</a>
+    <a data-page="surgical">Surgical</a>
   </nav>
 </header>
 
-<main id="main-content"></main>
+<!-- Main Content SPA -->
+<main id="main"></main>
 
+<!-- Footer -->
 <footer id="footer">
   <div class="back-top" onclick="window.scrollTo(0,0)">Back to top</div>
   <div class="footer-grid">
-    <div>
+    <div class="footer-col">
       <h4>Get to Know Us</h4>
-      <a data-page="about">Careers</a>
-      <a data-page="about">Blog</a>
       <a data-page="about">About S K Pharmacy</a>
+      <a data-page="about">Careers</a>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Make Money with Us</h4>
-      <a data-page="offers">Sell products</a>
-      <a data-page="offers">Become an Affiliate</a>
+      <a>Sell on S K Pharmacy</a>
+      <a>Become an Affiliate</a>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Payment Products</h4>
-      <a data-page="offers">Business Card</a>
-      <a data-page="offers">Shop with Points</a>
+      <a>S K Pharmacy Card</a>
+      <a>Shop with Points</a>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Let Us Help You</h4>
-      <a data-page="customer-service">Your Account</a>
-      <a data-page="customer-service">Your Orders</a>
-      <a data-page="contact">Shipping Rates</a>
+      <a data-page="customer-service">Customer Service</a>
+      <a data-page="contact">Contact Us</a>
     </div>
   </div>
   <div class="footer-bottom">© 1996-2026, S K Pharmacy.com, Inc. or its affiliates</div>
 </footer>
 
-<div id="allDropdown" class="dropdown-modal">
-  <div class="dropdown-content">
-    <div class="dropdown-header">Shop by Department</div>
-    <div class="dropdown-item" data-page="all">All Departments <input type="radio" checked></div>
-    <div class="dropdown-item" data-page="medicines">Medicines <input type="radio"></div>
-    <div class="dropdown-item" data-page="surgical">Surgical Items <input type="radio"></div>
-    <div class="dropdown-item" data-page="surgical">Baby Care <input type="radio"></div>
-    <div class="dropdown-item" data-page="surgical">Cosmetics <input type="radio"></div>
-  </div>
-</div>
-
-<div id="signinModal" class="signin-modal">
-  <div class="signin-box">
-    <button class="close-btn" onclick="closeSignin()">×</button>
-    <h2>Sign in or create account</h2>
-    <input type="text" placeholder="Enter mobile number or email">
-    <button class="signin-btn">Continue</button>
-    <p style="font-size:12px; margin-top:10px;">By continuing, you agree to S K Pharmacy's Conditions of Use and Privacy Notice.</p>
-  </div>
-</div>
-
-<div id="modal-container"></div>
-
 <script>
-const svgBanner = `data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQwMCIgaGVpZ2h0PSIzMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTMxOTIxIi8+PHRleHQgeD0iNzAwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0OCIgZmlsbD0iIzRDQUY1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U0sgUEhBUk1BQ1k8L3RleHQ+PHRleHQgeD0iNzAwIiB5PSIyMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFsbCBNZWRpY2luZXMgMjR4NyBIb21lIERlbGl2ZXJ5PC90ZXh0Pjwvc3ZnPg==`;
+// Pages Data - Amazon Help जैसा Structure
+const pages = {
+home: `
+<div class="help-container">
+  <div class="sidebar">
+    <h3>Help Topics</h3>
+    <a data-page="customer-service" class="active">Customer Service Home</a>
+    <a data-page="delivery">Shipping & Delivery</a>
+    <a data-page="returns">Returns & Refunds</a>
+    <a data-page="account">Managing Your Account</a>
+    <a data-page="payment">Payment & Pricing</a>
+    <a data-page="contact">Contact Us</a>
+  </div>
+  <div class="content">
+    <h1>Welcome to S K Pharmacy Customer Service</h1>
+    <p>We can help you take care of most things here, sign in to get started.</p>
 
-const imgs = Array(9).fill(svgBanner);
+    <div class="help-grid">
+      <div class="help-card" data-page="delivery">
+        <img src="banner1.jpg" onerror="this.src='https://via.placeholder.com/60/4CAF50/fff?text=📦'">
+        <p>A delivery, order or return</p>
+      </div>
+      <div class="help-card" data-page="account">
+        <img src="banner2.jpg" onerror="this.src='https://via.placeholder.com/60/232f3e/fff?text=🔑'">
+        <p>Help with signing in</p>
+      </div>
+      <div class="help-card" data-page="payment">
+        <img src="banner3.jpg" onerror="this.src='https://via.placeholder.com/60/37475a/fff?text=💳'">
+        <p>Payment, charges or gift cards</p>
+      </div>
+      <div class="help-card" data-page="returns">
+        <img src="banner4.jpg" onerror="this.src='https://via.placeholder.com/60/0f1111/fff?text=↩️'">
+        <p>Returns & Refunds</p>
+      </div>
+    </div>
 
-const helpSidebar = `<h3>Help Topics</h3><a data-help="delivery">Home Delivery & Timing</a><a data-help="returns">Returns & Refunds</a><a data-help="orders">Track Your Order</a><a data-help="payment">Payment & Billing</a><a data-help="account">Account Settings</a><a data-help="contact">Contact Support</a>`;
+    <div class="trending">
+      <h2>Trending</h2>
+      <div class="trending-item" data-page="delivery">Track your package <span>›</span></div>
+      <div class="trending-item" data-page="returns">Return items you ordered <span>›</span></div>
+      <div class="trending-item" data-page="payment">Check status of a refund <span>›</span></div>
+      <div class="trending-item" data-page="account">Manage your account <span>›</span></div>
+    </div>
 
-const helpContent = {
-delivery: `<h2>Home Delivery Guarantees</h2><p>We offer guaranteed delivery on medicines. Delivery date stated at checkout.</p><p>If delivery attempt isn't made by promised date, we refund shipping fees.</p><h3 style="margin-top:20px;">How Delivery Works:</h3><ol><li>Place order before cutoff time</li><li>Get confirmed delivery date in SMS</li><li>Track package in "My Orders"</li><li>Receive call from delivery agent</li></ol><p><b>Service Area:</b> सिलापुर गांव, दनकौर, ग्रेटर नोएडा</p><p><b>Contact:</b> 92588751739, 7983006957, 7900836957</p>`,
-returns: `<h2>Return Medicines & Surgical Items</h2><p>You can return many eligible items sold by SK Pharmacy. Return options depend on item type.</p><h3 style="margin-top:20px;">Return Steps:</h3><ol><li>Go to My Orders</li><li>Select item you want to return</li><li>Choose reason for return</li><li>Select refund or replacement</li><li>Package item and call pickup</li></ol><p><b>Note:</b> Sealed medicines cannot be returned due to safety.</p>`,
-orders: `<h2>Track Your Package</h2><p>Track medicines in My Orders section. Real-time updates via WhatsApp.</p><h3 style="margin-top:20px;">Tracking Steps:</h3><ol><li>Login to your account</li><li>Click "My Orders"</li><li>Select order to track</li><li>See live location of delivery agent</li></ol><p>Need help? Call 92588751739</p>`,
-payment: `<h2>Payment, Charges & Refunds</h2><p>We accept Cash on Delivery, UPI, Cards, Net Banking.</p><h3 style="margin-top:20px;">Refund Timeline:</h3><p>UPI/Card refunds: 3 to 5 business days<br>COD orders: Store credit in 7 days</p><p>For payment issues, contact 7983006957</p>`,
-account: `<h2>Manage Your Account</h2><p>Update phone number, address, password from Account Settings.</p><h3 style="margin-top:20px;">Quick Actions:</h3><ol><li>Change delivery address</li><li>Update phone number</li><li>View order history</li><li>Save multiple addresses</li></ol>`,
-contact: `<h2>Contact SK Pharmacy Support</h2><p>24x7 Help Available for Emergency Medicines</p><h3 style="margin-top:20px;">Contact Details:</h3><p><b>Address:</b> सिलापुर गांव, दनकौर, ग्रेटर नोएडा, उत्तर प्रदेश</p><p><b>WhatsApp/Call:</b> 92588751739 | 7983006957 | 7900836957</p><p><b>Store Timing:</b> Open 24x7</p>`
+    <div style="margin-top:30px; padding:20px; background:#f7f8f8; border-radius:4px;">
+      <h3>Need more help?</h3>
+      <div class="trending-item" data-page="contact">Contact us <span>›</span></div>
+    </div>
+  </div>
+</div>`,
+
+delivery: `
+<div class="help-container">
+  <div class="sidebar">
+    <h3>Help Topics</h3>
+    <a data-page="customer-service">Customer Service Home</a>
+    <a data-page="delivery" class="active">Shipping & Delivery</a>
+    <a data-page="returns">Returns & Refunds</a>
+    <a data-page="account">Managing Your Account</a>
+  </div>
+  <div class="content">
+    <p style="color:#007185; font-size:13px;">Shipping and Delivery › Delivery Guarantees</p>
+    <h1>Delivery Guarantees</h1>
+    <p>We offer guaranteed delivery on certain delivery speeds and select products. When guaranteed delivery is available on an order, we'll state this on the checkout page, with the associated delivery date and cost.</p>
+    <p>If we provide a guaranteed delivery date and a delivery attempt isn't made by this date, we'll refund any shipping fees associated with that order.</p>
+    <h2>Recommended Help Topics</h2>
+    <ul style="margin-left:20px;">
+      <li>Place an Order with Guaranteed Delivery</li>
+      <li>Late Deliveries</li>
+      <li>Estimated Delivery Windows</li>
+      <li>How Long Does S K Pharmacy Delivery Take?</li>
+    </ul>
+  </div>
+</div>`,
+
+returns: `
+<div class="help-container">
+  <div class="sidebar">
+    <h3>Help Topics</h3>
+    <a data-page="customer-service">Customer Service Home</a>
+    <a data-page="delivery">Shipping & Delivery</a>
+    <a data-page="returns" class="active">Returns & Refunds</a>
+    <a data-page="account">Managing Your Account</a>
+  </div>
+  <div class="content">
+    <p style="color:#007185; font-size:13px;">Returns and Refunds › Returns</p>
+    <h1>Return Items You Ordered</h1>
+    <p>You can return many eligible items sold by S K Pharmacy. When you return an item, you may find different return options depending on the seller, item, or reason for return.</p>
+    <div style="background:#f7f8f8; padding:20px; border-radius:4px; margin:20px 0; text-align:center;">
+      <p>Need to return an item shipped by S K Pharmacy?</p>
+      <button style="background:#ffd814; border:none; padding:10px 30px; border-radius:8px; cursor:pointer; margin-top:10px;">Your Orders</button>
+    </div>
+    <h2>You can return an eligible item in just few steps:</h2>
+    <ol>
+      <li>Go to Your Orders</li>
+      <li>Identify the item or the order that you want to return</li>
+      <li>Select the option to return the item</li>
+      <li>Choose the reason for return</li>
+      <li>Select how to process your return</li>
+      <li>Select your preferred return method</li>
+      <li>Print your return label and return authorization</li>
+    </ol>
+  </div>
+</div>`,
+
+account: `
+<div class="help-container">
+  <div class="sidebar">
+    <h3>Help Topics</h3>
+    <a data-page="customer-service">Customer Service Home</a>
+    <a data-page="delivery">Shipping & Delivery</a>
+    <a data-page="returns">Returns & Refunds</a>
+    <a data-page="account" class="active">Managing Your Account</a>
+  </div>
+  <div class="content">
+    <h1>Help with signing in</h1>
+    <p>What can we help you with?</p>
+    <select style="padding:8px; width:300px; margin:15px 0;">
+      <option>Choose a topic</option>
+      <option>Forgot password</option>
+      <option>Can't access account</option>
+      <option>Update phone number</option>
+    </select>
+  </div>
+</div>`,
+
+payment: `
+<div class="help-container">
+  <div class="sidebar">
+    <h3>Help Topics</h3>
+    <a data-page="customer-service">Customer Service Home</a>
+    <a data-page="payment" class="active">Payment & Pricing</a>
+    <a data-page="returns">Returns & Refunds</a>
+  </div>
+  <div class="content">
+    <h1>Payment, charges or gift cards</h1>
+    <p>Check your payment methods, view transactions, or manage gift card balance.</p>
+  </div>
+</div>`,
+
+contact: `
+<div class="help-container">
+  <div class="sidebar">
+    <h3>Help Topics</h3>
+    <a data-page="customer-service">Customer Service Home</a>
+    <a data-page="contact" class="active">Contact Us</a>
+  </div>
+  <div class="content">
+    <h1>Contact S K Pharmacy</h1>
+    <p>24x7 Help Available</p>
+    <p><b>Phone:</b> 9258875173, 7983066957</p>
+    <p><b>WhatsApp:</b> 9258875173</p>
+    <p><b>Address:</b> सिलापुर गांव, दनकौर, ग्रेटर नोएडा, UP - 203201</p>
+    <p><b>Email:</b> skpharmacy203201@gmail.com</p>
+  </div>
+</div>`,
+
+about: `<div class="content" style="max-width:800px; margin:0 auto;"><h1>About S K Pharmacy</h1><p>Dr. Shakir Khan द्वारा संचालित। 24x7 दवाओं की Home Delivery।</p></div>`
 };
 
-const contentDB = {
-home: `<div class="banner-slider" id="bannerSlider">${imgs.slice(0,4).map((img,i)=>`<div class="banner-slide ${i===0?'active':''}"><img src="banner${i+1}.jpg" onerror="this.src='${svgBanner}'"></div>`).join('')}<span class="arrow left" onclick="slide(-1)">‹</span><span class="arrow right" onclick="slide(1)">›</span></div><div class="card-grid"><div class="card"><h3>Medicines for your health</h3><div class="card-grid-4"><div data-page="medicines"><img src="banner5.jpg" onerror="this.src='${svgBanner}'"><p>Pain Relief</p></div><div data-page="medicines"><img src="banner6.jpg" onerror="this.src='${svgBanner}'"><p>Fever & Cough</p></div><div data-page="medicines"><img src="banner7.jpg" onerror="this.src='${svgBanner}'"><p>General Medicine</p></div><div data-page="medicines"><img src="banner8.jpg" onerror="this.src='${svgBanner}'"><p>Supplements</p></div></div><a data-page="medicines" style="color:#007185; font-size:13px;">Shop now</a></div><div class="card"><h3>Surgical & Baby Care</h3><div class="card-grid-4"><div data-page="surgical"><img src="banner9.jpg" onerror="this.src='${svgBanner}'"><p>Surgical Items</p></div><div data-page="surgical"><img src="banner5.jpg" onerror="this.src='${svgBanner}'"><p>Baby Care</p></div><div data-page="surgical"><img src="banner6.jpg" onerror="this.src='${svgBanner}'"><p>Cosmetics</p></div><div data-page="surgical"><img src="banner7.jpg" onerror="this.src='${svgBanner}'"><p>Veterinary</p></div></div><a data-page="surgical" style="color:#007185; font-size:13px;">See all deals</a></div><div class="card"><h3>Home Delivery Available</h3><img src="banner8.jpg" onerror="this.src='${svgBanner}'" style="width:100%; height:200px; object-fit:cover; margin-bottom:10px;"><a data-page="delivery" style="color:#007185; font-size:13px;">Order now</a></div></div><div class="horizontal-slider"><h3>Best Sellers in Medicines</h3><div class="slider-track">${imgs.slice(4,9).map((img,i)=>`<div class="slider-item" data-page="medicines"><img src="banner${i+5}.jpg" onerror="this.src='${svgBanner}'"><p>Medicine Product</p></div>`).join('')}</div></div><div class="horizontal-slider"><h3>Best Sellers in Surgical</h3><div class="slider-track">${imgs.slice(4,9).map((img,i)=>`<div class="slider-item" data-page="surgical"><img src="banner${i+5}.jpg" onerror="this.src='${svgBanner}'"><p>Surgical Item</p></div>`).join('')}</div></div>`,
-"customer-service": `<div class="help-layout"><div class="sidebar" id="helpSidebar">${helpSidebar}</div><div class="content-area" id="helpContent"><h2>Welcome to SK Pharmacy Customer Service</h2><p>बाएं से Topic चुनो। Detail दाएं यहां खुलेगा। Page Reload नहीं होगा। Amazon जैसा SPA।</p><p>Emergency के लिए सीधे Call करो: 92588751739</p></div></div>`,
-delivery: helpContent.delivery, contact: helpContent.contact, about: `<h2>About SK Pharmacy</h2><p>Medicines Health Care. Dr. Shakir Khan Presents. All Medicines, Surgical, Cosmetics, Baby Care, Veterinary</p>`, medicines: `<h2>All Medicines</h2><p>Fever, Cough, Pain Relief, General Medicine Available 24x7</p>`, surgical: `<h2>Surgical Items</h2><p>Baby Care, Cosmetics, Veterinary Products Available</p>`, offers: `<h2>Prime Day starts tomorrow</h2><p>Members save up to 40%. Discount for SK Pharmacy customers</p>`, all: `<h2>All Categories</h2><p>Medicines, Surgical, Cosmetics, Baby Care, Veterinary - सब Available</p>`
-};
-
-const mainContent = document.getElementById('main-content');
-let bannerIndex = 0, bannerTimer;
-
-function loadPage(pageId) {
-if(contentDB[pageId]) {
-mainContent.innerHTML = contentDB[pageId];
-document.querySelectorAll('#navbar a').forEach(a => a.classList.remove('active'));
-document.querySelector(`#navbar a[data-page="${pageId}"]`)?.classList.add('active');
-window.scrollTo(0,0);
-initBanner();
-if(pageId === 'customer-service') loadHelp('delivery');
-}
+// SPA Router
+function loadPage(pageName) {
+  const main = document.getElementById('main');
+  main.innerHTML = pages[pageName] || pages['home'];
+  window.scrollTo(0,0);
+  attachEvents();
 }
 
-function loadHelp(helpId) {
-if(helpContent[helpId]) {
-document.getElementById('helpContent').innerHTML = helpContent[helpId];
-document.querySelectorAll('[data-help]').forEach(a => a.classList.remove('active'));
-document.querySelector(`[data-help="${helpId}"]`)?.classList.add('active');
-}
-}
-
-document.addEventListener('click', e => {
-if(e.target.matches('[data-page]')) {
-e.preventDefault();
-loadPage(e.target.dataset.page);
-document.getElementById('allDropdown').classList.remove('active');
-}
-if(e.target.matches('[data-help]')) {
-e.preventDefault();
-loadHelp(e.target.dataset.help);
-}
-});
-
-document.getElementById('allBtn').onclick = () => document.getElementById('allDropdown').classList.add('active');
-document.getElementById('allDropdown').onclick = e => { if(e.target.id==='allDropdown') e.target.classList.remove('active'); };
-document.getElementById('accountBtn').onclick = () => document.getElementById('signinModal').classList.add('active');
-function closeSignin() { document.getElementById('signinModal').classList.remove('active'); }
-document.getElementById('locationBtn').onclick = () => document.getElementById('modal-container').innerHTML = `<div class="signin-modal active"><div class="signin-box"><button class="close-btn" onclick="document.getElementById('modal-container').innerHTML=''">×</button><h3>Choose Location</h3><p>Khan Alampura, UP</p></div></div>`;
-
-function initBanner() {
-const slides = document.querySelectorAll('.banner-slide');
-if(slides.length>0) {
-clearInterval(bannerTimer);
-bannerTimer = setInterval(()=>slide(1), 4000);
-}
-function slide(dir) {
-const slides = document.querySelectorAll('.banner-slide');
-if(slides.length===0) return;
-slides[bannerIndex].classList.remove('active');
-bannerIndex = (bannerIndex + dir + slides.length) % slides.length;
-slides[bannerIndex].classList.add('active');
+function attachEvents() {
+  document.querySelectorAll('[data-page]').forEach(el => {
+    el.onclick = (e) => {
+      e.preventDefault();
+      loadPage(el.dataset.page);
+      // Active class update
+      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+      if(el.dataset.page) {
+        document.querySelector(`.sidebar a[data-page="${el.dataset.page}"]`)?.classList.add('active');
+      }
+    }
+  });
 }
 
+document.getElementById('accountBtn').onclick = () => loadPage('account');
 loadPage('home');
 </script>
-<script src="script.js"></script>
 </body>
 </html>
