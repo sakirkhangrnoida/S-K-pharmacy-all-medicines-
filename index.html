@@ -3,335 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S K Pharmacy Ultimate v1000</title>
-
-<!-- Libraries -->
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-<script src="https://unpkg.com/html5-qrcode"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<title>S K Pharmacy - Amazon जैसा Store</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial;background:#f1f3f6;color:#212121;transition:0.3s}
-body.dark{background:#121212;color:#e0e0e0}
-.header{background:linear-gradient(135deg,#2874f0,#1a56d6);color:white;padding:14px;position:sticky;top:0;z-index:999;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
-.header h2{margin:0;font-size:18px}
-.search-bar{display:flex;margin-top:10px;gap:5px}
-.search-bar input{flex:1;padding:12px;border:none;border-radius:6px;font-size:14px}
-.search-bar button{padding:12px;border:none;border-radius:6px;cursor:pointer;color:white;font-size:16px;min-width:45px}
-.btn-search{background:#ff9f00}
-.btn-voice{background:#dc3545}
-.btn-barcode{background:#6f42c1}
-.btn-ar{background:#fd7e14}
-.nav{display:flex;gap:8px;padding:12px;background:#fff;overflow-x:auto;flex-wrap:wrap;border-bottom:1px solid #e0e0e0}
-body.dark .nav{background:#1e1e1e;border-color:#333}
-.nav button{background:#f8f9fa;border:1px solid #ddd;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;white-space:nowrap;transition:0.2s}
-body.dark .nav button{background:#2a2a2a;border-color:#444;color:#e0e0e0}
-.nav button:hover{background:#e3f2fd;border-color:#2874f0;transform:translateY(-2px)}
-.section{padding:15px;margin:10px;border-radius:10px;background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-body.dark .section{background:#1e1e1e;box-shadow:0 1px 3px rgba(0,0,0,0.5)}
-.section h3{margin-bottom:10px;color:#2874f0;font-size:16px}
-body.dark .section h3{color:#64b5f6}
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;padding:12px}
-.product{background:white;border-radius:10px;padding:12px;position:relative;box-shadow:0 2px 5px rgba(0,0,0,0.1);transition:0.2s}
-body.dark .product{background:#2a2a2a}
-.product:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,0.15)}
-.product img{width:100%;height:130px;object-fit:contain;border-radius:6px}
-.btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
-.btns button{padding:8px;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;transition:0.2s}
-.btn-buy{background:#2874f0;color:white}
-.btn-cart{background:#ff9f00;color:white}
-.btn-buy:hover{background:#1a56d6}
-.btn-cart:hover{background:#e68a00}
-.outstock{position:absolute;top:8px;right:8px;background:#d32f2f;color:white;padding:3px 7px;font-size:10px;border-radius:4px;font-weight:600}
-.flash-timer{background:#ff6161;color:white;font-size:10px;padding:3px 6px;border-radius:4px;margin:5px 0;display:inline-block}
-.loading{position:fixed;top:0;left:0;width:100%;height:100%;background:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:99999}
-body.dark .loading{background:#121212}
-.loading h2{color:#2874f0;margin-bottom:10px}
-.menu-dropdown{position:absolute;right:10px;top:120px;background:white;box-shadow:0 4px 15px rgba(0,0,0,0.2);border-radius:10px;padding:8px;z-index:999;min-width:180px;display:none}
-body.dark .menu-dropdown{background:#2a2a2a}
-.menu-dropdown.show{display:block;animation:slideDown 0.3s}
-@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-.menu-dropdown button{width:100%;padding:10px;margin:3px 0;border:none;background:#f5f5f5;border-radius:6px;cursor:pointer;text-align:left;font-size:13px;transition:0.2s}
-body.dark .menu-dropdown button{background:#333;color:#e0e0e0}
-.menu-dropdown button:hover{background:#e3f2fd}
-.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;display:none;justify-content:center;align-items:center;padding:15px}
-.popup-content{background:white;padding:20px;border-radius:12px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto}
-body.dark .popup-content{background:#2a2a2a}
-.popup-content h3{margin-top:0;margin-bottom:15px;color:#2874f0}
-.popup-content input, .popup-content textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:6px;font-size:14px}
-body.dark .popup-content input, body.dark .popup-content textarea{background:#333;border-color:#555;color:#e0e0e0}
-.popup-content button{width:100%;padding:12px;background:#2874f0;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;margin-top:8px}
-.popup-content button:hover{background:#1a56d6}
-.chat-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#2874f0;color:white;border:none;font-size:26px;z-index:9998;cursor:pointer;box-shadow:0 4px 12px rgba(40,116,240,0.4)}
-.chat-box{position:fixed;bottom:85px;right:20px;width:320px;height:420px;background:white;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);z-index:9999;display:none;flex-direction:column}
-body.dark .chat-box{background:#2a2a2a}
-.chat-header{background:#2874f0;color:white;padding:14px;border-radius:12px 12px 0 0;font-weight:600}
-.chat-body{flex:1;padding:12px;overflow-y:auto;font-size:13px;line-height:1.6}
-.chat-input{display:flex;padding:10px;gap:8px;border-top:1px solid #e0e0e0}
-body.dark .chat-input{border-color:#444}
-.chat-input input{flex:1;padding:10px;border:1px solid #ddd;border-radius:6px}
-.chat-input button{padding:10px 15px;background:#2874f0;color:white;border:none;border-radius:6px;cursor:pointer}
-.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#323232;color:white;padding:14px 22px;border-radius:8px;display:none;z-index:99999;font-size:14px;max-width:90%;box-shadow:0 4px 12px rgba(0,0,0,0.3);animation:fadeInUp 0.3s}
-@keyframes fadeInUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-.footer{background:#172337;color:white;padding:25px 15px;margin-top:40px;font-size:13px}
-.footer h4{margin-bottom:10px;color:#fff}
-.footer a{color:#87ceeb;text-decoration:none;display:block;margin:5px 0;cursor:pointer}
-.footer a:hover{text-decoration:underline}
-.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
-.badge{display:inline-block;background:#4caf50;color:white;padding:2px 6px;border-radius:4px;font-size:10px;margin-left:5px}
-</style>
 </head>
 <body>
 
-<!-- Loading -->
-<div id="loading" class="loading">
-  <h2>🚀 S K Pharmacy Loading...</h2>
-  <p>1000 Features Auto Init हो रहे हैं...</p>
-</div>
-
-<!-- Header -->
-<div class="header">
-  <h2>🏪 S K Pharmacy Ultimate v1000</h2>
-  <div class="search-bar">
-    <input id="searchInput" placeholder="दवा या प्रोडक्ट सर्च करें..." onkeyup="searchProducts()">
-    <button class="btn-search" onclick="searchProducts()" title="Search">🔍</button>
-    <button class="btn-voice" onclick="startVoiceSearch()" title="Voice Search">🎤</button>
-    <button class="btn-barcode" onclick="startBarcode()" title="Barcode Scan">📊</button>
-    <button class="btn-ar" onclick="startAR()" title="AR Try On">📷</button>
+<!-- 1. Header Amazon जैसा -->
+<header class="amz-header">
+  <div class="header-top">
+    <div class="logo">S K Pharmacy</div>
+    <div class="location">📍 Deliver to Silapur 203201</div>
+    <div class="search-box">
+      <select><option>All</option><option>Medicines</option></select>
+      <input type="text" placeholder="Search S K Pharmacy" id="searchInput" onkeyup="searchProducts()">
+      <button onclick="searchProducts()">🔍</button>
+    </div>
+    <div class="header-right">
+      <div class="lang">🇮🇳 HI</div>
+      <div class="account" onmouseover="showAccountDropdown()" onmouseout="hideAccountDropdown()">
+        Hello, Sign in<br><b>Account & Lists ▼</b>
+        <div class="account-dropdown" id="accountDropdown">
+          <button class="yellow-btn" onclick="showLoginPopup()">Sign in</button>
+          <p>New customer? Start here</p>
+          <hr>
+          <div class="acc-grid">
+            <div><b>Your Lists</b><br>Create a List<br>Find a List</div>
+            <div><b>Your Account</b><br>Account<br>Orders<br>Recommendations</div>
+          </div>
+        </div>
+      </div>
+      <div class="orders">Returns<br><b>& Orders</b></div>
+      <div class="cart" onclick="showCart()">🛒 Cart <span id="cartCount">0</span></div>
+    </div>
   </div>
-</div>
-105 </div>
+  
+  <!-- 2. Nav Bar -->
+  <nav class="amz-nav">
+    <span onclick="toggleAllMenu()">☰ All</span>
+    <span>Today's Deals</span>
+    <span>Gift Cards</span>
+    <span>Prime Video</span>
+    <span>Sell</span>
+    <span>Registry</span>
+    <span>Customer Service</span>
+    <span style="margin-left:auto">Shop deal in Electronics</span>
+  </nav>
+</header>
 
-<!-- News Ticker - यहीं Paste कर -->
-<div id="newsTicker" style="background:linear-gradient(90deg,#ff6161,#ff9f00);color:white;padding:8px 0;overflow:hidden;white-space:nowrap;position:sticky;top:70px;z-index:998;font-size:13px;font-weight:600">
-  <marquee id="tickerText" behavior="scroll" direction="left" scrollamount="5">
-    🎉 S K Pharmacy Grand Opening! | 💊 UPI पे 5% Extra Discount | 🚚 COD पे ₹30 Delivery | 📱 OTP Login Secure | 🎁 Gift Card Available | 🚨 Emergency SOS 24x7
-  </marquee>
-</div>
-
-106 <!-- खाली लाइन -->
-107 <!-- Navigation - सभी ID वाले Button -->
-<!-- Navigation - सभी ID वाले Button -->
-<div class="nav">
-  <button onclick="showToast('Wallet: ₹' + walletBalance)">💰 Wallet ₹<span id="walletBal">0</span></button>
-  <button class="dark-toggle" onclick="toggleDark()" title="Dark Mode">🌙</button>
-  <button onclick="toggleLang()" title="Language">🌐 Lang</button>
-  <button id="loginBtn" onclick="showLoginPopup()">👤 Login</button>
-  <button id="addToCart" onclick="showCart()">🛒 Cart <span id="cartCount">0</span></button>
-  <button id="giftCard" onclick="openGiftCard()">🎁 Gift Card</button>
-  <button onclick="toggleMenu()">⋮ More</button>
-  <button onclick="reorderLast()">🔄 Reorder</button>
-  <button onclick="verifyFake()">🔐 Verify</button>
-  <button onclick="showOrdersPanel()">📊 Admin</button>
-  <button onclick="showHealthRecord()">❤️ Health</button>
-  <button onclick="triggerSOS()" style="background:#d32f2f;color:white">🚨 SOS</button>
-</div>
-
-<!-- 3 Dot Menu Dropdown -->
-<div id="threeDotMenu" class="menu-dropdown">
-  <button onclick="showOrdersPanel()">📊 Admin Panel</button>
-  <button onclick="broadcastWhatsApp()">📢 WhatsApp Broadcast</button>
-  <button onclick="syncCatalog()">🔄 Sync WhatsApp Catalog</button>
-  <button onclick="openGiftCard()">🎁 Gift Card Manager</button>
-  <button onclick="showHealthRecord()">❤️ Health Records</button>
-</div>
-
-<!-- Location Section -->
-<div class="section">
-  <h3>📍 Our Location</h3>
-  <p><b>Silapur, Dankaur, Greater Noida 203201, UP</b></p>
-  <p>🏪 Store Stock: <span id="storeStock">12</span> Items | Drone Pad: <span style="color:green">Active</span></p>
-  <div style="margin-top:10px">
-    <input id="pincodeInput" placeholder="Enter Pincode 203201">
-    <button onclick="checkPincode()" style="padding:10px 15px;background:#2874f0;color:white;border:none;border-radius:6px;cursor:pointer;margin-left:5px">Check Delivery</button>
+<!-- 3. All Menu Sidebar Amazon जैसा -->
+<div class="all-menu" id="allMenu">
+  <div class="menu-header">Hello, Sign in</div>
+  <div class="menu-item">Digital Content & Devices</div>
+  <div class="menu-item">Shop by Department ▼</div>
+  <div class="menu-radio">
+    <label><input type="radio" name="cat"> Electronics</label>
+    <label><input type="radio" name="cat"> Girls' Fashion</label>
+    <label><input type="radio" name="cat"> Health & Household</label>
+    <label><input type="radio" name="cat"> Home & Kitchen</label>
+    <label><input type="radio" name="cat"> Men's Fashion</label>
   </div>
-  <p id="pincodeMsg" style="margin-top:8px;font-weight:600"></p>
+  <div class="menu-item">Help & Settings</div>
+</div>
+<div class="overlay" id="overlay" onclick="closeAllMenu()"></div>
+
+<!-- 4. News Ticker -->
+<div id="newsTicker">
+  <marquee id="tickerText">🎉 1000 Features Live | 💊 UPI 5% Discount | 🚚 COD ₹30 Only</marquee>
 </div>
 
-<!-- Weather Widget -->
-<div id="weatherWidget" class="section" style="text-align:center;background:#e3f2fd">
-  <b>Loading Weather...</b>
-</div>
+<!-- 5. Main Content - Section by Section -->
+<main>
+  <!-- Customer Service Section Amazon जैसा -->
+  <section class="customer-service">
+    <h2>Welcome to S K Pharmacy Customer Service</h2>
+    <div class="cs-grid">
+      <div class="cs-card">📦 A delivery, order or return</div>
+      <div class="cs-card">🔑 Help with signing in</div>
+      <div class="cs-card">⭐ Prime</div>
+      <div class="cs-card">📱 Devices Support</div>
+      <div class="cs-card">🎵 Music, Videos, Games</div>
+      <div class="cs-card">💳 Payment, charges or gift cards</div>
+    </div>
+  </section>
 
-<!-- Products Grid - Empty for now -->
-<div id="productList" class="product-grid"></div>
+  <!-- Help Library Section -->
+  <section class="help-library">
+    <h3>Search our help library</h3>
+    <input type="text" placeholder="Type something like, question about a charge">
+    <h4>All help topics</h4>
+    <div class="help-layout">
+      <aside class="help-sidebar">
+        <button class="active">Take Quick Actions</button>
+        <button>Where's my stuff</button>
+        <button>Shipping and Delivery</button>
+        <button>Returns, Refunds and Product Support</button>
+      </aside>
+      <div class="help-content">
+        <div class="help-card">Track your package<br><small>Track in Your Orders</small></div>
+        <div class="help-card">Return Items You Ordered<br><small>Use Online Return Center</small></div>
+        <div class="help-card">Check status of a refund</div>
+      </div>
+    </div>
+  </section>
 
-<!-- Auto Features Container - 1000 Features यहां Auto बनेंगे -->
-<div id="autoFeaturesContainer" style="display:none"></div>
+  <!-- Products Grid Amazon जैसा -->
+  <section class="products-section">
+    <div class="filter-sidebar">
+      <h4>Popular Shopping Ideas</h4>
+      <p>Chair, Headset, Keyboard & Mouse</p>
+      <h4>Deals & Discounts</h4>
+      <label><input type="checkbox"> All Discounts</label>
+      <h4>Customer Reviews</h4>
+      <label><input type="radio" name="rating"> ⭐⭐ & Up</label>
+      <h4>Brands</h4>
+      <label><input type="checkbox"> Razer</label>
+      <label><input type="checkbox"> ASUS</label>
+    </div>
+    
+    <div class="product-grid" id="productList">
+      <!-- Products Auto Load होंगे -->
+    </div>
+  </section>
+</main>
 
-<!-- Toast -->
-<div id="toast" class="toast"></div>
+<!-- 6. Footer Amazon जैसा -->
+<footer class="amz-footer">
+  <div class="back-top" onclick="window.scrollTo(0,0)">Back to top</div>
+  <div class="footer-cols">
+    <div>
+      <h4>Get to Know Us</h4>
+      <p>Careers</p><p>Blog</p><p>About S K Pharmacy</p>
+    </div>
+    <div>
+      <h4>Make Money with Us</h4>
+      <p>Sell products on S K Pharmacy</p><p>Become an Affiliate</p>
+    </div>
+    <div>
+      <h4>Payment Products</h4>
+      <p>Business Card</p><p>Shop with Points</p>
+    </div>
+    <div>
+      <h4>Let Us Help You</h4>
+      <p>Your Account</p><p>Your Orders</p><p>Shipping Rates</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <button>🇮🇳 English</button>
+    <button>₹ INR - Indian Rupee</button>
+    <button>🇮🇳 India</button>
+    <p>© 1996-2026, S K Pharmacy.com, Inc. or its affiliates</p>
+  </div>
+</footer>
 
-<!-- Login/OTP Popup -->
+<!-- 7. OTP Popup -->
 <div id="otpPopup" class="popup">
-  <div class="popup-content">
-    <h3>🔐 Login & Order</h3>
+  <div class="popup-box">
+    <span class="close" onclick="closePopup()">×</span>
     <div id="step1">
-      <label>Mobile Number:</label>
-      <input id="mobileInput" placeholder="10 digit mobile" type="tel" maxlength="10">
-      <button onclick="sendOTP()">Send OTP</button>
+      <h3>Sign in or create account</h3>
+      <label>Enter mobile number or email</label>
+      <input type="tel" id="mobileInput" placeholder="10 Digit Mobile">
+      <button class="yellow-btn" onclick="sendOTP()">Continue</button>
+      <p class="small">By continuing, you agree to Conditions of Use and Privacy Notice</p>
     </div>
     <div id="step2" style="display:none">
-      <label>Enter OTP:</label>
-      <input id="otpInput" placeholder="6 digit OTP">
-      <button onclick="verifyOTP()">Verify OTP</button>
-    </div>
-    <div id="step3" style="display:none">
-      <label>Delivery Address:</label>
-      <textarea id="addressInput" placeholder="पूरा पता डालें" rows="3"></textarea>
-      <button onclick="saveAddress()">Save & Continue</button>
-    </div>
-    <div id="step4" style="display:none">
-      <div style="text-align:center;margin-bottom:15px">
-        <img id="pImg" style="width:100px;height:100px;object-fit:contain">
-        <h4 id="pName" style="margin:10px 0"></h4>
-        <p>Price: ₹<span id="price"></span> <del id="mRP"></del> <span id="offPer"></span>% Off</p>
-        <h3>Total: ₹<span id="pTotal"></span></h3>
-      </div>
-      <label><b>Payment Mode:</b></label><br>
-      <label style="display:block;margin:8px 0"><input type="radio" name="payment" value="UPI" checked onchange="updatePayment()"> UPI - 5% Instant Discount</label>
-      <label style="display:block;margin:8px 0"><input type="radio" name="payment" value="COD" onchange="updatePayment()"> COD - +₹30 Charges</label>
-      <button onclick="submitOrder()">💳 Pay Now & Confirm Order</button>
-    </div>
-    <div id="step5" style="display:none;text-align:center">
-      <h3 style="color:green">✅ Order Successful!</h3>
-      <p>You Saved: ₹<span id="saved"></span></p>
-      <p>Order ID: <span id="orderIdShow"></span></p>
-      <button onclick="downloadPDF()">📄 Download Invoice PDF</button>
-      <button onclick="closePopup()" style="background:gray">Close</button>
-    </div>
-    <div id="recaptcha-container"></div>
-  </div>
-</div>
-
-<!-- Gift Card Popup -->
-<div id="giftCardPopup" class="popup">
-  <div class="popup-content">
-    <h3>🎁 Gift Card</h3>
-    <input id="giftMobile" placeholder="Receiver Mobile">
-    <input id="giftAmount" placeholder="Amount ₹" type="number">
-    <button onclick="sendGiftCard()">Send Gift Card</button>
-    <button onclick="closeGiftCard()" style="background:gray">Close</button>
-  </div>
-</div>
-
-<!-- Health Record Popup -->
-<div id="healthPopup" class="popup">
-  <div class="popup-content">
-    <h3>❤️ Health Record</h3>
-    <input id="bpValue" placeholder="BP Reading e.g. 120/80">
-    <input id="sugarValue" placeholder="Sugar Level e.g. 110">
-    <button onclick="saveHealth()">Save Record</button>
-    <canvas id="healthChart" style="margin-top:15px"></canvas>
-    <button onclick="document.getElementById('healthPopup').style.display='none'" style="background:gray">Close</button>
-  </div>
-</div>
-
-<!-- Admin Panel Popup -->
-<div id="adminPanel" class="popup">
-  <div class="popup-content" style="max-width:600px">
-    <h3>📊 Admin Dashboard</h3>
-    <canvas id="salesChart" height="200"></canvas>
-    <button onclick="closeAdminPanel()" style="background:gray">Close</button>
-  </div>
-</div>
-
-<!-- Chat Box -->
-<button class="chat-btn" onclick="toggleChat()">💬</button>
-<div id="chatBox" class="chat-box">
-  <div class="chat-header">AI Doctor Assistant <button onclick="toggleChat()" style="float:right;background:none;border:none;color:white;cursor:pointer;font-size:18px">✕</button></div>
-  <div id="chatBody" class="chat-body"></div>
-  <div class="chat-input">
-    <input id="chatInput" placeholder="लक्षण बताएं...">
-    <button onclick="sendChat()">Send</button>
-  </div>
-</div>
-
-<!-- Barcode Scanner -->
-<div id="barcodeScanner" class="popup" style="background:black">
-  <div style="width:100%;height:100%;display:flex;flex-direction:column">
-    <div id="reader" style="flex:1"></div>
-    <button onclick="closeBarcode()" style="padding:15px;background:red;color:white;border:none;cursor:pointer">Close Scanner</button>
-  </div>
-</div>
-
-<!-- AR Modal -->
-<div id="arModal" class="popup" style="background:black">
-  <div style="width:100%;height:100%;display:flex;flex-direction:column">
-    <video id="arVideo" autoplay style="flex:1;width:100%"></video>
-    <button onclick="closeAR()" style="padding:15px;background:red;color:white;border:none;cursor:pointer">Close AR</button>
-  </div>
-</div>
-
-<!-- QR Modal -->
-<div id="qrModal" class="popup">
-  <div class="popup-content" style="text-align:center">
-    <h3>Product QR Code</h3>
-    <canvas id="qrCanvas"></canvas>
-    <button onclick="document.getElementById('qrModal').style.display='none'">Close</button>
-  </div>
-</div>
-
-<!-- COD OTP Popup -->
-<div id="codOtpPopup" class="popup">
-  <div class="popup-content" style="text-align:center">
-    <h3>🔐 COD Verification OTP</h3>
-    <p style="font-size:24px;font-weight:bold;color:#2874f0" id="codOtp">123456</p>
-    <p>Delivery Boy को ये OTP बताएं</p>
-    <button onclick="document.getElementById('codOtpPopup').style.display='none'">OK</button>
-  </div>
-</div>
-
-<!-- Footer with All Pages -->
-<div class="footer">
-  <div class="grid-3">
-    <div>
-      <h4>Company</h4>
-      <a id="about" onclick="openPage('about')">About Us</a>
-      <a id="contact" onclick="openPage('contact')">Contact Us</a>
-      <a id="service" onclick="openPage('service')">Our Services</a>
-    </div>
-    <div>
-      <h4>Policies</h4>
-      <a id="privacy" onclick="openPage('privacy')">Privacy Policy</a>
-      <a id="refund" onclick="openPage('refund')">Refund Policy</a>
-      <a onclick="openPage('terms')">Terms & Conditions</a>
-    </div>
-    <div>
-      <h4>Help</h4>
-      <a onclick="openPage('faq')">FAQs</a>
-      <a onclick="triggerSOS()">🚨 Emergency SOS</a>
-      <a onclick="showHealthRecord()">Health Tracker</a>
+      <h3>Enter OTP</h3>
+      <input type="text" id="otpInput" placeholder="6 Digit OTP">
+      <button class="yellow-btn" onclick="verifyOTP()">Verify</button>
     </div>
   </div>
-  <div style="text-align:center;margin-top:20px;padding-top:15px;border-top:1px solid #444">
-    © 2026 S K Pharmacy Ultimate. 1000 Features Active <span class="badge">Meta AI</span><br>
-    Licensed Pharmacy | Blockchain Secured<br>
-    Hash: <span id="blockchainHash" style="font-family:monospace;font-size:10px">Loading...</span>
-  </div>
 </div>
 
-<!-- Page Content Popup -->
-<div id="pagePopup" class="popup">
-  <div class="popup-content">
-    <h3 id="pageTitle">Page</h3>
-    <div id="pageContent" style="line-height:1.8"></div>
-    <button onclick="document.getElementById('pagePopup').style.display='none'">Close</button>
-  </div>
-</div>
+<div id="recaptcha-container"></div>
+<div id="toast"></div>
+<div id="autoFeaturesContainer" style="display:none"></div>
 
-<!-- JS File -->
-<script type="module" src="app.js"></script>
-<script>
-// Emergency: 2 सेकंड बाद Loading हटा दो, Error आए तो भी
-setTimeout(() => {
-  const loading = document.getElementById('loading');
-  if(loading) loading.style.display = 'none';
-  console.log('Loading Force Hide किया गया');
-}, 2000);
-</script>
+<script src="app.js"></script>
 </body>
-  </html>
+</html>
